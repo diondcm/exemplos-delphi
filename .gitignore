@@ -1,0 +1,6 @@
+*.local
+*.identcache
+*.stat
+/Capitulo1/1.Base/Win32/Debug
+Debug
+__history
