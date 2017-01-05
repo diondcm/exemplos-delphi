@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{22077FA9-4A26-4E63-9CFA-9FB500C1196E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Basico.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Basico2.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Basico">
+        <MSBuild Projects="Basico.dproj"/>
+    </Target>
+    <Target Name="Basico:Clean">
+        <MSBuild Projects="Basico.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Basico:Make">
+        <MSBuild Projects="Basico.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Basico2">
+        <MSBuild Projects="Basico2.dproj"/>
+    </Target>
+    <Target Name="Basico2:Clean">
+        <MSBuild Projects="Basico2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Basico2:Make">
+        <MSBuild Projects="Basico2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Basico;Basico2"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Basico:Clean;Basico2:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Basico:Make;Basico2:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
