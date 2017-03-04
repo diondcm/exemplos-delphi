@@ -14,10 +14,11 @@ type
     btnLocalizacao: TButton;
     btnCamera: TButton;
     btnAcelerometro: TButton;
-    Button4: TButton;
+    btnMicrofone: TButton;
     procedure btnLocalizacaoClick(Sender: TObject);
     procedure btnCameraClick(Sender: TObject);
     procedure btnAcelerometroClick(Sender: TObject);
+    procedure btnMicrofoneClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +32,7 @@ implementation
 
 {$R *.fmx}
 
-uses Form.Location, Form.Camera, Form.Acelerometro;
+uses Form.Location, Form.Camera, Form.Acelerometro, Form.Microfone;
 
 procedure TfrmPrincipal.btnAcelerometroClick(Sender: TObject);
 begin
@@ -46,6 +47,26 @@ end;
 procedure TfrmPrincipal.btnLocalizacaoClick(Sender: TObject);
 begin
   TfrmLocation.Create(Self).Show;
+end;
+
+procedure TfrmPrincipal.btnMicrofoneClick(Sender: TObject);
+//var
+//  lFrm: TfrmMicrofone;
+begin
+  TfrmMicrofone.ShowEx(
+    procedure
+    begin
+      // executado antes
+      ShowMessage('Before');
+      //Button2.Text := lFrm.Button2.Text + ' Alterado';
+    end,
+    procedure
+    begin
+      // executado depois, quando fechar
+      ShowMessage('After');
+    end);
+//  lFrm := TfrmMicrofone.Create(Self);
+//  lFrm.Show;
 end;
 
 end.

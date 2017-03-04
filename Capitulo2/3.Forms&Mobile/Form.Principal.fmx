@@ -45,7 +45,7 @@ object frmPrincipal: TfrmPrincipal
       end
       item
         Column = 1
-        Control = Button4
+        Control = btnMicrofone
         Row = 2
       end>
     RowCollection = <
@@ -99,13 +99,14 @@ object frmPrincipal: TfrmPrincipal
       Text = 'Aceler'#244'metro'
       OnClick = btnAcelerometroClick
     end
-    object Button4: TButton
+    object btnMicrofone: TButton
       Align = Center
       Size.Width = 97.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 4
-      Text = 'Button4'
+      Text = 'Microfone'
+      OnClick = btnMicrofoneClick
     end
   end
 end

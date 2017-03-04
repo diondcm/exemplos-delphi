@@ -14,8 +14,11 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
+    FOnAfter: TProc;
   public
     { Public declarations }
+
+    class procedure ShowEx(pBefore: TProc = nil; pAfter: TProc = nil);
   end;
 
 implementation
@@ -24,7 +27,21 @@ implementation
 
 procedure TfrmBaseDetalhe.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  if Assigned(FOnAfter) then
+    FOnAfter;
+
   Action := TCloseAction.cafree;
+end;
+
+class procedure TfrmBaseDetalhe.ShowEx(pBefore, pAfter: TProc);
+var
+  lFrm: TfrmBaseDetalhe;
+begin
+  lFrm := Self.Create(Application);
+  if Assigned(pBefore) then
+    pBefore;
+  lFrm.FOnAfter := pAfter;
+  lFrm.Show;
 end;
 
 end.
