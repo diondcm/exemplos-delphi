@@ -1,0 +1,15 @@
+object fraMensagem: TfraMensagem
+  Size.Width = 704.000000000000000000
+  Size.Height = 432.000000000000000000
+  Size.PlatformDefault = False
+  object lblMensagem: TLabel
+    Align = Center
+    StyledSettings = [Family, FontColor]
+    Size.Width = 538.000000000000000000
+    Size.Height = 100.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 18.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Center
+  end
+end

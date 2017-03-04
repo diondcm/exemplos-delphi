@@ -1,0 +1,116 @@
+object frmFrames: TfrmFrames
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 616
+  ClientWidth = 881
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object tbcPrincipal: TTabControl
+    Touch.GestureManager = GestureManager1
+    Align = Client
+    Size.Width = 881.000000000000000000
+    Size.Height = 616.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = None
+    Sizes = (
+      881s
+      616s
+      881s
+      616s
+      881s
+      616s)
+    object tab1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tab1'
+      inline fraMensagem1: TfraMensagem
+        Align = Client
+        Size.Width = 881.000000000000000000
+        Size.Height = 616.000000000000000000
+        Size.PlatformDefault = False
+        inherited lblMensagem: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+    end
+    object tab2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tab2'
+      inline fraMensagem2: TfraMensagem
+        Align = Client
+        Size.Width = 881.000000000000000000
+        Size.Height = 616.000000000000000000
+        Size.PlatformDefault = False
+        inherited lblMensagem: TLabel
+          Size.Width = 0.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+    end
+    object tab3: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tab3'
+      inline fraMensagem3: TfraMensagem
+        Align = Client
+        Size.Width = 881.000000000000000000
+        Size.Height = 616.000000000000000000
+        Size.PlatformDefault = False
+        inherited lblMensagem: TLabel
+          Size.Width = 0.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+    end
+  end
+  object GestureManager1: TGestureManager
+    Sensitivity = 80.000000000000000000
+    Left = 576
+    Top = 136
+    GestureData = <
+      item
+        Control = tbcPrincipal
+        Collection = <
+          item
+            Action = actShowTab2
+            GestureID = sgiRight
+          end>
+      end>
+  end
+  object ActionList1: TActionList
+    Left = 576
+    Top = 192
+    object actShowTab2: TAction
+      Text = 'Nava Aba'
+      OnExecute = actShowTab2Execute
+    end
+  end
+end

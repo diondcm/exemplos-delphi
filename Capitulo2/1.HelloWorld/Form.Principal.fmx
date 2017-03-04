@@ -1,0 +1,266 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object tbcPrincipal: TTabControl
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 2
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      640s
+      431s
+      640s
+      431s
+      640s
+      431s)
+    object tabInicial: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 213.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Ol'#225
+      object lblMensagem: TLabel
+        Align = Center
+        StyledSettings = [Family, FontColor]
+        Size.Width = 185.000000000000000000
+        Size.Height = 81.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 18.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = 'Ol'#225' mundo.'
+      end
+    end
+    object tabControles: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 213.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Controles'
+      object edtTexto: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 252.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Informe um texto'
+        object btnAddLog: TButton
+          Align = Right
+          Position.X = 179.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Add'
+          OnClick = btnAddLogClick
+        end
+      end
+      object Layout1: TLayout
+        Align = Bottom
+        Position.Y = 160.000000000000000000
+        Size.Width = 640.000000000000000000
+        Size.Height = 271.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object ltbItens: TListBox
+          Align = Right
+          Position.X = 440.000000000000000000
+          Size.Width = 200.000000000000000000
+          Size.Height = 271.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          DisableFocusEffect = True
+          DefaultItemStyles.ItemStyle = ''
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          Viewport.Width = 200.000000000000000000
+          Viewport.Height = 271.000000000000000000
+        end
+        object memLog: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Align = Client
+          Size.Width = 440.000000000000000000
+          Size.Height = 271.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Viewport.Width = 432.000000000000000000
+          Viewport.Height = 263.000000000000000000
+        end
+      end
+    end
+    object tabItens: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 214.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Itens'
+      object lytTop: TLayout
+        Align = Top
+        Size.Width = 640.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object btnCarrega: TButton
+          Align = Left
+          Size.Width = 169.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'btnCarregaStyle1'
+          TabOrder = 1
+          Text = 'Show Frames'
+          OnClick = btnCarregaClick
+        end
+        object Edit1: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          TabOrder = 2
+          Text = 'Carregar'
+          Size.Width = 166.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Text do bot'#227'o'
+        end
+        object CheckBox1: TCheckBox
+          Align = Left
+          IsChecked = True
+          Position.X = 169.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = 'Bot'#227'o ativo'
+        end
+      end
+      object lytDados: TLayout
+        Align = Client
+        Size.Width = 640.000000000000000000
+        Size.Height = 381.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object stgDados: TStringGrid
+          Align = Client
+          CanFocus = True
+          ClipChildren = True
+          Size.Width = 640.000000000000000000
+          Size.Height = 356.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          RowCount = 200
+          Viewport.Width = 635.000000000000000000
+          Viewport.Height = 324.000000000000000000
+        end
+        object NavigatorPrototypeBindSource1: TBindNavigator
+          Align = Top
+          Size.Width = 640.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          DataSource = PrototypeBindSource1
+          xRadius = 4.000000000000000000
+          yRadius = 4.000000000000000000
+        end
+      end
+    end
+  end
+  object PrototypeBindSource1: TPrototypeBindSource
+    AutoActivate = True
+    AutoPost = False
+    FieldDefs = <
+      item
+        Name = 'ContactName1'
+        Generator = 'ContactNames'
+        ReadOnly = False
+      end
+      item
+        Name = 'ContactTitle1'
+        Generator = 'ContactTitles'
+        ReadOnly = False
+      end
+      item
+        Name = 'CurrencyField1'
+        FieldType = ftCurrency
+        Generator = 'Currency'
+        ReadOnly = False
+      end
+      item
+        Name = 'DateTimeField1'
+        FieldType = ftDateTime
+        Generator = 'DateTime'
+        ReadOnly = False
+      end>
+    ScopeMappings = <>
+    Left = 552
+    Top = 192
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkControlToPropertyText: TLinkControlToProperty
+      Category = 'Quick Bindings'
+      Control = Edit1
+      Track = False
+      Component = btnCarrega
+      ComponentProperty = 'Text'
+    end
+    object LinkControlToPropertyEnabled: TLinkControlToProperty
+      Category = 'Quick Bindings'
+      Control = CheckBox1
+      Track = True
+      Component = btnCarrega
+      ComponentProperty = 'Enabled'
+    end
+    object LinkGridToDataSourcePrototypeBindSource1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = PrototypeBindSource1
+      GridControl = stgDados
+      Columns = <
+        item
+          MemberName = 'ContactName1'
+          Width = 100
+        end
+        item
+          MemberName = 'ContactTitle1'
+          Width = 100
+        end
+        item
+          MemberName = 'CurrencyField1'
+        end
+        item
+          MemberName = 'DateTimeField1'
+          Width = 150
+        end>
+    end
+  end
+end

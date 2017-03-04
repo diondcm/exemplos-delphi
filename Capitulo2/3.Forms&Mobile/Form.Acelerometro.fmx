@@ -1,0 +1,120 @@
+inherited frmAcelerometro: TfrmAcelerometro
+  Caption = 'frmBaseDetalhe1'
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    object Label1: TLabel
+      Align = Client
+      Size.Width = 560.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Accelerometer'
+    end
+  end
+  object ListBox1: TListBox
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 436.000000000000000000
+    object lbiSensor: TListBoxItem
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Sensor:'
+      object swtSensor: TSwitch
+        Align = Right
+        IsChecked = False
+        Position.X = 558.000000000000000000
+        Size.Width = 78.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnSwitch = swtSensorSwitch
+      end
+    end
+    object lbiAcX: TListBoxItem
+      Position.Y = 33.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Acelera'#231#227'o em X:'
+    end
+    object lbiAcY: TListBoxItem
+      Position.Y = 66.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Acelera'#231#227'o em Y:'
+    end
+    object lbiACZ: TListBoxItem
+      Position.Y = 99.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Acelera'#231#227'o em Z:'
+    end
+    object lbiAnguloX: TListBoxItem
+      Position.Y = 132.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = #194'ngulo em X:'
+    end
+    object lbiAnguloY: TListBoxItem
+      Position.Y = 165.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = #194'ngulo em Y:'
+    end
+    object lbiAnguloZ: TListBoxItem
+      Position.Y = 198.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = #194'ngulo em Z:'
+    end
+    object lbiMovimento: TListBoxItem
+      Position.Y = 231.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = 'Movimento:'
+    end
+    object lbiVelocidade: TListBoxItem
+      Position.Y = 264.000000000000000000
+      Size.Width = 636.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = 'Velocidade:'
+    end
+  end
+  object MotionSensor1: TMotionSensor
+    Left = 552
+    Top = 192
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 456
+    Top = 192
+  end
+end

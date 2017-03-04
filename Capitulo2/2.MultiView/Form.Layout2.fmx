@@ -1,0 +1,81 @@
+object frmLayout2: TfrmLayout2
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object lytPrincipal: TLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object StringGrid1: TStringGrid
+      Align = Bottom
+      CanFocus = True
+      ClipChildren = True
+      Position.Y = 208.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 272.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      RowCount = 200
+      Viewport.Width = 620.000000000000000000
+      Viewport.Height = 247.000000000000000000
+    end
+    object NavigatorPrototypeBindSource1: TBindNavigator
+      Align = Bottom
+      Position.Y = 183.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      DataSource = PrototypeBindSource1
+      xRadius = 4.000000000000000000
+      yRadius = 4.000000000000000000
+    end
+  end
+  object PrototypeBindSource1: TPrototypeBindSource
+    AutoActivate = True
+    AutoPost = False
+    FieldDefs = <
+      item
+        Name = 'Color1'
+        FieldType = ftUInteger
+        Generator = 'Colors'
+        ReadOnly = False
+      end
+      item
+        Name = 'ColorsName1'
+        Generator = 'ColorsNames'
+        ReadOnly = False
+      end>
+    ScopeMappings = <>
+    Left = 456
+    Top = 264
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 340
+    Top = 261
+    object LinkGridToDataSourcePrototypeBindSource1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = PrototypeBindSource1
+      GridControl = StringGrid1
+      Columns = <
+        item
+          MemberName = 'Color1'
+          Width = 150
+        end
+        item
+          MemberName = 'ColorsName1'
+          Width = 150
+        end>
+    end
+  end
+end

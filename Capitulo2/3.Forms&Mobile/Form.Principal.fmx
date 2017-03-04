@@ -1,0 +1,111 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object GridPanelLayout1: TGridPanelLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    ColumnCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        ColumnSpan = 2
+        Control = lblMensagem
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = btnLocalizacao
+        Row = 1
+      end
+      item
+        Column = 1
+        Control = btnCamera
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = btnAcelerometro
+        Row = 2
+      end
+      item
+        Column = 1
+        Control = Button4
+        Row = 2
+      end>
+    RowCollection = <
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end>
+    object lblMensagem: TLabel
+      Align = Center
+      Size.Width = 293.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Ol'#225' Fulano'
+    end
+    object btnLocalizacao: TButton
+      Align = Center
+      Size.Width = 97.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Localiza'#231#227'o'
+      OnClick = btnLocalizacaoClick
+    end
+    object btnCamera: TButton
+      Align = Center
+      Size.Width = 97.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'C'#226'mera'
+      OnClick = btnCameraClick
+    end
+    object btnAcelerometro: TButton
+      Align = Center
+      Size.Width = 97.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Aceler'#244'metro'
+      OnClick = btnAcelerometroClick
+    end
+    object Button4: TButton
+      Align = Center
+      Size.Width = 97.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Button4'
+    end
+  end
+end

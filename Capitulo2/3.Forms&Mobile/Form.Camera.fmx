@@ -1,0 +1,105 @@
+inherited frmCamera: TfrmCamera
+  Caption = 'frmBaseDetalhe1'
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    object Button2: TButton
+      Action = TakePhotoFromCameraAction1
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 80.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'cameratoolbutton'
+      TabOrder = 1
+      Visible = True
+    end
+    object Button3: TButton
+      Action = TakePhotoFromLibraryAction1
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 160.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'searchtoolbutton'
+      TabOrder = 2
+      Visible = True
+    end
+    object Button4: TButton
+      Action = ShowShareSheetAction1
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 240.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'actiontoolbutton'
+      TabOrder = 3
+      Visible = True
+    end
+    object Label1: TLabel
+      Align = Left
+      Position.X = 320.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'C'#226'mera'
+    end
+    object Button5: TButton
+      Align = Right
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'addtoolbutton'
+      TabOrder = 5
+      Text = 'Button5'
+      OnClick = Button5Click
+    end
+    object Button6: TButton
+      Align = Right
+      Position.X = 480.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'refreshtoolbutton'
+      TabOrder = 6
+      Text = 'Button6'
+      OnClick = Button6Click
+    end
+  end
+  object imgImagem: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object ActionList1: TActionList
+    Left = 568
+    Top = 72
+    object TakePhotoFromCameraAction1: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+    end
+    object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
+    end
+    object ShowShareSheetAction1: TShowShareSheetAction
+      Category = 'Media Library'
+      OnBeforeExecute = ShowShareSheetAction1BeforeExecute
+    end
+  end
+  object CameraComponent1: TCameraComponent
+    OnSampleBufferReady = CameraComponent1SampleBufferReady
+    Left = 568
+    Top = 136
+  end
+end

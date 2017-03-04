@@ -1,0 +1,41 @@
+inherited frmLocation: TfrmLocation
+  Caption = 'frmBaseDetalhe1'
+  DesignerMasterStyle = 0
+  object WebBrowser1: TWebBrowser
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 399.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Layout1: TLayout
+    Align = Top
+    Position.Y = 40.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object Label1: TLabel
+      Align = Client
+      Size.Width = 562.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Localiza'#231#227'o'
+    end
+    object swtAtivaLocation: TSwitch
+      Align = Right
+      IsChecked = False
+      Position.X = 562.000000000000000000
+      Size.Width = 78.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      OnSwitch = swtAtivaLocationSwitch
+    end
+  end
+  object LocationSensor1: TLocationSensor
+    OnLocationChanged = LocationSensor1LocationChanged
+    Left = 488
+    Top = 184
+  end
+end
