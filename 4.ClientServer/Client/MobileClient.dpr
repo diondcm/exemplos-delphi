@@ -9,7 +9,8 @@ uses
   Classe.Produto in '..\Comum\Classe.Produto.pas',
   Classe.Retorno in '..\Comum\Classe.Retorno.pas',
   Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadastroProduto},
-  Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule};
+  Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule},
+  Form.Segundo.Plano in 'Form.Segundo.Plano.pas' {frmSegundoPlano};
 
 {$R *.res}
 

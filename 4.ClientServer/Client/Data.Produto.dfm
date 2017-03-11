@@ -17,4 +17,17 @@ object dmdProduto: TdmdProduto
     Left = 83
     Top = 80
   end
+  object conSQLite: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite')
+    AfterConnect = conSQLiteAfterConnect
+    BeforeConnect = conSQLiteBeforeConnect
+    Left = 472
+    Top = 96
+  end
+  object qryProduto: TFDQuery
+    Connection = conSQLite
+    Left = 472
+    Top = 160
+  end
 end

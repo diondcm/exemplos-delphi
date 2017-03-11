@@ -51,6 +51,8 @@ begin
   Result := TListaProduto.Create;
 
   IniciaLista;
+//  Sleep(5000);
+  // todo: bugs de acesso threads
   Result.AddRange(FListaProduto.ToArray);
 
   // Se eu retornar a Flistaproduto, o delphi vai liberar ela da memória

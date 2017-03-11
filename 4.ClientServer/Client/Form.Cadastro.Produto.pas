@@ -12,7 +12,8 @@ uses
   Data.Bind.DBScope, FMX.ListView, System.Rtti, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.EngExt, Fmx.Bind.DBEngExt, ClientModuleUnit1,
   Classe.Produto, Data.Produto, FMX.Layouts, FMX.StdCtrls, FMX.Objects,
-  FMX.Controls.Presentation, FMX.Edit, System.Actions, FMX.ActnList, FMX.VirtualKeyboard, FMX.Platform;
+  FMX.Controls.Presentation, FMX.Edit, System.Actions, FMX.ActnList, FMX.VirtualKeyboard, FMX.Platform,
+  Classe.Retorno, Form.Segundo.Plano;
 
 type
   TfrmCadastroProduto = class(TForm)
@@ -126,11 +127,19 @@ begin
   NavegaTab(tabPesquisa);
 
 //  TThread.Synchronize(nil, -> executa com mais urguência
-  TThread.Queue(nil,
-    procedure
-    begin
-      PopulaListaProdutos;
-    end);
+
+//  TThread.Queue(nil,
+//    procedure
+//    begin
+//      PopulaListaProdutos;
+//    end);
+
+   TfrmSegundoPlano.Executar(
+     procedure
+     begin
+       PopulaListaProdutos;
+     end);
+
 
   //PopulaListaProdutos; -> pode gerar impressão de tela travada, melhor com queue
 end;
