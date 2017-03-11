@@ -1,0 +1,248 @@
+object frmCadastroProduto: TfrmCadastroProduto
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 546
+  ClientWidth = 719
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyUp = FormKeyUp
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object tbcProdutos: TTabControl
+    Align = Client
+    Size.Width = 719.000000000000000000
+    Size.Height = 506.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      719s
+      480s
+      719s
+      480s)
+    object tabPesquisa: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 112.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Pesquisa Produto'
+      ExplicitSize.cx = 83.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object lsvProdutos: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 719.000000000000000000
+        Size.Height = 480.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnItemClick = lsvProdutosItemClick
+        SearchVisible = True
+      end
+    end
+    object tabCadastro: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 130.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Cadastro de Produto'
+      ExplicitSize.cx = 85.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object GridPanelLayout1: TGridPanelLayout
+        Align = Client
+        Size.Width = 719.000000000000000000
+        Size.Height = 480.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        ColumnCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            ColumnSpan = 2
+            Control = edtDescricaoProduto
+            Row = 0
+          end
+          item
+            Column = 0
+            ColumnSpan = 2
+            Control = edtValorProduto
+            Row = 1
+          end
+          item
+            Column = 0
+            ColumnSpan = 2
+            Control = imgProduto
+            Row = 2
+          end
+          item
+            Column = 0
+            Control = btnOK
+            Row = 3
+          end
+          item
+            Column = 1
+            Control = btnCancel
+            Row = 3
+          end>
+        RowCollection = <
+          item
+            Value = 25.000000000000000000
+          end
+          item
+            Value = 25.000000000000000000
+          end
+          item
+            Value = 25.000000000000000000
+          end
+          item
+            Value = 25.000000000000000000
+          end
+          item
+            SizeStyle = Auto
+          end>
+        object edtDescricaoProduto: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          TabOrder = 0
+          Size.Width = 315.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Descri'#231#227'o do produto'
+        end
+        object edtValorProduto: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Center
+          TabOrder = 1
+          KeyboardType = NumberPad
+          Size.Width = 315.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Valor do produto'
+        end
+        object imgProduto: TImage
+          MultiResBitmap = <
+            item
+            end>
+          Align = Center
+          Size.Width = 177.000000000000000000
+          Size.Height = 79.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object btnOK: TButton
+          Align = Center
+          Size.Width = 94.000000000000000000
+          Size.Height = 61.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = 'Ok'
+        end
+        object btnCancel: TButton
+          Align = Center
+          Size.Width = 94.000000000000000000
+          Size.Height = 61.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'Cancelar'
+        end
+      end
+    end
+  end
+  object ToolBar1: TToolBar
+    Size.Width = 719.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object btnRetornar: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = 'btnRetornar'
+      OnClick = btnRetornarClick
+    end
+    object lblTituloForm: TLabel
+      Align = Client
+      StyledSettings = [Family, FontColor]
+      Size.Width = 639.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+    end
+  end
+  object bdsProduto: TBindSourceDB
+    DataSet = dmdProduto.fmdProduto
+    ScopeMappings = <>
+    Left = 400
+    Top = 152
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 516
+    Top = 77
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = bdsProduto
+      FieldName = 'Descricao'
+      Control = lsvProdutos
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakFieldName = 'Descricao'
+      FillBreakGroups = <>
+    end
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = bdsProduto
+      FieldName = 'Descricao'
+      Control = edtDescricaoProduto
+      Track = False
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = bdsProduto
+      FieldName = 'Valor'
+      Control = edtValorProduto
+      Track = False
+    end
+  end
+  object ActionList1: TActionList
+    Left = 544
+    Top = 272
+    object actChangeTab: TChangeTabAction
+      Category = 'Tab'
+    end
+  end
+  object tmrPropulaProdutos: TTimer
+    Enabled = False
+    OnTimer = tmrPropulaProdutosTimer
+    Left = 568
+    Top = 160
+  end
+end
