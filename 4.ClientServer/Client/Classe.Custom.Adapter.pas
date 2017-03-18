@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.ListView, FMX.ListView.Types, FMX.ListView.Adapters.Base, System.SyncObjs,
   FMX.Controls.Presentation, FMX.Layouts, System.Generics.Collections, System.RegularExpressions,
-  FMX.Objects;
+  FMX.Objects, idHTTP;
 
 type
   TAdapterCustomizado = class(TAbstractListViewAdapter,
@@ -56,16 +56,15 @@ type
     procedure ButtonClicked(Sender: TObject);
     procedure SetOnButtonClicked(const Value: TNotifyEvent);
 
+    procedure OnStringListChanging(Sender: TObject);
+    procedure OnStringListChange(Sender: TObject);
+
     { IListViewTextProvider }
     function GetText(const Index: Integer): string;
     function GetIndexTitle(const Index: Integer): string;
 
     { IListViewTextButtonProvider }
     function GetTextButtonDrawable(const Index: Integer): TListItemTextButton;
-
-
-    procedure OnStringListChanging(Sender: TObject);
-    procedure OnStringListChange(Sender: TObject);
   protected
     procedure DoCreateNewViews; override;
     procedure DoResetViews(const APurposes: TListItemPurposes); override;
@@ -145,7 +144,77 @@ begin
 end;
 
 procedure TAdapterCustomizado.CreateThreads;
+var
+  i: Integer;
+
 begin
+  SetLength(FThreads, THREAD_POOL_SIZE);
+  for i := 0 to Length(FThreads) - 1 do
+  begin
+    FThreads[i] := TThread.CreateAnonymousThread(
+      procedure
+      var
+        lHttp: TIdHTTP;
+        lStream: TBytesStream;
+        lBitmap: TBitmap;
+        lIndex: Integer;
+        lURI: string;
+      begin
+        lHttp := TIdHTTP.Create(nil);
+        lStream := TBytesStream.Create;
+        try
+          lIndex := NextIndex;
+          while (lIndex <> -1) do
+          begin
+            lURI := GetUri(lIndex);
+            try
+              lHttp.Get(lURI, lStream);
+              TThread.Synchronize(nil,
+                procedure
+                begin
+                  try
+                    lBitmap := TBitmap.CreateFromStream(lStream);
+                    if (Assigned(lBitmap)) and (lBitmap.Width > 0) and (lBitmap.Height > 0) then
+                    begin
+                      FImagens.Add(lIndex, lBitmap);
+                    end;
+                  except
+                    // melhorar depois
+                  end;
+                end);
+
+              if (Assigned(lBitmap)) and (lBitmap.Width > 0) and (lBitmap.Height > 0) then
+              begin
+                TThread.Queue(nil,
+                  procedure
+                  begin
+                    ImagesLoaded;
+                  end);
+              end;
+            except
+              on E: Exception do
+              begin
+                TThread.Queue(nil,
+                  procedure
+                  begin
+                    TListItemText(TListItem(FStrings.Objects[lIndex]).View.FindDrawable('blurb')).Text := 'Load Error(' + E.ClassName +'), retrying...';
+                    ItemsInvalidate;
+                  end);
+                AddIndex(lIndex);
+                TThread.CurrentThread.Sleep(Random(100) + 100);
+              end;
+            end;
+
+            lIndex := NextIndex;
+          end;
+        finally
+          lStream.Free;
+          lHttp.Free;
+        end;
+      end);
+    FThreads[i].FreeOnTerminate := False;
+    FThreads[i].Start;
+  end;
 
 end;
 
@@ -205,7 +274,7 @@ begin
     BitmapDrawable.Name := 'bitmap';
     BitmapDrawable.OwnsBitmap := False;
     BitmapDrawable.Bitmap := nil;
-    BitmapDrawable.Align := TListItemAlign.Trailing;
+    BitmapDrawable.Align := TListItemAlign.Leading;
     BitmapDrawable.ScalingMode := TImageScalingMode.StretchWithAspect;
 
     BackdropDrawable := TListItemImage.Create(Item);
@@ -234,7 +303,7 @@ begin
     TextDrawable.Font.Size := 16;
     TextDrawable.TextColor := TAlphaColorRec.White;
     TextDrawable.SelectedTextColor := TAlphaColorRec.White;
-    TextDrawable.Align := TListItemAlign.Leading;
+    TextDrawable.Align := TListItemAlign.Trailing;
     TextDrawable.VertAlign := TListItemAlign.Trailing;
     TextDrawable.WordWrap := True;
     TextDrawable.Height := 60;
