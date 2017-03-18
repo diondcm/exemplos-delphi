@@ -158,6 +158,7 @@ object frmCadastroProduto: TfrmCadastroProduto
           Size.PlatformDefault = False
           TabOrder = 3
           Text = 'Ok'
+          OnClick = btnOKClick
         end
         object btnCancel: TButton
           Align = Center
@@ -188,13 +189,30 @@ object frmCadastroProduto: TfrmCadastroProduto
     object lblTituloForm: TLabel
       Align = Client
       StyledSettings = [Family, FontColor]
-      Size.Width = 639.000000000000000000
+      Size.Width = 559.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 16.000000000000000000
       TextSettings.Font.StyleExt = {00070000000000000004000000}
       TextSettings.HorzAlign = Center
     end
+    object btnIncluiProduto: TButton
+      Align = Right
+      Position.X = 639.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'addtoolbutton'
+      TabOrder = 1
+      Text = 'btnIncluiProduto'
+      OnClick = btnIncluiProdutoClick
+    end
+  end
+  object tmrPropulaProdutos: TTimer
+    Enabled = False
+    OnTimer = tmrPropulaProdutosTimer
+    Left = 568
+    Top = 160
   end
   object bdsProduto: TBindSourceDB
     DataSet = dmdProduto.fmdProduto
@@ -238,11 +256,5 @@ object frmCadastroProduto: TfrmCadastroProduto
     object actChangeTab: TChangeTabAction
       Category = 'Tab'
     end
-  end
-  object tmrPropulaProdutos: TTimer
-    Enabled = False
-    OnTimer = tmrPropulaProdutosTimer
-    Left = 568
-    Top = 160
   end
 end

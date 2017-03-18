@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, System.IOUtils, FireDAC.DApt;
 
 type
-  TFuncErro = reference to procedure(const pMsg: string);
+  TProcErro = reference to procedure(const pMsg: string);
 
   TdmdProduto = class(TDataModule)
     fmdProduto: TFDMemTable;
@@ -26,7 +26,7 @@ type
     INI_FILE = 'produto.conf';
   public
     procedure GetServerProdutos;
-    function AtualizaProduto(pProduto: TProduto; pProcedureOK: TProc = nil; pFuncErro: TFuncErro = nil): TRetorno;
+    function AtualizaProduto(pProduto: TProduto; pProcedureOK: TProc = nil; pProcErro: TProcErro = nil): TRetorno;
   end;
 
 implementation
@@ -47,9 +47,10 @@ begin
   lIni := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, INI_FILE));
   try
     lDataAtualizacao := lIni.ReadDate('CONFIG', 'data_atualizacao', 0);
-    if (lDataAtualizacao = 0) or (DateOf(lDataAtualizacao) <> DateOf(Now)) then
+    if True { (lDataAtualizacao = 0) or (DateOf(lDataAtualizacao) <> DateOf(Now)) } then
     begin
       lLista := ClientModule1.ServerMethods1Client.GetListaProdutos;
+      qryProduto.Close;
       qryProduto.ExecSQL('delete from produto');
       qryProduto.Open('select * from produto');
 
@@ -64,6 +65,7 @@ begin
       end;
       lIni.WriteDate('CONFIG', 'data_atualizacao', DateOf(Now));
     end else begin
+      qryProduto.Close;
       qryProduto.Open('select * from produto');
     end;
     // Mais lento -> fmdProduto.CopyDataSet(qryProduto);
@@ -75,7 +77,7 @@ begin
   end;
 end;
 
-function TdmdProduto.AtualizaProduto(pProduto: TProduto; pProcedureOK: TProc; pFuncErro: TFuncErro): TRetorno;
+function TdmdProduto.AtualizaProduto(pProduto: TProduto; pProcedureOK: TProc; pProcErro: TProcErro): TRetorno;
 var
   lListaProduto: TListaProduto;
   lRetorno: TRetorno;
@@ -88,8 +90,8 @@ begin
     if Assigned(pProcedureOK) then
       pProcedureOK;
   end else begin
-    if Assigned(pFuncErro) then
-      pFuncErro(lRetorno.Msg);
+    if Assigned(pProcErro) then
+      pProcErro(lRetorno.Msg);
   end;
   Result := lRetorno;
 end;

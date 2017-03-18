@@ -9,7 +9,6 @@ object ServerContainer1: TServerContainer1
   object DSServerClass1: TDSServerClass
     OnGetClass = DSServerClass1GetClass
     Server = DSServer1
-    LifeCycle = 'Server'
     Left = 200
     Top = 11
   end

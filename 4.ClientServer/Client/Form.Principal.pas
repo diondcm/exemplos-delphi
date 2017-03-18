@@ -9,21 +9,17 @@ uses
   FMX.ScrollBox, FMX.Memo, ClientModuleUnit1, Classe.Produto, Classe.Retorno,
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.Components, Data.Bind.Grid, Data.Bind.ObjectScope,
-  Form.Cadastro.Produto, FMX.StdCtrls;
+  Form.Cadastro.Produto, FMX.StdCtrls, FMX.Objects;
 
 type
   TfrmPrincipal = class(TForm)
-    Memo1: TMemo;
-    Layout1: TLayout;
-    StringGrid1: TStringGrid;
-    absProduto: TAdapterBindSource;
-    BindingsList1: TBindingsList;
-    LinkGridToDataSourceAdapterBindSource1: TLinkGridToDataSource;
-    Button1: TButton;
+    GridPanelLayout1: TGridPanelLayout;
+    Image1: TImage;
+    imgGrids: TImage;
+    imgProdutos: TImage;
     procedure FormShow(Sender: TObject);
-    procedure absProdutoCreateAdapter(Sender: TObject;
-      var ABindSourceAdapter: TBindSourceAdapter);
-    procedure Button1Click(Sender: TObject);
+    procedure imgProdutosClick(Sender: TObject);
+    procedure imgGridsClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,27 +33,22 @@ implementation
 
 {$R *.fmx}
 
-procedure TfrmPrincipal.absProdutoCreateAdapter(Sender: TObject;
-  var ABindSourceAdapter: TBindSourceAdapter);
-var
-  lListaProduto: TListaProduto;
-begin
-  lListaProduto := TListaProduto.Create;
-  lListaProduto.AddRange(ClientModule1.ServerMethods1Client.GetListaProdutos.ToArray);
-  ABindSourceAdapter := TListBindSourceAdapter<TProduto>.Create(Self, lListaProduto { False });
-end;
-
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
-begin
-  frmCadastroProduto.Show;
-end;
-
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 //var
 //  lLista: TListaProduto;
 begin
 //  lLista := ClientModule1.ServerMethods1Client.GetListaProdutos;
   // todo: memo to JSON
+end;
+
+procedure TfrmPrincipal.imgGridsClick(Sender: TObject);
+begin
+  // todo: Form dos grids
+end;
+
+procedure TfrmPrincipal.imgProdutosClick(Sender: TObject);
+begin
+  frmCadastroProduto.Show;
 end;
 
 end.

@@ -38,6 +38,7 @@ type
     btnRetornar: TButton;
     lblTituloForm: TLabel;
     tmrPropulaProdutos: TTimer;
+    btnIncluiProduto: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lsvProdutosItemClick(const Sender: TObject;
@@ -47,6 +48,8 @@ type
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
     procedure tmrPropulaProdutosTimer(Sender: TObject);
+    procedure btnOKClick(Sender: TObject);
+    procedure btnIncluiProdutoClick(Sender: TObject);
   private
     FListaTab: TList<TTabItem>;
     FdmdProduto: TdmdProduto;
@@ -64,6 +67,36 @@ implementation
 {$R *.fmx}
 
 { TfrmCadastroProduto }
+
+procedure TfrmCadastroProduto.btnIncluiProdutoClick(Sender: TObject);
+begin
+  bdsProduto.DataSet.Insert; // if assigned(bdsProduto.DataSet) then
+  NavegaTab(tabCadastro);
+end;
+
+procedure TfrmCadastroProduto.btnOKClick(Sender: TObject);
+var
+  lProduto: TProduto;
+begin
+  lProduto := TProduto.Create;
+  lProduto.ID := bdsProduto.DataSet.FieldByName('ID').AsInteger; // if assigned(bdsProduto.DataSet) then
+  lProduto.Descricao := edtDescricaoProduto.Text; // bdsProduto.DataSet.FieldByName('ID').AsInteger;
+  lProduto.Valor := StrToCurrDef(edtValorProduto.Text, 0);
+
+  FdmdProduto.AtualizaProduto(lProduto,
+    procedure
+    begin
+      ShowMessage('Registro atualizado com sucesso.');
+      RetornaTab;
+    end,
+
+    procedure(const pMsg: string)
+    begin
+      ShowMessage(pMsg);
+      //edtDescricaoProduto.TextPrompt := 'Deve ser preenchido!'
+      // GlowEfect
+    end);
+end;
 
 procedure TfrmCadastroProduto.btnRetornarClick(Sender: TObject);
 begin
@@ -160,6 +193,8 @@ procedure TfrmCadastroProduto.NavegaTab(pTab: TTabItem);
 begin
   tbcProdutos.ActiveTab := pTab;
   lblTituloForm.Text := pTab.Text;
+
+  btnIncluiProduto.Visible := tbcProdutos.ActiveTab = tabPesquisa;
 
   FListaTab.Add(pTab);
 end;
