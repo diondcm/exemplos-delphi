@@ -1,0 +1,173 @@
+object frmNASAAPI: TfrmNASAAPI
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btnExit: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = 'btnExit'
+      OnClick = btnExitClick
+    end
+    object edtImgURL: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 1
+      Text = 'http://apod.nasa.gov/apod/image/1703/M42kaltseis_Cedic1024.jpg'
+      Size.Width = 413.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Informe a URL'
+    end
+    object Button1: TButton
+      Align = Left
+      Position.X = 80.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'drawertoolbutton'
+      TabOrder = 2
+      Text = 'Button1'
+      OnClick = Button1Click
+    end
+  end
+  object imgPrincipal: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+    object lblTitulo: TLabel
+      Align = Bottom
+      StyledSettings = [Family]
+      Position.Y = 360.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 80.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claAqua
+      TextSettings.HorzAlign = Center
+      Text = 'lblTitulo'
+    end
+  end
+  object Calendar1: TCalendar
+    Align = Top
+    Date = 42812.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 193.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Visible = False
+    OnDayClick = Calendar1DayClick
+  end
+  object nctGetImage: TNetHTTPClient
+    Asynchronous = False
+    ConnectionTimeout = 60000
+    ResponseTimeout = 60000
+    AllowCookies = True
+    HandleRedirects = True
+    UserAgent = 'Embarcadero URI Client/1.0'
+    Left = 536
+    Top = 384
+  end
+  object RESTClient1: TRESTClient
+    Params = <>
+    HandleRedirects = True
+    Left = 344
+    Top = 120
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <>
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 392
+    Top = 56
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Dataset = memJSON
+    FieldDefs = <>
+    Response = RESTResponse1
+    Left = 544
+    Top = 64
+  end
+  object bdsJSON: TBindSourceDB
+    DataSet = memJSON
+    ScopeMappings = <>
+    Left = 448
+    Top = 280
+  end
+  object memJSON: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 448
+    Top = 216
+    object memJSONdate: TStringField
+      FieldName = 'date'
+    end
+    object memJSONexplanation: TStringField
+      FieldName = 'explanation'
+      Size = 300
+    end
+    object memJSONhdurl: TStringField
+      FieldName = 'hdurl'
+      Size = 150
+    end
+    object memJSONurl: TStringField
+      FieldName = 'url'
+      Size = 150
+    end
+    object memJSONmedia_type: TStringField
+      FieldName = 'media_type'
+      Size = 50
+    end
+    object memJSONservice_version: TStringField
+      FieldName = 'service_version'
+    end
+    object memJSONtitle: TStringField
+      FieldName = 'title'
+      Size = 100
+    end
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 440
+    Top = 120
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 548
+    Top = 117
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = bdsJSON
+      FieldName = 'title'
+      Component = lblTitulo
+      ComponentProperty = 'Text'
+    end
+  end
+end
