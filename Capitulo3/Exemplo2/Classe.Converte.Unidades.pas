@@ -67,11 +67,51 @@ class function TConversor.RealParaDolarStr(pValor: string): string;
 var
   lValor: Currency;
 begin
-  lValor := StrToCurr(pValor); // Shift + Ctrl + A
+  //lValor := StrToCurr(pValor); // Gera erro em conversão inválida
+  // lValor := StrToCurrDef(pValor, 0 { -1 }); // não gera erro
+
+
+  if not TryStrToCurr(pValor, lValor) {= False - feio} then // retorna false caso não consiga
+  begin
+    //      5,6 >> não vai cair
+    if (Pos(',', pValor) > 0) and (Pos('.', pValor) > 0) then
+    begin
+      if Pos(',', pValor) > Pos('.', pValor) then
+      begin //  1.200,5 >> removo o ponto
+        pValor := StringReplace(pValor, '.', '', [rfReplaceAll]); //1.000.000,3
+        lValor := StrToCurr(pValor);
+      end else if Pos('.', pValor) > Pos(',', pValor) then
+      begin //  2,300.9 >>
+        pValor := StringReplace(pValor, ',', '', [rfReplaceAll]);
+        pValor := StringReplace(pValor, '.', ',', [rfReplaceAll]);
+        lValor := StrToCurr(pValor);
+      end;
+    end else if (Pos('.', pValor) > 0) then
+    begin
+      pValor := StringReplace(pValor, '.', ',', [rfReplaceAll]);
+      lValor := StrToCurr(pValor);
+    end else begin
+      // todo: melhorar exception
+      raise Exception.Create('Valor inválido!');
+    end;
+
+
+    //     21.6 >> altera para ','
+
+  end;
+
+
+
+
   lValor := TConversor.RealParaDolar(lValor);
+
+
   Result := CurrToStr(lValor);
 
 //  RealParaDolarStr := Result; // Evitar
+
+
+// Shift + Ctrl + A >> uses do Delphi
 end;
 
 end.
