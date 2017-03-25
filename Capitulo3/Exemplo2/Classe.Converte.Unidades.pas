@@ -53,7 +53,14 @@ end;
 
 class function TConversor.GetValorDolar: Currency;
 begin
-  Result := ClientModule1.ServerMethods1Client.GetValorDolarAtual;
+  try
+    Result := ClientModule1.ServerMethods1Client.GetValorDolarAtual;
+  except
+    on E: Exception do
+    begin
+      raise Exception.Create('Erro ao converter valor: ' + E.Message);
+    end;
+  end;
 end;
 
 class function TConversor.RealParaDolarStr(pValor: string): string;
