@@ -17,18 +17,21 @@ var
 begin
   try
     { TODO -oUser -cConsole Main : Insert code here }
+
     Writeln('Exemplo de conversor.');
     Writeln('Digite um valor em reais:');
     Readln(lTexto);
-    lValorReal := StrToCurr(lTexto);
-    lValorDolar := ConverteRealParaDolar(lValorReal);
-    Writeln('Valor Informado em Dollar: ' + CurrToStr(lValorDolar));
+    Writeln('Valor em Dollar: ' + TConversor.RealParaDolarStr(lTexto));
 
-//    Writeln('Digite um valor em reais:');
-//    Readln(lTexto);
+    // histórico:
+    // lValorDolar := ConveteRealParaDolar(lValorReal);
+
+    // passado esquecido
 //    lValorReal := StrToCurr(lTexto);
-//    lValorDolar := lValorReal * 3.7;
-//    Writeln('Valor Informado em Dollar: ' + CurrToStr(lValorDolar));
+//    lValorDolar := TConversor.RealParaDolar(lValorReal);
+//    lTexto := CurrToStr(lValorDolar);
+//
+//    Writeln('Valor Informado em Dollar: ' + lTexto);
 
     Readln(lTexto);
   except

@@ -10,7 +10,8 @@ implementation
 
 procedure Teste;
 begin
-  ConverteRealParaDolar(42342)
+//  ConverteRealParaDolar(42342);
+  // Alt + F11 >> uses unit
 end;
 
 end.
