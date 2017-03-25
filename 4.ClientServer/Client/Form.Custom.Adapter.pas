@@ -14,6 +14,7 @@ type
     ToolBar1: TToolBar;
     btnRetornar: TButton;
     lytPrincipal: TLayout;
+    BackdropSource: TImage;
     procedure btnRetornarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -28,6 +29,7 @@ type
     FAdapter: TAdapterCustomizado;
 
     procedure AddItens(pQtd: Integer);
+    procedure PullRefresh(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -43,10 +45,32 @@ implementation
 procedure TfrmCustomAdapter.AddItens(pQtd: Integer);
 var
   i: Integer;
+
+const
+  { NÃO utilizar "const: = " -> constante tipada, gera leaks de memória }
+  Produtos: array [0..6] of string =
+    ('gbLSXNc.jpg', // 'SpCbHBI.jpg',
+     'ZQovp9q.jpg', // 'aMlUpJB.jpg',
+     'cswTE99.jpg', // 'fmXnXWn.png',
+     '4r2JZa0.jpg', // 'IWSnWNt.jpg',
+     'xkbX2V2.jpg', // 'QgA69dC.png'
+     'QIdZVhT.jpg',
+     'ymlOiDw.jpg'
+     );
+
+  Names: array [0..9] of string =
+    ('Ouro', 'Prata', 'Ametista', 'Quartz', 'Rubi', 'Casa', 'Pedra', 'Carvão', 'Cascalho', 'Brita');
+
+  function NextItemText: string;
+  begin
+    Result := Format('[%d] [%s] [%s%s]', [FTotal, Names[FTotal mod Length(Names)], HOST, Produtos[FTotal mod Length(Produtos)]]);
+    Inc(FTotal);
+  end;
+
 begin
   for i := 0 to pQtd -1 do
   begin
-    FStrings.Add('Item ' + IntToStr(i));
+    FStrings.Add(NextItemText);
   end;
 end;
 
@@ -63,14 +87,15 @@ begin
   FStrings := TStringList.Create;
 
   FAdapter := TAdapterCustomizado.Create(FListView, FStrings);
+  FAdapter.BackdropImage := BackdropSource;
   FListView.Adapter := FAdapter;
 
   FListView.Parent := lytPrincipal;
   FListView.Align := TAlignLayout.Client;
 
-//  FListView.PullToRefresh := True;
-//  FListView.PullRefreshWait := True;
-  //
+  FListView.PullToRefresh := True;
+  FListView.PullRefreshWait := True;
+  FListView.OnPullRefresh := PullRefresh;
 end;
 
 procedure TfrmCustomAdapter.FormDestroy(Sender: TObject);
@@ -85,6 +110,11 @@ begin
     begin
       AddItens(30);
     end);
+end;
+
+procedure TfrmCustomAdapter.PullRefresh(Sender: TObject);
+begin
+  AddItens(30);
 end;
 
 end.
