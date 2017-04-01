@@ -28,12 +28,13 @@ type
     dtpDataFundacao: TDateTimePicker;
     lblDataFundacao: TLabel;
     pnlControles: TPanel;
+    pnlSelecaoPessoa: TPanel;
     rbdPessoaFisica: TRadioButton;
     rbdPessoaJuridica: TRadioButton;
     procedure btnExibeInfosClick(Sender: TObject);
   private
     procedure ExibePessoaFisica;
-    { Private declarations }
+    procedure ExibePessoaJuridica;
   public
     { Public declarations }
   end;
@@ -50,6 +51,11 @@ begin
   if rbdPessoaFisica.Checked then
   begin
     ExibePessoaFisica;
+  end;
+
+  if rbdPessoaJuridica.Checked then
+  begin
+    ExibePessoaJuridica;
   end;
 end;
 
@@ -79,6 +85,28 @@ begin
     //        'CPF: ' + lPessoa.CPF;
   finally
     lPessoa.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.ExibePessoaJuridica;
+var
+  lPJ: TPessoaJuridica;
+begin
+  lPJ := TPessoaJuridica.Create;
+  try
+    lPJ.CNPJ := edtCNPJ.Text;
+    lPJ.NomeFantasia := edtNomeFantasia.Text;
+    lPJ.RazaoSocial := edtRazaoSocial.Text;
+    lPJ.DataFundacao := dtpDataFundacao.Date;
+
+    memInfos.Lines.Add(lPJ.ExibePessoa);
+    if chkExibePessoaLabel.Checked then
+    begin
+      lblResultado.Caption := lPJ.ExibePessoa;
+    end;
+
+  finally
+    lPJ.Free;
   end;
 end;
 

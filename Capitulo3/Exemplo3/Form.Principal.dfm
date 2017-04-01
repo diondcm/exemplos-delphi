@@ -24,23 +24,24 @@ object frmPrincipal: TfrmPrincipal
     ExplicitWidth = 34
   end
   object memInfos: TMemo
-    Left = 461
-    Top = 0
-    Width = 185
-    Height = 327
-    Align = alRight
+    Left = 289
+    Top = 41
+    Width = 357
+    Height = 319
+    Align = alClient
     Lines.Strings = (
       '')
     TabOrder = 0
-    ExplicitLeft = 192
-    ExplicitTop = 56
-    ExplicitHeight = 89
+    ExplicitLeft = 461
+    ExplicitTop = 47
+    ExplicitWidth = 185
+    ExplicitHeight = 286
   end
   object pnlPessoaFisica: TPanel
     Left = 0
-    Top = 0
+    Top = 41
     Width = 145
-    Height = 327
+    Height = 319
     Align = alLeft
     TabOrder = 1
     ExplicitLeft = 8
@@ -92,7 +93,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object dtpDataNascimento: TDateTimePicker
     Left = 16
-    Top = 124
+    Top = 165
     Width = 121
     Height = 21
     Date = 42826.445696006940000000
@@ -101,9 +102,9 @@ object frmPrincipal: TfrmPrincipal
   end
   object pnlPessoaJuridica: TPanel
     Left = 145
-    Top = 0
+    Top = 41
     Width = 144
-    Height = 327
+    Height = 319
     Align = alLeft
     Caption = 'pnlPessoaJuridica'
     ShowCaption = False
@@ -164,17 +165,14 @@ object frmPrincipal: TfrmPrincipal
   end
   object pnlControles: TPanel
     Left = 0
-    Top = 327
+    Top = 360
     Width = 646
-    Height = 114
+    Height = 81
     Align = alBottom
     TabOrder = 4
-    ExplicitLeft = 302
-    ExplicitTop = 164
-    ExplicitWidth = 153
     object btnExibeInfos: TButton
       Left = 16
-      Top = 54
+      Top = 31
       Width = 121
       Height = 25
       Caption = 'Exibe informa'#231#245'es'
@@ -189,21 +187,32 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Exibe a pessoa no Label'
       TabOrder = 1
     end
+  end
+  object pnlSelecaoPessoa: TPanel
+    Left = 0
+    Top = 0
+    Width = 646
+    Height = 41
+    Align = alTop
+    TabOrder = 5
+    ExplicitLeft = 240
+    ExplicitTop = 224
+    ExplicitWidth = 185
     object rbdPessoaFisica: TRadioButton
       Left = 16
-      Top = 31
+      Top = 13
       Width = 98
       Height = 17
       Caption = 'Pessoa F'#237'sica'
-      TabOrder = 2
+      TabOrder = 0
     end
     object rbdPessoaJuridica: TRadioButton
       Left = 120
-      Top = 31
+      Top = 13
       Width = 113
       Height = 17
       Caption = 'Pessoa Jur'#237'dica'
-      TabOrder = 3
+      TabOrder = 1
     end
   end
 end
