@@ -1,0 +1,126 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Bottom
+    Position.Y = 240.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 240.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object NavigatorbindCores: TBindNavigator
+    Align = Bottom
+    Position.Y = 215.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    DataSource = bindCores
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 215.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object btnConecta: TButton
+      Position.X = 16.000000000000000000
+      Position.Y = 8.000000000000000000
+      TabOrder = 5
+      Text = 'Conecta'
+      OnClick = btnConectaClick
+    end
+    object edtValor: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 6
+      Position.X = 10.000000000000000000
+      Position.Y = 176.000000000000000000
+      TextPrompt = 'Valor'
+    end
+    object edtDescicao: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 7
+      Position.X = 8.000000000000000000
+      Position.Y = 144.000000000000000000
+      TextPrompt = 'Descri'#231#227'o'
+    end
+    object RoundRect1: TRoundRect
+      Align = Right
+      Fill.Color = claBrown
+      Position.X = 352.000000000000000000
+      Size.Width = 288.000000000000000000
+      Size.Height = 215.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edtID: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 9
+      Position.X = 8.000000000000000000
+      Position.Y = 112.000000000000000000
+      TextPrompt = 'ID da cor'
+    end
+  end
+  object bindCores: TBindSourceDB
+    DataSet = dmdCores.qryCores
+    ScopeMappings = <>
+    Left = 40
+    Top = 320
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 36
+    Top = 261
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = bindCores
+      FieldName = 'DESCRICAO'
+      Control = ListView1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = bindCores
+      FieldName = 'DESCRICAO'
+      Control = edtDescicao
+      Track = False
+    end
+    object LinkControlToField5: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = bindCores
+      FieldName = 'ID'
+      Control = edtID
+      Track = False
+    end
+    object LinkPropertyToFieldFillColor2: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = bindCores
+      FieldName = 'VALOR'
+      Component = RoundRect1
+      ComponentProperty = 'Fill.Color'
+    end
+    object LinkControlToField6: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = bindCores
+      FieldName = 'VALOR'
+      Control = edtValor
+      Track = False
+    end
+  end
+end
