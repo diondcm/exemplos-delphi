@@ -11,6 +11,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lblResultado: TLabel
@@ -44,11 +45,12 @@ object frmPrincipal: TfrmPrincipal
     Height = 319
     Align = alLeft
     TabOrder = 1
+    Visible = False
     ExplicitLeft = 8
     ExplicitTop = 5
     ExplicitHeight = 441
     object lblDataNascimento: TLabel
-      Left = 16
+      Left = 18
       Top = 105
       Width = 80
       Height = 13
@@ -66,39 +68,39 @@ object frmPrincipal: TfrmPrincipal
       ExplicitTop = 216
       ExplicitWidth = 63
     end
-    object edtID: TEdit
-      Left = 16
+    object edtNome: TEdit
+      Left = 18
       Top = 24
       Width = 121
       Height = 21
       TabOrder = 0
-      TextHint = 'Informe o ID'
+      TextHint = 'Nome'
     end
-    object edtNome: TEdit
-      Left = 16
+    object edtCPF: TEdit
+      Left = 18
       Top = 51
       Width = 121
       Height = 21
       TabOrder = 1
-      TextHint = 'Nome'
+      TextHint = 'CPF'
     end
-    object edtCPF: TEdit
-      Left = 16
+    object dtpDataNascimento: TDateTimePicker
+      Left = 18
+      Top = 124
+      Width = 121
+      Height = 21
+      Date = 42826.445696006940000000
+      Time = 42826.445696006940000000
+      TabOrder = 2
+    end
+    object cmbStatusComercial: TComboBox
+      Left = 18
       Top = 78
       Width = 121
       Height = 21
-      TabOrder = 2
-      TextHint = 'CPF'
+      Style = csDropDownList
+      TabOrder = 3
     end
-  end
-  object dtpDataNascimento: TDateTimePicker
-    Left = 16
-    Top = 165
-    Width = 121
-    Height = 21
-    Date = 42826.445696006940000000
-    Time = 42826.445696006940000000
-    TabOrder = 2
   end
   object pnlPessoaJuridica: TPanel
     Left = 145
@@ -108,7 +110,8 @@ object frmPrincipal: TfrmPrincipal
     Align = alLeft
     Caption = 'pnlPessoaJuridica'
     ShowCaption = False
-    TabOrder = 3
+    TabOrder = 2
+    Visible = False
     ExplicitLeft = 143
     ExplicitTop = -6
     ExplicitHeight = 441
@@ -169,7 +172,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 646
     Height = 81
     Align = alBottom
-    TabOrder = 4
+    TabOrder = 3
     object btnExibeInfos: TButton
       Left = 16
       Top = 31
@@ -194,7 +197,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 646
     Height = 41
     Align = alTop
-    TabOrder = 5
+    TabOrder = 4
     ExplicitLeft = 240
     ExplicitTop = 224
     ExplicitWidth = 185
@@ -205,6 +208,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 17
       Caption = 'Pessoa F'#237'sica'
       TabOrder = 0
+      OnClick = ConfiguraPessoa
     end
     object rbdPessoaJuridica: TRadioButton
       Left = 120
@@ -213,6 +217,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 17
       Caption = 'Pessoa Jur'#237'dica'
       TabOrder = 1
+      OnClick = ConfiguraPessoa
     end
   end
 end

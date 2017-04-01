@@ -87,10 +87,10 @@ begin
 //    Result := 'Cliente Ativo';
 
   case pStatus of
-    ClienteAtivo: Result := CLIENTE_ATIVO;
-    ExCliente: Result := EX_CLIENTE;
-    NaoContatado: Result := NAO_CONTATADO;
-    Devendo: Result := DEVENDO;
+    TStatusComercialPessoa.ClienteAtivo: Result := CLIENTE_ATIVO;
+    TStatusComercialPessoa.ExCliente: Result := EX_CLIENTE;
+    TStatusComercialPessoa.NaoContatado: Result := NAO_CONTATADO;
+    TStatusComercialPessoa.Devendo: Result := DEVENDO;
   end;
 end;
 
@@ -98,16 +98,16 @@ function TPessoaFisica.StringToStatusComercial(
   pStatus: string): TStatusComercialPessoa;
 begin
   if pStatus = CLIENTE_ATIVO then
-    Result := ClienteAtivo;
+    Result := TStatusComercialPessoa.ClienteAtivo;
 
   if pStatus = EX_CLIENTE then
-    Result := ExCliente;
+    Result := TStatusComercialPessoa.ExCliente;
 
   if pStatus = NAO_CONTATADO then
-    Result := NaoContatado;
+    Result := TStatusComercialPessoa.NaoContatado;
 
   if pStatus = DEVENDO then
-    Result := Devendo;
+    Result := TStatusComercialPessoa.Devendo;
 end;
 
 end.

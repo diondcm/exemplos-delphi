@@ -13,10 +13,8 @@ type
     lblResultado: TLabel;
     chkExibePessoaLabel: TCheckBox;
     pnlPessoaFisica: TPanel;
-    edtID: TEdit;
     edtNome: TEdit;
     edtCPF: TEdit;
-    dtpDataNascimento: TDateTimePicker;
     lblDataNascimento: TLabel;
     btnExibeInfos: TButton;
     lblTituloPessoaFisica: TLabel;
@@ -31,7 +29,12 @@ type
     pnlSelecaoPessoa: TPanel;
     rbdPessoaFisica: TRadioButton;
     rbdPessoaJuridica: TRadioButton;
+    dtpDataNascimento: TDateTimePicker;
+    cmbStatusComercial: TComboBox;
     procedure btnExibeInfosClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+
+    procedure ConfiguraPessoa(Sender: TObject);
   private
     procedure ExibePessoaFisica;
     procedure ExibePessoaJuridica;
@@ -59,32 +62,39 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.ConfiguraPessoa(Sender: TObject);
+begin
+  pnlPessoaFisica.Visible := rbdPessoaFisica.Checked;
+  pnlPessoaJuridica.Visible := rbdPessoaJuridica.Checked;
+end;
+
 procedure TfrmPrincipal.ExibePessoaFisica;
 var
-  lPessoa: TPessoaFisica;
+  lPF: TPessoaFisica;
 begin
   // Shift + Ctrl + V
-  lPessoa := TPessoaFisica.Create;
+  lPF := TPessoaFisica.Create;
   try
-    lPessoa.ID := StrToInt(edtID.Text);
-    lPessoa.Nome := edtNome.Text;
-    lPessoa.CPF := edtCPF.Text;
-    lPessoa.DataNascimento := dtpDataNascimento.Date;
-    //lPessoa.Free;
-    memInfos.Lines.Add(lPessoa.ExibePessoa);
+//    lPF.ID := StrToInt(edtID.Text);
+    lPF.Nome := edtNome.Text;
+    lPF.CPF := edtCPF.Text;
+    lPF.DataNascimento := dtpDataNascimento.Date;
+    lPF.StatusComercial := lPF.StringToStatusComercial(cmbStatusComercial.Text);
+
+    memInfos.Lines.Add(lPF.ExibePessoa);
     // Ctrl + ; >> Teclado EN: Ctrl + /
-    //    memInfos.Lines.Add('ID: ' + lPessoa.ID.ToString);
-    //    memInfos.Lines.Add('Nome: ' + lPessoa.Nome);
-    //    memInfos.Lines.Add('CPF: ' + lPessoa.CPF);
+    //    memInfos.Lines.Add('ID: ' + lPF.ID.ToString);
+    //    memInfos.Lines.Add('Nome: ' + lPF.Nome);
+    //    memInfos.Lines.Add('CPF: ' + lPF.CPF);
     if chkExibePessoaLabel.Checked then
     begin
-      lblResultado.Caption := lPessoa.ExibePessoa;
+      lblResultado.Caption := lPF.ExibePessoa;
     end;
-    //        'ID: ' + lPessoa.ID.ToString + sLineBreak + // #13#10
-    //        'Nome: ' + lPessoa.Nome + sLineBreak +
-    //        'CPF: ' + lPessoa.CPF;
+    //        'ID: ' + lPF.ID.ToString + sLineBreak + // #13#10
+    //        'Nome: ' + lPF.Nome + sLineBreak +
+    //        'CPF: ' + lPF.CPF;
   finally
-    lPessoa.Free;
+    lPF.Free;
   end;
 end;
 
@@ -107,6 +117,23 @@ begin
 
   finally
     lPJ.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+var
+  lPF: TPessoaFisica;
+  i: Integer;
+begin
+  lPF := TPessoaFisica.Create;
+  try
+    for i := Ord(Low(TStatusComercialPessoa)) to Ord(High(TStatusComercialPessoa)) do
+    begin
+      cmbStatusComercial.Items.Add(lPF.StatusComecialToString(TStatusComercialPessoa(i)));
+    end;
+
+  finally
+    lPF.Free;
   end;
 end;
 
