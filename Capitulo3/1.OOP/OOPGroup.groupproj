@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A341BB4C-F9D4-4C64-8004-8CA5B158A340}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ClassesEObjetos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Variaveis.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ClassesEObjetos">
+        <MSBuild Projects="ClassesEObjetos.dproj"/>
+    </Target>
+    <Target Name="ClassesEObjetos:Clean">
+        <MSBuild Projects="ClassesEObjetos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClassesEObjetos:Make">
+        <MSBuild Projects="ClassesEObjetos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Variaveis">
+        <MSBuild Projects="Variaveis.dproj"/>
+    </Target>
+    <Target Name="Variaveis:Clean">
+        <MSBuild Projects="Variaveis.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Variaveis:Make">
+        <MSBuild Projects="Variaveis.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ClassesEObjetos;Variaveis"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ClassesEObjetos:Clean;Variaveis:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ClassesEObjetos:Make;Variaveis:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

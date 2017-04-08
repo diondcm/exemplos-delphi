@@ -13,10 +13,11 @@ type
     StatusBar1: TStatusBar;
     lblUsuario: TLabel;
     procedure btnLoginClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
-    procedure SetUsuatio(pUsuario: TUsuario);
+    class var FUsuario: TUsuario;
   end;
 
 var
@@ -28,16 +29,17 @@ implementation
 
 procedure TfrmPrincipal.btnLoginClick(Sender: TObject);
 begin
-  SetUsuatio(TfrmLogin.ExecutaLogin);
+  FUsuario := TfrmLogin.ExecutaLogin;
+  FormShow(Sender);
 end;
 
-procedure TfrmPrincipal.SetUsuatio(pUsuario: TUsuario);
+procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  if Assigned(pUsuario) then
+  if Assigned(FUsuario) then
   begin
-    lblUsuario.Text := pUsuario.Nome;
-  end;
+    lblUsuario.Text := FUsuario.Nome;
   // StatusBar1.
+  end;
 end;
 
 end.

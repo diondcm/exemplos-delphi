@@ -20,8 +20,8 @@ begin
   if Assigned(lUsuario) then
   begin
     Application.CreateForm(TfrmPrincipal, frmPrincipal);
+    frmPrincipal.FUsuario := lUsuario;
     Application.Run;
-    frmPrincipal.SetUsuatio(lUsuario);
   end else begin
     Application.Terminate;
   end;
