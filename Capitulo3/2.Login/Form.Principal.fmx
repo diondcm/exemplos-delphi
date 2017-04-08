@@ -1,0 +1,33 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Login Test'
+  ClientHeight = 467
+  ClientWidth = 523
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object btnLogin: TButton
+    Position.X = 32.000000000000000000
+    Position.Y = 24.000000000000000000
+    TabOrder = 1
+    Text = 'Login'
+    OnClick = btnLoginClick
+  end
+  object StatusBar1: TStatusBar
+    Position.Y = 445.000000000000000000
+    ShowSizeGrip = True
+    Size.Width = 523.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+  end
+  object lblUsuario: TLabel
+    Align = Bottom
+    Position.Y = 428.000000000000000000
+    Size.Width = 523.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+  end
+end
