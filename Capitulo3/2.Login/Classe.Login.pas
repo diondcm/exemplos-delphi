@@ -30,6 +30,7 @@ type
     FSenha: string;
     function GetSenha: string;
     procedure SetSenha(const Value: string);
+    class function GeraHash(pSenha: string): string;
   public
     property Nome: string read FNome write FNome;
     property Senha: string read GetSenha write SetSenha;
@@ -38,6 +39,16 @@ type
 implementation
 
 { TUsuario }
+
+class function TUsuario.GeraHash(pSenha: string): string;
+var
+  i, lSenha:integer;
+begin
+  lSenha := 0;
+  for i:=1 to length(pSenha) do
+    lSenha:=lSenha*$20844 xor byte(pSenha[i]);
+  Result := IntToStr(lSenha);
+end;
 
 function TUsuario.GetSenha: string;
 begin
@@ -55,12 +66,14 @@ end;
 class function TLogin.Verifica(pUsuario, pSenha: string): TUsuario;
 var
   lUsuario: TUsuario;
+  lSenhaHash: string;
 begin
   Result := nil;
+  lSenhaHash := TUsuario.GeraHash(pSenha);
   for lUsuario in TListaUsuario.GetIntancia do
   begin
-    if (pUsuario.ToLower = lUsuario.Nome.ToLower) and
-      (pSenha = lUsuario.Senha) then
+    if (CompareStr(pUsuario.ToLower, lUsuario.Nome.ToLower) = 0) //(pUsuario.ToLower = lUsuario.Nome.ToLower) and
+      and (CompareStr(lSenhaHash, lUsuario.Senha) = 0) then // and (lSenhaHash = lUsuario.Senha) then
     begin
       // Result := lUsuario; ou isso ou:
       Exit(lUsuario);
@@ -104,17 +117,17 @@ begin
 
       lCds.Append;
       lCds.FieldByName('Nome').AsString := 'Teste';
-      lCds.FieldByName('parole').AsString := '!@#654';
+      lCds.FieldByName('parole').AsString := TUsuario.GeraHash('!@#654');
       lCds.Post;
 
       lCds.Append;
       lCds.FieldByName('Nome').AsString := 'Teste2';
-      lCds.FieldByName('parole').AsString := 'A';
+      lCds.FieldByName('parole').AsString := TUsuario.GeraHash('A');
       lCds.Post;
 
       lCds.Append;
       lCds.FieldByName('Nome').AsString := 'Teste3';
-      lCds.FieldByName('parole').AsString := 'GG';
+      lCds.FieldByName('parole').AsString := TUsuario.GeraHash('GG');
       lCds.Post;
 
       lCds.First;
@@ -135,7 +148,17 @@ begin
 end;
 
 class destructor TListaUsuario.Destroy;
+var
+  lUsuario: TObject;
 begin
+  if Assigned(FListaUsuario) then
+  begin
+    for lUsuario in FListaUsuario do
+    begin
+      lUsuario.Free;
+    end;
+  end;
+
   FListaUsuario.Free;
 end;
 

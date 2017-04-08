@@ -8,6 +8,7 @@ object frmLogin: TfrmLogin
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnKeyUp = edtUsuarioKeyDown
+  OnShow = FormShow
   DesignerMasterStyle = 0
   object edtUsuario: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -22,6 +23,7 @@ object frmLogin: TfrmLogin
   object edtLogin: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 1
+    Password = True
     Position.X = 24.000000000000000000
     Position.Y = 176.000000000000000000
     Size.Width = 177.000000000000000000

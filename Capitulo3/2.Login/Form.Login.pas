@@ -17,6 +17,7 @@ type
     procedure edtUsuarioKeyDown(Sender: TObject; var Key: Word;
       var KeyChar: Char; Shift: TShiftState);
     procedure tmrMsgTimer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     FUsuario: TUsuario;
   public
@@ -72,6 +73,11 @@ begin
   finally
     lFrmLogin.Free;
   end;
+end;
+
+procedure TfrmLogin.FormShow(Sender: TObject);
+begin
+  edtUsuario.SetFocus;
 end;
 
 procedure TfrmLogin.tmrMsgTimer(Sender: TObject);
