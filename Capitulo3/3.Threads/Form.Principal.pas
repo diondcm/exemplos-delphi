@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Gauges;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Gauges, DateUtils;
 
 type
   TfrmPrincipal = class(TForm)
@@ -19,9 +19,13 @@ type
     Gauge1: TGauge;
     Label4: TLabel;
     Gauge2: TGauge;
+    btnSemExcecao: TButton;
+    btnComExcecao: TButton;
+    lblTempoTotal: TLabel;
     procedure btnSleepClick(Sender: TObject);
     procedure btnSleepThreadClick(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
+    procedure btnSemExcecaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,6 +38,47 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.btnSemExcecaoClick(Sender: TObject);
+var
+  i: Integer;
+  lStart: TDateTime;
+  lEndTime: TDateTime;
+  lStartExcept: TTime;
+  lEndTimeExcept: TTime;
+  lVarInt: Integer;
+begin
+  lStart := Now;
+  try
+    for i := 0 to 1000000 do
+    begin
+//      IntToStr(i);
+      StrToInt('1000');
+    end;
+  finally
+    lEndTime := Now - lStart;
+  end;
+
+  lStartExcept := Now;
+  try
+    for i := 0 to 1000000 do
+    begin
+      try
+        TryStrToInt('A', lVarInt);
+        //StrToInt('A');
+        //StrToInt('1000'); // quase imperceptivel
+      except
+        //lVarInt := 0;
+        // ignora a lógica
+      end;
+    end;
+  finally
+    lEndTimeExcept := Now - lStartExcept;
+  end;
+
+  lblTempoTotal.Caption := 'Tempo Total ' + FormatDateTime('hh:mm:ss.zzz', TimeOf(lEndTime)) + sLineBreak +
+    'Total Except:' + FormatDateTime('hh:mm:ss.zzz', TimeOf(lEndTimeExcept));
+end;
 
 procedure TfrmPrincipal.btnSleepClick(Sender: TObject);
 begin

@@ -77,6 +77,13 @@ object frmPrincipal: TfrmPrincipal
     MaxValue = 1000000000
     Progress = 0
   end
+  object lblTempoTotal: TLabel
+    Left = 309
+    Top = 70
+    Width = 31
+    Height = 13
+    Caption = '0 segs'
+  end
   object btnSleep: TButton
     Left = 8
     Top = 8
@@ -103,5 +110,22 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Start'
     TabOrder = 2
     OnClick = btnStartClick
+  end
+  object btnSemExcecao: TButton
+    Left = 309
+    Top = 39
+    Width = 75
+    Height = 25
+    Caption = 'Sem Exce'#231#227'o'
+    TabOrder = 3
+    OnClick = btnSemExcecaoClick
+  end
+  object btnComExcecao: TButton
+    Left = 390
+    Top = 39
+    Width = 75
+    Height = 25
+    Caption = 'Com Exce'#231#227'o'
+    TabOrder = 4
   end
 end

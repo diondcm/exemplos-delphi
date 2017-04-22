@@ -28,5 +28,12 @@ object frmPrincipal: TfrmPrincipal
         OnClick = SobreHerdado1Click
       end
     end
+    object Cadastros1: TMenuItem
+      Caption = 'Cadastros'
+      object Categoria1: TMenuItem
+        Caption = 'Categoria'
+        OnClick = Categoria1Click
+      end
+    end
   end
 end

@@ -11,22 +11,17 @@ uses
   Base.Form.Pesquisa in '..\Base\Base.Form.Pesquisa.pas' {frmBasePesquisa},
   Base.Data in '..\Base\Base.Data.pas' {dmdBase: TDataModule},
   Base.Data.Cadastro in '..\Base\Base.Data.Cadastro.pas' {dmdBaseCadastro: TDataModule},
-  Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule};
+  Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule},
+  Base.Form.Dados in '..\Base\Base.Form.Dados.pas' {frmBaseDados},
+  Data.Categoria in 'Data.Categoria.pas' {dmdCategoria: TDataModule},
+  Form.Pesquisa.Categoria in 'Form.Pesquisa.Categoria.pas' {frmPesquisaCategoria};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmSobreFinal, frmSobreFinal);
-  Application.CreateForm(TfrmBaseCadastro, frmBaseCadastro);
-  Application.CreateForm(TfrmBasePesquisa, frmBasePesquisa);
-  Application.CreateForm(TdmdBase, dmdBase);
   Application.CreateForm(TdmdConexao, dmdConexao);
-  //  Application.CreateForm(TdmdBaseCadastro, dmdBaseCadastro);
-  //  Application.CreateForm(TfrmBase, frmBase);
-  //  Application.CreateForm(TfrmBaseSobre, frmBaseSobre);
-  Application.CreateForm(TfrmSobreHerdado, frmSobreHerdado);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.

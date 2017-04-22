@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Form.Sobre.Final, Vcl.Menus,
-  Form.Sobre.Herdado;
+  Form.Sobre.Herdado, Form.Pesquisa.Categoria;
 
 type
   TfrmPrincipal = class(TForm)
@@ -13,8 +13,11 @@ type
     Arquivo1: TMenuItem;
     Sobre1: TMenuItem;
     SobreHerdado1: TMenuItem;
+    Cadastros1: TMenuItem;
+    Categoria1: TMenuItem;
     procedure Sobre1Click(Sender: TObject);
     procedure SobreHerdado1Click(Sender: TObject);
+    procedure Categoria1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,6 +30,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.Categoria1Click(Sender: TObject);
+begin
+  TfrmPesquisaCategoria.Create(Self).Show;
+end;
 
 procedure TfrmPrincipal.Sobre1Click(Sender: TObject);
 begin
