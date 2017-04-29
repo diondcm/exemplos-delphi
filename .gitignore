@@ -4,3 +4,5 @@
 /Capitulo1/1.Base/Win32/Debug
 Debug
 __history
+/Capitulo3/Exemplo4/Win32/Release/*.exe
+/Capitulo3/Exemplo4/Win32/Release/*.dcu
