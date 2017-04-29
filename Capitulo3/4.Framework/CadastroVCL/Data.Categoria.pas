@@ -10,6 +10,7 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
+  [TAtributoGerador('ID', 'GEN_CATEGORIA')]
   TdmdCategoria = class(TdmdBaseCadastro)
     cdsCadastroID: TIntegerField;
     cdsCadastroDESCRICAO: TWideStringField;

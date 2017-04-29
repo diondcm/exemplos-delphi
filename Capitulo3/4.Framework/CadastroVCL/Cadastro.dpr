@@ -14,7 +14,12 @@ uses
   Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule},
   Base.Form.Dados in '..\Base\Base.Form.Dados.pas' {frmBaseDados},
   Data.Categoria in 'Data.Categoria.pas' {dmdCategoria: TDataModule},
-  Form.Pesquisa.Categoria in 'Form.Pesquisa.Categoria.pas' {frmPesquisaCategoria};
+  Form.Pesquisa.Categoria in 'Form.Pesquisa.Categoria.pas' {frmPesquisaCategoria},
+  Base.Mensagem in '..\Base\Base.Mensagem.pas',
+  Form.Cadastro.Categoria in 'Form.Cadastro.Categoria.pas' {frmCadastroCategorias},
+  Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule},
+  Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadastroProduto},
+  Form.Pesquisa.Produto in 'Form.Pesquisa.Produto.pas' {frmPesquisaProduto};
 
 {$R *.res}
 

@@ -2,6 +2,8 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   Caption = ''
   ClientHeight = 413
   ClientWidth = 690
+  PopupMenu = PopupMenu
+  OnClose = FormClose
   ExplicitWidth = 706
   ExplicitHeight = 452
   PixelsPerInch = 96
@@ -12,6 +14,7 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     Width = 690
     Height = 49
     Align = alTop
+    PopupMenu = PopupMenu
     TabOrder = 0
     object btePesquisa: TButtonedEdit
       Left = 56
@@ -29,30 +32,33 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   end
   object pnlControles: TPanel [1]
     Left = 0
-    Top = 352
+    Top = 49
     Width = 690
-    Height = 61
-    Align = alBottom
+    Height = 40
+    Align = alTop
+    PopupMenu = PopupMenu
     TabOrder = 1
     object btnEditar: TBitBtn
       Left = 7
-      Top = 16
+      Top = 6
       Width = 75
       Height = 25
+      Action = DatasetEdit1
       Caption = '&Editar'
       TabOrder = 0
     end
     object btnInserir: TBitBtn
-      Left = 96
-      Top = 16
+      Left = 88
+      Top = 6
       Width = 75
       Height = 25
+      Action = DatasetInsert1
       Caption = '&Inserir'
       TabOrder = 1
     end
     object btnSelecionar: TBitBtn
       Left = 511
-      Top = 16
+      Top = 6
       Width = 75
       Height = 25
       Action = actSelecionar
@@ -61,7 +67,7 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     end
     object btnCancelar: TBitBtn
       Left = 592
-      Top = 16
+      Top = 6
       Width = 75
       Height = 25
       Action = actCancelar
@@ -71,17 +77,19 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   end
   object dbgPesquisa: TDBGrid [2]
     Left = 0
-    Top = 49
+    Top = 89
     Width = 690
-    Height = 303
+    Height = 324
     Align = alClient
     DataSource = dtsDados
+    PopupMenu = PopupMenu
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = dbgPesquisaDblClick
   end
   inherited dtsDados: TDataSource
     Left = 624
@@ -90,18 +98,44 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   object PopupMenu: TPopupMenu [4]
     Left = 528
     Top = 136
+    object Editar1: TMenuItem
+      Action = DatasetEdit1
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Selecionar1: TMenuItem
+      Action = actSelecionar
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Inserir1: TMenuItem
+      Action = DatasetInsert1
+    end
   end
   inherited ActionList: TActionList
+    inherited DatasetInsert1: TDataSetInsert
+      OnExecute = DatasetInsert1Execute
+    end
+    inherited DatasetEdit1: TDataSetEdit
+      OnExecute = DatasetEdit1Execute
+    end
     object actCancelar: TAction
+      Category = 'Pesquisar'
       Caption = 'Cancelar'
+      Enabled = False
       OnExecute = actCancelarExecute
     end
     object actPesquisar: TAction
+      Category = 'Pesquisar'
       Caption = '&Pesquisar'
       OnExecute = actPesquisarExecute
     end
     object actSelecionar: TAction
+      Category = 'Pesquisar'
       Caption = '&Selecionar'
+      Enabled = False
       OnExecute = actSelecionarExecute
     end
   end

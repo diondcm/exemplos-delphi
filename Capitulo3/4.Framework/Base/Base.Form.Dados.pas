@@ -22,6 +22,15 @@ type
     DatasetPost1: TDataSetPost;
     DatasetCancel1: TDataSetCancel;
     DatasetRefresh1: TDataSetRefresh;
+    procedure DatasetFirst1Execute(Sender: TObject);
+    procedure DatasetPrior1Execute(Sender: TObject);
+    procedure DatasetNext1Execute(Sender: TObject);
+    procedure DatasetLast1Execute(Sender: TObject);
+    procedure DatasetInsert1Execute(Sender: TObject);
+    procedure DatasetDelete1Execute(Sender: TObject);
+    procedure DatasetEdit1Execute(Sender: TObject);
+    procedure DatasetPost1Execute(Sender: TObject);
+    procedure DatasetCancel1Execute(Sender: TObject);
   private
     FDmdCadastro: TdmdBaseCadastro;
     procedure SetDataSets;
@@ -55,6 +64,60 @@ constructor TfrmBaseDados.Create(AOwner: TComponent;
 begin
   inherited Create(AOwner);
   SetDmdCadastro(ADmdCadastro);
+end;
+
+procedure TfrmBaseDados.DatasetCancel1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.CancelarRegistro;
+end;
+
+procedure TfrmBaseDados.DatasetDelete1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.ExcluirRegistro;
+end;
+
+procedure TfrmBaseDados.DatasetEdit1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.AlterarRegistro;
+end;
+
+procedure TfrmBaseDados.DatasetFirst1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.IrParaPrimeiro;
+end;
+
+procedure TfrmBaseDados.DatasetInsert1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.InserirRegistro;
+end;
+
+procedure TfrmBaseDados.DatasetLast1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.IrParaUltimo;
+end;
+
+procedure TfrmBaseDados.DatasetNext1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.IrParaProximo;
+end;
+
+procedure TfrmBaseDados.DatasetPost1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.SalvarRegistro;
+end;
+
+procedure TfrmBaseDados.DatasetPrior1Execute(Sender: TObject);
+begin
+  inherited;
+  GetDmdCadastro.IrParaAnterior;
 end;
 
 function TfrmBaseDados.GetDmdCadastro: TdmdBaseCadastro;

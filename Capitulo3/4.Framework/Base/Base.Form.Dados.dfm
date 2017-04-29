@@ -23,6 +23,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Primeiro'
       Hint = 'First'
       ImageIndex = 0
+      OnExecute = DatasetFirst1Execute
       DataSource = dtsDados
     end
     object DatasetPrior1: TDataSetPrior
@@ -30,6 +31,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Anterior'
       Hint = 'Prior'
       ImageIndex = 1
+      OnExecute = DatasetPrior1Execute
       DataSource = dtsDados
     end
     object DatasetNext1: TDataSetNext
@@ -37,6 +39,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Pr'#243'ximo'
       Hint = 'Next'
       ImageIndex = 2
+      OnExecute = DatasetNext1Execute
       DataSource = dtsDados
     end
     object DatasetLast1: TDataSetLast
@@ -44,6 +47,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&'#218'ltimo'
       Hint = 'Last'
       ImageIndex = 3
+      OnExecute = DatasetLast1Execute
       DataSource = dtsDados
     end
     object DatasetInsert1: TDataSetInsert
@@ -51,6 +55,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Inserir'
       Hint = 'Insert'
       ImageIndex = 4
+      OnExecute = DatasetInsert1Execute
       DataSource = dtsDados
     end
     object DatasetDelete1: TDataSetDelete
@@ -58,6 +63,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Deletar'
       Hint = 'Delete'
       ImageIndex = 5
+      OnExecute = DatasetDelete1Execute
       DataSource = dtsDados
     end
     object DatasetEdit1: TDataSetEdit
@@ -65,6 +71,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Editar'
       Hint = 'Edit'
       ImageIndex = 6
+      OnExecute = DatasetEdit1Execute
       DataSource = dtsDados
     end
     object DatasetPost1: TDataSetPost
@@ -72,6 +79,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Salvar'
       Hint = 'Post'
       ImageIndex = 7
+      OnExecute = DatasetPost1Execute
       DataSource = dtsDados
     end
     object DatasetCancel1: TDataSetCancel
@@ -79,6 +87,7 @@ inherited frmBaseDados: TfrmBaseDados
       Caption = '&Cancelar'
       Hint = 'Cancel'
       ImageIndex = 8
+      OnExecute = DatasetCancel1Execute
       DataSource = dtsDados
     end
     object DatasetRefresh1: TDataSetRefresh

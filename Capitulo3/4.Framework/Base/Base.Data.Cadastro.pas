@@ -3,7 +3,7 @@ unit Base.Data.Cadastro;
 interface
 
 uses
-  System.SysUtils, System.Classes, Base.Data, Data.DB, Datasnap.DBClient,
+  System.SysUtils, System.Classes, Base.Data, Data.DB, Datasnap.DBClient, System.Rtti,
   Data.FMTBcd, Datasnap.Provider, Data.SqlExpr, System.StrUtils, System.Math,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
@@ -12,17 +12,25 @@ uses
 type
   TMetodoAnonimo = reference to procedure;
 
+  TEventoObtemGerador =
+    function (const pNomeGerador: string; pIncremento: Byte): Int64 of object;
+
+  TAtributoGerador = class(TCustomAttribute)
+  private
+    FNomeField: string;
+    FNomeGerador: string;
+  public
+    constructor Create(const pNomeField, pNomeGerador: string);
+    property NomeField: string read FNomeField write FNomeField;
+    property NomeGerador: string read FNomeGerador write FNomeGerador;
+  end;
 
   TdmdBaseCadastroClass = class of TdmdBaseCadastro;
-
   TdmdBaseCadastro = class(TdmdBase)
     cdsCadastro: TClientDataSet;
     sqlCadastro: TSQLDataSet;
     dspCadastro: TDataSetProvider;
     qryCadastro: TFDQuery;
-    qryCadastroID: TIntegerField;
-    qryCadastroDESCRICAO: TWideStringField;
-    qryCadastroATIVO: TBooleanField;
     procedure cdsCadastroAfterPost(DataSet: TDataSet);
     procedure cdsCadastroAfterDelete(DataSet: TDataSet);
     procedure cdsCadastroAfterCancel(DataSet: TDataSet);
@@ -36,6 +44,10 @@ type
   protected
     procedure ValidarDadosCadastro; virtual; abstract;
     procedure SetarDadosNovoRegistro; virtual; abstract;
+
+    procedure SetCamposGerador;
+
+    class var FMetodoGerador: TEventoObtemGerador;
   public
     function VerificaEmEdicao: Boolean; virtual;
     function VerificaNavegacao: Boolean; virtual;
@@ -63,6 +75,8 @@ type
     procedure CancelarRegistro; virtual;
 
     procedure Pesquisar(const pTexto: string);
+    class property MetodoGerador: TEventoObtemGerador
+      read FMetodoGerador write FMetodoGerador;
   end;
 
 //var
@@ -278,6 +292,38 @@ begin
   cdsCadastro.Post;
 end;
 
+procedure TdmdBaseCadastro.SetCamposGerador;
+var
+  lAttr: TCustomAttribute;
+  lType: TRttiType;
+  lGerador: TAtributoGerador;
+  lValor: Int64;
+begin
+  if cdsCadastro.State = dsInsert then
+  begin
+    lType := TRttiContext.Create.GetType(Self.ClassInfo);
+
+    for lAttr in lType.GetAttributes do
+    begin
+      if lAttr is TAtributoGerador then
+      begin
+        lGerador := TAtributoGerador(lAttr);
+        if cdsCadastro.FieldByName(lGerador.NomeField).IsNull then
+        begin
+          if not Assigned(FMetodoGerador) then
+          begin
+            raise Exception.Create('Método gerador não preenchido.');
+          end;
+
+          lValor := FMetodoGerador(lGerador.NomeGerador, 1);
+          if lValor > 0 then // 0 Para bancos com AutoInc
+            cdsCadastro.FieldByName(lGerador.NomeField).AsLargeInt := lValor;
+        end;
+      end;
+    end;
+  end;
+end;
+
 function TdmdBaseCadastro.VerificaAlterarRegistro: Boolean;
 begin
   Result := (not VerificaEmEdicao) and (not cdsCadastro.IsEmpty); //cdsCadastro.RecordCount = 0?
@@ -331,6 +377,14 @@ end;
 function TdmdBaseCadastro.VerificaSalvarRegistro: Boolean;
 begin
   Result := VerificaEmEdicao;
+end;
+
+{ TAtributoGerador }
+
+constructor TAtributoGerador.Create(const pNomeField, pNomeGerador: string);
+begin
+  FNomeField := pNomeField;
+  FNomeGerador := pNomeGerador;
 end;
 
 end.

@@ -18,25 +18,12 @@ inherited dmdBaseCadastro: TdmdBaseCadastro
     Top = 32
   end
   object dspCadastro: TDataSetProvider
-    DataSet = qryCadastro
+    DataSet = sqlCadastro
     Left = 192
     Top = 80
   end
   object qryCadastro: TFDQuery
     Left = 256
     Top = 32
-    object qryCadastroID: TIntegerField
-      FieldName = 'ID'
-      Origin = 'ID'
-    end
-    object qryCadastroDESCRICAO: TWideStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Size = 100
-    end
-    object qryCadastroATIVO: TBooleanField
-      FieldName = 'ATIVO'
-      Origin = 'ATIVO'
-    end
   end
 end

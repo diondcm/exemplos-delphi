@@ -1,12 +1,13 @@
 inherited dmdConexao: TdmdConexao
   OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 353
   Width = 615
   object imlBase: TImageList
     Left = 64
     Top = 200
     Bitmap = {
-      494C010101000800200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101010008002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       00000000000000000000000000000000000009090946525252B5181818DE1717
       17DD171717B10404043A000000000000000000000000000000000707073D3333
@@ -159,16 +160,16 @@ inherited dmdConexao: TdmdConexao
       'FailIfMissing=True'
       
         'Database=C:\Users\Aluno\Desktop\exemplos-delphi\Capitulo3\4.Fram' +
-        'ework\DB\DB')
+        'ework\DB\DB_Novo.db')
     Connected = True
     Left = 256
-    Top = 80
+    Top = 40
   end
   object FDConnection: TFDConnection
     Params.Strings = (
       
         'Database=C:\Users\Aluno\Desktop\exemplos-delphi\Capitulo3\4.Fram' +
-        'ework\DB\DB'
+        'ework\DB\DB_Novo.db'
       'DriverID=SQLite')
     LoginPrompt = False
     Left = 440
@@ -183,11 +184,16 @@ inherited dmdConexao: TdmdConexao
     Left = 440
     Top = 280
   end
-  object FDQuery1: TFDQuery
+  object qryGerador: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'select * from categoria')
-    Left = 520
-    Top = 184
+      'select * from produto')
+    Left = 312
+    Top = 168
+  end
+  object sqlGerador: TSQLDataSet
+    Params = <>
+    Left = 224
+    Top = 168
   end
 end
