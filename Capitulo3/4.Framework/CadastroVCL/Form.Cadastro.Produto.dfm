@@ -1,7 +1,9 @@
 inherited frmCadastroProduto: TfrmCadastroProduto
   Caption = 'Cadastro de Produtos'
+  ClientHeight = 261
   ClientWidth = 518
   ExplicitWidth = 534
+  ExplicitHeight = 300
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -20,33 +22,26 @@ inherited frmCadastroProduto: TfrmCadastroProduto
   end
   object Label3: TLabel [2]
     Left = 38
-    Top = 176
-    Width = 17
+    Top = 184
+    Width = 47
     Height = 13
-    Caption = 'Cor'
-  end
-  object Label4: TLabel [3]
-    Left = 38
-    Top = 216
-    Width = 23
-    Height = 13
-    Caption = 'Peso'
+    Caption = 'Categoria'
   end
   inherited Panel1: TPanel
     Width = 518
     ExplicitLeft = 0
-    ExplicitWidth = 511
+    ExplicitWidth = 518
   end
-  object dbeCodigo: TDBEdit [11]
+  object dbeCodigo: TDBEdit [10]
     Left = 38
     Top = 111
     Width = 121
     Height = 21
-    DataField = 'CODIGO'
+    DataField = 'ID'
     DataSource = dtsDados
     TabOrder = 7
   end
-  object dbeDescricao: TDBEdit [12]
+  object dbeDescricao: TDBEdit [11]
     Left = 38
     Top = 152
     Width = 121
@@ -55,22 +50,45 @@ inherited frmCadastroProduto: TfrmCadastroProduto
     DataSource = dtsDados
     TabOrder = 8
   end
-  object dbeCor: TDBEdit [13]
+  object dbeCategoria: TDBEdit [12]
     Left = 38
-    Top = 192
-    Width = 121
+    Top = 203
+    Width = 47
     Height = 21
-    DataField = 'COR'
+    DataField = 'ID_CATEGORIA'
     DataSource = dtsDados
+    ReadOnly = True
     TabOrder = 9
   end
-  object dbePeso: TDBEdit [14]
-    Left = 38
-    Top = 235
-    Width = 121
-    Height = 21
-    DataField = 'PESO'
-    DataSource = dtsDados
+  object btnCategoria: TButton [13]
+    Left = 231
+    Top = 201
+    Width = 34
+    Height = 25
+    Caption = '...'
     TabOrder = 10
+    OnClick = btnCategoriaClick
+  end
+  object edtDescricaoCategoria: TEdit [14]
+    Left = 91
+    Top = 203
+    Width = 134
+    Height = 21
+    ReadOnly = True
+    TabOrder = 11
+    Text = 'edtDescricaoCategoria'
+  end
+  inherited dtsDados: TDataSource
+    OnDataChange = dtsDadosDataChange
+    Left = 384
+    Top = 112
+  end
+  inherited MainMenu: TMainMenu
+    Left = 216
+    Top = 112
+  end
+  inherited ActionList: TActionList
+    Left = 328
+    Top = 104
   end
 end

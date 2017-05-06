@@ -34,6 +34,8 @@ type
     procedure cdsCadastroAfterPost(DataSet: TDataSet);
     procedure cdsCadastroAfterDelete(DataSet: TDataSet);
     procedure cdsCadastroAfterCancel(DataSet: TDataSet);
+    procedure cdsCadastroBeforePost(DataSet: TDataSet);
+    procedure cdsCadastroAfterOpen(DataSet: TDataSet);
   private const
     WHERE_SQL = '/*where*/';
     AND_SQL = '/*and*/';
@@ -83,6 +85,9 @@ type
 //  dmdBase1: TdmdBase1;
 
 implementation
+
+uses
+  System.Variants;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -178,10 +183,34 @@ begin
   cdsCadastro.ApplyUpdates(0);
 end;
 
+procedure TdmdBaseCadastro.cdsCadastroAfterOpen(DataSet: TDataSet);
+var
+  lAttr: TCustomAttribute;
+  lType: TRttiType;
+  lGerador: TAtributoGerador;
+begin
+  lType := TRttiContext.Create.GetType(Self.ClassInfo);
+  for lAttr in lType.GetAttributes do
+  begin
+    if lAttr is TAtributoGerador then
+    begin
+      lGerador := TAtributoGerador(lAttr);
+      cdsCadastro.FieldByName(lGerador.NomeField).ReadOnly := True;
+    end;
+  end;
+end;
+
 procedure TdmdBaseCadastro.cdsCadastroAfterPost(DataSet: TDataSet);
 begin
   inherited;
   cdsCadastro.ApplyUpdates(0);
+end;
+
+procedure TdmdBaseCadastro.cdsCadastroBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  ValidarDadosCadastro;
+  SetCamposGerador;
 end;
 
 procedure TdmdBaseCadastro.ExcluirRegistro;
@@ -298,6 +327,7 @@ var
   lType: TRttiType;
   lGerador: TAtributoGerador;
   lValor: Int64;
+  lStatusReadOnly: Boolean;
 begin
   if cdsCadastro.State = dsInsert then
   begin
@@ -308,16 +338,26 @@ begin
       if lAttr is TAtributoGerador then
       begin
         lGerador := TAtributoGerador(lAttr);
-        if cdsCadastro.FieldByName(lGerador.NomeField).IsNull then
-        begin
-          if not Assigned(FMetodoGerador) then
-          begin
-            raise Exception.Create('Método gerador não preenchido.');
-          end;
 
-          lValor := FMetodoGerador(lGerador.NomeGerador, 1);
-          if lValor > 0 then // 0 Para bancos com AutoInc
-            cdsCadastro.FieldByName(lGerador.NomeField).AsLargeInt := lValor;
+        lStatusReadOnly := cdsCadastro.FieldByName(lGerador.NomeField).ReadOnly;
+        if cdsCadastro.FieldByName(lGerador.NomeField).ReadOnly then
+        begin
+          cdsCadastro.FieldByName(lGerador.NomeField).ReadOnly := False;
+        end;
+        try
+          if VarToStr(cdsCadastro.FieldByName(lGerador.NomeField).Value) = '' then // cdsCadastro.FieldByName(lGerador.NomeField).IsNull
+          begin
+            if not Assigned(FMetodoGerador) then
+            begin
+              raise Exception.Create('Método gerador não preenchido.');
+            end;
+
+            lValor := FMetodoGerador(lGerador.NomeGerador, 1);
+            if lValor > 0 then // 0 Para bancos com AutoInc
+              cdsCadastro.FieldByName(lGerador.NomeField).AsLargeInt := lValor;
+          end;
+        finally
+           cdsCadastro.FieldByName(lGerador.NomeField).ReadOnly := lStatusReadOnly;
         end;
       end;
     end;

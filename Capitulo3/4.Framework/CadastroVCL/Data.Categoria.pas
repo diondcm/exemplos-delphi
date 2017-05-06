@@ -13,8 +13,7 @@ type
   [TAtributoGerador('ID', 'GEN_CATEGORIA')]
   TdmdCategoria = class(TdmdBaseCadastro)
     cdsCadastroID: TIntegerField;
-    cdsCadastroDESCRICAO: TWideStringField;
-    cdsCadastroATIVO: TBooleanField;
+    cdsCadastroDESCRICAO: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -26,6 +25,9 @@ type
   end;
 
 implementation
+
+uses
+  System.Variants;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -42,13 +44,37 @@ end;
 procedure TdmdCategoria.SetarDadosNovoRegistro;
 begin
   inherited;
-
+  // Sem fields para configurar
 end;
 
 procedure TdmdCategoria.ValidarDadosCadastro;
+var
+  lErro: string;
+  lFocoSetado: Boolean;
+
+  procedure SetaFocus(pField: TField);
+  begin
+    if not lFocoSetado then
+    begin
+      pField.FocusControl;
+      lFocoSetado := True;
+    end;
+  end;
+
 begin
   inherited;
+  lFocoSetado := False;
+  if VarToStr(cdsCadastroDESCRICAO.Value) = '' then // IsNull
+  begin
+    SetaFocus(cdsCadastroDESCRICAO);
+    lErro := sLineBreak + 'Categoria';
+    //raise Exception.Create('A Categoria deve ser informada.');
+  end;
 
+  if lErro <> '' then
+  begin
+    raise Exception.Create('Deve ser informado: ' + lErro);
+  end;
 end;
 
 end.

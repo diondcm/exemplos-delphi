@@ -3,28 +3,18 @@ inherited dmdCategoria: TdmdCategoria
   inherited cdsCadastro: TClientDataSet
     object cdsCadastroID: TIntegerField
       FieldName = 'ID'
-      Origin = 'ID'
       ReadOnly = True
     end
-    object cdsCadastroDESCRICAO: TWideStringField
+    object cdsCadastroDESCRICAO: TStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'DESCRICAO'
-      Origin = 'descricao'
       Size = 100
-    end
-    object cdsCadastroATIVO: TBooleanField
-      DisplayLabel = 'Ativo'
-      FieldName = 'ATIVO'
-      Origin = 'ativo'
     end
   end
   inherited sqlCadastro: TSQLDataSet
-    CommandText = 'select ID, DESCRICAO, ATIVO '#13#10'from categoria /*where*/'
+    CommandText = 'select ID, DESCRICAO'#13#10'from categoria /*where*/'
     MaxBlobSize = -1
     SQLConnection = dmdConexao.SQLConnection
-  end
-  inherited dspCadastro: TDataSetProvider
-    DataSet = qryCadastro
   end
   inherited qryCadastro: TFDQuery
     Connection = dmdConexao.FDConnection

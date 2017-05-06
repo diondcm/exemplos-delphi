@@ -18,11 +18,10 @@ type
     qryCadastroDESCRICAO: TWideStringField;
     qryCadastroCOR: TIntegerField;
     qryCadastroPESO: TIntegerField;
+    cdsCadastroDESCRICAO: TStringField;
     cdsCadastroID: TIntegerField;
-    cdsCadastroCODIGO: TIntegerField;
-    cdsCadastroDESCRICAO: TWideStringField;
-    cdsCadastroCOR: TIntegerField;
-    cdsCadastroPESO: TIntegerField;
+    cdsCadastroID_CATEGORIA: TIntegerField;
+    cdsCadastroCATEGORIA: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   protected
     procedure ValidarDadosCadastro; override;
@@ -32,6 +31,9 @@ type
   end;
 
 implementation
+
+uses
+  System.Variants;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -48,14 +50,44 @@ end;
 procedure TdmdProduto.SetarDadosNovoRegistro;
 begin
   inherited;
-
-
+  // Sem campos para preencher;
 end;
 
 procedure TdmdProduto.ValidarDadosCadastro;
+var
+  lErro: string;
+  lFocoSetado: Boolean;
+
+  procedure SetaFocus(pField: TField);
+  begin
+    if not lFocoSetado then
+    begin
+      pField.FocusControl;
+      lFocoSetado := True;
+    end;
+  end;
+
 begin
   inherited;
+  lFocoSetado := False;
+  if VarToStr(cdsCadastroID_CATEGORIA.Value) = '' then // IsNull
+  begin
+    SetaFocus(cdsCadastroDESCRICAO);
+    lErro := sLineBreak + 'Categoria';
+    //raise Exception.Create('A Categoria deve ser informada.');
+  end;
 
+  if VarToStr(cdsCadastroDESCRICAO.Value) = '' then // IsNull
+  begin
+    SetaFocus(cdsCadastroDESCRICAO);
+    lErro := lErro + slineBreak + 'Descrição';
+    //raise Exception.Create('A Descrição deve ser informada.');
+  end;
+
+  if lErro <> '' then
+  begin
+    raise Exception.Create('Deve ser informado: ' + lErro);
+  end;
 end;
 
 end.

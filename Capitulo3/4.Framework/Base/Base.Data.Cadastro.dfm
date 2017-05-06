@@ -6,6 +6,8 @@ inherited dmdBaseCadastro: TdmdBaseCadastro
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCadastro'
+    AfterOpen = cdsCadastroAfterOpen
+    BeforePost = cdsCadastroBeforePost
     AfterPost = cdsCadastroAfterPost
     AfterCancel = cdsCadastroAfterCancel
     AfterDelete = cdsCadastroAfterDelete

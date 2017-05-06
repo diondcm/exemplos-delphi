@@ -10,7 +10,8 @@ uses
   FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
   FireDAC.VCLUI.Wait, FireDAC.Comp.UI, FireDAC.Comp.Client, Data.DbxSqlite,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, Base.Data.Cadastro, Data.FMTBcd, Data.DBXFirebird;
+  FireDAC.Comp.DataSet, Base.Data.Cadastro, Data.FMTBcd, Data.DBXFirebird,
+  FireDAC.Phys.FB, FireDAC.Phys.FBDef;
 
 type
   TdmdConexao = class(TdmdBase)
@@ -44,14 +45,21 @@ implementation
 procedure TdmdConexao.DataModuleCreate(Sender: TObject);
 begin
   inherited;
-  //SQLConnection.DriverName = UpperCase('Sqlite')
-  if FDConnection.DriverName = 'FB' then
+  if SQLConnection.DriverName = 'Firebird' then
   begin
     TdmdBaseCadastro.MetodoGerador := ObtemGeradorFB;
-  end else if FDConnection.DriverName = 'SQLite' then
+  end else if SQLConnection.DriverName = 'Sqlite' then
   begin
     TdmdBaseCadastro.MetodoGerador := ObtemGeradorSQLite;
   end;
+
+//  if FDConnection.DriverName = 'FB' then
+//  begin
+//    TdmdBaseCadastro.MetodoGerador := ObtemGeradorFB;
+//  end else if FDConnection.DriverName = 'SQLite' then
+//  begin
+//    TdmdBaseCadastro.MetodoGerador := ObtemGeradorSQLite;
+//  end;
 end;
 
 function TdmdConexao.ObtemGeradorFB(const pNomeGerador: string;
@@ -59,18 +67,18 @@ function TdmdConexao.ObtemGeradorFB(const pNomeGerador: string;
 const
   ID_GERADOR = 0;
 begin
-  qryGerador.Close;
-  qryGerador.Open('select GEN_ID(' + pNomeGerador + ',' +
-    pIncremento.ToString + ') from RDB$DATABASE');
-  Result := qryGerador.Fields[ID_GERADOR].AsLargeInt;
-  qryGerador.Close;
+//  qryGerador.Close;
+//  qryGerador.Open('select GEN_ID(' + pNomeGerador + ',' +
+//    pIncremento.ToString + ') from RDB$DATABASE');
+//  Result := qryGerador.Fields[ID_GERADOR].AsLargeInt;
+//  qryGerador.Close;
 
-//  sqlGerador.Close;
-//  sqlGerador.CommandText := 'select GEN_ID(' + pNomeGerador + ',' +
-//    pIncremento.ToString + ') from RDB$DATABASE';
-//  sqlGerador.Open;
-//  Result := sqlGerador.Fields[ID_GERADOR].AsLargeInt;
-//  sqlGerador.Close;
+  sqlGerador.Close;
+  sqlGerador.CommandText := 'select GEN_ID(' + pNomeGerador + ',' +
+    pIncremento.ToString + ') from RDB$DATABASE';
+  sqlGerador.Open;
+  Result := sqlGerador.Fields[ID_GERADOR].AsLargeInt;
+  sqlGerador.Close;
 end;
 
 function TdmdConexao.ObtemGeradorSQLite(const pNomeGerador: string;

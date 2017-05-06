@@ -3,6 +3,7 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   ClientHeight = 413
   ClientWidth = 690
   PopupMenu = PopupMenu
+  Position = poScreenCenter
   OnClose = FormClose
   ExplicitWidth = 706
   ExplicitHeight = 452
@@ -82,6 +83,7 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     Height = 324
     Align = alClient
     DataSource = dtsDados
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     PopupMenu = PopupMenu
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
@@ -115,16 +117,10 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     end
   end
   inherited ActionList: TActionList
-    inherited DatasetInsert1: TDataSetInsert
-      OnExecute = DatasetInsert1Execute
-    end
-    inherited DatasetEdit1: TDataSetEdit
-      OnExecute = DatasetEdit1Execute
-    end
     object actCancelar: TAction
       Category = 'Pesquisar'
       Caption = 'Cancelar'
-      Enabled = False
+      Visible = False
       OnExecute = actCancelarExecute
     end
     object actPesquisar: TAction
@@ -135,7 +131,7 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     object actSelecionar: TAction
       Category = 'Pesquisar'
       Caption = '&Selecionar'
-      Enabled = False
+      Visible = False
       OnExecute = actSelecionarExecute
     end
   end

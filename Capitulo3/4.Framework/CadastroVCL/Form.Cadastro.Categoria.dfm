@@ -23,7 +23,7 @@ inherited frmCadastroCategorias: TfrmCadastroCategorias
   inherited Panel1: TPanel
     Width = 533
     ExplicitLeft = 0
-    ExplicitWidth = 515
+    ExplicitWidth = 533
   end
   object dbeID: TDBEdit [9]
     Left = 24
@@ -32,6 +32,7 @@ inherited frmCadastroCategorias: TfrmCadastroCategorias
     Height = 21
     DataField = 'ID'
     DataSource = dtsDados
+    ReadOnly = True
     TabOrder = 7
   end
   object dbeDescricao: TDBEdit [10]
@@ -42,16 +43,6 @@ inherited frmCadastroCategorias: TfrmCadastroCategorias
     DataField = 'DESCRICAO'
     DataSource = dtsDados
     TabOrder = 8
-  end
-  object dbcAtivo: TDBCheckBox [11]
-    Left = 312
-    Top = 106
-    Width = 97
-    Height = 17
-    Caption = 'Ativo'
-    DataField = 'ATIVO'
-    DataSource = dtsDados
-    TabOrder = 9
   end
   inherited dtsDados: TDataSource
     Left = 352

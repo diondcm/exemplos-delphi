@@ -1,3 +1,7 @@
+create database 'C:\exemplos-delphi\Capitulo3\4.Framework\DB\FrameWork.fdb' page_size 8192
+user 'SYSDBA' password 'masterkey';
+
+
 CREATE TABLE CATEGORIA(ID INT PRIMARY KEY, DESCRICAO VARCHAR(100));
 CREATE TABLE PRODUTO(ID INT PRIMARY KEY, DESCRICAO VARCHAR(100) NOT NULL, ID_CATEGORIA INT);
 

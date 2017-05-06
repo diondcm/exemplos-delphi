@@ -14,7 +14,6 @@ type
     Label2: TLabel;
     dbeID: TDBEdit;
     dbeDescricao: TDBEdit;
-    dbcAtivo: TDBCheckBox;
   private
     { Private declarations }
   public

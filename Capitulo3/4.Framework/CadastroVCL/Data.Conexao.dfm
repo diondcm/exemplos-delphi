@@ -189,6 +189,7 @@ inherited dmdConexao: TdmdConexao
       'RoleName=RoleName'
       'ServerCharSet='
       'Trim Char=False')
+    Connected = True
     Left = 256
     Top = 40
   end
@@ -196,8 +197,10 @@ inherited dmdConexao: TdmdConexao
     Params.Strings = (
       
         'Database=C:\Users\Aluno\Desktop\exemplos-delphi\Capitulo3\4.Fram' +
-        'ework\DB\DB_Novo.db'
-      'DriverID=SQLite')
+        'ework\DB\FRAMEWORK.FDB'
+      'Password=masterkey'
+      'User_Name=sysdba'
+      'DriverID=FB')
     LoginPrompt = False
     Left = 440
     Top = 184
@@ -219,7 +222,9 @@ inherited dmdConexao: TdmdConexao
     Top = 168
   end
   object sqlGerador: TSQLDataSet
+    MaxBlobSize = -1
     Params = <>
+    SQLConnection = SQLConnection
     Left = 224
     Top = 168
   end

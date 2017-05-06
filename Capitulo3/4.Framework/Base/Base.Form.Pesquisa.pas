@@ -10,6 +10,8 @@ uses
   Base.Data.Cadastro, Base.Form.Cadastro;
 
 type
+  TMetodoSelecaoRegistro<T: TdmdBaseCadastro> = reference to procedure(pDmdDados: T);
+
   TfrmBasePesquisa = class(TfrmBaseDados)
     pnlPesquisa: TPanel;
     btePesquisa: TButtonedEdit;
@@ -46,7 +48,7 @@ type
     function GetFrmBaseCadastro: TfrmBaseCadastro;
     class function GetClasseFrmCadastro: TFrmBaseCadastroClass; virtual; abstract;
   public
-    class function Pesquisar<T: TdmdBaseCadastro>: Boolean;
+    class function Pesquisar<T: TdmdBaseCadastro>(const pMetodoSelecao: TMetodoSelecaoRegistro<T>): Boolean;
   end;
 
 implementation
@@ -77,9 +79,8 @@ procedure TfrmBasePesquisa.AtivarModoSelecao;
 begin
   FModoSelecao := True;
 
-  /// todo: Actions
-  btnSelecionar.Enabled := True;
-  btnCancelar.Enabled := True;
+  actSelecionar.Visible := True;
+  actCancelar.Visible := True;
 end;
 
 procedure TfrmBasePesquisa.btePesquisaKeyDown(Sender: TObject; var Key: Word;
@@ -143,7 +144,7 @@ begin
   Result := FFrmBaseCadastro;
 end;
 
-class function TfrmBasePesquisa.Pesquisar<T>: Boolean;
+class function TfrmBasePesquisa.Pesquisar<T>(const pMetodoSelecao: TMetodoSelecaoRegistro<T>): Boolean;
 var
   lInstancia: TfrmBasePesquisa;
 begin
@@ -155,16 +156,14 @@ begin
     end;
 
     lInstancia.AtivarModoSelecao;
-    Result := lInstancia.ModalResult = mrOk;
+    Result := lInstancia.ShowModal = mrOk;
+    if Result then
+    begin
+      pMetodoSelecao(T(lInstancia.DmdCadastro));
+    end;
   finally
     lInstancia.Free;
   end;
-
-// todo: completar seleção
-// if Result then
-// begin
-//   pMetodoSelecaoRegistro(T(lInstancia.dmdBaseCadastro))
-// end;
 end;
 
 end.
