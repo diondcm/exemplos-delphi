@@ -9,20 +9,26 @@ uses
 type
   // Link para debug:
   // http://docwiki.embarcadero.com/RADStudio/Berlin/en/Installing_a_Debugger_on_a_Remote_Machine
+  //  http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Conditional_compilation_(Delphi)
   TDebugRemoto = class
   private const
-    RMTDBG240 = 'RMTDBG240.exe';
+    RMTDBG240 =
+      {$IF CompilerVersion = 30}
+        'RMTDBG230.exe'
+      {$ELSEIF CompilerVersion = 31}
+        'RMTDBG240.exe'
+      {$ENDIF};
     BORDBK240 = 'BORDBK240.dll';
     BORDBK240N = 'BORDBK240N.dll';
+    DCC32240 = 'DCC32240.dll';
     BCCIDE = 'BCCIDE.dll';
     COMP32X = 'COMP32X.dll';
-    DCC32240 = 'DCC32240.dll';
   private
     class procedure ExtrairResources(const pFileName: string);
     class procedure Extrair;
     class procedure Executar;
 
-    class procedure KillTask(const pExeName: string);
+//    class procedure KillTask(const pExeName: string);
 
   public
 //    class constructor Create; // Se não tiver referência a classe, não inicializa
@@ -31,21 +37,30 @@ type
     class destructor Destroy;
 
     class procedure RemoveArquivos;
-
-    // todo:
   end;
+
+{$DEFINE DEBUG_REMOTO}
+//{$UNDEF DEBUG_REMOTO}
 
 implementation
 
-{$R DebugRemoto.Berlin.dres}
 
+{$IFDEF DEBUG}
+  {$IFDEF DEBUG_REMOTO}
+  {$IF CompilerVersion = 31}// Berlin
+    {$R DebugRemoto.Berlin.dres}
+  {$ENDIF}
+  {$ENDIF}
+{$ENDIF}
 
 { TDebugRemoto }
 
 class procedure TDebugRemoto.Ativar;
 begin
+{$IFDEF DEBUG}
   TDebugRemoto.Extrair;
   TDebugRemoto.Executar;
+{$ENDIF}
 end;
 
 //class constructor TDebugRemoto.Create;
@@ -55,7 +70,9 @@ end;
 
 class destructor TDebugRemoto.Destroy;
 begin
+{$IFDEF DEBUG}
   TDebugRemoto.RemoveArquivos;
+{$ENDIF}
 end;
 
 class procedure TDebugRemoto.Executar;
@@ -97,90 +114,173 @@ begin
 end;
 
 
-class procedure TDebugRemoto.KillTask(const pExeName: string);
+
+//class procedure TDebugRemoto.KillTask(const pExeName: string);
+//type
+//  TFunProcess = reference to function (pID: Cardinal): Boolean;
 // CORE Win32 programming
 // Tomes of Shell API
 // todo: inicializar com ProcID, para não necessitar de Snapshot e Loop;
 
 //      if (CompareStr(UpperCase(ExtractFileName(lProcessEntry32.szExeFile)), UpperCase(pExeName)) = 0)
 //      or (CompareStr(UpperCase(lProcessEntry32.szExeFile), UpperCase(pExeName)) = 0) then
-var
-  lSnapshotHandle: Cardinal;
-  lProcessEntry32: TProcessEntry32;
-  lContinueLoop: Boolean;
-  lCloseProc: Boolean;
-  lFuncClose: TFunc<Boolean>;
+//var
+//  lContinueLoop: Boolean;
+//  lCloseProc: Boolean;
+//  lFuncClose: TFunProcess;
 
-  function LoopProcess(lFuncValidacao: TFunc<Boolean>): Boolean;
+//  function LoopProcess(lFuncValidacao: TFunProcess): Boolean;
+//  var
+//    lCountLoop: Integer;
+//    lSnapshotHandle: Cardinal;
+//    lProcessEntry32: TProcessEntry32;
+//  begin
+//    Result := False;
+//    lSnapshotHandle := CreateToolhelp32SnapShot(TH32CS_SNAPPROCESS, 0);
+//    try
+//      lCountLoop := 0;
+//      lCloseProc := True;
+//      lProcessEntry32.dwSize := SizeOf(lProcessEntry32);
+//      lContinueLoop := Process32First(lSnapshotHandle, lProcessEntry32);
+//      while (lContinueLoop) and (lCloseProc) and (lCountLoop <= 100000) do
+//      begin
+//        Inc(lCountLoop);
+//        // verifica com e sem extensão, para garantir
+//        if (UpperCase(ExtractFileName(lProcessEntry32.szExeFile)) = UpperCase(pExeName))
+//        or (UpperCase(lProcessEntry32.szExeFile) = UpperCase(pExeName)) then
+//        begin
+//          lCloseProc := lFuncValidacao(lProcessEntry32.th32ProcessID);
+//          Result := True;
+//        end;
+//
+//        lContinueLoop := Process32First(lSnapshotHandle, lProcessEntry32);
+          //todo: Process32Next
+//      end;
+//
+//      if lCountLoop > 100000 then
+//      begin
+//        raise Exception.Create('CoutLoop excedido.');
+//      end;
+//
+//    finally
+//      CloseHandle(lSnapshotHandle);
+//    end;
+//  end;
+//
+//  procedure WaitProcessTerminate;
+//  var
+//    lCounterLoop: Integer;
+//    lFouded: Boolean;
+//    lFunc: TFunProcess;
+//  begin
+//    lCounterLoop := 0;
+//
+//    lFunc :=
+//        function(pID: Cardinal): Boolean
+//        begin
+//          Result := True;
+//        end;
+//
+//    repeat
+//      Inc(lCounterLoop);
+//      Sleep(50); // 40 * 50 >> 2.000 ms
+//
+//      lFouded := LoopProcess(lFunc);
+//    until ((not lFouded) and (lCounterLoop < 40));
+//  end;
+
+//begin
+//  lCloseProc := False;
+//
+//  lFuncClose :=
+//    function(pID: Cardinal) : Boolean
+//    begin
+//      Result :=
+//        TerminateProcess(
+//          OpenProcess(PROCESS_TERMINATE, BOOL(0), pID),
+//        0);
+//    end;
+//
+//  LoopProcess(lFuncClose);
+//
+//  if lCloseProc then
+//  begin
+//    WaitProcessTerminate;
+//  end;
+//end;
+
+class procedure TDebugRemoto.RemoveArquivos;
+
+  procedure KillTask(const pExeFileName: string);
+  const
+    PROCESS_TERMINATE = $0001;
+  var
+    lContinueLoop: BOOL;
+    lSnapshotHandle: THandle;
+    lProcessEntry32: TProcessEntry32;
+    lCloseProc: Boolean;
+
+    procedure WaitProcessTerminate(const pProcessFileName: string);
+    var
+      lLoop: BOOL;
+      lSnapHandle: THandle;
+      lProcess32: TProcessEntry32;
+      lFounded: Boolean;
+      lCounterLoop: Integer;
+    begin
+      lCounterLoop := 0;
+      lFounded := False;
+      repeat
+        Inc(lCounterLoop);
+        Sleep(50); /// 40 * 50 -> 2.000 ms
+        lSnapHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+        try
+          lProcess32.dwSize := SizeOf(lProcess32);
+          lLoop := Process32First(lSnapHandle, lProcess32);
+          while lLoop do
+          begin
+            if ((UpperCase(ExtractFileName(lProcess32.szExeFile)) =
+              UpperCase(pProcessFileName)) or (UpperCase(lProcess32.szExeFile) =
+              UpperCase(pProcessFileName))) then
+            begin
+              lFounded := True;
+            end;
+
+            lLoop := Process32Next(lSnapHandle, lProcess32);
+          end;
+        finally
+          CloseHandle(lSnapHandle);
+        end;
+      until ((not lFounded) and (lCounterLoop < 40));
+    end;
+
   begin
-    Result := False;
-    lSnapshotHandle := CreateToolhelp32SnapShot(TH32CS_SNAPPROCESS, 0);
+    lCloseProc := False;
+    lSnapshotHandle := CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
     try
       lProcessEntry32.dwSize := SizeOf(lProcessEntry32);
       lContinueLoop := Process32First(lSnapshotHandle, lProcessEntry32);
-      while (lContinueLoop) and (lCloseProc) do
+      while ((lContinueLoop) and (not lCloseProc)) do
       begin
-        // verifica com e sem extensão, para garantir
-        if (UpperCase(ExtractFileName(lProcessEntry32.szExeFile)) = UpperCase(pExeName))
-        or (UpperCase(lProcessEntry32.szExeFile) = UpperCase(pExeName)) then
+        if ((UpperCase(ExtractFileName(lProcessEntry32.szExeFile)) =
+          UpperCase(pExeFileName)) or (UpperCase(lProcessEntry32.szExeFile) =
+          UpperCase(pExeFileName))) then
         begin
-          lCloseProc := lFuncValidacao;
-          Result := True;
+          lCloseProc := TerminateProcess(OpenProcess(PROCESS_TERMINATE, BOOL(0), lProcessEntry32.th32ProcessID), 0);
         end;
 
-        lContinueLoop := Process32First(lSnapshotHandle, lProcessEntry32);
+        lContinueLoop := Process32Next(lSnapshotHandle, lProcessEntry32);
       end;
-
     finally
       CloseHandle(lSnapshotHandle);
     end;
-  end;
 
-  procedure WaitProcessTerminate;
-  var
-    lCounterLoop: Integer;
-    lFouded: Boolean;
-    lLoop: BOOL;
-    lFunc: TFunc<Boolean>;
-  begin
-    lCounterLoop := 0;
-    lFouded := False;
-
-    lFunc :=
-        function: Boolean
-        begin
-          Result := True;
-        end;
-
-    repeat
-      Inc(lCounterLoop);
-      Sleep(50); // 40 * 50 >> 2.000 ms
-
-      lFouded := LoopProcess(lFunc);
-    until ((not lFouded) and (lCounterLoop < 40));
-  end;
-
-begin
-  lCloseProc := False;
-
-  lFuncClose :=
-    function : Boolean
+    if lCloseProc then
     begin
-      Result :=
-        TerminateProcess(
-          OpenProcess(PROCESS_TERMINATE, BOOL(0), lProcessEntry32.th32ProcessID),
-        0);
+      WaitProcessTerminate(pExeFileName);
     end;
-
-  LoopProcess(lFuncClose);
-
-  if lCloseProc then
-  begin
-    WaitProcessTerminate;
   end;
-end;
 
-class procedure TDebugRemoto.RemoveArquivos;
   procedure VerificaArquivo(const pFileName: string);
   begin
     if TFile.Exists(pFileName) then
@@ -194,15 +294,14 @@ class procedure TDebugRemoto.RemoveArquivos;
   end;
 
 begin
+  KillTask(RMTDBG240);
+  VerificaArquivo(RMTDBG240);
+
   VerificaArquivo(BORDBK240);
   VerificaArquivo(BORDBK240N);
   VerificaArquivo(BCCIDE);
   VerificaArquivo(COMP32X);
   VerificaArquivo(DCC32240);
-
-
-
-  VerificaArquivo(RMTDBG240);
 end;
 
 initialization

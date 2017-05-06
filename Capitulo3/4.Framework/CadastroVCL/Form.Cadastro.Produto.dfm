@@ -1,5 +1,7 @@
 inherited frmCadastroProduto: TfrmCadastroProduto
   Caption = 'Cadastro de Produtos'
+  ClientWidth = 518
+  ExplicitWidth = 534
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -15,7 +17,6 @@ inherited frmCadastroProduto: TfrmCadastroProduto
     Width = 46
     Height = 13
     Caption = 'Descri'#231#227'o'
-    FocusControl = cxDBTextEdit1
   end
   object Label3: TLabel [2]
     Left = 38
@@ -31,41 +32,45 @@ inherited frmCadastroProduto: TfrmCadastroProduto
     Height = 13
     Caption = 'Peso'
   end
-  object cxDBTextEdit1: TcxDBTextEdit [11]
+  inherited Panel1: TPanel
+    Width = 518
+    ExplicitLeft = 0
+    ExplicitWidth = 511
+  end
+  object dbeCodigo: TDBEdit [11]
+    Left = 38
+    Top = 111
+    Width = 121
+    Height = 21
+    DataField = 'CODIGO'
+    DataSource = dtsDados
+    TabOrder = 7
+  end
+  object dbeDescricao: TDBEdit [12]
     Left = 38
     Top = 152
-    DataBinding.DataField = 'DESCRICAO'
-    DataBinding.DataSource = DataSource1
-    TabOrder = 7
     Width = 121
-  end
-  object cxDBTextEdit2: TcxDBTextEdit [12]
-    Left = 38
-    Top = 112
-    DataBinding.DataField = 'CODIGO'
-    DataBinding.DataSource = DataSource1
+    Height = 21
+    DataField = 'DESCRICAO'
+    DataSource = dtsDados
     TabOrder = 8
-    Width = 121
   end
-  object cxDBTextEdit3: TcxDBTextEdit [13]
+  object dbeCor: TDBEdit [13]
     Left = 38
-    Top = 189
-    DataBinding.DataField = 'COR'
-    DataBinding.DataSource = DataSource1
-    TabOrder = 9
+    Top = 192
     Width = 121
+    Height = 21
+    DataField = 'COR'
+    DataSource = dtsDados
+    TabOrder = 9
   end
-  object cxDBTextEdit4: TcxDBTextEdit [14]
+  object dbePeso: TDBEdit [14]
     Left = 38
     Top = 235
-    DataBinding.DataField = 'PESO'
-    DataBinding.DataSource = DataSource1
-    TabOrder = 10
     Width = 121
-  end
-  object DataSource1: TDataSource
-    DataSet = dmdProduto.cdsCadastro
-    Left = 248
-    Top = 200
+    Height = 21
+    DataField = 'PESO'
+    DataSource = dtsDados
+    TabOrder = 10
   end
 end

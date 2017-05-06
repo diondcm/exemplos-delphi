@@ -1,9 +1,9 @@
 inherited frmCadastroCategorias: TfrmCadastroCategorias
   Caption = 'Cadastro de Categorias'
-  ClientHeight = 243
-  ClientWidth = 515
-  ExplicitWidth = 531
-  ExplicitHeight = 282
+  ClientHeight = 250
+  ClientWidth = 533
+  ExplicitWidth = 549
+  ExplicitHeight = 289
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -19,47 +19,50 @@ inherited frmCadastroCategorias: TfrmCadastroCategorias
     Width = 46
     Height = 13
     Caption = 'Descri'#231#227'o'
-    FocusControl = cxDBTextEdit1
-  end
-  object cxDBTextEdit1: TcxDBTextEdit [2]
-    Left = 168
-    Top = 104
-    DataBinding.DataField = 'DESCRICAO'
-    DataBinding.DataSource = dtsDados
-    TabOrder = 7
-    Width = 121
-  end
-  object cxDBCheckBox1: TcxDBCheckBox [3]
-    Left = 312
-    Top = 104
-    Caption = 'ATIVO'
-    DataBinding.DataField = 'ATIVO'
-    DataBinding.DataSource = dtsDados
-    TabOrder = 8
-  end
-  object cxDBTextEdit2: TcxDBTextEdit [4]
-    Left = 24
-    Top = 104
-    DataBinding.DataField = 'ID'
-    DataBinding.DataSource = dtsDados
-    TabOrder = 9
-    Width = 121
   end
   inherited Panel1: TPanel
-    Width = 515
+    Width = 533
     ExplicitLeft = 0
-    ExplicitWidth = 612
+    ExplicitWidth = 515
+  end
+  object dbeID: TDBEdit [9]
+    Left = 24
+    Top = 104
+    Width = 121
+    Height = 21
+    DataField = 'ID'
+    DataSource = dtsDados
+    TabOrder = 7
+  end
+  object dbeDescricao: TDBEdit [10]
+    Left = 168
+    Top = 104
+    Width = 121
+    Height = 21
+    DataField = 'DESCRICAO'
+    DataSource = dtsDados
+    TabOrder = 8
+  end
+  object dbcAtivo: TDBCheckBox [11]
+    Left = 312
+    Top = 106
+    Width = 97
+    Height = 17
+    Caption = 'Ativo'
+    DataField = 'ATIVO'
+    DataSource = dtsDados
+    TabOrder = 9
   end
   inherited dtsDados: TDataSource
-    Left = 160
-    Top = 176
+    Left = 352
+    Top = 72
   end
   inherited MainMenu: TMainMenu
-    Left = 280
-    Top = 176
+    Left = 472
+    Top = 72
   end
   inherited ActionList: TActionList
-    Left = 224
-    Top = 176
+    Left = 416
+    Top = 72
   end
 end
