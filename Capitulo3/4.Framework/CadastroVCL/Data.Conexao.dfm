@@ -7,7 +7,7 @@ inherited dmdConexao: TdmdConexao
     Left = 64
     Top = 200
     Bitmap = {
-      494C0101010008002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       00000000000000000000000000000000000009090946525252B5181818DE1717
       17DD171717B10404043A000000000000000000000000000000000707073D3333
@@ -147,21 +147,48 @@ inherited dmdConexao: TdmdConexao
       000000000000}
   end
   object SQLConnection: TSQLConnection
-    DriverName = 'Sqlite'
+    DriverName = 'Firebird'
     LoginPrompt = False
     Params.Strings = (
-      'DriverUnit=Data.DbxSqlite'
+      'DriverUnit=Data.DBXFirebird'
       
-        'DriverPackageLoader=TDBXSqliteDriverLoader,DBXSqliteDriver240.bp' +
-        'l'
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver240.' +
+        'bpl'
       
-        'MetaDataPackageLoader=TDBXSqliteMetaDataCommandFactory,DbxSqlite' +
-        'Driver240.bpl'
-      'FailIfMissing=True'
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
+        'birdDriver240.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
+        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
+        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxfb.dll'
+      'LibraryNameOsx=libsqlfb.dylib'
+      'VendorLib=fbclient.dll'
+      'VendorLibWin64=fbclient.dll'
+      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
       
         'Database=C:\Users\Aluno\Desktop\exemplos-delphi\Capitulo3\4.Fram' +
-        'ework\DB\DB_Novo.db')
-    Connected = True
+        'ework\DB\FRAMEWORK.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'SQLDialect=3'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'TrimChar=False'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'Trim Char=False')
     Left = 256
     Top = 40
   end

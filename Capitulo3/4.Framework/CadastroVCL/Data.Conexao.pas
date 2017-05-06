@@ -10,7 +10,7 @@ uses
   FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
   FireDAC.VCLUI.Wait, FireDAC.Comp.UI, FireDAC.Comp.Client, Data.DbxSqlite,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, Base.Data.Cadastro, Data.FMTBcd;
+  FireDAC.Comp.DataSet, Base.Data.Cadastro, Data.FMTBcd, Data.DBXFirebird;
 
 type
   TdmdConexao = class(TdmdBase)
