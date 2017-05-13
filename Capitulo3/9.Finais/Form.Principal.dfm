@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object btnMasterDetail: TButton
@@ -38,9 +39,17 @@ object frmPrincipal: TfrmPrincipal
     Action = actSerealizador
     TabOrder = 2
   end
+  object btnNASAAPI: TButton
+    Left = 24
+    Top = 207
+    Width = 113
+    Height = 58
+    Action = actNasaAPI
+    TabOrder = 3
+  end
   object ActionList1: TActionList
-    Left = 432
-    Top = 56
+    Left = 536
+    Top = 16
     object actMasterDetail: TAction
       Caption = 'Master Detail'
       OnExecute = actMasterDetailExecute
@@ -53,10 +62,14 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Serealizador'
       OnExecute = actSerealizadorExecute
     end
+    object actNasaAPI: TAction
+      Caption = 'NASA API'
+      OnExecute = actNasaAPIExecute
+    end
   end
   object MainMenu1: TMainMenu
-    Left = 432
-    Top = 104
+    Left = 536
+    Top = 64
     object Exemplos1: TMenuItem
       Caption = 'Exemplos'
       object MasterDetail1: TMenuItem

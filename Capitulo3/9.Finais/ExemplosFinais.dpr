@@ -8,7 +8,8 @@ uses
   Form.Exportador in 'Form.Exportador.pas' {frmExportador},
   Classe.Atributo.Campo in 'Classe.Atributo.Campo.pas',
   Classe.Exportador.Arquivo in 'Classe.Exportador.Arquivo.pas',
-  Classe.Serealizador.Objeto in 'Classe.Serealizador.Objeto.pas';
+  Classe.Serealizador.Objeto in 'Classe.Serealizador.Objeto.pas',
+  Form.NASA.API in 'Form.NASA.API.pas' {frmNASAAPI};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TfrmMAsterDetail, frmMAsterDetail);
   Application.CreateForm(TfrmREST, frmREST);
   Application.CreateForm(TfrmExportador, frmExportador);
+  Application.CreateForm(TfrmNASAAPI, frmNASAAPI);
   Application.Run;
 end.

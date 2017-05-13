@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.DateUtils, System.Generics.Collections,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,
+  Classe.Helper.ForEach.DataSet;
 
 type
   TTransacao = class
@@ -39,9 +40,11 @@ type
     btnForDataSet: TButton;
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
+    btnInsert: TButton;
     procedure btnExibeExtratoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnForDataSetClick(Sender: TObject);
+    procedure btnInsertClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +111,33 @@ begin
 end;
 
 procedure TfrmPrincipal.btnForDataSetClick(Sender: TObject);
+begin
+//  fmeTransacoes.First;
+//  while not fmeTransacoes.Eof do
+//  begin
+//    memLog.Lines.Add(
+//      fmeTransacoes.FieldByName('Codigo').AsString + ': ' +
+//      fmeTransacoes.FieldByName('Data').AsString + ' - ' +
+//      fmeTransacoes.FieldByName('Valor').AsString);
+//
+//    fmeTransacoes.Next;
+//  end;
+//  fmeTransacoes.First;
+
+
+  /// A ideia é implementar um ForEach para o Delphi com base em datasets
+
+  fmeTransacoes.ForEach(
+    procedure (pDataSet: TDataSet)
+    begin
+      memLog.Lines.Add(
+        pDataSet.FieldByName('Codigo').AsString + ': ' +
+        pDataSet.FieldByName('Data').AsString + ' - ' +
+        pDataSet.FieldByName('Valor').AsString);
+    end);
+end;
+
+procedure TfrmPrincipal.btnInsertClick(Sender: TObject);
 var
   i: Integer;
 begin
@@ -120,28 +150,6 @@ begin
     fmeTransacoes.FieldByName('CODIGO').AsInteger := Random(1000);
     fmeTransacoes.Post;
   end;
-
-
-  fmeTransacoes.First;
-  while not fmeTransacoes.Eof do
-  begin
-    memLog.Lines.Add(
-      fmeTransacoes.FieldByName('Codigo').AsString + ': ' +
-      fmeTransacoes.FieldByName('Data').AsString + ' - ' +
-      fmeTransacoes.FieldByName('Valor').AsString);
-
-    fmeTransacoes.Next;
-  end;
-
-
-//  fmeTransacoes.ExecutaParaCadaRegistro(
-//    procedure (pDataSet: TDataSet)
-//    begin
-//      memLog.Lines.Add(
-//        pDataSet.FieldByName('Codigo').AsString + ': ' +
-//        pDataSet.FieldByName('Data').AsString + ' - ' +
-//        pDataSet.FieldByName('Valor').AsString);
-//    end);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);

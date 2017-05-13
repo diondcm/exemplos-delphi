@@ -33,7 +33,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object btnForDataSet: TButton
     Left = 16
-    Top = 77
+    Top = 117
     Width = 129
     Height = 25
     Caption = 'btnForDataSet'
@@ -54,6 +54,15 @@ object frmPrincipal: TfrmPrincipal
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
+  object btnInsert: TButton
+    Left = 16
+    Top = 86
+    Width = 129
+    Height = 25
+    Caption = 'Insert'
+    TabOrder = 4
+    OnClick = btnInsertClick
+  end
   object fmeTransacoes: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -62,7 +71,7 @@ object frmPrincipal: TfrmPrincipal
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 168
+    Left = 176
     Top = 192
     object fmeTransacoesDATA: TDateField
       FieldName = 'DATA'

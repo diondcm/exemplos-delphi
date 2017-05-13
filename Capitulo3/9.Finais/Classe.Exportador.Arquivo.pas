@@ -5,8 +5,16 @@ interface
 uses Classe.Atributo.Campo;
 
 type
+  ///  <summary>
+  ///    Classe para Header de CNAB 240
+  ///  </summary>
+
   THeader = class
+  public type
+    TTeste = class
+    end;
   private
+  var
     FIdentificador: string;
     FCodEmpresa: Integer;
     FCodBanco: Integer;
@@ -14,6 +22,9 @@ type
     FCodConta: Integer;
     FNomeEmpresa: string;
   public
+    function TotalArquivo: Currency;
+
+
     [TAtributoCampo(0, 1, TAlinhamentoCampo.Direita, TAtributoCampo.CARACTERE_ESPACO)]
     property Identificador: string read FIdentificador write FIdentificador;
 
@@ -29,10 +40,15 @@ type
     [TAtributoCampo(4, 10, TAlinhamentoCampo.Direita, TAtributoCampo.CARACTERE_ESPACO)]
     property CodAgencia: Integer read FCodAgencia write FCodAgencia;
 
-    [TAtributoCampo(5, 10, TAlinhamentoCampo.Direita, TAtributoCampo.CARACTERE_ESPACO)]
+    [TAtributoCampo(5, 10, TAlinhamentoCampo.Direita,
+      TAtributoCampo.CARACTERE_ESPACO)]
     property CodConta: Integer read FCodConta write FCodConta;
   end;
 
 implementation
+
+function THeader.TotalArquivo: Currency;
+begin
+end;
 
 end.
