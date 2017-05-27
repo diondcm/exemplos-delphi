@@ -17,9 +17,10 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 586
-    Height = 121
+    Height = 177
     Align = alTop
     TabOrder = 0
+    ExplicitTop = -6
     object edtAcao: TEdit
       Left = 224
       Top = 16
@@ -30,7 +31,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object edtQauntidade: TEdit
       Left = 224
-      Top = 51
+      Top = 41
       Width = 121
       Height = 21
       NumbersOnly = True
@@ -39,7 +40,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object edtValor: TEdit
       Left = 224
-      Top = 82
+      Top = 67
       Width = 121
       Height = 21
       NumbersOnly = True
@@ -48,25 +49,44 @@ object frmPrincipal: TfrmPrincipal
     end
     object btnVenda: TBitBtn
       Left = 465
-      Top = 26
+      Top = 16
       Width = 105
       Height = 72
       Caption = 'Vender'
       TabOrder = 3
+      OnClick = btnVendaClick
     end
     object btnCompra: TBitBtn
       Left = 8
-      Top = 26
+      Top = 16
       Width = 105
       Height = 72
       Caption = 'Comprar'
       TabOrder = 4
       OnClick = btnCompraClick
     end
+    object btnGetVendas: TBitBtn
+      Left = 465
+      Top = 120
+      Width = 105
+      Height = 43
+      Caption = 'Get Vendas'
+      TabOrder = 5
+      OnClick = btnGetVendasClick
+    end
+    object btnGetCompras: TBitBtn
+      Left = 8
+      Top = 120
+      Width = 105
+      Height = 43
+      Caption = 'Get Compras'
+      TabOrder = 6
+      OnClick = btnGetComprasClick
+    end
   end
   object pnlMensagem: TPanel
     Left = 0
-    Top = 121
+    Top = 177
     Width = 586
     Height = 32
     Align = alTop
@@ -79,30 +99,45 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 121
   end
-  object ListView1: TListView
+  object lvtAcoes: TListView
     Left = 0
-    Top = 153
+    Top = 209
     Width = 586
-    Height = 179
+    Height = 123
     Align = alClient
     Columns = <
       item
         Caption = 'A'#231#227'o'
       end
       item
+        Alignment = taRightJustify
         Caption = 'Quantidade'
       end
       item
+        Alignment = taRightJustify
         Caption = 'Valor'
       end
       item
+        Alignment = taRightJustify
         Caption = 'Total'
+        Width = 70
       end>
     TabOrder = 2
+    ViewStyle = vsReport
+    OnColumnClick = lvtAcoesColumnClick
+    OnCompare = lvtAcoesCompare
     ExplicitLeft = 176
     ExplicitTop = 112
     ExplicitWidth = 250
     ExplicitHeight = 150
+  end
+  object tmrMensagem: TTimer
+    Enabled = False
+    Interval = 1800
+    OnTimer = tmrMensagemTimer
+    Left = 400
+    Top = 152
   end
 end
