@@ -9,7 +9,8 @@ uses
   IdHTTPWebBrokerBridge,
   Form.Server.Principal in 'Form.Server.Principal.pas' {Form1},
   ServerMethodsAcao in 'ServerMethodsAcao.pas' {SMAcao: TDataModule},
-  Web.Module in 'Web.Module.pas' {WebModule1: TWebModule};
+  Web.Module in 'Web.Module.pas' {WebModule1: TWebModule},
+  Classe.Status in '..\Shared\Classe.Status.pas';
 
 {$R *.res}
 

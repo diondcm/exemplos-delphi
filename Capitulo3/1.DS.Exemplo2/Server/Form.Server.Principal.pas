@@ -77,6 +77,8 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   FServer := TIdHTTPWebBrokerBridge.Create(Self);
+  ButtonOpenBrowserClick(Sender);
+
 end;
 
 procedure TForm1.StartServer;
