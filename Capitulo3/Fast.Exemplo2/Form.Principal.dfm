@@ -11,6 +11,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  PopupMenu = PopupMenu
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -30,6 +31,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 188
     Align = alClient
     DataSource = dtsCategoria
+    PopupMenu = PopupMenu
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -44,6 +46,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 214
     Align = alBottom
     DataSource = dtsProdutos
+    PopupMenu = PopupMenu
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -57,18 +60,34 @@ object frmPrincipal: TfrmPrincipal
     Width = 513
     Height = 41
     Align = alTop
+    PopupMenu = PopupMenu
     TabOrder = 2
-    ExplicitLeft = 160
-    ExplicitTop = 72
-    ExplicitWidth = 185
-    object btnReport: TButton
+    object btnReportCategoria: TButton
       Left = 16
       Top = 7
-      Width = 75
+      Width = 137
       Height = 25
-      Caption = 'Report'
+      Caption = 'Imprime esta categoria'
       TabOrder = 0
-      OnClick = btnReportClick
+      OnClick = btnReportCategoriaClick
+    end
+    object btnProdutoCategoria: TButton
+      Left = 159
+      Top = 7
+      Width = 154
+      Height = 25
+      Caption = 'Produto por Categoria'
+      TabOrder = 1
+      OnClick = btnProdutoCategoriaClick
+    end
+    object btnExport: TButton
+      Left = 336
+      Top = 7
+      Width = 107
+      Height = 25
+      Caption = 'Exportar para...'
+      TabOrder = 2
+      OnClick = btnExportClick
     end
   end
   object dtsProdutos: TDataSource
@@ -82,7 +101,6 @@ object frmPrincipal: TfrmPrincipal
     Top = 152
   end
   object qryCategoria: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'select * from categoria')
@@ -90,9 +108,9 @@ object frmPrincipal: TfrmPrincipal
     Top = 104
   end
   object qryProdutos: TFDQuery
-    Active = True
     MasterSource = dtsCategoria
     MasterFields = 'ID_CATEGORIA'
+    DetailFields = 'ID_CATEGORIA'
     Connection = FDConnection
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
@@ -112,7 +130,6 @@ object frmPrincipal: TfrmPrincipal
     Params.Strings = (
       'Database=C:\Users\Aluno\Desktop\exemplos-delphi\SQLite\fast.db'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 336
   end
@@ -131,8 +148,8 @@ object frmPrincipal: TfrmPrincipal
       'begin'
       ''
       'end.')
-    Left = 336
-    Top = 56
+    Left = 128
+    Top = 144
     Datasets = <
       item
         DataSet = frxDBCategoria
@@ -280,26 +297,25 @@ object frmPrincipal: TfrmPrincipal
     Top = 224
   end
   object qryListaProdutos: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       
-        'select p.nome produto, p.codigo cod_produto, c.codigo cod_catego' +
-        'ria, c.nome categoria '
+        'select p.nome produto, p.codigo cod_produto, p.valor, c.codigo c' +
+        'od_categoria, c.nome categoria '
       'from produto p'
       'join categoria c'
       'on p.id_categoria = c.id_categoria'
       'order by c.nome')
-    Left = 216
-    Top = 24
+    Left = 360
+    Top = 248
   end
   object frxDBListaProduto: TfrxDBDataset
     UserName = 'frxDBListaProduto'
     CloseDataSource = False
     DataSet = qryListaProdutos
     BCDToCurrency = False
-    Left = 216
-    Top = 72
+    Left = 360
+    Top = 296
   end
   object frxReportListaProdutos: TfrxReport
     Version = '5.5.11'
@@ -313,11 +329,57 @@ object frmPrincipal: TfrmPrincipal
     ReportOptions.LastChange = 42924.520015532400000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      '// outra solu'#231#227'o 2'
+      '//var'
+      
+        '//  ImpGrupo: Boolean;                                          ' +
+        '        '
+      ''
+      '  '
+      'function ImprimeGroup: Boolean;'
+      'begin'
+      '  Result := True;    '
+      '  if <frxDBListaProduto."categoria"> = '#39'NOBREAK'#39' then'
+      '  begin'
+      
+        '    Result := False;                                            ' +
+        '           '
+      '  end;            '
+      'end;          '
+      ''
+      'procedure GroupHeader1OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      
+        '  //ShowMessage('#39'Imp:'#39' + BoolToStr(ImprimeGroup));              ' +
+        '                       '
+      
+        '  GroupHeader1.Visible := ImprimeGroup;                         ' +
+        '                                   '
+      'end;'
+      ''
+      'procedure MasterData1OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '   MasterData1.Visible := ImprimeGroup;        '
+      'end;'
+      ''
+      'procedure GroupFooter1OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '    GroupFooter1.Visible := ImprimeGroup;      '
+      'end;'
+      ''
+      '// Outra solu'#231#227'o                                  '
+      '//procedure GroupHeader1OnBeforePrint(Sender: TfrxComponent);'
+      '//begin'
+      '//GroupHeader1.Visible := ImprimeGroup;'#160
+      '//MasterData1.Visible := ImprimeGroup;'
+      '//GroupFooter1.Visible := ImprimeGroup;'#160
+      '//end;'
+      '        '
       'begin'
       ''
       'end.')
-    Left = 336
-    Top = 112
+    Left = 360
+    Top = 184
     Datasets = <
       item
         DataSet = frxDBListaProduto
@@ -563,7 +625,17 @@ object frmPrincipal: TfrmPrincipal
         Height = 22.677180000000000000
         Top = 211.653680000000000000
         Width = 718.110700000000000000
+        OnBeforePrint = 'GroupHeader1OnBeforePrint'
+        Child = frxReportListaProdutos.Child1
         Condition = 'frxDBListaProduto."cod_categoria"'
+        object Gradient1: TfrxGradientView
+          Align = baClient
+          Width = 718.110700000000000000
+          Height = 22.677180000000000000
+          BeginColor = clMoneyGreen
+          Style = gsHorizontal
+          Color = 10530464
+        end
         object frxDBListaProdutocod_categoria: TfrxMemoView
           Left = 7.559060000000000000
           Width = 79.370130000000000000
@@ -587,9 +659,10 @@ object frmPrincipal: TfrmPrincipal
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
-        Height = 22.677180000000000000
-        Top = 257.008040000000000000
+        Height = 18.897650000000000000
+        Top = 302.362400000000000000
         Width = 718.110700000000000000
+        OnBeforePrint = 'MasterData1OnBeforePrint'
         DataSet = frxDBListaProduto
         DataSetName = 'frxDBListaProduto'
         RowCount = 0
@@ -604,7 +677,7 @@ object frmPrincipal: TfrmPrincipal
             '[frxDBListaProduto."cod_produto"]')
         end
         object frxDBListaProdutoproduto: TfrxMemoView
-          Left = 105.826840000000000000
+          Left = 109.606370000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'produto'
@@ -613,7 +686,354 @@ object frmPrincipal: TfrmPrincipal
           Memo.UTF8W = (
             '[frxDBListaProduto."produto"]')
         end
+        object frxDBListaProdutoVALOR: TfrxMemoView
+          Left = 623.622450000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBListaProduto
+          DataSetName = 'frxDBListaProduto'
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBListaProduto."VALOR"]')
+        end
+      end
+      object Child1: TfrxChild
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 257.008040000000000000
+        Width = 718.110700000000000000
+        object Memo3: TfrxMemoView
+          Left = 11.338590000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'C'#243'digo')
+        end
+        object Memo4: TfrxMemoView
+          Left = 109.606370000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Produto')
+        end
+        object Line3: TfrxLineView
+          Align = baWidth
+          Top = 18.897650000000000000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo6: TfrxMemoView
+          Left = 623.622450000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Valor')
+        end
+      end
+      object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
+        Height = 45.354360000000000000
+        Top = 343.937230000000000000
+        Width = 718.110700000000000000
+        OnBeforePrint = 'GroupFooter1OnBeforePrint'
+        object Line4: TfrxLineView
+          Align = baWidth
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo5: TfrxMemoView
+          Top = 7.559059999999988000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Quantidade: [COUNT(MasterData1)]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Left = 582.047620000000000000
+          Top = 7.559059999999988000
+          Width = 136.063080000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total: [SUM(<frxDBListaProduto."VALOR">,MasterData1)]')
+          ParentFont = False
+        end
+        object Line5: TfrxLineView
+          Align = baWidth
+          Top = 44.015769999999970000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo8: TfrxMemoView
+          Left = 151.181200000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Valores:')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          Left = 151.181200000000000000
+          Top = 22.677180000000020000
+          Width = 427.086890000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            
+              'Min: [MIN(<frxDBListaProduto."VALOR">,MasterData1)] M'#233'd: [AVG(<f' +
+              'rxDBListaProduto."VALOR">,MasterData1)] M'#225'x: [MAX(<frxDBListaPro' +
+              'duto."VALOR">,MasterData1)]')
+          ParentFont = False
+          Formats = <
+            item
+              FormatStr = '%2.2m'
+              Kind = fkNumeric
+            end
+            item
+              FormatStr = '%2.2m'
+              Kind = fkNumeric
+            end
+            item
+              FormatStr = '%2.2m'
+              Kind = fkNumeric
+            end>
+        end
+      end
+      object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
+        Height = 68.031540000000000000
+        Top = 449.764070000000000000
+        Width = 718.110700000000000000
+        object Memo10: TfrxMemoView
+          Top = 26.559059999999990000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Quantidade: [COUNT(MasterData1)]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 582.047620000000000000
+          Top = 26.559059999999990000
+          Width = 136.063080000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total: [SUM(<frxDBListaProduto."VALOR">,MasterData1)]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 151.181200000000000000
+          Top = 19.000000000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Valores:')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          Left = 151.181200000000000000
+          Top = 41.677180000000020000
+          Width = 427.086890000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            
+              'Min: [MIN(<frxDBListaProduto."VALOR">,MasterData1)] M'#233'd: [AVG(<f' +
+              'rxDBListaProduto."VALOR">,MasterData1)] M'#225'x: [MAX(<frxDBListaPro' +
+              'duto."VALOR">,MasterData1)]')
+          ParentFont = False
+          Formats = <
+            item
+              FormatStr = '%2.2m'
+              Kind = fkNumeric
+            end
+            item
+              FormatStr = '%2.2m'
+              Kind = fkNumeric
+            end
+            item
+              FormatStr = '%2.2m'
+              Kind = fkNumeric
+            end>
+        end
+        object Line6: TfrxLineView
+          Align = baWidth
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line7: TfrxLineView
+          Align = baWidth
+          Top = 3.779529999999965000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo14: TfrxMemoView
+          Top = 3.779530000000022000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Totais gerais')
+          ParentFont = False
+        end
+        object Line8: TfrxLineView
+          Align = baWidth
+          Top = 66.252009999999990000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
       end
     end
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    Left = 296
+    Top = 80
+  end
+  object PopupMenu: TPopupMenu
+    Left = 384
+    Top = 80
+    object PDF1: TMenuItem
+      Caption = 'PDF'
+      OnClick = PDF1Click
+    end
+    object JPG1: TMenuItem
+      Caption = 'JPG'
+      OnClick = JPG1Click
+    end
+    object HTML1: TMenuItem
+      Caption = 'HTML'
+      OnClick = HTML1Click
+    end
+    object XLS1: TMenuItem
+      Caption = 'XLS'
+      OnClick = XLS1Click
+    end
+    object XLSX1: TMenuItem
+      Caption = 'XLSX'
+      OnClick = XLSX1Click
+    end
+  end
+  object frxJPEGExport1: TfrxJPEGExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Left = 296
+    Top = 128
+  end
+  object frxHTMLExport1: TfrxHTMLExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    FixedWidth = True
+    Background = False
+    Centered = False
+    EmptyLines = True
+    Print = False
+    PictureType = gpPNG
+    Left = 280
+    Top = 216
+  end
+  object frxXLSExport1: TfrxXLSExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    ExportEMF = True
+    AsText = False
+    Background = True
+    FastExport = True
+    PageBreaks = True
+    EmptyLines = True
+    SuppressPageHeadersFooters = False
+    Left = 280
+    Top = 264
+  end
+  object frxXLSXExport1: TfrxXLSXExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    ChunkSize = 0
+    PictureType = gpPNG
+    Left = 280
+    Top = 304
   end
 end
