@@ -11,6 +11,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlOperacao: TPanel
@@ -20,7 +21,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 177
     Align = alTop
     TabOrder = 0
-    ExplicitTop = -6
     object edtAcao: TEdit
       Left = 224
       Top = 16
@@ -99,7 +99,6 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 121
   end
   object lvtAcoes: TListView
     Left = 0
@@ -128,14 +127,19 @@ object frmPrincipal: TfrmPrincipal
     ViewStyle = vsReport
     OnColumnClick = lvtAcoesColumnClick
     OnCompare = lvtAcoesCompare
-    ExplicitLeft = 176
-    ExplicitTop = 112
-    ExplicitWidth = 250
-    ExplicitHeight = 150
+  end
+  object btnChat: TButton
+    Left = 224
+    Top = 129
+    Width = 75
+    Height = 25
+    Caption = 'btnChat'
+    TabOrder = 3
+    OnClick = btnChatClick
   end
   object tmrMensagem: TTimer
     Enabled = False
-    Interval = 1800
+    Interval = 2800
     OnTimer = tmrMensagemTimer
     Left = 400
     Top = 152

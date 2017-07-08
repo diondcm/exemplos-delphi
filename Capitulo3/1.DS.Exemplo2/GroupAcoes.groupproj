@@ -9,6 +9,9 @@
         <Projects Include="Client\ClientAcoes.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Server\IIS\IIS.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="ClientAcoes:Make">
         <MSBuild Projects="Client\ClientAcoes.dproj" Targets="Make"/>
     </Target>
+    <Target Name="IIS">
+        <MSBuild Projects="Server\IIS\IIS.dproj"/>
+    </Target>
+    <Target Name="IIS:Clean">
+        <MSBuild Projects="Server\IIS\IIS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IIS:Make">
+        <MSBuild Projects="Server\IIS\IIS.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Server;ClientAcoes"/>
+        <CallTarget Targets="Server;ClientAcoes;IIS"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Server:Clean;ClientAcoes:Clean"/>
+        <CallTarget Targets="Server:Clean;ClientAcoes:Clean;IIS:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Server:Make;ClientAcoes:Make"/>
+        <CallTarget Targets="Server:Make;ClientAcoes:Make;IIS:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -1,7 +1,7 @@
 object SMAcao: TSMAcao
   OldCreateOrder = False
-  Height = 150
-  Width = 215
+  Height = 285
+  Width = 404
   object fdmAcoes: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll

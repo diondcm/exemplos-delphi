@@ -16,6 +16,7 @@ type
     fdmAcoesQUANTIDADE: TIntegerField;
     fdmAcoesVALOR: TCurrencyField;
     fdmAcoesTIPO_OPERACAO: TStringField;
+  // wireshark
   private const
     LIMITE_COMPRA = 10000;
   private
@@ -29,6 +30,9 @@ type
       pQuantidade: Integer; pValor: Currency): TStatus;
     function RegistraTransacaoVenda(pAbreviatura: string;
       pQuantidade: Integer; pValor: Currency): TStatus;
+
+    function RegistraVenda(pAcao: TAcao): TStatus;
+    function RegistraCompra(pAcao: TAcao): TStatus;
 
     function GetTransacoesCompra: TStatusList<TAcao>;
     function GetTransacoesVenda: TStatusList<TAcao>;
@@ -86,6 +90,11 @@ begin
   fdmAcoes.CancelRange;
 end;
 
+function TSMAcao.RegistraCompra(pAcao: TAcao): TStatus;
+begin
+  Result := RegistraTransacao(pAcao.Abreviatura, pAcao.Quantidade, pAcao.Valor, 'C');
+end;
+
 function TSMAcao.RegistraTransacao(pAbreviatura: string; pQuantidade: Integer;
   pValor: Currency; pTipoOp: string): TStatus;
 begin
@@ -100,6 +109,15 @@ begin
   if pQuantidade > LIMITE_COMPRA then
   begin
     Result.Erro := '200;Limite de compra excedido';
+  end else if pQuantidade <= 0 then
+  begin
+    Result.Erro := '201;Quantidade(' + IntToStr(pQuantidade) + ') tem de ser maior que 0';
+  end else if pValor <= 0 then
+  begin
+    Result.Erro := '210;Valor(' + FormatFloat('0.,00', pValor) + ') deve ser maior do que zero';
+  end else if (pAbreviatura = '') or (Length(pAbreviatura) > 5) then
+  begin
+    Result.Erro := '250;Abreviatura inválida';
   end else begin
     fdmAcoes.Append;
     fdmAcoes.FieldByName('ACAO').AsString := pAbreviatura;
@@ -120,6 +138,11 @@ function TSMAcao.RegistraTransacaoVenda(pAbreviatura: string;
   pQuantidade: Integer; pValor: Currency): TStatus;
 begin
   Result := RegistraTransacao(pAbreviatura, pQuantidade, pValor, 'V');
+end;
+
+function TSMAcao.RegistraVenda(pAcao: TAcao): TStatus;
+begin
+  Result := RegistraTransacao(pAcao.Abreviatura, pAcao.Quantidade, pAcao.Valor, 'V');
 end;
 
 function TSMAcao.ReverseString(Value: string): string;

@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
-  Vcl.ComCtrls, ClientModuleUnit1, Classe.Status, StrUtils, Classe.Acao;
+  Vcl.ComCtrls, ClientModuleUnit1, Classe.Status, StrUtils, Classe.Acao,
+  Form.Chat;
 
 type
   TfrmPrincipal = class(TForm)
@@ -20,6 +21,7 @@ type
     btnGetVendas: TBitBtn;
     btnGetCompras: TBitBtn;
     tmrMensagem: TTimer;
+    btnChat: TButton;
     procedure btnCompraClick(Sender: TObject);
     procedure btnVendaClick(Sender: TObject);
     procedure btnGetComprasClick(Sender: TObject);
@@ -28,6 +30,8 @@ type
     procedure lvtAcoesCompare(Sender: TObject; Item1, Item2: TListItem;
       Data: Integer; var Compare: Integer);
     procedure tmrMensagemTimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnChatClick(Sender: TObject);
   private
     FSortedColumn: Integer;
     FDescending: Boolean;
@@ -44,11 +48,25 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmPrincipal.btnChatClick(Sender: TObject);
+begin
+  frmChat.Show;
+end;
+
 procedure TfrmPrincipal.btnCompraClick(Sender: TObject);
 var
   lStatus: TStatus;
+  lAcao: TAcao;
 begin
-  lStatus := ClientModule1.SMAcaoClient.RegistraTransacaoCompra(edtAcao.Text, StrToInt(edtQauntidade.Text), StrToCurr(edtValor.Text));
+//  lStatus := ClientModule1.SMAcaoClient.RegistraTransacaoCompra(edtAcao.Text, StrToInt(edtQauntidade.Text), StrToCurr(edtValor.Text));
+//  ExibeMensagem(IfThen(lStatus.Erro = '', 'Ok', lStatus.Erro));
+
+  lAcao := TAcao.Create;// Create(pParametros...)
+  lAcao.Abreviatura := edtAcao.Text;
+  lAcao.Valor := StrToCurr(edtValor.Text);
+  lAcao.Quantidade := StrToInt(edtQauntidade.Text);
+
+  lStatus := ClientModule1.SMAcaoClient.RegistraCompra(lAcao);
   ExibeMensagem(IfThen(lStatus.Erro = '', 'Ok', lStatus.Erro));
 end;
 
@@ -102,6 +120,11 @@ procedure TfrmPrincipal.ExibeMensagem(const pMsg: string);
 begin
   pnlMensagem.Caption := pMsg;
   tmrMensagem.Enabled := True;
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  ReportMemoryLeaksOnShutdown := True;
 end;
 
 procedure TfrmPrincipal.lvtAcoesColumnClick(Sender: TObject;
