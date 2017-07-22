@@ -22,14 +22,14 @@ type
     ShowShareSheetAction1: TShowShareSheetAction;
     btnSalvarPhoto: TButton;
     btnCarregarUltimaFoto: TButton;
-    btnImgSave: TButton;
+    btnImgSaveDireto: TButton;
     Button1: TButton;
     procedure TakePhotoFromCameraAction1DidFinishTaking(Image: TBitmap);
     procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
     procedure ShowShareSheetAction1BeforeExecute(Sender: TObject);
     procedure btnSalvarPhotoClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure btnImgSaveClick(Sender: TObject);
+    procedure btnImgSaveDiretoClick(Sender: TObject);
     procedure btnCarregarUltimaFotoClick(Sender: TObject);
   private
     { Private declarations }
@@ -68,14 +68,15 @@ begin
   end;
 end;
 
-procedure TfrmCamera.btnImgSaveClick(Sender: TObject);
+procedure TfrmCamera.btnImgSaveDiretoClick(Sender: TObject);
 begin
   if imgResultado.Bitmap.Width = 0 then
   begin
     raise Exception.Create('Image não carregada.');
   end;
 
-  imgResultado.Bitmap.SaveToFile(TPath.Combine(TPath.GetDocumentsPath, 'ultimafoto.bmp'));
+ // imgResultado.Bitmap.SaveToFile(TPath.Combine(TPath.GetDocumentsPath, 'ultimafoto.bmp'));
+ // Gera erro e não salva a bmp
 end;
 
 procedure TfrmCamera.btnSalvarPhotoClick(Sender: TObject);
@@ -87,8 +88,6 @@ begin
   begin
     raise Exception.Create('Image não carregada.');
   end;
-
-  //imgResultado.Bitmap.SaveToFile();
 
   lStrem := TMemoryStream.Create;
   try
@@ -110,8 +109,10 @@ var
 begin
   lArquivo := TPath.Combine(TPath.GetDocumentsPath, 'ultimafoto.bmp');
   if TFile.Exists(lArquivo)
-    {(TDialogService.MessageDialog('Deletar ultima foto?', TMsgDlgType.mtConfirmation,
-      [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], TMsgDlgBtn.mbYes, 0))} then
+    { todo: dialog
+    (TDialogService.MessageDialog('Deletar ultima foto?', TMsgDlgType.mtConfirmation,
+      [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], TMsgDlgBtn.mbYes, 0))
+    } then
   begin
     TFile.Delete(lArquivo);
   end;

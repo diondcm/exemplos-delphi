@@ -1,0 +1,126 @@
+inherited frmCameraComponent: TfrmCameraComponent
+  Caption = 'frmBaseMultiView1'
+  DesignerMasterStyle = 3
+  inherited LayoutClient: TLayout
+    object tbcCamera: TTabControl
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 432.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 1
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        640s
+        383s
+        640s
+        383s)
+      object tabCamera: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 320.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabCamera'
+        ExplicitSize.cx = 78.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+        object imgCamera: TImage
+          MultiResBitmap = <
+            item
+            end>
+          Align = Client
+          Size.Width = 640.000000000000000000
+          Size.Height = 383.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object tabConfig: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 320.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabConfig'
+        ExplicitSize.cx = 73.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+        object Rectangle1: TRectangle
+          Align = Top
+          Size.Width = 640.000000000000000000
+          Size.Height = 73.000000000000000000
+          Size.PlatformDefault = False
+          object Label1: TLabel
+            Align = Top
+            Size.Width = 640.000000000000000000
+            Size.Height = 17.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Tipo de C'#226'mera:'
+          end
+        end
+        object btnFront: TSpeedButton
+          StaysPressed = True
+          Position.X = 128.000000000000000000
+          Position.Y = 24.000000000000000000
+          Size.Width = 105.000000000000000000
+          Size.Height = 42.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'segmentedbuttonleft'
+          Text = 'Front'
+          OnClick = btnFrontClick
+        end
+        object btnBack: TSpeedButton
+          StaysPressed = True
+          Position.X = 232.000000000000000000
+          Position.Y = 24.000000000000000000
+          Size.Width = 121.000000000000000000
+          Size.Height = 42.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'segmentedbuttonright'
+          Text = 'Back'
+          OnClick = btnBackClick
+        end
+      end
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object btnStartCamera: TButton
+        Align = Right
+        Position.X = 544.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'playtoolbutton'
+        TabOrder = 0
+        Text = 'btnStartCamera'
+        OnClick = btnStartCameraClick
+      end
+      object btnStopCamera: TButton
+        Align = Right
+        Position.X = 592.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'stoptoolbutton'
+        TabOrder = 1
+        Text = 'btnStopCamera'
+        OnClick = btnStopCameraClick
+      end
+    end
+  end
+  object CameraComponent1: TCameraComponent
+    OnSampleBufferReady = CameraComponent1SampleBufferReady
+    Left = 552
+    Top = 144
+  end
+end

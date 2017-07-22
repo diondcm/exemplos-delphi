@@ -77,15 +77,15 @@ inherited frmCamera: TfrmCamera
         Text = 'btnCarregarUltimaFoto'
         OnClick = btnCarregarUltimaFotoClick
       end
-      object btnImgSave: TButton
+      object btnImgSaveDireto: TButton
         Align = Right
-        Position.X = 343.000000000000000000
-        Size.Width = 153.000000000000000000
+        Position.X = 432.000000000000000000
+        Size.Width = 64.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 6
-        Text = 'btnImgSave'
-        OnClick = btnImgSaveClick
+        Visible = False
+        OnClick = btnImgSaveDiretoClick
       end
       object Button1: TButton
         Align = Right
