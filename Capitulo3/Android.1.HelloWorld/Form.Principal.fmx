@@ -1,0 +1,28 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Align = Center
+    Size.Width = 124.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Hello World'
+    object btnShow: TButton
+      Position.X = -16.000000000000000000
+      Position.Y = 32.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Mensagem'
+      OnClick = btnShowClick
+    end
+  end
+end

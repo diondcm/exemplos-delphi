@@ -1,0 +1,14 @@
+inherited frmMapView: TfrmMapView
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object MapView1: TMapView
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object LocationSensor1: TLocationSensor
+    Left = 304
+    Top = 224
+  end
+end

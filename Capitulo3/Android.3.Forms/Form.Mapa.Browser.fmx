@@ -1,0 +1,61 @@
+inherited frmMapaBrowser: TfrmMapaBrowser
+  DesignerMasterStyle = 2
+  inherited ToolBar1: TToolBar
+    Size.Height = 44.000000000000000000
+    inherited btnBack: TButton
+      Size.Width = 44.000000000000000000
+      Size.Height = 44.000000000000000000
+    end
+    object Button1: TButton
+      Align = Right
+      Position.X = 596.000000000000000000
+      Size.Width = 44.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      TabOrder = 2
+      Text = 'Button1'
+      OnClick = Button1Click
+    end
+  end
+  object Layout1: TLayout
+    Align = Top
+    Position.Y = 44.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 46.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object edtUrl: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 0
+      Text = 
+        'https://www.google.com.br/maps/search/maps/@-30.035431,-51.28782' +
+        '32,12z'
+      Size.Width = 596.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object btnNavigate: TButton
+      Align = Right
+      Position.X = 596.000000000000000000
+      Position.Y = 1.000000000000000000
+      Size.Width = 44.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowrighttoolbutton'
+      TabOrder = 1
+      OnClick = btnNavigateClick
+    end
+  end
+  object WebBrowser: TWebBrowser
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 390.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object LocationSensor1: TLocationSensor
+    Left = 552
+    Top = 136
+  end
+end

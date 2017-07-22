@@ -1,0 +1,128 @@
+inherited frmCamera: TfrmCamera
+  Caption = 'frmBaseMultiView1'
+  DesignerMasterStyle = 3
+  inherited LayoutClient: TLayout
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object lblCamera: TLabel
+        Align = Contents
+        StyledSettings = [Family, Style, FontColor]
+        Size.Width = 640.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.HorzAlign = Center
+        Text = 'C'#226'mera'
+      end
+      object btnTirarFoto: TButton
+        Action = TakePhotoFromCameraAction1
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'cameratoolbutton'
+        TabOrder = 1
+        Visible = True
+      end
+      object btnProcurarFoto: TButton
+        Action = TakePhotoFromLibraryAction1
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 48.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'searchtoolbutton'
+        TabOrder = 2
+        Visible = True
+      end
+      object btnCompartilhar: TButton
+        Action = ShowShareSheetAction1
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 96.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'actiontoolbutton'
+        TabOrder = 3
+        Visible = True
+      end
+      object btnSalvarPhoto: TButton
+        Align = Right
+        Position.X = 544.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'donetoolbutton'
+        TabOrder = 4
+        Text = 'btnSalvarPhoto'
+        OnClick = btnSalvarPhotoClick
+      end
+      object btnCarregarUltimaFoto: TButton
+        Align = Right
+        Position.X = 592.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'organizetoolbutton'
+        TabOrder = 5
+        Text = 'btnCarregarUltimaFoto'
+        OnClick = btnCarregarUltimaFotoClick
+      end
+      object btnImgSave: TButton
+        Align = Right
+        Position.X = 343.000000000000000000
+        Size.Width = 153.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 6
+        Text = 'btnImgSave'
+        OnClick = btnImgSaveClick
+      end
+      object Button1: TButton
+        Align = Right
+        Position.X = 496.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'trashtoolbutton'
+        TabOrder = 7
+        Text = 'Button1'
+        OnClick = Button1Click
+      end
+    end
+    object imgResultado: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 432.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object ActionList1: TActionList
+    Left = 584
+    Top = 72
+    object TakePhotoFromCameraAction1: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromCameraAction1DidFinishTaking
+    end
+    object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
+    end
+    object ShowShareSheetAction1: TShowShareSheetAction
+      Category = 'Media Library'
+      OnBeforeExecute = ShowShareSheetAction1BeforeExecute
+    end
+  end
+end
