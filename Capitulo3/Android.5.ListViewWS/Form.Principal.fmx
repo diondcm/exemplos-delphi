@@ -1,0 +1,26 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 534
+  ClientWidth = 729
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object LayoutListView: TLayout
+    Align = Client
+    Size.Width = 729.000000000000000000
+    Size.Height = 534.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object tmrLoadImages: TTimer
+    Enabled = False
+    Interval = 1500
+    OnTimer = tmrLoadImagesTimer
+    Left = 352
+    Top = 256
+  end
+end
