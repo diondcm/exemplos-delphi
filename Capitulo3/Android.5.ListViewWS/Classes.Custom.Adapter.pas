@@ -104,7 +104,7 @@ begin
   FBitmaps := TDictionary<Integer, TBitmap>.Create;
   FUriRegex := TRegEx.Create('\[(http://.*)\]');
 
-  FNameRegex := TRegEx.Create('\[([A-Za-z+)\]');
+  FNameRegex := TRegEx.Create('\[([A-Za-z]+)\]');
   FIdRegex := TRegEx.Create('\[([0-9]+)\]');
 
   FRegexMonitor := TObject.Create;
@@ -333,7 +333,7 @@ begin
   begin
     lItem := TListItem(FStrings.Objects[lPair.Key]);
     lBitmapDrawable := TListItemImage(lItem.View.FindDrawable('bitmap'));
-    if Assigned(lBitmapDrawable) and (Assigned(lBitmapDrawable.Bitmap)) then
+    if Assigned(lBitmapDrawable) and (not Assigned(lBitmapDrawable.Bitmap)) then
     begin
       lBitmapDrawable.Bitmap := lPair.Value;
     end;
@@ -420,7 +420,7 @@ begin
     lBitmap.ScalingMode := TImageScalingMode.StretchWithAspect;
 
     lBitmap := TListItemImage.Create(Item);
-    lBitmap.Name := 'backdrop';
+    lBitmap.Name := 'blackdrop';
     lBitmap.OwnsBitmap := False;
     lBitmap.Bitmap := FBackDropImage.BitMap;
     lBitmap.VertAlign := TListItemAlign.Trailing;

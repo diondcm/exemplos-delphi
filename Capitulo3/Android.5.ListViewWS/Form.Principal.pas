@@ -118,7 +118,7 @@ end;
 procedure TfrmPrincipal.tmrLoadImagesTimer(Sender: TObject);
 begin
   tmrLoadImages.Enabled := False;
-  //
+  AddItems(30);
 end;
 
 end.
