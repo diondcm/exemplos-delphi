@@ -3,12 +3,12 @@ unit Classes.Custom.Adapter;
 interface
 
 uses
-  FMX.ListView.Adapters.Base, FMX.ListView.Types, System.Classes, FMX.ListView,
+  FMX.ListView.Adapters.Base, FMX.Types, System.Types, FMX.ListView.Types, System.Classes, FMX.ListView,
   System.Generics.Collections, FMX.Graphics, System.RegularExpressions, System.SyncObjs,
   System.SysUtils, System.UITypes, IdHTTP, FMX.Objects;
 
 type
-  TcustomAdapter = class(TAbstractListViewAdapter,
+  TCustomAdapter = class(TAbstractListViewAdapter,
     IListViewAdapter,
     IListViewTextProvider,
     IListViewTextButtonProvider)
@@ -70,14 +70,14 @@ type
     destructor Destroy; override;
 
     property BackDropImage: TImage read FBackDropImage write FBackDropImage;
-    property OnButtonCliecked: TNotifyEvent read FOnButtonClicked write SetOnButtonClicked;
+    property OnButtonClicked: TNotifyEvent read FOnButtonClicked write SetOnButtonClicked;
   end;
 
 implementation
 
 { TcustomAdapter }
 
-procedure TcustomAdapter.AddItem(Index: Integer);
+procedure TCustomAdapter.AddItem(Index: Integer);
 begin
   try
     FCS.Acquire;
@@ -88,7 +88,7 @@ begin
   end;
 end;
 
-procedure TcustomAdapter.ButtonClicked(Sender: TObject);
+procedure TCustomAdapter.ButtonClicked(Sender: TObject);
 begin
   if Assigned(FOnButtonClicked) then
   begin
@@ -96,7 +96,7 @@ begin
   end;
 end;
 
-constructor TcustomAdapter.Create(const AParent: TListViewBase; const AStrings: TStringList);
+constructor TCustomAdapter.Create(const AParent: TListViewBase; const AStrings: TStringList);
 begin
   inherited Create;
   FParent := AParent;
@@ -119,7 +119,7 @@ begin
   Fstrings.OnChange := StringListChange;
 end;
 
-procedure TcustomAdapter.CreateThreads;
+procedure TCustomAdapter.CreateThreads;
 var
   i: Integer;
 begin
@@ -199,7 +199,7 @@ begin
   end;
 end;
 
-destructor TcustomAdapter.Destroy;
+destructor TCustomAdapter.Destroy;
 var
   lPair: TPair<Integer, TBitMap>;
   i: Integer;
@@ -221,7 +221,7 @@ begin
   inherited;
 end;
 
-procedure TcustomAdapter.DestroyThreads;
+procedure TCustomAdapter.DestroyThreads;
 var
   i: Integer;
 begin
@@ -234,27 +234,27 @@ begin
   end;
 end;
 
-procedure TcustomAdapter.DoCreateNewViews;
+procedure TCustomAdapter.DoCreateNewViews;
 begin
   inherited;
 end;
 
-function TcustomAdapter.GetCount: Integer;
+function TCustomAdapter.GetCount: Integer;
 begin
   Result := FStrings.Count;
 end;
 
-function TcustomAdapter.GetDefaultViewHeight: Integer;
+function TCustomAdapter.GetDefaultViewHeight: Integer;
 begin
   Result := 33;
 end;
 
-function TcustomAdapter.GetEnumerator: TEnumerator<TListItem>;
+function TCustomAdapter.GetEnumerator: TEnumerator<TListItem>;
 begin
   Result := nil;
 end;
 
-function TcustomAdapter.GetId(Index: Integer): string;
+function TCustomAdapter.GetId(Index: Integer): string;
 var
   lMatch: TMatch;
 begin
@@ -266,12 +266,12 @@ begin
   end;
 end;
 
-function TcustomAdapter.GetIndexTitle(const Index: Integer): string;
+function TCustomAdapter.GetIndexTitle(const Index: Integer): string;
 begin
   Result := '';
 end;
 
-function TcustomAdapter.GetItem(const Index: Integer): TListItem;
+function TCustomAdapter.GetItem(const Index: Integer): TListItem;
 begin
   Result := TListItem(FStrings.Objects[Index]);
   if not Assigned(Result) then
@@ -285,7 +285,7 @@ begin
   end;
 end;
 
-function TcustomAdapter.GetName(const Index: Integer): string;
+function TCustomAdapter.GetName(const Index: Integer): string;
 var
   lMatches: TMatch;
 begin
@@ -297,17 +297,17 @@ begin
   end;
 end;
 
-function TcustomAdapter.GetText(const Index: Integer): string;
+function TCustomAdapter.GetText(const Index: Integer): string;
 begin
   Result := GetName(Index);
 end;
 
-function TcustomAdapter.GetTextButtonDrawable(const Index: Integer): TListItemTextButton;
+function TCustomAdapter.GetTextButtonDrawable(const Index: Integer): TListItemTextButton;
 begin
   Result := TListItemTextButton(TListItem(FStrings.Objects[Index]).View.FindDrawable('button'));
 end;
 
-function TcustomAdapter.GetURI(Index: Integer): string;
+function TCustomAdapter.GetURI(Index: Integer): string;
 var
   lMatch: TMatch;
 begin
@@ -322,7 +322,7 @@ begin
   TMonitor.Exit(FRegexMonitor);
 end;
 
-procedure TcustomAdapter.ImagesLoaded;
+procedure TCustomAdapter.ImagesLoaded;
 var
   lPair: TPair<Integer, TBitmap>;
   lItem: TListItem;
@@ -354,12 +354,12 @@ begin
   ItemsInvalidate;
 end;
 
-function TcustomAdapter.IndexOf(const AItem: TListItem): Integer;
+function TCustomAdapter.IndexOf(const AItem: TListItem): Integer;
 begin
   Result := -1;
 end;
 
-procedure TcustomAdapter.MatchView(const pItem: TListItem);
+procedure TCustomAdapter.MatchView(const pItem: TListItem);
 var
   lBitmapDrawable: TListItemImage;
   lWidth: Single;
@@ -384,7 +384,7 @@ begin
   end;
 end;
 
-function TcustomAdapter.NextItem: Integer;
+function TCustomAdapter.NextItem: Integer;
 begin
   FSem.Acquire;
   if FExitRequested then
@@ -404,7 +404,7 @@ begin
   end;
 end;
 
-procedure TcustomAdapter.ResetView(const Item: TListItem);
+procedure TCustomAdapter.ResetView(const Item: TListItem);
 var
   lBitmap: TListItemImage;
   lText: TListItemText;
@@ -468,7 +468,7 @@ begin
     MatchView(Item);
 end;
 
-procedure TcustomAdapter.ResetViews(const Purposes: TListItemPurposes);
+procedure TCustomAdapter.ResetViews(const Purposes: TListItemPurposes);
 var
   i: Integer;
 begin
@@ -479,19 +479,19 @@ begin
   ItemsResize;
 end;
 
-procedure TcustomAdapter.SetOnButtonClicked(const Value: TNotifyEvent);
+procedure TCustomAdapter.SetOnButtonClicked(const Value: TNotifyEvent);
 begin
   FOnButtonClicked := Value;
 end;
 
-procedure TcustomAdapter.StringListChange(Sender: TObject);
+procedure TCustomAdapter.StringListChange(Sender: TObject);
 begin
   ItemsCouldHaveChanged;
   ItemsResize;
   ItemsInvalidate;
 end;
 
-procedure TcustomAdapter.StringListChanging(Sender: TObject);
+procedure TCustomAdapter.StringListChanging(Sender: TObject);
 begin
   ItemsMayChange;
 end;
