@@ -5,7 +5,7 @@ interface
 uses
   FMX.ListView.Adapters.Base, FMX.ListView.Types, System.Classes, FMX.ListView,
   System.Generics.Collections, FMX.Graphics, System.RegularExpressions, System.SyncObjs,
-  System.SysUtils;
+  System.SysUtils, System.UITypes, IdHTTP, FMX.Objects;
 
 type
   TcustomAdapter = class(TAbstractListViewAdapter,
@@ -21,11 +21,13 @@ type
     FIdRegex: TRegEx;
     FRegexMonitor: TObject;
     FRequests: TList<Integer>;
+    FThreads: TArray<TThread>;
     FCS: TCriticalSection;
     FSem: TSemaphore;
     FExitRequested: Boolean;
     FIndex: Integer;
     FOnButtonClicked: TNotifyEvent;
+    FBackDropImage: TImage;
     procedure CreateThreads;
     procedure DestroyThreads;
 
@@ -44,7 +46,12 @@ type
     procedure ButtonClicked(Sender: TObject);
     procedure SetOnButtonClicked(const Value: TNotifyEvent);
 
+  strict protected
+    procedure DoCreateNewViews; override;
   public
+    procedure ResetView(const Item: TListItem);
+    procedure ResetViews(const Purposes: TListItemPurposes);
+
     { IListViewAdapter }
     function GetCount: Integer;
     function GetItem(const Index: Integer): TListItem;
@@ -60,6 +67,10 @@ type
     function GetTextButtonDrawable(const Index: Integer): TListItemTextButton;
   public
     constructor Create(const AParent: TListViewBase; const AStrings: TStringList);
+    destructor Destroy; override;
+
+    property BackDropImage: TImage read FBackDropImage write FBackDropImage;
+    property OnButtonCliecked: TNotifyEvent read FOnButtonClicked write SetOnButtonClicked;
   end;
 
 implementation
@@ -109,13 +120,123 @@ begin
 end;
 
 procedure TcustomAdapter.CreateThreads;
+var
+  i: Integer;
 begin
+  SetLength(FThreads, 4{todo: constante ThreadPool});
+  for i := 0 to Length(FThreads) -1 do
+  begin
+    FThreads[i] := TThread.CreateAnonymousThread(
+      procedure
+      var
+        lHttp: TidHTTP;
+        lStream: TBytesStream;
+        lIndex: Integer;
+        lURI: string;
+        lBitMap: TBitmap;
+      begin
+        lHttp := TIdHTTP.Create(nil);
+        lStream := TBytesStream.Create;
+        try
+          lIndex := NextItem;
+          while lIndex <> -1 do
+          begin
+            lURI := GetURI(lIndex);
+            try
+              lHttp.Get(lURI, lStream);
+              TThread.Synchronize(nil,
+                procedure
+                begin
+                  try
+                    lBitMap := TBitmap.CreateFromStream(lStream);
+                    if Assigned(lBitMap) and
+                      ((lBitMap.Width > 0) and (lBitMap.Height > 0)) then
+                    begin
+                      FBitmaps.Add(lIndex, lBitmap);
+                    end;
+                  except
+                    // silence
+                  end;
+                end);
 
+              if Assigned(lBitMap) and
+                ((lBitMap.Width > 0) and (lBitMap.Height > 0)) then
+              begin
+                TThread.Queue(nil,
+                  procedure
+                  begin
+                    ImagesLoaded;
+                  end);
+              end;
+
+            except
+              on E: Exception do
+              begin
+                TThread.Queue(nil,
+                  procedure
+                  begin
+                    TListItemText(
+                      TListItem(
+                        FStrings.Objects[lIndex]).View.FindDrawable('blurb')
+                      ).Text := 'Load error: ' + E.Message;
+                    ItemsInvalidate;
+                  end);
+
+                AddItem(lIndex);
+                TThread.CurrentThread.Sleep(Random(100) + 100);
+              end;
+            end;
+
+            lIndex := NextItem;
+          end;
+        finally
+          lHttp.Free;
+          lStream.Free;
+        end;
+      end);
+    FThreads[i].FreeOnTerminate := False;
+    FThreads[i].Start;
+  end;
+end;
+
+destructor TcustomAdapter.Destroy;
+var
+  lPair: TPair<Integer, TBitMap>;
+  i: Integer;
+begin
+  DestroyThreads;
+  FRequests.Free;
+  for lPair in FBitmaps do
+  begin
+    lPair.Value.Free;
+  end;
+
+  for i := 0 to FStrings.Count -1 do
+  begin
+    FStrings.Objects[i].Free;
+  end;
+
+  FBitmaps.Free;
+  FRegexMonitor.Free;
+  inherited;
 end;
 
 procedure TcustomAdapter.DestroyThreads;
+var
+  i: Integer;
 begin
+  FExitRequested := True;
+  FSem.Release(4);
+  for i := 0 to High(FThreads) do
+  begin
+    FThreads[i].WaitFor;
+    FThreads[i].Free;
+  end;
+end;
 
+procedure TcustomAdapter.DoCreateNewViews;
+begin
+  inherited;
 end;
 
 function TcustomAdapter.GetCount: Integer;
@@ -283,6 +404,81 @@ begin
   end;
 end;
 
+procedure TcustomAdapter.ResetView(const Item: TListItem);
+var
+  lBitmap: TListItemImage;
+  lText: TListItemText;
+  lBtn: TListItemTextButton;
+begin
+  if Item.View.Count = 0 then
+  begin
+    lBitmap := TListItemImage.Create(Item);
+    lBitmap.Name := 'bitmap';
+    lBitmap.OwnsBitmap := False;
+    lBitmap.Bitmap := nil;
+    lBitmap.Align := TListItemAlign.Trailing;
+    lBitmap.ScalingMode := TImageScalingMode.StretchWithAspect;
+
+    lBitmap := TListItemImage.Create(Item);
+    lBitmap.Name := 'backdrop';
+    lBitmap.OwnsBitmap := False;
+    lBitmap.Bitmap := FBackDropImage.BitMap;
+    lBitmap.VertAlign := TListItemAlign.Trailing;
+    lBitmap.Align := TListItemAlign.Trailing;
+    lBitmap.ScalingMode := TImageScalingMode.Stretch;
+    lBitmap.Opacity := 0.25;
+    lBitmap.Height := 65;
+
+    lText := TListItemText.Create(Item);
+    lText.Name := 'title';
+    lText.Text := GetName(Item.Index).ToUpper;
+    lText.Height := 80;
+    lText.Font.Size := 48;
+    lText.TextColor := TAlphaColorRec.Bisque;
+    lText.SelectedTextColor := TAlphaColorRec.White;
+    lText.PlaceOffset.X := 10;
+    lText.PlaceOffset.Y := 10;
+
+    lText := TListItemText.Create(Item);
+    lText.Name := 'blurb';
+    lText.Text := GetId(Item.Index);
+    lText.Font.Size := 16;
+    lText.TextColor := TAlphaColorRec.White;
+    lText.SelectedTextColor := TAlphaColorRec.White;
+    lText.Align := TListItemAlign.Leading;
+    lText.VertAlign := TListItemAlign.Trailing;
+    lText.WordWrap := True;
+    lText.Height := 60;
+    lText.PlaceOffset.X := 10;
+
+    lBtn := TListItemTextButton.Create(Item);
+    lBtn.Name := 'button';
+    lBtn.Text := '°°°';
+    lBtn.Align := TListItemAlign.Trailing;
+    lBtn.VertAlign := TListItemAlign.Trailing;
+    lBtn.Width := 48;
+    lBtn.Height := 16;
+    lBtn.PlaceOffset.X := -10;
+    lBtn.PlaceOffset.Y := lText.Height/2 -lBtn.Height/2 -lText.Height;
+    lBtn.OnSelect := ButtonClicked;
+    lBtn.TagObject := Item;
+
+    AddItem(Item.Index);
+  end else
+    MatchView(Item);
+end;
+
+procedure TcustomAdapter.ResetViews(const Purposes: TListItemPurposes);
+var
+  i: Integer;
+begin
+  for i := 0 to FStrings.Count -1 do
+  begin
+    ResetView(TListItem(FStrings.Objects[i]));
+  end;
+  ItemsResize;
+end;
+
 procedure TcustomAdapter.SetOnButtonClicked(const Value: TNotifyEvent);
 begin
   FOnButtonClicked := Value;
@@ -290,12 +486,14 @@ end;
 
 procedure TcustomAdapter.StringListChange(Sender: TObject);
 begin
-
+  ItemsCouldHaveChanged;
+  ItemsResize;
+  ItemsInvalidate;
 end;
 
 procedure TcustomAdapter.StringListChanging(Sender: TObject);
 begin
-
+  ItemsMayChange;
 end;
 
 end.
