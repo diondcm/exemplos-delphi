@@ -3,7 +3,8 @@ program ListViewWS;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Form.Principal in 'Form.Principal.pas' {Form1};
+  Form.Principal in 'Form.Principal.pas' {Form1},
+  Classes.Custom.Adapter in 'Classes.Custom.Adapter.pas';
 
 {$R *.res}
 
