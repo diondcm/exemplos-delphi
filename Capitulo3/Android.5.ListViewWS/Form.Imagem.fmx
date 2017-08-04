@@ -1,0 +1,120 @@
+object frmImagem: TfrmImagem
+  Left = 0
+  Top = 0
+  ClientHeight = 657
+  ClientWidth = 902
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 902.000000000000000000
+    Size.Height = 657.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object imgDally: TImage
+      MultiResBitmap.Height = 3280
+      MultiResBitmap.Width = 4928
+      MultiResBitmap = <
+        item
+        end>
+      Align = Client
+      Size.Width = 902.000000000000000000
+      Size.Height = 657.000000000000000000
+      Size.PlatformDefault = False
+      object Layout2: TLayout
+        Align = MostTop
+        Size.Width = 902.000000000000000000
+        Size.Height = 193.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object Calendar: TCalendar
+          Align = Right
+          Date = 42945.000000000000000000
+          Position.X = 592.000000000000000000
+          Size.Width = 310.000000000000000000
+          Size.Height = 193.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          OnDateSelected = CalendarDateSelected
+        end
+        object tmrImagem: TTimer
+          Enabled = False
+          Interval = 800
+          OnTimer = tmrImagemTimer
+          Left = 824
+          Top = 224
+        end
+        object Layout4: TLayout
+          Align = Client
+          Size.Width = 592.000000000000000000
+          Size.Height = 193.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object cmbJanelaNoMobile: TComboBox
+            Align = Bottom
+            Items.Strings = (
+              'Item 1'
+              'Item 2'
+              'Item 3')
+            Margins.Bottom = 20.000000000000000000
+            Position.Y = 151.000000000000000000
+            Size.Width = 592.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+          end
+          object DateEdit1: TDateEdit
+            Date = 42945.000000000000000000
+            Align = Center
+            Size.Width = 392.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+          end
+          object edtKeyBoardType: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Top
+            TabOrder = 2
+            KeyboardType = NumbersAndPunctuation
+            Position.Y = 40.000000000000000000
+            Margins.Top = 40.000000000000000000
+            Size.Width = 592.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+      end
+    end
+  end
+  object NetHTTPClient1: TNetHTTPClient
+    Asynchronous = False
+    ConnectionTimeout = 60000
+    ResponseTimeout = 60000
+    AllowCookies = True
+    HandleRedirects = True
+    UserAgent = 'Embarcadero URI Client/1.0'
+    Left = 832
+    Top = 288
+  end
+  object IdHTTP1: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.ContentRangeEnd = -1
+    Request.ContentRangeStart = -1
+    Request.ContentRangeInstanceLength = -1
+    Request.Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    Request.Ranges.Units = 'bytes'
+    Request.Ranges = <>
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 840
+    Top = 368
+  end
+end

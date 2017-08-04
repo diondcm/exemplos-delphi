@@ -23,6 +23,7 @@ object frmMenu: TfrmMenu
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Imagens'
+        OnClick = btnImgClick
       end
       object btnListView: TButton
         Position.X = 8.000000000000000000
@@ -32,6 +33,7 @@ object frmMenu: TfrmMenu
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'List View'
+        OnClick = btnListViewClick
       end
     end
   end
