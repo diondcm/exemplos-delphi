@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts;
 
 type
-  TForm1 = class(TForm)
+  TfrmListView = class(TForm)
     LayoutListView: TLayout;
     tmrLoadImages: TTimer;
     procedure tmrLoadImagesTimer(Sender: TObject);
@@ -19,13 +19,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmListView: TfrmListView;
 
 implementation
 
 {$R *.fmx}
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TfrmListView.FormShow(Sender: TObject);
 begin
   if not FImagesLoaded then
   begin
@@ -34,7 +34,7 @@ begin
   end;
 end;
 
-procedure TForm1.tmrLoadImagesTimer(Sender: TObject);
+procedure TfrmListView.tmrLoadImagesTimer(Sender: TObject);
 begin
   tmrLoadImages.Enabled := False;
   //
