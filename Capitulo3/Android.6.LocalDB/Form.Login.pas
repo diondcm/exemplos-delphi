@@ -6,7 +6,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Layouts, FMX.Edit, FMX.ListBox,
-  Classe.Usuario.Logado, Data.Geral, Classe.Configuracao;
+  Classe.Usuario.Logado, Data.Geral, Classe.Configuracao,
+  Classe.Lista.Configuracao;
 
 type
   TfrmLogin = class(TForm)
@@ -47,30 +48,30 @@ begin
 
   if lLogin = '' then
   begin
-    if not TConfiguracao.Configs.ContainsKey('NOME_USUARIO') then
+    if not TListaConfiguracao.Configs.ContainsKey('NOME_USUARIO') then
     begin
-      TConfiguracao.Configs.Add('NOME_USUARIO', TConfiguracao.Create);
+      TListaConfiguracao.Configs.Add('NOME_USUARIO', TConfiguracao.Create);
     end;
 
-    TConfiguracao.Configs['NOME_USUARIO'].Descricao := 'Nome de usuário';
-    TConfiguracao.Configs['NOME_USUARIO'].NomeConfig := 'NOME_USUARIO';
-    TConfiguracao.Configs['NOME_USUARIO'].Usuario := edtUsuario.Text;
-    TConfiguracao.Configs['NOME_USUARIO'].Empresa := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
-    TConfiguracao.Configs['NOME_USUARIO'].ValorConfig := edtUsuario.Text;
+    TListaConfiguracao.Configs['NOME_USUARIO'].Descricao := 'Nome de usuário';
+    TListaConfiguracao.Configs['NOME_USUARIO'].NomeConfig := 'NOME_USUARIO';
+    TListaConfiguracao.Configs['NOME_USUARIO'].Usuario := edtUsuario.Text;
+    TListaConfiguracao.Configs['NOME_USUARIO'].Empresa := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
+    TListaConfiguracao.Configs['NOME_USUARIO'].ValorConfig := edtUsuario.Text;
 
 
-    if not TConfiguracao.Configs.ContainsKey('NOME_EMPRESA') then
+    if not TListaConfiguracao.Configs.ContainsKey('NOME_EMPRESA') then
     begin
-      TConfiguracao.Configs.Add('NOME_EMPRESA', TConfiguracao.Create);
+      TListaConfiguracao.Configs.Add('NOME_EMPRESA', TConfiguracao.Create);
     end;
 
-    TConfiguracao.Configs['NOME_EMPRESA'].Descricao := 'Nome da Empresa';
-    TConfiguracao.Configs['NOME_EMPRESA'].NomeConfig := 'NOME_EMPRESA';
-    TConfiguracao.Configs['NOME_EMPRESA'].Usuario := edtUsuario.Text;
-    TConfiguracao.Configs['NOME_EMPRESA'].Empresa := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
-    TConfiguracao.Configs['NOME_EMPRESA'].ValorConfig := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
+    TListaConfiguracao.Configs['NOME_EMPRESA'].Descricao := 'Nome da Empresa';
+    TListaConfiguracao.Configs['NOME_EMPRESA'].NomeConfig := 'NOME_EMPRESA';
+    TListaConfiguracao.Configs['NOME_EMPRESA'].Usuario := edtUsuario.Text;
+    TListaConfiguracao.Configs['NOME_EMPRESA'].Empresa := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
+    TListaConfiguracao.Configs['NOME_EMPRESA'].ValorConfig := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
 
-    TConfiguracao.SalvaConfigs;
+    TListaConfiguracao.SalvaConfigs;
 
     Hide;
   end else begin
@@ -83,15 +84,15 @@ procedure TfrmLogin.FormShow(Sender: TObject);
 var
   lIndexEmpresa: Integer;
 begin
-  if TConfiguracao.Configs.ContainsKey('NOME_USUARIO') then
+  if TListaConfiguracao.Configs.ContainsKey('NOME_USUARIO') then
   begin
-    edtUsuario.Text := TConfiguracao.Configs['NOME_USUARIO'].ValorConfig;
+    edtUsuario.Text := TListaConfiguracao.Configs['NOME_USUARIO'].ValorConfig;
   end;
 
-  if TConfiguracao.Configs.ContainsKey('NOME_EMPRESA') then
+  if TListaConfiguracao.Configs.ContainsKey('NOME_EMPRESA') then
   begin
     lIndexEmpresa :=
-      cmbEmpresa.Items.IndexOf(TConfiguracao.Configs['NOME_EMPRESA'].ValorConfig);
+      cmbEmpresa.Items.IndexOf(TListaConfiguracao.Configs['NOME_EMPRESA'].ValorConfig);
     if lIndexEmpresa <> -1 then
     begin
       cmbEmpresa.ItemIndex := lIndexEmpresa;

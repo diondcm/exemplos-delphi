@@ -6,6 +6,8 @@ object frmPrincipal: TfrmPrincipal
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
   DesignerMasterStyle = 0
   object ToolBar1: TToolBar
     Size.Width = 640.000000000000000000

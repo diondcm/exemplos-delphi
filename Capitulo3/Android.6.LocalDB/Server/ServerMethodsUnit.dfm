@@ -11,8 +11,10 @@ object ServerMethods1: TServerMethods1
     Left = 272
     Top = 64
   end
-  object FDQuery1: TFDQuery
+  object qryConfig: TFDQuery
     Connection = FDConnection
+    SQL.Strings = (
+      'select * from configuracao')
     Left = 272
     Top = 136
   end

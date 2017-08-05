@@ -3,17 +3,21 @@ unit Classe.Lista.Configuracao;
 interface
 
 uses
-  System.Generics.Collections, Data.Geral, Classe.Configuracao;
+  System.Generics.Collections, Data.Geral, Classe.Configuracao, ClientModuleUnit,
+  Classe.Usuario.Logado;
 
 type
   TListaConfiguracao = class
+  private
     class function GetConfigs: TDictionary<string, TConfiguracao>; static;
+    class procedure CarregaConfigs;
+    class procedure AtualizarConfigsServer;
+    class procedure EnviaConfigsServer;
   private class var
     FInstance: TDictionary<string, TConfiguracao>;
   public
     class destructor Destroy;
 
-    class procedure CarregaConfigs;
     class procedure SalvaConfigs;
 
     class property Configs: TDictionary<string, TConfiguracao> read GetConfigs;
@@ -23,10 +27,38 @@ implementation
 
 { TConfiguracao }
 
+class procedure TListaConfiguracao.AtualizarConfigsServer;
+var
+  lList: TList<TConfiguracao>;
+  lConfig: TConfiguracao;
+begin
+  lList:= ClientModule1.ServerMethods1Client.GetConfig(
+    TUsuarioLogado.UsuarioLogado.User,
+    TUsuarioLogado.UsuarioLogado.Empresa);
+
+  dmDados.FDConnection.ExecSQL('delete from configuracao');
+  dmDados.qryConfig.Open;
+  for lConfig in lList do
+  begin
+    dmDados.qryConfig.Append;
+
+    dmDados.qryConfig.FieldByName('DESCRICAO_CONFIG').AsString := lConfig.Descricao;
+    dmDados.qryConfig.FieldByName('NOME_CONFIG').AsString := lConfig.NomeConfig;
+    dmDados.qryConfig.FieldByName('VALOR_CONFIG').AsString := lConfig.ValorConfig;
+    dmDados.qryConfig.FieldByName('USUARIO').AsString := lConfig.Usuario;
+    dmDados.qryConfig.FieldByName('EMPRESA').AsString := lConfig.Empresa;
+
+    dmDados.qryConfig.Post;
+  end;
+end;
+
 class procedure TListaConfiguracao.CarregaConfigs;
 var
   lConfig: TConfiguracao;
 begin
+
+  AtualizarConfigsServer;
+
   dmDados.qryConfig.Open;
   dmDados.qryConfig.First;
   while not dmDados.qryConfig.Eof do
@@ -58,6 +90,20 @@ begin
   end;
 
   FInstance.Free;
+end;
+
+class procedure TListaConfiguracao.EnviaConfigsServer;
+var
+  lList: TList<TConfiguracao>;
+  lConfig: TConfiguracao;
+begin
+  lList := TList<TConfiguracao>.Create;
+  for lConfig in GetConfigs.Values do
+  begin
+    lList.Add(lConfig);
+  end;
+
+  ClientModule1.ServerMethods1Client.GravaConfig(lList);
 end;
 
 class function TListaConfiguracao.GetConfigs: TDictionary<string, TConfiguracao>;
@@ -92,6 +138,8 @@ begin
 
     dmDados.qryConfig.Post;
   end;
+
+  EnviaConfigsServer;
 end;
 
 end.

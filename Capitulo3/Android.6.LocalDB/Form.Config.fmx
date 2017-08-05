@@ -1,7 +1,6 @@
 object frmConfig: TfrmConfig
   Left = 0
   Top = 0
-  Caption = 'Form1'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320
@@ -54,73 +53,6 @@ object frmConfig: TfrmConfig
       OnClick = btnSalvarClick
     end
   end
-  object VertScrollBox1: TVertScrollBox
-    Align = Client
-    Size.Width = 640.000000000000000000
-    Size.Height = 328.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 2
-    Viewport.Width = 640.000000000000000000
-    Viewport.Height = 328.000000000000000000
-    object GridPanelLayout1: TGridPanelLayout
-      Align = Client
-      Size.Width = 640.000000000000000000
-      Size.Height = 328.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      ColumnCollection = <
-        item
-          Value = 50.000000000000000000
-        end
-        item
-          Value = 50.000000000000000000
-        end>
-      ControlCollection = <
-        item
-          Column = 0
-          Control = lblConfig1
-          Row = 0
-        end
-        item
-          Column = 1
-          Control = edtConfig1
-          Row = 0
-        end>
-      RowCollection = <
-        item
-          SizeStyle = Absolute
-          Value = 50.000000000000000000
-        end
-        item
-          SizeStyle = Absolute
-          Value = 50.000000000000000000
-        end
-        item
-          SizeStyle = Absolute
-          Value = 50.000000000000000000
-        end
-        item
-          SizeStyle = Absolute
-          Value = 50.000000000000000000
-        end>
-      object lblConfig1: TLabel
-        Align = Center
-        Size.Width = 264.000000000000000000
-        Size.Height = 48.000000000000000000
-        Size.PlatformDefault = False
-        TextSettings.HorzAlign = Center
-        Text = 'lblConfig1'
-      end
-      object edtConfig1: TEdit
-        Touch.InteractiveGestures = [LongTap, DoubleTap]
-        Align = Center
-        TabOrder = 1
-        Size.Width = 250.000000000000000000
-        Size.Height = 22.000000000000000000
-        Size.PlatformDefault = False
-      end
-    end
-  end
   object NavigatorBindSourceDB1: TBindNavigator
     Align = Bottom
     Position.Y = 368.000000000000000000
@@ -132,6 +64,48 @@ object frmConfig: TfrmConfig
     VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
     xRadius = 4.000000000000000000
     yRadius = 4.000000000000000000
+  end
+  object Grid1: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 203.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 620.000000000000000000
+    Viewport.Height = 178.000000000000000000
+  end
+  object edtConfig1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Top
+    TabOrder = 8
+    TextSettings.HorzAlign = Center
+    Position.X = 50.000000000000000000
+    Position.Y = 100.000000000000000000
+    Margins.Left = 50.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 50.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 55.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Layout2: TLayout
+    Align = Top
+    Position.Y = 40.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    object lblConfig1: TLabel
+      Align = Center
+      Size.Width = 324.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'lblConfig1'
+    end
   end
   object bsdConfig: TBindSourceDB
     DataSet = dmDados.qryConfig
@@ -157,6 +131,12 @@ object frmConfig: TfrmConfig
       FieldName = 'DESCRICAO_CONFIG'
       Component = lblConfig1
       ComponentProperty = 'Text'
+    end
+    object LinkGridToDataSourcebsdConfig: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = bsdConfig
+      GridControl = Grid1
+      Columns = <>
     end
   end
 end

@@ -8,15 +8,14 @@ uses
   FMX.Controls.Presentation, FMX.Layouts, Data.Geral, Data.Bind.Components,
   Data.Bind.DBScope, FMX.Edit, System.Rtti, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.EngExt, Fmx.Bind.DBEngExt, Data.Bind.Controls,
-  Fmx.Bind.Navigator;
+  Fmx.Bind.Navigator, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid, Fmx.Bind.Grid,
+  Data.Bind.Grid;
 
 type
   TfrmConfig = class(TForm)
-    GridPanelLayout1: TGridPanelLayout;
     ToolBar1: TToolBar;
     btnGoBack: TButton;
     Layout1: TLayout;
-    VertScrollBox1: TVertScrollBox;
     btnCancelar: TButton;
     btnSalvar: TButton;
     bsdConfig: TBindSourceDB;
@@ -26,6 +25,9 @@ type
     LinkControlToField1: TLinkControlToField;
     LinkPropertyToFieldText: TLinkPropertyToField;
     NavigatorBindSourceDB1: TBindNavigator;
+    Grid1: TGrid;
+    Layout2: TLayout;
+    LinkGridToDataSourcebsdConfig: TLinkGridToDataSource;
     procedure btnGoBackClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

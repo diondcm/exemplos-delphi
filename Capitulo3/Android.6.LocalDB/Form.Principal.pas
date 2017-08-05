@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Controls.Presentation, Form.Login, Form.Config, FMX.Layouts, FMX.Edit;
+  FMX.Controls.Presentation, Form.Login, Form.Config, FMX.Layouts, FMX.Edit,
+  Classe.Usuario.Logado, Classe.Lista.Configuracao;
 
 type
   TfrmPrincipal = class(TForm)
@@ -18,6 +19,8 @@ type
     procedure btnLoginClick(Sender: TObject);
     procedure btnConfigClick(Sender: TObject);
     procedure btnEnviarEmailClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,6 +78,20 @@ begin
   TAndroidHelper.Activity.startActivity(
     TJIntent.JavaClass.createChooser(lIntent, StrToJCharSequence('Qual app de email?')));
 {$ENDIF}
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  TUsuarioLogado.UsuarioLogado.User := 'Teste';
+  TUsuarioLogado.UsuarioLogado.Empresa := 'AquaMobile';
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+  if TListaConfiguracao.Configs.ContainsKey('USUARIO_EMAIL') then
+  begin
+    edtEmail.Text := TListaConfiguracao.Configs['USUARIO_EMAIL'].ValorConfig;
+  end;
 end;
 
 end.

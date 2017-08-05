@@ -1,41 +1,42 @@
 ﻿[dmDados.qryConfig]
 Visible=False
-Coordinates=384,56,128,36
+Coordinates=384,56,112,33
 
 [lblConfig1]
-Coordinates=370,220,72,58
-
-[VertScrollBox1]
-Coordinates=208,300,100,36
-
-[GridPanelLayout1]
-Coordinates=80,300,118,36
+Coordinates=370,220,64,51
 
 [btnSalvar]
-Coordinates=184,232,69,58
+Coordinates=184,232,61,51
 
 [btnGoBack]
-Coordinates=249,10,78,58
+Coordinates=249,10,69,51
 
 [edtConfig1]
-Coordinates=300,160,77,58
+Coordinates=300,160,68,51
 
 [btnCancelar]
-Coordinates=155,10,84,58
+Coordinates=155,10,73,51
 
 [Layout1]
-Coordinates=10,300,60,36
+Coordinates=10,300,53,33
 
 [ToolBar1]
-Coordinates=520,260,67,36
+Coordinates=520,260,58,33
 
 []
-Coordinates=260,230,77,58
+Coordinates=208,300,100,36
 Visible=True
 
 [BindingsList1]
-Coordinates=0,0,91,36
+Coordinates=0,0,82,33
 
 [bsdConfig]
-Coordinates=530,20,135,212
+Coordinates=530,20,113,195
+
+[Grid1]
+Coordinates=210,100,41,51
+Visible=True
+
+[Layout2]
+Coordinates=77,70,53,33
 
