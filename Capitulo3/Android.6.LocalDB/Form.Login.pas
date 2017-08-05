@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Layouts, FMX.Edit, FMX.ListBox,
-  Classe.Usuario.Logado, Data.Geral;
+  Classe.Usuario.Logado, Data.Geral, Classe.Configuracao;
 
 type
   TfrmLogin = class(TForm)
@@ -47,19 +47,30 @@ begin
 
   if lLogin = '' then
   begin
-    if dmDados.qryConfig.FindKey(['NOME_USUARIO']) then
+    if not TConfiguracao.Configs.ContainsKey('NOME_USUARIO') then
     begin
-      dmDados.qryConfig.Edit;
-    end else begin
-      dmDados.qryConfig.Append;
-      dmDados.qryConfigUSUARIO.AsString := edtUsuario.Text;
-      dmDados.qryConfigEMPRESA.AsString := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
-      dmDados.qryConfigNOME_CONFIG.AsString := 'NOME_USUARIO';
-      dmDados.qryConfigDESCRICAO_CONFIG.AsString := 'Nome de usuário';
+      TConfiguracao.Configs.Add('NOME_USUARIO', TConfiguracao.Create);
     end;
 
-    dmDados.qryConfigVALOR_CONFIG.AsString := edtUsuario.Text;
-    dmDados.qryConfig.Post;
+    TConfiguracao.Configs['NOME_USUARIO'].Descricao := 'Nome de usuário';
+    TConfiguracao.Configs['NOME_USUARIO'].NomeConfig := 'NOME_USUARIO';
+    TConfiguracao.Configs['NOME_USUARIO'].Usuario := edtUsuario.Text;
+    TConfiguracao.Configs['NOME_USUARIO'].Empresa := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
+    TConfiguracao.Configs['NOME_USUARIO'].ValorConfig := edtUsuario.Text;
+
+
+    if not TConfiguracao.Configs.ContainsKey('NOME_EMPRESA') then
+    begin
+      TConfiguracao.Configs.Add('NOME_EMPRESA', TConfiguracao.Create);
+    end;
+
+    TConfiguracao.Configs['NOME_EMPRESA'].Descricao := 'Nome da Empresa';
+    TConfiguracao.Configs['NOME_EMPRESA'].NomeConfig := 'NOME_EMPRESA';
+    TConfiguracao.Configs['NOME_EMPRESA'].Usuario := edtUsuario.Text;
+    TConfiguracao.Configs['NOME_EMPRESA'].Empresa := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
+    TConfiguracao.Configs['NOME_EMPRESA'].ValorConfig := cmbEmpresa.Items[cmbEmpresa.ItemIndex];
+
+    TConfiguracao.SalvaConfigs;
 
     Hide;
   end else begin
@@ -69,12 +80,29 @@ begin
 end;
 
 procedure TfrmLogin.FormShow(Sender: TObject);
+var
+  lIndexEmpresa: Integer;
 begin
-  dmDados.qryConfig.Open;
-  if dmDados.qryConfig.FindKey(['NOME_USUARIO']) then
+  if TConfiguracao.Configs.ContainsKey('NOME_USUARIO') then
   begin
-    edtUsuario.Text := dmDados.qryConfigVALOR_CONFIG.AsString;
+    edtUsuario.Text := TConfiguracao.Configs['NOME_USUARIO'].ValorConfig;
   end;
+
+  if TConfiguracao.Configs.ContainsKey('NOME_EMPRESA') then
+  begin
+    lIndexEmpresa :=
+      cmbEmpresa.Items.IndexOf(TConfiguracao.Configs['NOME_EMPRESA'].ValorConfig);
+    if lIndexEmpresa <> -1 then
+    begin
+      cmbEmpresa.ItemIndex := lIndexEmpresa;
+    end;
+  end;
+
+//  dmDados.qryConfig.Open;
+//  if dmDados.qryConfig.FindKey(['NOME_USUARIO']) then
+//  begin
+//    edtUsuario.Text := dmDados.qryConfigVALOR_CONFIG.AsString;
+//  end;
 end;
 
 end.

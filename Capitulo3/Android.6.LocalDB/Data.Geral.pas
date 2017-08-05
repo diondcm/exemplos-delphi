@@ -60,9 +60,8 @@ var
 begin
   {$IFDEF ANDROID } // IF DEFINE(ANDROID) //tb funciona
   lPath := TPath.GetDocumentsPath;
-  ShowMessage(lPath);
   {$ELSE}
-  lPath := ExtractFilePath(ParamStr(0)); // TPath.GetTempPath;
+  lPath := TPath.GetTempPath;
   {$ENDIF}
 
   FDConnection.Params.Values['Database'] := TPath.Combine(lPath, 'config.db');

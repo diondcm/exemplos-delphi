@@ -25,6 +25,7 @@ object dmDados: TdmDados
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qryConfigUSUARIO: TStringField
       FieldName = 'USUARIO'

@@ -24,13 +24,64 @@ object frmPrincipal: TfrmPrincipal
       OnClick = btnConfigClick
     end
   end
-  object btnLogin: TButton
+  object GridPanelLayout1: TGridPanelLayout
     Align = Center
-    Size.Width = 136.000000000000000000
-    Size.Height = 72.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 312.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
-    Text = 'Efetuar Login'
-    OnClick = btnLoginClick
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = btnLogin
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = btnEnviarEmail
+        Row = 1
+      end>
+    RowCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        SizeStyle = Auto
+      end>
+    object btnLogin: TButton
+      Align = Center
+      Size.Width = 136.000000000000000000
+      Size.Height = 72.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Efetuar Login'
+      OnClick = btnLoginClick
+    end
+    object btnEnviarEmail: TButton
+      Align = Center
+      Size.Width = 136.000000000000000000
+      Size.Height = 72.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Enviar Email'
+      OnClick = btnEnviarEmailClick
+      object edtEmail: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        Position.X = -40.000000000000000000
+        Position.Y = 72.000000000000000000
+        Size.Width = 217.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Destinat'#225'rio'
+      end
+    end
   end
 end

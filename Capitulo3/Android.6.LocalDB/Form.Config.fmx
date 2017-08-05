@@ -105,12 +105,19 @@ object frmConfig: TfrmConfig
         end>
       object lblConfig1: TLabel
         Align = Center
+        Size.Width = 264.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
         Text = 'lblConfig1'
       end
       object edtConfig1: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Center
         TabOrder = 1
+        Size.Width = 250.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
       end
     end
   end

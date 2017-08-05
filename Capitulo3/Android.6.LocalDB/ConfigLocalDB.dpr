@@ -7,7 +7,9 @@ uses
   Form.Login in 'Form.Login.pas' {frmLogin},
   Classe.Usuario.Logado in 'Classe.Usuario.Logado.pas',
   Form.Config in 'Form.Config.pas' {frmConfig},
-  Data.Geral in 'Data.Geral.pas' {dmDados: TDataModule};
+  Data.Geral in 'Data.Geral.pas' {dmDados: TDataModule},
+  Classe.Configuracao in 'Classe.Configuracao.pas',
+  Classe.Lista.Configuracao in 'Classe.Lista.Configuracao.pas';
 
 {$R *.res}
 
