@@ -6,3 +6,9 @@ Debug
 __history
 /Capitulo3/Exemplo4/Win32/Release/*.exe
 /Capitulo3/Exemplo4/Win32/Release/*.dcu
+/Capitulo3/Android.4.MultiView/Android/Release/*.dcu
+/Capitulo3/Android.4.MultiView/Android/Release/*.o
+/Capitulo3/Android.4.MultiView/Android/Release
+/Capitulo3/Android.5.ListViewWS/Android/Release
+/Capitulo3/Android.5.ListViewWS/Win32/Release/*.dcu
+/Capitulo3/Android.5.ListViewWS/Win32/Release/*.exe
