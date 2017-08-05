@@ -1,0 +1,155 @@
+object frmConfig: TfrmConfig
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btnGoBack: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'backtoolbutton'
+      TabOrder = 0
+      OnClick = btnGoBackClick
+    end
+  end
+  object Layout1: TLayout
+    Align = Bottom
+    Position.Y = 430.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object btnCancelar: TButton
+      Align = Right
+      Margins.Right = 30.000000000000000000
+      Position.X = 420.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Cancelar'
+      OnClick = btnCancelarClick
+    end
+    object btnSalvar: TButton
+      Align = Right
+      Margins.Right = 30.000000000000000000
+      Position.X = 530.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Salvar'
+      OnClick = btnSalvarClick
+    end
+  end
+  object VertScrollBox1: TVertScrollBox
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 328.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 640.000000000000000000
+    Viewport.Height = 328.000000000000000000
+    object GridPanelLayout1: TGridPanelLayout
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 328.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      ColumnCollection = <
+        item
+          Value = 50.000000000000000000
+        end
+        item
+          Value = 50.000000000000000000
+        end>
+      ControlCollection = <
+        item
+          Column = 0
+          Control = lblConfig1
+          Row = 0
+        end
+        item
+          Column = 1
+          Control = edtConfig1
+          Row = 0
+        end>
+      RowCollection = <
+        item
+          SizeStyle = Absolute
+          Value = 50.000000000000000000
+        end
+        item
+          SizeStyle = Absolute
+          Value = 50.000000000000000000
+        end
+        item
+          SizeStyle = Absolute
+          Value = 50.000000000000000000
+        end
+        item
+          SizeStyle = Absolute
+          Value = 50.000000000000000000
+        end>
+      object lblConfig1: TLabel
+        Align = Center
+        Text = 'lblConfig1'
+      end
+      object edtConfig1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 1
+      end
+    end
+  end
+  object NavigatorBindSourceDB1: TBindNavigator
+    Align = Bottom
+    Position.Y = 368.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 62.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    DataSource = bsdConfig
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object bsdConfig: TBindSourceDB
+    DataSet = dmDados.qryConfig
+    ScopeMappings = <>
+    Left = 40
+    Top = 264
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 36
+    Top = 213
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = bsdConfig
+      FieldName = 'VALOR_CONFIG'
+      Control = edtConfig1
+      Track = False
+    end
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = bsdConfig
+      FieldName = 'DESCRICAO_CONFIG'
+      Component = lblConfig1
+      ComponentProperty = 'Text'
+    end
+  end
+end

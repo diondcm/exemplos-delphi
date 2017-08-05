@@ -1,0 +1,115 @@
+object frmLogin: TfrmLogin
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object GridPanelLayout1: TGridPanelLayout
+    Align = Center
+    Size.Width = 177.000000000000000000
+    Size.Height = 249.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = edtUsuario
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = edtSenha
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = cmbEmpresa
+        Row = 2
+      end
+      item
+        Column = 0
+        Control = btnLogin
+        Row = 3
+      end>
+    RowCollection = <
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 40.000000000000000000
+      end
+      item
+        SizeStyle = Auto
+      end>
+    object edtUsuario: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 0
+      Size.Width = 150.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Usu'#225'rio ou email'
+    end
+    object edtSenha: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 1
+      Size.Width = 150.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Senha'
+    end
+    object btnLogin: TButton
+      Align = Center
+      Size.Width = 150.000000000000000000
+      Size.Height = 61.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Login'
+      OnClick = btnLoginClick
+    end
+    object cmbEmpresa: TComboBox
+      Align = Center
+      Items.Strings = (
+        'Empresa'
+        'AquaOil&Gas'
+        'AquaMobile'
+        'AquaSky'
+        'AquaSoft')
+      ItemIndex = 0
+      Size.Width = 150.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+    end
+  end
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object btnGoBack: TButton
+      Align = Left
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'backtoolbutton'
+      TabOrder = 0
+      OnClick = btnGoBackClick
+    end
+  end
+end
