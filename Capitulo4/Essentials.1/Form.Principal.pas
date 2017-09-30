@@ -32,6 +32,7 @@ implementation
 procedure TfrmPrincipal.buttonDolarParaRealClick(Sender: TObject);
 begin
   labelResultado.Text := TConversorMoeda.DolarParaReal(editValor.Text);
+  
 end;
 
 procedure TfrmPrincipal.buttonRealParaDolarClick(Sender: TObject);

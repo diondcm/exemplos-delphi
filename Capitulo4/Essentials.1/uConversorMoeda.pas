@@ -3,14 +3,19 @@ unit uConversorMoeda;
 interface // Declaração
 
 uses
-  System.SysUtils;
+  System.SysUtils, ClientModuleUnit1;
 
 //uses System.SysUtils;
 
 type
+  ///<summary>
+  ///  Classe de teste
+  ///</summary>
   TConversorMoeda = class /// Shift Tab >> D7: Shift + Ctrl + I - U
-  const
-     VALOR_COTACAO_REAL = 3.15;
+//  const
+//     VALOR_COTACAO_REAL = 3.15;
+
+    class function GetCotacaoDolarAtual: Currency;
 
   ///  Sift + Ctrl + C
     class function RealParaDolar(pValorReal: Currency): Currency; overload;
@@ -28,14 +33,13 @@ implementation // Código
 
 function ConverteRealParaDolar(pValorReal: Currency): Currency;
 begin
-  Result := pValorReal / TConversorMoeda.VALOR_COTACAO_REAL;
+  Result := pValorReal / TConversorMoeda.GetCotacaoDolarAtual;
 end;
 
 function ConverteDolarParaReal(pValorDolar: Currency): Currency;
 begin
-  Result := pValorDolar * TConversorMoeda.VALOR_COTACAO_REAL;
+  Result := pValorDolar * TConversorMoeda.GetCotacaoDolarAtual;
 end;
-
 
 { TConversor }
 
@@ -60,6 +64,11 @@ begin
         'Erro Técnico:' + E.Message);
     end;
   end;
+end;
+
+class function TConversorMoeda.GetCotacaoDolarAtual: Currency;
+begin
+  Result := ClientModule1.ServerMethods1Client.GetCotacaoAtual;
 end;
 
 class function TConversorMoeda.RealParaDolar(pValorReal: string): string;

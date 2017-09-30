@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A9E074FA-8EC9-4535-B354-D5380B89A204}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Server\Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ConversorMoedaVCL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ConversorMoedaFMX.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ConversorMoeda.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Server">
+        <MSBuild Projects="Server\Server.dproj"/>
+    </Target>
+    <Target Name="Server:Clean">
+        <MSBuild Projects="Server\Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Server:Make">
+        <MSBuild Projects="Server\Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConversorMoedaVCL">
+        <MSBuild Projects="ConversorMoedaVCL.dproj"/>
+    </Target>
+    <Target Name="ConversorMoedaVCL:Clean">
+        <MSBuild Projects="ConversorMoedaVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConversorMoedaVCL:Make">
+        <MSBuild Projects="ConversorMoedaVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConversorMoedaFMX">
+        <MSBuild Projects="ConversorMoedaFMX.dproj"/>
+    </Target>
+    <Target Name="ConversorMoedaFMX:Clean">
+        <MSBuild Projects="ConversorMoedaFMX.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConversorMoedaFMX:Make">
+        <MSBuild Projects="ConversorMoedaFMX.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConversorMoeda">
+        <MSBuild Projects="ConversorMoeda.dproj"/>
+    </Target>
+    <Target Name="ConversorMoeda:Clean">
+        <MSBuild Projects="ConversorMoeda.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConversorMoeda:Make">
+        <MSBuild Projects="ConversorMoeda.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Server;ConversorMoedaVCL;ConversorMoedaFMX;ConversorMoeda"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Server:Clean;ConversorMoedaVCL:Clean;ConversorMoedaFMX:Clean;ConversorMoeda:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Server:Make;ConversorMoedaVCL:Make;ConversorMoedaFMX:Make;ConversorMoeda:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
