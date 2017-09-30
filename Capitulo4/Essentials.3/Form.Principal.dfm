@@ -59,4 +59,13 @@ object Form1: TForm1
     TabOrder = 4
     OnClick = buttomMultiRandomClick
   end
+  object Button1: TButton
+    Left = 392
+    Top = 168
+    Width = 75
+    Height = 25
+    Caption = 'Thr'
+    TabOrder = 5
+    OnClick = Button1Click
+  end
 end
