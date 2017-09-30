@@ -1,0 +1,53 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Conversor'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object editValor: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 0
+    Position.X = 64.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = 'Informe o Valor'
+  end
+  object buttonDolarParaReal: TButton
+    Position.X = 64.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Dolar Para Real'
+    OnClick = buttonDolarParaRealClick
+  end
+  object buttonRealParaDolar: TButton
+    Position.X = 64.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Real Para Dolar'
+    OnClick = buttonRealParaDolarClick
+  end
+  object panelResultado: TPanel
+    Position.X = 64.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object labelResultado: TLabel
+      Align = Center
+      TextSettings.HorzAlign = Center
+    end
+  end
+end
