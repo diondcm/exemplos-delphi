@@ -6,6 +6,10 @@ uses
   Data.DB;
 
 type
+  /// <summary>
+  ///  Clase de Pessoa
+  ///  </summary>
+   { TODO 1 -oDion -cDevs : Implementar Config }
   TPessoa = class
   private
     FID: Integer;
@@ -14,6 +18,10 @@ type
     FDataNascimento: TDate;
     FDataCadastro: TDate;
   public
+  /// <summary>
+  ///  Carrega de TDadaSet
+  ///  - Data set deve estar aberto
+  ///  </summary>
     procedure Carregar(pDts: TDataSet);
     procedure Salvar(pDtsDestino: TDataSet);
 //    procedure Carregar;
@@ -27,6 +35,10 @@ type
     property DataCadastro: TDate read FDataCadastro write FDataCadastro;
   end;
 
+  Class1 = class
+  public
+    Pes: TPessoa;
+  end;
 
 implementation
 
@@ -78,4 +90,3 @@ begin
 end;
 
 end.
-
