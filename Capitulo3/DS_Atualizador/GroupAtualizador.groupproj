@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3E26BFB6-D3E9-45AF-AABD-32794367D92D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DS_Atualizador.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AtualizadorClient.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DS_Atualizador">
+        <MSBuild Projects="DS_Atualizador.dproj"/>
+    </Target>
+    <Target Name="DS_Atualizador:Clean">
+        <MSBuild Projects="DS_Atualizador.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DS_Atualizador:Make">
+        <MSBuild Projects="DS_Atualizador.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="AtualizadorClient">
+        <MSBuild Projects="AtualizadorClient.dproj"/>
+    </Target>
+    <Target Name="AtualizadorClient:Clean">
+        <MSBuild Projects="AtualizadorClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AtualizadorClient:Make">
+        <MSBuild Projects="AtualizadorClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DS_Atualizador;AtualizadorClient"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DS_Atualizador:Clean;AtualizadorClient:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DS_Atualizador:Make;AtualizadorClient:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
