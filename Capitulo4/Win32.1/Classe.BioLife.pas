@@ -6,14 +6,23 @@ uses
   System.Classes, System.SysUtils;
 
 type
-  TMamifero = class
+  TVertebrados = class(TObject) // (TComponent)
+  private
+    FQuantidadeOssos: Cardinal;
+  published
+    property QuantidadeOssos: Cardinal read FQuantidadeOssos write FQuantidadeOssos;
+  end;
+
+  TMamifero = class(TVertebrados)
   private
     FDiasDeGestacao: Cardinal;
     FPeriodoAmamentacao: Cardinal;
+    FQuantidadeMamas: Cardinal;
   public
     procedure ListaPropriedades(pLista: TStrings); virtual { VMT }; // dynamic { DMT } // static
     property DiasDeGestacao: Cardinal read FDiasDeGestacao write FDiasDeGestacao;
     property PeriodoAmamentacao: Cardinal read FPeriodoAmamentacao write FPeriodoAmamentacao;
+    property QuantidadeMamas: Cardinal read FQuantidadeMamas write FQuantidadeMamas;
   end;
 
   TCao = class(TMamifero)
@@ -22,8 +31,25 @@ type
   public
     procedure ListaPropriedades(pLista: TStrings); override;
 
-//    procedure ListaPropriedadesDoCao(pLista: TStrings);
+//    procedure ListaPropriedadesDoCao(pLista: TStrings); // Como não fazer
     property Nome: string read FNome write FNome;
+  end;
+
+  TBaleiaAzul = class(TMamifero)
+  private
+    FTempoDeSubmercao: Cardinal;
+  public
+    procedure ListaPropriedades(pLista: TStrings); override;
+    property TempoDeSubmercao: Cardinal read FTempoDeSubmercao write FTempoDeSubmercao;
+  end;
+
+  TMorcego = class(TMamifero)
+  private
+    FAlturaMaximaVoo: Cardinal;
+  public
+    procedure ListaPropriedades(pLista: TStrings); override;
+
+    property AlturaMaximaVoo: Cardinal read FAlturaMaximaVoo write FAlturaMaximaVoo;
   end;
 
 implementation
@@ -55,6 +81,22 @@ begin
   pLista.Add('Nome: ' + FNome);
   inherited;
 //  pLista.Add('Nome: ' + FNome);
+end;
+
+{ TBaleiaAzul }
+
+procedure TBaleiaAzul.ListaPropriedades(pLista: TStrings);
+begin
+  pLista.Add('Tempo de Submerção: ' + FTempoDeSubmercao.ToString + ' segundos');
+  inherited;
+end;
+
+{ TMorcego }
+
+procedure TMorcego.ListaPropriedades(pLista: TStrings);
+begin
+  pLista.Add('Altura Máx. Voo: ' + FAlturaMaximaVoo.ToString + ' metros');
+  inherited;
 end;
 
 end.
