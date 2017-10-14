@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8E85FC1D-D1BA-476E-BE11-1BDCF492412D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Parametros.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ClassesEObjetos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TesteThreads.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Parametros">
+        <MSBuild Projects="Parametros.dproj"/>
+    </Target>
+    <Target Name="Parametros:Clean">
+        <MSBuild Projects="Parametros.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Parametros:Make">
+        <MSBuild Projects="Parametros.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ClassesEObjetos">
+        <MSBuild Projects="ClassesEObjetos.dproj"/>
+    </Target>
+    <Target Name="ClassesEObjetos:Clean">
+        <MSBuild Projects="ClassesEObjetos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClassesEObjetos:Make">
+        <MSBuild Projects="ClassesEObjetos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TesteThreads">
+        <MSBuild Projects="TesteThreads.dproj"/>
+    </Target>
+    <Target Name="TesteThreads:Clean">
+        <MSBuild Projects="TesteThreads.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TesteThreads:Make">
+        <MSBuild Projects="TesteThreads.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Parametros;ClassesEObjetos;TesteThreads"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Parametros:Clean;ClassesEObjetos:Clean;TesteThreads:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Parametros:Make;ClassesEObjetos:Make;TesteThreads:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
