@@ -19,8 +19,13 @@ type
     Panel9: TPanel;
     Panel10: TPanel;
     Panel11: TPanel;
-    Label1: TLabel;
-    Label2: TLabel;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    Panel12: TPanel;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
   private
     { Private declarations }
   public

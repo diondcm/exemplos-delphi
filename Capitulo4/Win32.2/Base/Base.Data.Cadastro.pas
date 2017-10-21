@@ -4,15 +4,14 @@ interface
 
 uses
   System.SysUtils, System.Classes, Base.Data, Data.FMTBcd, Datasnap.Provider, Data.SqlExpr, Data.DB, Datasnap.DBClient,
-  System.Rtti, System.Variants;
+  System.Rtti, System.Variants, System.StrUtils;
 
 type
-  TMetodoAnonimo = reference to procedure;
+  //TMetodoAnonimo = reference to procedure;
   //TMetodoAnonimo = TProc
 
-
   TEventoObtemGerador = function(const pNomeGerador: string; pIncremento: Byte): Int64 of object;
-
+  TMetodoModificacao = TProc;
 
   ///  Exemplo de uso
   ///  [TAtributoGerador('ID_CLIENTE', 'SEQ_CLIENTE')]
@@ -27,6 +26,7 @@ type
     property NomeGerador: string read FNomeGerador write FNomeGerador;
   end;
 
+  TdmdBaseCadastroClass = class of TdmdBaseCadastro;
   TdmdBaseCadastro = class(TdmdBase)
     cdsCadastro: TClientDataSet;
     sqlCadastro: TSQLDataSet;
@@ -35,8 +35,13 @@ type
     procedure cdsCadastroBeforePost(DataSet: TDataSet);
     procedure cdsCadastroAfterCancel(DataSet: TDataSet);
     procedure cdsCadastroAfterDelete(DataSet: TDataSet);
+  private const
+    WHERE_SQL = '/*WHERE*/';
+    AND_SQL = '/*AND*/';
   private
-    { Private declarations }
+    procedure AbrirCadastroComCondicao(const pCondicao: string);
+    procedure AdicionarCondicao(const pCondicao: string);
+    procedure AbrirCadastroComModificacao(const pMetodoModificacao: TMetodoModificacao);
   protected
     procedure ValidarDadosCadastro; virtual; abstract;
     procedure SetarDadosNovoRegistro; virtual; abstract; // raise EAbstractError
@@ -67,11 +72,14 @@ type
     procedure InserirRegistro; virtual;
     procedure AlterarRegistro; virtual;
     procedure ExcluirRegistro; virtual;
-    procedure SalvarRegsitro; virtual;
+    procedure SalvarRegistro; virtual;
     procedure CancelarRegistro; virtual;
+    procedure AtualizarDataSet; virtual;
 
-    // pesquisa
 
+    procedure Pesquisar(const pTexto: string); // TODO: remove Inject SQL
+
+    class property MetodoGerador: TEventoObtemGerador read FMetodoGerador write FMetodoGerador;
   end;
 
 implementation
@@ -82,9 +90,79 @@ implementation
 
 { TdmdBaseCadastro }
 
+procedure TdmdBaseCadastro.AbrirCadastroComCondicao(const pCondicao: string);
+var
+  lMetodo: TMetodoModificacao;
+begin
+  //{$IFDEF DEBUG}
+//  {$DEFINE SAVE_SQL}
+  {$IFDEF SAVE_SQL}
+  lMetodo :=
+    procedure
+    var
+      lStl: TStringList;
+    begin
+      AdicionarCondicao(pCondicao);
+
+      lStl := TStringList.Create;
+      try
+        lStl.Text := sqlCadastro.CommandText;
+        lStl.SAveToFile(Self.ClassName + '.sql');
+      finally
+        lStl.Free;
+      end;
+    end;
+  {$ELSE}
+  lMetodo :=
+    procedure
+    begin
+      AdicionarCondicao(pCondicao);
+    end;
+  {$ENDIF}
+
+  AbrirCadastroComModificacao(lMetodo);
+end;
+
+procedure TdmdBaseCadastro.AbrirCadastroComModificacao(const pMetodoModificacao: TMetodoModificacao);
+var
+  lSQlOriginal: string;
+begin
+  lSQlOriginal := sqlCadastro.CommandText;
+  try
+    pMetodoModificacao; // modifica SQL de acordo com método
+
+    cdsCadastro.Close;
+    cdsCadastro.Open;
+  finally
+    sqlCadastro.CommandText := lSQlOriginal;
+  end;
+end;
+
+procedure TdmdBaseCadastro.AdicionarCondicao(const pCondicao: string);
+begin
+  if Pos(WHERE_SQL, sqlCadastro.CommandText) > 0 then
+  begin
+    sqlCadastro.CommandText := StringReplace(sqlCadastro.CommandText, WHERE_SQL, ' where (' + pCondicao + ')' + AND_SQL, []);
+  end else if Pos(AND_SQL, sqlCadastro.CommandText) > 0 then
+  begin
+    sqlCadastro.CommandText := StringReplace(sqlCadastro.CommandText, AND_SQL, ' and (' + pCondicao + ') ' + AND_SQL, []);
+  end;
+end;
+
 procedure TdmdBaseCadastro.AlterarRegistro;
 begin
   cdsCadastro.Edit;
+end;
+
+procedure TdmdBaseCadastro.AtualizarDataSet;
+begin
+  //cdsCadastro.Refresh;
+  cdsCadastro.Close;
+  cdsCadastro.Open;
+  // todo: tratar abrir com parâmetros
+  {$MESSAGE HINT 'Tratar abrir com parâmetros'}
+  //{$MESSAGE WARN 'Tratar abrir com parâmetros'}
+  //{$MESSAGE ERROR 'Tratar abrir com parâmetros'}
 end;
 
 procedure TdmdBaseCadastro.CancelarRegistro;
@@ -114,7 +192,7 @@ procedure TdmdBaseCadastro.cdsCadastroBeforePost(DataSet: TDataSet);
 begin
   inherited;
   ValidarDadosCadastro;
-  // SetGerador
+  SetCamposGerador;
 end;
 
 procedure TdmdBaseCadastro.ExcluirRegistro;
@@ -147,9 +225,92 @@ begin
   cdsCadastro.Last;
 end;
 
-procedure TdmdBaseCadastro.SalvarRegsitro;
-begin
+procedure TdmdBaseCadastro.Pesquisar(const pTexto: string);
 
+  procedure Teste;
+  begin
+    // não ve as vars do método Pesquisar;
+  end;
+
+var
+  lInt: Int64;
+  lValorEhInteiro: Boolean;
+  lData: TDateTime;
+  lValorEhData: Boolean;
+  lFloat: Double;
+  lValorEhFloat: Boolean;
+  i: Integer;
+  lWhere: string;
+  lDataType: TFieldType;
+
+  //nested methods
+  procedure AdicionarCondicaoPesquisa(pField: TField; const pCondicao: string; pIngnoreCase: Boolean = False);
+  var
+    lCampo: string;
+  begin
+    if lWhere <> '' then
+    begin
+      lWhere := lWhere + ' or ';
+    end;
+
+    // System.StrUtils, System.Math >> Integers
+    lCampo := IfThen(pField.Origin <> '', pField.Origin, pField.FieldName); // ? :
+//    if pField.Origin <> '' then
+//    begin
+//      lCampo := pField.Origin;
+//    end else begin
+//      lCampo := pField.FieldName;
+//    end;
+
+    if pIngnoreCase then { = True}
+    begin
+      lCampo := ' UPPER(' + lCampo + ')'; // todo: multi-db tratar UPPER()
+    end;
+
+    lWhere := lWhere + lCampo + ' ' + pCondicao;
+  end;
+
+begin
+  if cdsCadastro.FieldCount = 0 then
+  begin
+    // Assert();
+    raise Exception.Create('Cds Sem fields');
+  end;
+
+  lValorEhInteiro := TryStrToInt64(pTexto, lInt);
+  lValorEhData := TryStrToDate(pTexto, lData);
+  lValorEhFloat := TryStrToFloat(pTexto, lFloat);
+
+  lWhere := '';
+  for i := 0 to cdsCadastro.FieldCount -1 do
+  begin
+    lDataType := cdsCadastro.Fields[i].DataType;
+    if lValorEhInteiro and (lDataType in [ftInteger, ftByte, ftWord, ftShortint]) then
+    begin
+      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
+    end else if lValorEhData and (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) then
+    begin
+      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + QuotedStr(pTexto)); // #39 + pTexto + #39
+    end else if lValorEhFloat and (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) then
+    begin
+      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
+    end else if lDataType in [ftString, ftMemo, ftWideString, ftWideMemo] then
+    begin
+      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' like ' + QuotedStr('%' + pTexto + '%'), True);
+    end else begin
+      raise Exception.Create('Tipo de dado não tratado no field: ' + cdsCadastro.Fields[i].FieldName); // lDataType.ToString
+    end;
+  end;
+
+  if lWhere <> '' then
+  begin
+    AbrirCadastroComCondicao(lWhere);
+  end;
+end;
+
+procedure TdmdBaseCadastro.SalvarRegistro;
+begin
+  cdsCadastro.Post;
 end;
 
 procedure TdmdBaseCadastro.SetCamposGerador;
@@ -159,6 +320,7 @@ var
   lGerador: TAtributoGerador;
   lStatusReadOnly: Boolean;
   lValor: Int64;
+  // lRtti: TRttiContext;
 begin
   if cdsCadastro.State = dsInsert then
   begin

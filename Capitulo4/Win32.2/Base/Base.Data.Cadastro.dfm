@@ -1,4 +1,5 @@
 inherited dmdBaseCadastro: TdmdBaseCadastro
+  OldCreateOrder = True
   Height = 261
   Width = 229
   object cdsCadastro: TClientDataSet

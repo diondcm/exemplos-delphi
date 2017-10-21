@@ -28,5 +28,8 @@ object frmBaseAjuda: TfrmBaseAjuda
     Caption = 'http://www.aquasoft.com.br'
     TabOrder = 0
     UseVisualStyle = True
+    OnClick = LinkLabelClick
+    OnMouseLeave = LinkLabelMouseLeave
+    OnMouseMove = LinkLabelMouseMove
   end
 end
