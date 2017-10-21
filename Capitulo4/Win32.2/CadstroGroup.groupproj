@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A5C73CD9-8412-48DD-A9BD-B3DC9DB3895C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CadastroVCL\CadastroVCL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RelatoriosVCL\RelatoriosVCL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CadastroVCL">
+        <MSBuild Projects="CadastroVCL\CadastroVCL.dproj"/>
+    </Target>
+    <Target Name="CadastroVCL:Clean">
+        <MSBuild Projects="CadastroVCL\CadastroVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CadastroVCL:Make">
+        <MSBuild Projects="CadastroVCL\CadastroVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RelatoriosVCL">
+        <MSBuild Projects="RelatoriosVCL\RelatoriosVCL.dproj"/>
+    </Target>
+    <Target Name="RelatoriosVCL:Clean">
+        <MSBuild Projects="RelatoriosVCL\RelatoriosVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RelatoriosVCL:Make">
+        <MSBuild Projects="RelatoriosVCL\RelatoriosVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CadastroVCL;RelatoriosVCL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CadastroVCL:Clean;RelatoriosVCL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CadastroVCL:Make;RelatoriosVCL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
