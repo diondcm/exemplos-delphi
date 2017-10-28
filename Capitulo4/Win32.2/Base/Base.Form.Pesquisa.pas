@@ -8,7 +8,7 @@ uses
   Data.Conexao, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, Base.Data.Cadastro, Vcl.Grids, Vcl.DBGrids, Base.Form.Cadastro,
   System.ImageList, Vcl.ImgList, Datasnap.DBClient, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  FireDAC.Stan.Async, FireDAC.DApt;
+  FireDAC.Stan.Async, FireDAC.DApt, Classe.DBGrid.Helper;
 
 type
   TMetodoSelecaoRegistro<T: TdmdBaseCadastro> = reference to procedure(pDmdDados: T);
@@ -145,32 +145,7 @@ end;
 
 procedure TfrmBasePesquisa.gridDadosTitleClick(Column: TColumn);
 begin
-  inherited;
-  // Não por sql >> trazer esse custo
-
-  // FD cds
-
-  if Assigned(Column.Field.DataSet) then
-  begin
-    if (Column.Field.DataSet is TClientDataSet) then
-    begin
-      if CompareStr(TClientDataSet(Column.Field.DataSet).IndexFieldNames, Column.Field.FieldName) <> 0 then
-      begin
-        TClientDataSet(Column.Field.DataSet).IndexFieldNames := Column.Field.FieldName;
-      end else begin
-
-      end;
-    end;
-
-    if (Column.Field.DataSet is TFDDataSet) then
-    begin
-      if CompareStr(TFDDataSet(Column.Field.DataSet).IndexFieldNames, Column.Field.FieldName) <> 0 then
-      begin
-        TFDDataSet(Column.Field.DataSet).IndexFieldNames := Column.Field.FieldName;
-      end;
-    end;
-  end;
-
+  TDBGridHelper.IndexaPorField(Column);
   //DONE::{$MESSAGE WARN 'Implementar title click'}
 end;
 

@@ -14,7 +14,8 @@ uses
   Base.Form.Cadastro in '..\Base\Base.Form.Cadastro.pas' {frmBaseCadastro},
   Data.Country in 'Data.Country.pas' {dmdCountry: TDataModule},
   Form.Cadastro.Country in 'Form.Cadastro.Country.pas' {frmCadCountry},
-  Form.Pesquisa.Country in 'Form.Pesquisa.Country.pas' {frmPesquisaPaises};
+  Form.Pesquisa.Country in 'Form.Pesquisa.Country.pas' {frmPesquisaPaises},
+  Classe.DBGrid.Helper in '..\Base\Classe.DBGrid.Helper.pas';
 
 {$R *.res}
 
