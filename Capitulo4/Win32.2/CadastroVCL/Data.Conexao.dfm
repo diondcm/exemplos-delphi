@@ -12,6 +12,7 @@ inherited dmdConexao: TdmdConexao
       'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Aluno\Desk' +
       'top\exemplos-delphi\SQLite\demo.mdb;Persist Security Info=False;'
     LoginPrompt = False
+    Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 248
     Top = 40

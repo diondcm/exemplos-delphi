@@ -18,7 +18,10 @@ uses
   Classe.DBGrid.Helper in '..\Base\Classe.DBGrid.Helper.pas',
   Data.Cadastro.Vendors in 'Data.Cadastro.Vendors.pas' {dmdCadVendors: TDataModule},
   Form.Cadastro.Vendors in 'Form.Cadastro.Vendors.pas' {frmCadastroVendors},
-  Form.Pesquisa.Vendors in 'Form.Pesquisa.Vendors.pas' {frmPesquisaVendors};
+  Form.Pesquisa.Vendors in 'Form.Pesquisa.Vendors.pas' {frmPesquisaVendors},
+  Data.Cadastro.Biolife in 'Data.Cadastro.Biolife.pas' {dmdCadBiolife: TDataModule},
+  Form.Cadastro.Biolife in 'Form.Cadastro.Biolife.pas' {frmCadBioLife},
+  Form.Pesquisa.Biolife in 'Form.Pesquisa.Biolife.pas' {frmPesquisaBiolife};
 
 {$R *.res}
 
@@ -35,5 +38,8 @@ begin
   Application.CreateForm(TdmdCadVendors, dmdCadVendors);
   Application.CreateForm(TfrmCadastroVendors, frmCadastroVendors);
   Application.CreateForm(TfrmPesquisaVendors, frmPesquisaVendors);
+  Application.CreateForm(TdmdCadBiolife, dmdCadBiolife);
+  Application.CreateForm(TfrmCadBioLife, frmCadBioLife);
+  Application.CreateForm(TfrmPesquisaBiolife, frmPesquisaBiolife);
   Application.Run;
 end.

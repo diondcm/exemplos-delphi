@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Base.Form, Data.DB, Datasnap.DBClient, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Form.Pesquisa.Country, System.ImageList, Vcl.ImgList, Data.Conexao, Form.Pesquisa.Vendors;
+  Form.Pesquisa.Country, System.ImageList, Vcl.ImgList, Data.Conexao, Form.Pesquisa.Vendors, Form.Pesquisa.Biolife;
 
 type
   TObjectClass = class
@@ -75,8 +75,10 @@ begin
       begin // ideal que viesse do banco
         if lTab.ToLower = 'vendors' then
         begin
-
           listTabelas.Items.AddObject(lTab, TObjectClass.Create(TfrmPesquisaVendors)); // .Create(Self)
+        end else if lTab.ToLower = 'biolife' then
+        begin
+          listTabelas.Items.AddObject(lTab, TObjectClass.Create(TfrmPesquisaBiolife));
         end;
       end;
     end else begin
