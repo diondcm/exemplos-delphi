@@ -1,192 +1,235 @@
-inherited frmPrincipal: TfrmPrincipal
-  Caption = 'Cadastro VCL'
-  ClientHeight = 574
-  ClientWidth = 1109
-  OnCreate = FormCreate
-  OnDestroy = FormDestroy
-  ExplicitWidth = 1125
-  ExplicitHeight = 633
+inherited frmCadastroVendors: TfrmCadastroVendors
+  Caption = 'Cadastro de Representantes'
+  ClientHeight = 518
+  ClientWidth = 685
+  ExplicitWidth = 701
+  ExplicitHeight = 577
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel [0]
-    Left = 144
-    Top = 152
-    Width = 185
-    Height = 41
-    Caption = 'FormBase'
-    TabOrder = 0
+  object Label1: TLabel [0]
+    Left = 48
+    Top = 80
+    Width = 47
+    Height = 13
+    Caption = 'VendorNo'
+    FocusControl = cxDBCalcEdit1
   end
-  object Panel2: TPanel [1]
-    Left = 24
-    Top = 272
-    Width = 185
-    Height = 41
-    Caption = 'FormBaseCadastros'
+  object Label2: TLabel [1]
+    Left = 48
+    Top = 120
+    Width = 61
+    Height = 13
+    Caption = 'VendorName'
+    FocusControl = cxDBTextEdit1
+  end
+  object Label3: TLabel [2]
+    Left = 48
+    Top = 160
+    Width = 45
+    Height = 13
+    Caption = 'Address1'
+    FocusControl = cxDBTextEdit2
+  end
+  object Label4: TLabel [3]
+    Left = 48
+    Top = 200
+    Width = 45
+    Height = 13
+    Caption = 'Address2'
+    FocusControl = cxDBTextEdit3
+  end
+  object Label5: TLabel [4]
+    Left = 48
+    Top = 240
+    Width = 19
+    Height = 13
+    Caption = 'City'
+    FocusControl = cxDBTextEdit4
+  end
+  object Label6: TLabel [5]
+    Left = 264
+    Top = 80
+    Width = 26
+    Height = 13
+    Caption = 'State'
+    FocusControl = cxDBTextEdit5
+  end
+  object Label7: TLabel [6]
+    Left = 264
+    Top = 120
+    Width = 14
+    Height = 13
+    Caption = 'Zip'
+    FocusControl = cxDBTextEdit6
+  end
+  object Label8: TLabel [7]
+    Left = 264
+    Top = 160
+    Width = 39
+    Height = 13
+    Caption = 'Country'
+    FocusControl = cxDBTextEdit7
+  end
+  object Label9: TLabel [8]
+    Left = 264
+    Top = 200
+    Width = 30
+    Height = 13
+    Caption = 'Phone'
+    FocusControl = cxDBTextEdit8
+  end
+  object Label10: TLabel [9]
+    Left = 264
+    Top = 240
+    Width = 19
+    Height = 13
+    Caption = 'FAX'
+    FocusControl = cxDBTextEdit9
+  end
+  inherited panelControles: TPanel
+    Width = 685
+    ExplicitWidth = 685
+    inherited buttonCancelar: TBitBtn
+      ExplicitLeft = 577
+      ExplicitHeight = 55
+    end
+    inherited buttonUltimo: TBitBtn
+      ExplicitLeft = 217
+      ExplicitHeight = 55
+    end
+    inherited buttonProximo: TBitBtn
+      ExplicitLeft = 145
+      ExplicitHeight = 55
+    end
+    inherited buttonAnterior: TBitBtn
+      ExplicitLeft = 73
+      ExplicitHeight = 55
+    end
+    inherited buttonPrimeiro: TBitBtn
+      ExplicitHeight = 55
+    end
+    inherited buttonSalvar: TBitBtn
+      ExplicitLeft = 505
+      ExplicitHeight = 55
+    end
+    inherited buttonDeletar: TBitBtn
+      ExplicitLeft = 433
+      ExplicitHeight = 55
+    end
+    inherited buttonEditar: TBitBtn
+      ExplicitLeft = 361
+      ExplicitHeight = 55
+    end
+    inherited buttonInserir: TBitBtn
+      ExplicitLeft = 289
+      ExplicitHeight = 55
+    end
+  end
+  object cxDBCalcEdit1: TDBEdit [11]
+    Left = 48
+    Top = 93
+    Width = 121
+    Height = 21
+    DataField = 'VendorNo'
+    DataSource = dtsDados
     TabOrder = 1
   end
-  object Panel3: TPanel [2]
-    Left = 279
-    Top = 272
-    Width = 185
-    Height = 41
-    Caption = 'FormBasePesquisas'
+  object cxDBTextEdit1: TDBEdit [12]
+    Left = 48
+    Top = 136
+    Width = 121
+    Height = 21
+    DataField = 'VendorName'
+    DataSource = dtsDados
     TabOrder = 2
   end
-  object Panel4: TPanel [3]
-    Left = 576
-    Top = 152
-    Width = 185
-    Height = 41
-    Caption = 'DataBase'
+  object cxDBTextEdit2: TDBEdit [13]
+    Left = 48
+    Top = 176
+    Width = 121
+    Height = 21
+    DataField = 'Address1'
+    DataSource = dtsDados
     TabOrder = 3
   end
-  object Panel5: TPanel [4]
-    Left = 576
-    Top = 272
-    Width = 185
-    Height = 41
-    Caption = 'DataBaseCadastros'
+  object cxDBTextEdit3: TDBEdit [14]
+    Left = 48
+    Top = 216
+    Width = 121
+    Height = 21
+    DataField = 'Address2'
+    DataSource = dtsDados
     TabOrder = 4
   end
-  object Panel6: TPanel [5]
-    Left = 576
-    Top = 336
-    Width = 185
-    Height = 41
-    Caption = 'DataCadastro'
+  object cxDBTextEdit4: TDBEdit [15]
+    Left = 48
+    Top = 256
+    Width = 121
+    Height = 21
+    DataField = 'City'
+    DataSource = dtsDados
     TabOrder = 5
   end
-  object Panel7: TPanel [6]
-    Left = 351
-    Top = 336
-    Width = 113
-    Height = 41
-    Caption = 'FormPesquisas'
+  object cxDBTextEdit5: TDBEdit [16]
+    Left = 264
+    Top = 96
+    Width = 121
+    Height = 21
+    DataField = 'State'
+    DataSource = dtsDados
     TabOrder = 6
   end
-  object Panel8: TPanel [7]
-    Left = 351
-    Top = 400
-    Width = 113
-    Height = 41
-    Caption = 'FormPesquisas'
+  object cxDBTextEdit6: TDBEdit [17]
+    Left = 264
+    Top = 136
+    Width = 121
+    Height = 21
+    DataField = 'Zip'
+    DataSource = dtsDados
     TabOrder = 7
   end
-  object Panel9: TPanel [8]
-    Left = 119
-    Top = 400
-    Width = 97
-    Height = 41
-    Caption = 'FormCadastros'
+  object cxDBTextEdit7: TDBEdit [18]
+    Left = 264
+    Top = 176
+    Width = 121
+    Height = 21
+    DataField = 'Country'
+    DataSource = dtsDados
     TabOrder = 8
   end
-  object Panel10: TPanel [9]
-    Left = 119
-    Top = 336
-    Width = 97
-    Height = 41
-    Caption = 'FormCadastros'
+  object cxDBTextEdit8: TDBEdit [19]
+    Left = 264
+    Top = 216
+    Width = 121
+    Height = 21
+    DataField = 'Phone'
+    DataSource = dtsDados
     TabOrder = 9
   end
-  object Panel11: TPanel [10]
-    Left = 576
-    Top = 400
-    Width = 185
-    Height = 41
-    Caption = 'DataCadastro'
+  object cxDBTextEdit9: TDBEdit [20]
+    Left = 264
+    Top = 256
+    Width = 121
+    Height = 21
+    DataField = 'FAX'
+    DataSource = dtsDados
     TabOrder = 10
   end
-  object CheckBox1: TCheckBox [11]
-    Left = 700
-    Top = 165
-    Width = 17
-    Height = 17
-    Checked = True
-    State = cbChecked
-    TabOrder = 11
-  end
-  object CheckBox2: TCheckBox [12]
-    Left = 720
-    Top = 285
-    Width = 17
-    Height = 17
-    Checked = True
-    State = cbChecked
-    TabOrder = 12
-  end
-  object CheckBox3: TCheckBox [13]
-    Left = 272
-    Top = 165
-    Width = 17
-    Height = 17
-    Checked = True
-    State = cbChecked
-    TabOrder = 13
-  end
-  object Panel12: TPanel [14]
-    Left = 144
-    Top = 216
-    Width = 185
-    Height = 41
-    Caption = 'FormBaseDados'
-    TabOrder = 14
-  end
-  object CheckBox4: TCheckBox [15]
-    Left = 280
-    Top = 229
-    Width = 17
-    Height = 17
-    Checked = True
-    State = cbChecked
-    TabOrder = 15
-  end
-  object CheckBox5: TCheckBox [16]
-    Left = 432
-    Top = 285
-    Width = 17
-    Height = 17
-    Checked = True
-    State = cbChecked
-    TabOrder = 16
-  end
-  object CheckBox6: TCheckBox [17]
-    Left = 176
-    Top = 285
-    Width = 17
-    Height = 17
-    Checked = True
-    State = cbChecked
-    TabOrder = 17
-  end
-  object listTabelas: TListBox [18]
-    Left = 850
-    Top = 0
-    Width = 259
-    Height = 574
-    Align = alRight
-    ItemHeight = 13
-    TabOrder = 18
-    OnClick = listTabelasClick
-    ExplicitLeft = 1008
-  end
   inherited MainMenu: TMainMenu
-    Left = 736
-    Top = 24
-    object Cadastros1: TMenuItem [0]
-      Caption = 'Cadastros'
-      object Pases1: TMenuItem
-        Caption = 'Pa'#237'ses'
-        OnClick = Pases1Click
-      end
-      object Representantes1: TMenuItem
-        Caption = 'Representantes'
-        OnClick = Representantes1Click
-      end
-    end
+    Left = 576
+    Top = 96
+  end
+  inherited ActionList: TActionList
+    Left = 576
+    Top = 144
+  end
+  inherited dtsDados: TDataSource
+    Left = 576
+    Top = 200
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C0101010008002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

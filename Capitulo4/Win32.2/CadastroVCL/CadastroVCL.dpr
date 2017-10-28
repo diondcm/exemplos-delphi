@@ -15,7 +15,10 @@ uses
   Data.Country in 'Data.Country.pas' {dmdCountry: TDataModule},
   Form.Cadastro.Country in 'Form.Cadastro.Country.pas' {frmCadCountry},
   Form.Pesquisa.Country in 'Form.Pesquisa.Country.pas' {frmPesquisaPaises},
-  Classe.DBGrid.Helper in '..\Base\Classe.DBGrid.Helper.pas';
+  Classe.DBGrid.Helper in '..\Base\Classe.DBGrid.Helper.pas',
+  Data.Cadastro.Vendors in 'Data.Cadastro.Vendors.pas' {dmdCadVendors: TDataModule},
+  Form.Cadastro.Vendors in 'Form.Cadastro.Vendors.pas' {frmCadastroVendors},
+  Form.Pesquisa.Vendors in 'Form.Pesquisa.Vendors.pas' {frmPesquisaVendors};
 
 {$R *.res}
 
@@ -29,5 +32,8 @@ begin
   TfrmBase.FormAjudaClass := TFrmAjuda;
   Application.CreateForm(TdmdConexao, dmdConexao);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmdCadVendors, dmdCadVendors);
+  Application.CreateForm(TfrmCadastroVendors, frmCadastroVendors);
+  Application.CreateForm(TfrmPesquisaVendors, frmPesquisaVendors);
   Application.Run;
 end.

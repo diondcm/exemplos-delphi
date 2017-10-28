@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Base.Data, Data.FMTBcd, Datasnap.Provider, Data.SqlExpr, Data.DB, Datasnap.DBClient,
-  System.Rtti, System.Variants, System.StrUtils;
+  System.Rtti, System.Variants, System.StrUtils, Data.Win.ADODB;
 
 type
   //TMetodoAnonimo = reference to procedure;
@@ -31,6 +31,7 @@ type
     cdsCadastro: TClientDataSet;
     sqlCadastro: TSQLDataSet;
     dspCadastro: TDataSetProvider;
+    adoCadastro: TADOQuery;
     procedure cdsCadastroAfterPost(DataSet: TDataSet);
     procedure cdsCadastroBeforePost(DataSet: TDataSet);
     procedure cdsCadastroAfterCancel(DataSet: TDataSet);
@@ -75,7 +76,6 @@ type
     procedure SalvarRegistro; virtual;
     procedure CancelarRegistro; virtual;
     procedure AtualizarDataSet; virtual;
-
 
     procedure Pesquisar(const pTexto: string); // TODO: remove Inject SQL
 
@@ -128,24 +128,41 @@ var
   lSQlOriginal: string;
 begin
   lSQlOriginal := sqlCadastro.CommandText;
+  adoCadastro.SQL.Text := lSQlOriginal;
   try
     pMetodoModificacao; // modifica SQL de acordo com método
 
     cdsCadastro.Close;
+
+    adoCadastro.SQL.Text := StringReplace(StringReplace(adoCadastro.SQL.Text, WHERE_SQL, '', [rfIgnoreCase]), AND_SQL, '', [rfIgnoreCase]);
+    sqlCadastro.CommandText := StringReplace(StringReplace(sqlCadastro.CommandText, WHERE_SQL, '', [rfIgnoreCase]), AND_SQL, '', [rfIgnoreCase]);
+
     cdsCadastro.Open;
   finally
     sqlCadastro.CommandText := lSQlOriginal;
+    adoCadastro.SQL.Text := lSQlOriginal;
   end;
 end;
 
 procedure TdmdBaseCadastro.AdicionarCondicao(const pCondicao: string);
 begin
-  if Pos(WHERE_SQL, sqlCadastro.CommandText) > 0 then
+  if pCondicao <> '' then
   begin
-    sqlCadastro.CommandText := StringReplace(sqlCadastro.CommandText, WHERE_SQL, ' where (' + pCondicao + ')' + AND_SQL, []);
-  end else if Pos(AND_SQL, sqlCadastro.CommandText) > 0 then
-  begin
-    sqlCadastro.CommandText := StringReplace(sqlCadastro.CommandText, AND_SQL, ' and (' + pCondicao + ') ' + AND_SQL, []);
+    if (Pos(WHERE_SQL, sqlCadastro.CommandText) > 0) or (Pos(WHERE_SQL.ToLower, sqlCadastro.CommandText) > 0) then
+    begin
+      sqlCadastro.CommandText := StringReplace(sqlCadastro.CommandText, WHERE_SQL, ' where (' + pCondicao + ')' + AND_SQL, [rfIgnoreCase]);
+    end else if (Pos(AND_SQL, sqlCadastro.CommandText) > 0) or (Pos(AND_SQL.ToLower, sqlCadastro.CommandText) > 0) then
+    begin
+      sqlCadastro.CommandText := StringReplace(sqlCadastro.CommandText, AND_SQL, ' and (' + pCondicao + ') ' + AND_SQL, [rfIgnoreCase]);
+    end;
+
+    if (Pos(WHERE_SQL, adoCadastro.SQL.Text) > 0) or (Pos(WHERE_SQL.ToLower, adoCadastro.SQL.Text) > 0) then
+    begin
+      adoCadastro.SQL.Text := StringReplace(adoCadastro.SQL.Text, WHERE_SQL, ' where (' + pCondicao + ')' + AND_SQL, [rfIgnoreCase]);
+    end else if (Pos(AND_SQL, adoCadastro.SQL.Text) > 0) or (Pos(AND_SQL.ToLower, adoCadastro.SQL.Text) > 0) then
+    begin
+      adoCadastro.SQL.Text := StringReplace(adoCadastro.SQL.Text, AND_SQL, ' and (' + pCondicao + ') ' + AND_SQL, [rfIgnoreCase]);
+    end;
   end;
 end;
 
@@ -243,8 +260,7 @@ var
   lWhere: string;
   lDataType: TFieldType;
 
-  //nested methods
-  procedure AdicionarCondicaoPesquisa(pField: TField; const pCondicao: string; pIngnoreCase: Boolean = False);
+  procedure AdicionarCondicaoPesquisa(pField: TField; const pCondicao: string; pIngnoreCase: Boolean = False); //nested methods
   var
     lCampo: string;
   begin
@@ -253,18 +269,11 @@ var
       lWhere := lWhere + ' or ';
     end;
 
-    // System.StrUtils, System.Math >> Integers
-    lCampo := IfThen(pField.Origin <> '', pField.Origin, pField.FieldName); // ? :
-//    if pField.Origin <> '' then
-//    begin
-//      lCampo := pField.Origin;
-//    end else begin
-//      lCampo := pField.FieldName;
-//    end;
+    lCampo := IfThen(pField.Origin <> '', pField.Origin, pField.FieldName); // ? : // System.StrUtils, System.Math >> Integers
 
-    if pIngnoreCase then { = True}
+    if pIngnoreCase then {Evitar:  = True}
     begin
-      lCampo := ' UPPER(' + lCampo + ')'; // todo: multi-db tratar UPPER()
+      lCampo := ' UCASE(' + lCampo + ')'; //FB: UPPER      // todo: multi-db tratar UPPER()
     end;
 
     lWhere := lWhere + lCampo + ' ' + pCondicao;
@@ -273,43 +282,47 @@ var
 begin
   if cdsCadastro.FieldCount = 0 then
   begin
-    // Assert();
-    raise Exception.Create('Cds Sem fields');
+    raise Exception.Create('Cds Sem fields'); // Assert();
   end;
 
-  lValorEhInteiro := TryStrToInt64(pTexto, lInt);
-  lValorEhData := TryStrToDate(pTexto, lData);
-  lValorEhFloat := TryStrToFloat(pTexto, lFloat);
-
-  lWhere := '';
-  for i := 0 to cdsCadastro.FieldCount -1 do
-  begin
-    lDataType := cdsCadastro.Fields[i].DataType;
-    if lValorEhInteiro and (lDataType in [ftInteger, ftByte, ftWord, ftShortint]) then
-    begin
-      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
-    end else if lValorEhData and (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) then
-    begin
-      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + QuotedStr(pTexto)); // #39 + pTexto + #39
-    end else if lValorEhFloat and (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) then
-    begin
-      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
-    end else if lDataType in [ftString, ftMemo, ftWideString, ftWideMemo] then
-    begin
-      AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' like ' + QuotedStr('%' + pTexto + '%'), True);
-    end else begin
-
-    if not((lDataType in [ftInteger, ftByte, ftWord, ftShortint]) or
-      (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) or
-      (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) or
-      (lDataType in [ftString, ftMemo, ftWideString, ftWideMemo])) then
-      raise Exception.Create('Tipo de dado não tratado no field: ' + cdsCadastro.Fields[i].FieldName); // lDataType.ToString
-    end;
-  end;
-
-  if lWhere <> '' then
+  if pTexto = '' then
   begin
     AbrirCadastroComCondicao(lWhere);
+  end else begin
+    lValorEhInteiro := TryStrToInt64(pTexto, lInt);
+    lValorEhData := TryStrToDate(pTexto, lData);
+    lValorEhFloat := TryStrToFloat(pTexto, lFloat);
+
+    lWhere := '';
+    for i := 0 to cdsCadastro.FieldCount -1 do
+    begin
+      lDataType := cdsCadastro.Fields[i].DataType;
+      if lValorEhInteiro and (lDataType in [ftInteger, ftByte, ftWord, ftShortint]) then
+      begin
+        AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
+      end else if lValorEhData and (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) then
+      begin
+        AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + QuotedStr(pTexto)); // #39 + pTexto + #39
+      end else if lValorEhFloat and (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) then
+      begin
+        AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
+      end else if lDataType in [ftString, ftMemo, ftWideString, ftWideMemo] then
+      begin
+        AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' like ' + QuotedStr('%' + pTexto + '%'), True);
+      end else begin
+
+      if not((lDataType in [ftInteger, ftByte, ftWord, ftShortint]) or
+        (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) or
+        (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) or
+        (lDataType in [ftString, ftMemo, ftWideString, ftWideMemo])) then
+        raise Exception.Create('Tipo de dado não tratado no field: ' + cdsCadastro.Fields[i].FieldName); // lDataType.ToString
+      end;
+    end;
+
+    if lWhere <> '' then
+    begin
+      AbrirCadastroComCondicao(lWhere);
+    end;
   end;
 end;
 

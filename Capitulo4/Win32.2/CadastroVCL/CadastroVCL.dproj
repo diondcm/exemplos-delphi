@@ -152,6 +152,19 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Base\Classe.DBGrid.Helper.pas"/>
+        <DCCReference Include="Data.Cadastro.Vendors.pas">
+            <Form>dmdCadVendors</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Form.Cadastro.Vendors.pas">
+            <Form>frmCadastroVendors</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Form.Pesquisa.Vendors.pas">
+            <Form>frmPesquisaVendors</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -54,23 +54,20 @@ begin
       begin
         lCds.IndexName := '';
         lCds.IndexFieldNames := pColumn.Field.FieldName;
-      end
-      else
-      begin
+      end else begin
         lIdx := GetIndex(pColumn.Field.FieldName + FIELD_DESC, lCds.IndexDefs);
         if Assigned(lIdx) then
         begin
           lCds.IndexFieldNames := '';
           lCds.IndexName := lIdx.Name;
-        end
-        else
-        begin
+        end else begin
           lCds.IndexDefs.Add(pColumn.Field.FieldName + FIELD_DESC, pColumn.Field.FieldName, [ixDescending]);
           lCds.IndexFieldNames := '';
           lCds.IndexName := pColumn.Field.FieldName + FIELD_DESC;
         end;
       end;
     end;
+
     if (pColumn.Field.DataSet is TFDDataSet) then
     begin
       lFds := TFDDataSet(pColumn.Field.DataSet);
@@ -78,17 +75,13 @@ begin
       begin
         lFds.IndexName := '';
         lFds.IndexFieldNames := pColumn.Field.FieldName;
-      end
-      else
-      begin
+      end else begin
         lIdx := GetIndex(pColumn.Field.FieldName + FIELD_DESC, lFds.IndexDefs);
         if Assigned(lIdx) then
         begin
           lFds.IndexFieldNames := '';
           lFds.IndexName := lIdx.Name;
-        end
-        else
-        begin
+        end else begin
           lFds.IndexDefs.Add(pColumn.Field.FieldName + FIELD_DESC, pColumn.Field.FieldName, [ixDescending]);
           lFds.IndexFieldNames := '';
           lFds.IndexName := pColumn.Field.FieldName + FIELD_DESC;
