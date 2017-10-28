@@ -11,7 +11,10 @@ uses
   Base.Form.Dados in '..\Base\Base.Form.Dados.pas' {frmBaseDados},
   Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule},
   Base.Form.Pesquisa in '..\Base\Base.Form.Pesquisa.pas' {frmBasePesquisa},
-  Base.Form.Cadastro in '..\Base\Base.Form.Cadastro.pas' {frmBaseCadastro};
+  Base.Form.Cadastro in '..\Base\Base.Form.Cadastro.pas' {frmBaseCadastro},
+  Data.Country in 'Data.Country.pas' {dmdCountry: TDataModule},
+  Form.Cadastro.Country in 'Form.Cadastro.Country.pas' {frmCadCountry},
+  Form.Pesquisa.Country in 'Form.Pesquisa.Country.pas' {frmPesquisaPaises};
 
 {$R *.res}
 

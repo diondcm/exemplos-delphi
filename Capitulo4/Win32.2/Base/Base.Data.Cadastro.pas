@@ -43,8 +43,8 @@ type
     procedure AdicionarCondicao(const pCondicao: string);
     procedure AbrirCadastroComModificacao(const pMetodoModificacao: TMetodoModificacao);
   protected
-    procedure ValidarDadosCadastro; virtual; abstract;
-    procedure SetarDadosNovoRegistro; virtual; abstract; // raise EAbstractError
+    procedure ValidarDadosCadastro; virtual; {abstract;}
+    procedure SetarDadosNovoRegistro; virtual; // abstract; // raise EAbstractError
 
     procedure SetCamposGerador;
 
@@ -107,7 +107,7 @@ begin
       lStl := TStringList.Create;
       try
         lStl.Text := sqlCadastro.CommandText;
-        lStl.SAveToFile(Self.ClassName + '.sql');
+        lStl.SaveToFile(Self.ClassName + '.sql');
       finally
         lStl.Free;
       end;
@@ -298,6 +298,11 @@ begin
     begin
       AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' like ' + QuotedStr('%' + pTexto + '%'), True);
     end else begin
+
+    if not((lDataType in [ftInteger, ftByte, ftWord, ftShortint]) or
+      (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) or
+      (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) or
+      (lDataType in [ftString, ftMemo, ftWideString, ftWideMemo])) then
       raise Exception.Create('Tipo de dado não tratado no field: ' + cdsCadastro.Fields[i].FieldName); // lDataType.ToString
     end;
   end;
@@ -311,6 +316,11 @@ end;
 procedure TdmdBaseCadastro.SalvarRegistro;
 begin
   cdsCadastro.Post;
+end;
+
+procedure TdmdBaseCadastro.SetarDadosNovoRegistro;
+begin
+  // Implementado nos filhos
 end;
 
 procedure TdmdBaseCadastro.SetCamposGerador;
@@ -357,6 +367,11 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TdmdBaseCadastro.ValidarDadosCadastro;
+begin
+  // Implementado nos filhos
 end;
 
 function TdmdBaseCadastro.VerificaAlterarRegistro: Boolean;

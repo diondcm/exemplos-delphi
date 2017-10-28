@@ -1,34 +1,161 @@
-object frmBase: TfrmBase
-  Left = 0
-  Top = 0
-  ClientHeight = 299
-  ClientWidth = 635
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  Menu = MainMenu
-  OldCreateOrder = False
+inherited frmCadCountry: TfrmCadCountry
+  Caption = 'Cadastro de Pa'#237'ses'
+  ClientHeight = 532
+  ClientWidth = 673
+  ExplicitWidth = 689
+  ExplicitHeight = 591
   PixelsPerInch = 96
   TextHeight = 13
-  object MainMenu: TMainMenu
-    Left = 424
+  object Label1: TLabel [0]
+    Left = 64
     Top = 88
-    object menuAjuda: TMenuItem
-      Caption = 'Ajuda'
-      object menuSobre: TMenuItem
-        Caption = 'Sobre'
-        OnClick = menuSobreClick
-      end
+    Width = 25
+    Height = 13
+    Caption = 'Code'
+  end
+  object Label2: TLabel [1]
+    Left = 64
+    Top = 128
+    Width = 27
+    Height = 13
+    Caption = 'Name'
+  end
+  object Label3: TLabel [2]
+    Left = 64
+    Top = 168
+    Width = 33
+    Height = 13
+    Caption = 'Capital'
+  end
+  object Label4: TLabel [3]
+    Left = 64
+    Top = 208
+    Width = 23
+    Height = 13
+    Caption = 'Area'
+  end
+  object Label5: TLabel [4]
+    Left = 64
+    Top = 248
+    Width = 50
+    Height = 13
+    Caption = 'Population'
+  end
+  object Label6: TLabel [5]
+    Left = 64
+    Top = 288
+    Width = 47
+    Height = 13
+    Caption = 'Continent'
+  end
+  inherited panelControles: TPanel
+    Width = 673
+    ExplicitWidth = 998
+    inherited buttonCancelar: TBitBtn
+      ExplicitLeft = 577
+      ExplicitHeight = 55
+    end
+    inherited buttonUltimo: TBitBtn
+      ExplicitLeft = 217
+      ExplicitHeight = 55
+    end
+    inherited buttonProximo: TBitBtn
+      ExplicitLeft = 145
+      ExplicitHeight = 55
+    end
+    inherited buttonAnterior: TBitBtn
+      ExplicitLeft = 73
+      ExplicitHeight = 55
+    end
+    inherited buttonPrimeiro: TBitBtn
+      ExplicitHeight = 55
+    end
+    inherited buttonSalvar: TBitBtn
+      ExplicitLeft = 505
+      ExplicitHeight = 55
+    end
+    inherited buttonDeletar: TBitBtn
+      ExplicitLeft = 433
+      ExplicitHeight = 55
+    end
+    inherited buttonEditar: TBitBtn
+      ExplicitLeft = 361
+      ExplicitHeight = 55
+    end
+    inherited buttonInserir: TBitBtn
+      ExplicitLeft = 289
+      ExplicitHeight = 55
     end
   end
-  object ImageList: TImageList
-    Left = 184
-    Top = 88
+  object DBEdit1: TDBEdit [7]
+    Left = 64
+    Top = 101
+    Width = 121
+    Height = 21
+    DataField = 'CODE'
+    DataSource = dtsDados
+    TabOrder = 1
+  end
+  object DBEdit2: TDBEdit [8]
+    Left = 64
+    Top = 141
+    Width = 121
+    Height = 21
+    DataField = 'NAME'
+    DataSource = dtsDados
+    TabOrder = 2
+  end
+  object DBEdit3: TDBEdit [9]
+    Left = 64
+    Top = 181
+    Width = 121
+    Height = 21
+    DataField = 'CAPITAL'
+    DataSource = dtsDados
+    TabOrder = 3
+  end
+  object DBEdit4: TDBEdit [10]
+    Left = 64
+    Top = 221
+    Width = 121
+    Height = 21
+    DataField = 'AREA'
+    DataSource = dtsDados
+    TabOrder = 4
+  end
+  object DBEdit5: TDBEdit [11]
+    Left = 64
+    Top = 261
+    Width = 121
+    Height = 21
+    DataField = 'POPULATION'
+    DataSource = dtsDados
+    TabOrder = 5
+  end
+  object DBEdit6: TDBEdit [12]
+    Left = 64
+    Top = 299
+    Width = 121
+    Height = 21
+    DataField = 'CONTINENT'
+    DataSource = dtsDados
+    TabOrder = 6
+  end
+  inherited MainMenu: TMainMenu
+    Left = 512
+    Top = 96
+  end
+  inherited ActionList: TActionList
+    Left = 512
+    Top = 144
+  end
+  inherited dtsDados: TDataSource
+    Left = 512
+    Top = 200
+  end
+  inherited ImageList: TImageList
     Bitmap = {
-      494C0101010008001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

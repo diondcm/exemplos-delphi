@@ -138,6 +138,19 @@
             <Form>frmBaseCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Data.Country.pas">
+            <Form>dmdCountry</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Form.Cadastro.Country.pas">
+            <Form>frmCadCountry</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Form.Pesquisa.Country.pas">
+            <Form>frmPesquisaPaises</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

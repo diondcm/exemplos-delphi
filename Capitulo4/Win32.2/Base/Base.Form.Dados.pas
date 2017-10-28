@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Base.Form, Vcl.Menus, Vcl.ExtCtrls, Vcl.StdCtrls, System.Actions,
-  Vcl.ActnList, Vcl.DBActns, Data.DB, Base.Data.Cadastro;
+  Vcl.ActnList, Vcl.DBActns, Data.DB, Base.Data.Cadastro, System.ImageList, Vcl.ImgList;
 
 type
   TfrmBaseDados = class(TfrmBase)

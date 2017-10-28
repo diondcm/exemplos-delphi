@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Base.Form, Data.DB, Datasnap.DBClient, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Base.Form, Data.DB, Datasnap.DBClient, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Form.Pesquisa.Country, System.ImageList, Vcl.ImgList;
 
 type
   TfrmPrincipal = class(TfrmBase)
@@ -26,6 +27,9 @@ type
     CheckBox4: TCheckBox;
     CheckBox5: TCheckBox;
     CheckBox6: TCheckBox;
+    Cadastros1: TMenuItem;
+    Pases1: TMenuItem;
+    procedure Pases1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,5 +42,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.Pases1Click(Sender: TObject);
+begin
+  inherited;
+  TfrmPesquisaPaises.Create(Application).Show;
+end;
 
 end.

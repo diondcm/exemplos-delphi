@@ -4,13 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Base.Form.Ajuda;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Base.Form.Ajuda, System.ImageList, Vcl.ImgList;
 
 type
   TfrmBase = class(TForm)
     MainMenu: TMainMenu;
     menuAjuda: TMenuItem;
     menuSobre: TMenuItem;
+    ImageList: TImageList;
     procedure menuSobreClick(Sender: TObject);
   private
     class var FFormAjudaClass: TfrmBaseAjudaClass;

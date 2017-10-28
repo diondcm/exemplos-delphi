@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Base.Form.Dados, Data.DB, Vcl.DBActns, System.Actions, Vcl.ActnList, Vcl.Menus,
-  Data.Conexao, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, Base.Data.Cadastro, Vcl.Grids, Vcl.DBGrids, Base.Form.Cadastro;
+  Data.Conexao, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, Base.Data.Cadastro, Vcl.Grids, Vcl.DBGrids, Base.Form.Cadastro,
+  System.ImageList, Vcl.ImgList, Datasnap.DBClient, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  FireDAC.Stan.Async, FireDAC.DApt;
 
 type
   TMetodoSelecaoRegistro<T: TdmdBaseCadastro> = reference to procedure(pDmdDados: T);
@@ -41,7 +44,7 @@ type
   protected
     function GetFrmBaseCadastro: TfrmBaseCadastro;
 
-    class function GetClasseFrmCadastro: TfrmBaseCadastro; virtual; abstract;
+    class function GetClasseFrmCadastro: TfrmBaseCadastroClass; virtual; abstract;
 
     // frm cadastro
   public
@@ -143,7 +146,32 @@ end;
 procedure TfrmBasePesquisa.gridDadosTitleClick(Column: TColumn);
 begin
   inherited;
-  {$MESSAGE WARN 'Implementar title click'}
+  // Não por sql >> trazer esse custo
+
+  // FD cds
+
+  if Assigned(Column.Field.DataSet) then
+  begin
+    if (Column.Field.DataSet is TClientDataSet) then
+    begin
+      if CompareStr(TClientDataSet(Column.Field.DataSet).IndexFieldNames, Column.Field.FieldName) <> 0 then
+      begin
+        TClientDataSet(Column.Field.DataSet).IndexFieldNames := Column.Field.FieldName;
+      end else begin
+
+      end;
+    end;
+
+    if (Column.Field.DataSet is TFDDataSet) then
+    begin
+      if CompareStr(TFDDataSet(Column.Field.DataSet).IndexFieldNames, Column.Field.FieldName) <> 0 then
+      begin
+        TFDDataSet(Column.Field.DataSet).IndexFieldNames := Column.Field.FieldName;
+      end;
+    end;
+  end;
+
+  //DONE::{$MESSAGE WARN 'Implementar title click'}
 end;
 
 class function TfrmBasePesquisa.Pesquisar<T>(const pMetodoSelecao: TMetodoSelecaoRegistro<T>): Boolean;

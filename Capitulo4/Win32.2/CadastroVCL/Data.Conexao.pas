@@ -8,7 +8,6 @@ uses
 type
   TdmdConexao = class(TdmdBase)
     SQLConnection: TSQLConnection;
-    ImageList: TImageList;
   private
     { Private declarations }
   public

@@ -1,34 +1,10 @@
-object frmBase: TfrmBase
-  Left = 0
-  Top = 0
-  ClientHeight = 299
-  ClientWidth = 635
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  Menu = MainMenu
-  OldCreateOrder = False
+inherited frmPesquisaPaises: TfrmPesquisaPaises
+  Caption = 'Pesquisa de Pa'#237'ses'
   PixelsPerInch = 96
   TextHeight = 13
-  object MainMenu: TMainMenu
-    Left = 424
-    Top = 88
-    object menuAjuda: TMenuItem
-      Caption = 'Ajuda'
-      object menuSobre: TMenuItem
-        Caption = 'Sobre'
-        OnClick = menuSobreClick
-      end
-    end
-  end
-  object ImageList: TImageList
-    Left = 184
-    Top = 88
+  inherited ImageList: TImageList
     Bitmap = {
-      494C0101010008001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
