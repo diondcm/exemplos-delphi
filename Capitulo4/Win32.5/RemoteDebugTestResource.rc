@@ -1,0 +1,6 @@
+RMTDBG240 RCDATA "C:\\Program Files (x86)\\Embarcadero\\Studio\\18.0\\bin\\rmtdbg240.exe"
+BCCIDE RCDATA "C:\\Program Files (x86)\\Embarcadero\\Studio\\18.0\\bin\\bccide.dll"
+BORDBK240 RCDATA "C:\\Program Files (x86)\\Embarcadero\\Studio\\18.0\\bin\\bordbk240.dll"
+BORDBK240N RCDATA "C:\\Program Files (x86)\\Embarcadero\\Studio\\18.0\\bin\\bordbk240N.dll"
+COMP32X RCDATA "C:\\Program Files (x86)\\Embarcadero\\Studio\\18.0\\bin\\comp32x.dll"
+DCC32240 RCDATA "C:\\Program Files (x86)\\Embarcadero\\Studio\\18.0\\bin\\dcc32240.dll"
