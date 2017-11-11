@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Exemplos'
-  ClientHeight = 564
-  ClientWidth = 899
+  ClientHeight = 679
+  ClientWidth = 906
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,13 +16,14 @@ object frmPrincipal: TfrmPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   object memoExtrato: TMemo
-    Left = 608
+    Left = 615
     Top = 0
     Width = 291
-    Height = 384
+    Height = 499
     Align = alRight
     TabOrder = 0
-    ExplicitHeight = 564
+    ExplicitLeft = 608
+    ExplicitHeight = 384
   end
   object buttonExtrato: TBitBtn
     Left = 16
@@ -79,21 +80,20 @@ object frmPrincipal: TfrmPrincipal
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 545
-    Width = 899
+    Top = 660
+    Width = 906
     Height = 19
     Panels = <
       item
         Width = 50
       end>
-    ExplicitLeft = 456
-    ExplicitTop = 296
-    ExplicitWidth = 0
+    ExplicitTop = 545
+    ExplicitWidth = 899
   end
   object gridTransacoes: TDBGrid
     Left = 0
-    Top = 384
-    Width = 899
+    Top = 499
+    Width = 906
     Height = 161
     Align = alBottom
     DataSource = dtsTransacoes
@@ -121,6 +121,15 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Carrega Objs'
     TabOrder = 10
     OnClick = buttonCarregaObjsClick
+  end
+  object buttomGeraArquivo: TButton
+    Left = 16
+    Top = 324
+    Width = 105
+    Height = 77
+    Caption = 'Gerar Arquivo'
+    TabOrder = 11
+    OnClick = buttomGeraArquivoClick
   end
   object TimerStatus: TTimer
     Enabled = False

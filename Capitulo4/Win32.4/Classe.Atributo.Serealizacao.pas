@@ -19,6 +19,8 @@ type
     property Field: string read FField write FField;
   end;
 
+
+
 implementation
 
 { TAtrSerealizacaoTabela }
