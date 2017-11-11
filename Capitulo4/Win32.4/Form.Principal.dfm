@@ -22,8 +22,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 499
     Align = alRight
     TabOrder = 0
-    ExplicitLeft = 608
-    ExplicitHeight = 384
   end
   object buttonExtrato: TBitBtn
     Left = 16
@@ -74,8 +72,8 @@ object frmPrincipal: TfrmPrincipal
     Top = 34
     Width = 106
     Height = 21
-    Date = 43036.680301631950000000
-    Time = 43036.680301631950000000
+    Date = 43036.680301631960000000
+    Time = 43036.680301631960000000
     TabOrder = 6
   end
   object StatusBar: TStatusBar
@@ -87,8 +85,6 @@ object frmPrincipal: TfrmPrincipal
       item
         Width = 50
       end>
-    ExplicitTop = 545
-    ExplicitWidth = 899
   end
   object gridTransacoes: TDBGrid
     Left = 0
