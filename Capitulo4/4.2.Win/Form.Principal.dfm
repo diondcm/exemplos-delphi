@@ -67,12 +67,4 @@ object frmPrincipal: TfrmPrincipal
       OnClick = buttonClassesClick
     end
   end
-  object Edit1: TEdit
-    Left = 352
-    Top = 240
-    Width = 121
-    Height = 21
-    TabOrder = 1
-    Text = 'Edit1'
-  end
 end

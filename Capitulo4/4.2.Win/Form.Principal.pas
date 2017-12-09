@@ -13,7 +13,6 @@ type
     FlowPanel: TFlowPanel;
     buttonMensagem: TButton;
     buttonClasses: TButton;
-    Edit1: TEdit;
     procedure buttonClassesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure buttonMensagemClick(Sender: TObject);
