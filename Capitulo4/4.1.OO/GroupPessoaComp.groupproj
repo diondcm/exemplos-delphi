@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{ECD7A488-876F-4216-8D26-4018D615A446}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="IntroOOP.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pkgPessoa.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="IntroOOP">
+        <MSBuild Projects="IntroOOP.dproj"/>
+    </Target>
+    <Target Name="IntroOOP:Clean">
+        <MSBuild Projects="IntroOOP.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IntroOOP:Make">
+        <MSBuild Projects="IntroOOP.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgPessoa">
+        <MSBuild Projects="pkgPessoa.dproj"/>
+    </Target>
+    <Target Name="pkgPessoa:Clean">
+        <MSBuild Projects="pkgPessoa.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgPessoa:Make">
+        <MSBuild Projects="pkgPessoa.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="IntroOOP;pkgPessoa"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="IntroOOP:Clean;pkgPessoa:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="IntroOOP:Make;pkgPessoa:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
