@@ -12,6 +12,7 @@ type
     { Private declarations }
   public
     function EchoString(Value: string): string;
+    function updateEchoString(Value: string): string;
     function ReverseString(Value: string): string;
 
     function GetVersaoAtual(pFileName, pVersao: string): TStatusFileTransfer;
@@ -70,6 +71,11 @@ end;
 function TServerMethods1.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
+end;
+
+function TServerMethods1.updateEchoString(Value: string): string;
+begin
+  Result := EchoString(Value);
 end;
 
 end.

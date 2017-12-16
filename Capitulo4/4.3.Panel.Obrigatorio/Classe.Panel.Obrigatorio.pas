@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.Forms, Data.DB, Vcl.DBCtrls,
   Vcl.Graphics, Dialogs, Generics.Collections;
 
-type
+type  // Teste
   TEditConfig = record
     FBevelInner: TBevelCut;
     FBevelOuter: TBevelCut;

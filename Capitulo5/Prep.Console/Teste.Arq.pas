@@ -2,8 +2,19 @@ unit Teste.Arq;
 
 interface
 
+uses
+  Variants;
+
 type
   TClasseFilha = class;
+  TArr = array [0..1] of string;
+
+  TRecSemFields = record
+  end;
+
+  TRecInicializado = record
+    ValorA: string;
+  end;
 
   [TCustomAttribute]
   TMynhaClass = class sealed
@@ -21,6 +32,9 @@ type
     procedure TesteObj;
     class procedure TesteClass;
   public
+    //function RetornaArray: TArr; // não compila
+    function RetornaRect: TRecSemFields;
+
     [TCustomAttribute]
     property Teste: string read FTeste write FTeste;
   end;
@@ -29,12 +43,20 @@ type
 
   end;
 
+//var
+//  VarGLobalRec: TRecInicializado =
+
 implementation
 
 
 
 
 { TMynhaClass }
+
+function TMynhaClass.RetornaRect: TRecSemFields;
+begin
+
+end;
 
 class procedure TMynhaClass.TesteClass;
 begin
@@ -47,5 +69,10 @@ begin
   FTexto := '';
   FTeste := '';
 end;
+
+//function TMynhaClass.RetornaArray: TArr;
+//begin
+//
+//end;
 
 end.

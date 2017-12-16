@@ -10,7 +10,6 @@ uses
   Data.DB,
   Teste.Arq in 'Teste.Arq.pas';
 
-
 type
   ITeste = interface
 
@@ -34,6 +33,10 @@ type
 
 type
   TMeArr = array of integer;
+  TRecDados = record
+    Nome: string;
+  end;
+
 
   function TesteArrInt: TMeArr;
   begin
@@ -56,6 +59,8 @@ type
 resourcestring
   CreateError = 'Cannot create file %s';
 
+
+
 var
   lp: TPoint;
   lStr: string;
@@ -68,8 +73,28 @@ var
   Word: Variant;
   lA: Char;
   lValorData: Double;
+  lArq: file;
+  lRecDados: TRecDados;
 begin
   //DateTimeToUnix()
+  AssignFile(lArq, 'C:...');
+  // $$$
+  // Qual exceção gera? Arquivo não existir...
+  // Se a pasta não existir, é o mesmo erro?
+  // Para resolver - Try Except on E: Exception do E.ClassName
+//  Write(lArq, 'oooo');
+  lRecDados.Nome := 'Teste';
+  Write(lArq, lRecDados);
+  Seek();
+  CloseFile(lArq);
+
+//  SendMessage()
+
+//  TObject.QualifiedClassName
+
+//  TFileStream
+
+
 
 //  AllocMem()
 //  FreeMemory()
@@ -79,6 +104,8 @@ begin
 
 //  StrAlloc()
 //  StrDispose();
+
+//  lVarInt2.ToString
 
   NovoTeste(5000);
 //  lValorData := 25;
