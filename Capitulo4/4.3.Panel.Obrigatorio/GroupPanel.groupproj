@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C981C067-BB62-489F-8A75-63A4AF8A4144}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pkgPanelObrigatorio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Teste\TestePanel.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgPanelObrigatorio">
+        <MSBuild Projects="pkgPanelObrigatorio.dproj"/>
+    </Target>
+    <Target Name="pkgPanelObrigatorio:Clean">
+        <MSBuild Projects="pkgPanelObrigatorio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgPanelObrigatorio:Make">
+        <MSBuild Projects="pkgPanelObrigatorio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestePanel">
+        <MSBuild Projects="Teste\TestePanel.dproj"/>
+    </Target>
+    <Target Name="TestePanel:Clean">
+        <MSBuild Projects="Teste\TestePanel.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestePanel:Make">
+        <MSBuild Projects="Teste\TestePanel.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgPanelObrigatorio;TestePanel"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgPanelObrigatorio:Clean;TestePanel:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgPanelObrigatorio:Make;TestePanel:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
