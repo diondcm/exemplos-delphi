@@ -30,7 +30,8 @@ package pkgPanelObrigatorio;
 requires
   rtl,
   vcl,
-  dbrtl;
+  dbrtl,
+  vcldb;
 
 contains
   Classe.Panel.Obrigatorio in 'Classe.Panel.Obrigatorio.pas',
