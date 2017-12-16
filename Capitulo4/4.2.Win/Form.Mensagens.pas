@@ -70,6 +70,7 @@ type
   public
     procedure WmMeuAviso(var Msg: TMessage); message WM_PRIVADO_AVISO;
     procedure WmMeuMaximizar(var Msg: TMessage); message WM_PRIVADO_MAXIMIZAR;
+    procedure WMSysCommand(var Message: TWMSysCommand); message WM_SYSCOMMAND;
   end;
 
 var
@@ -289,6 +290,14 @@ begin
     TWindowState.wsNormal: Self.WindowState := TWindowState.wsMaximized;
     TWindowState.wsMaximized: Msg.Result := 151;
   end;
+end;
+
+procedure TfrmMensagens.WMSysCommand(var Message: TWMSysCommand);
+begin
+  if (Message.CmdType and $FFF0 = SC_MINIMIZE) then
+    Application.Minimize
+  else
+    inherited;
 end;
 
 end.

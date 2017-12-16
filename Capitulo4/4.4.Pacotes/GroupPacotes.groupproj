@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A7485224-B9EC-4366-8EAA-C50914023FBD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AppTeste\TesteProject.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pkgForms.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TesteProject">
+        <MSBuild Projects="AppTeste\TesteProject.dproj"/>
+    </Target>
+    <Target Name="TesteProject:Clean">
+        <MSBuild Projects="AppTeste\TesteProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TesteProject:Make">
+        <MSBuild Projects="AppTeste\TesteProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgForms">
+        <MSBuild Projects="pkgForms.dproj"/>
+    </Target>
+    <Target Name="pkgForms:Clean">
+        <MSBuild Projects="pkgForms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgForms:Make">
+        <MSBuild Projects="pkgForms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TesteProject;pkgForms"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TesteProject:Clean;pkgForms:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TesteProject:Make;pkgForms:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

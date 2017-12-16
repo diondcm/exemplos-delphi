@@ -37,7 +37,6 @@ object frmMensagens: TfrmMensagens
     Align = alRight
     ItemHeight = 13
     TabOrder = 0
-    ExplicitHeight = 279
   end
   object panelControles: TPanel
     AlignWithMargins = True
@@ -50,8 +49,6 @@ object frmMensagens: TfrmMensagens
     Margins.Bottom = 10
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 13
-    ExplicitTop = 5
     object buttonAlteraTexto: TButton
       Left = 9
       Top = 36

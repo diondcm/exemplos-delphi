@@ -13,7 +13,7 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+    procedure WMSysCommand(var Message: TWMSysCommand); message WM_SYSCOMMAND;
   end;
 
 var
@@ -117,6 +117,14 @@ begin
   Caption := IntToStr(lFormWin);
 
   ShowWindow(lFormWin, SW_SHOWNORMAL);
+end;
+
+procedure TfrmClassesWin.WMSysCommand(var Message: TWMSysCommand);
+begin
+  if (Message.CmdType and $FFF0 = SC_MINIMIZE) then
+    Application.Minimize
+  else
+    inherited;
 end;
 
 end.
