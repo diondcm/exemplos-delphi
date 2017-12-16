@@ -10,9 +10,8 @@ uses
 
 type
   TForm1 = class(TForm)
-    dtsCampos: TDataSource;
-    PanelObrigatorio: TPanelObrigatorio;
-    memLog: TMemo;
+    checkStado: TCheckBox;
+    memoCampos: TMemo;
     Panel1: TPanel;
     Edit1: TEdit;
     Button1: TButton;
@@ -24,7 +23,7 @@ type
     memCamposDataCadastro: TDateField;
     memCamposValorInicial: TCurrencyField;
     DBGrid1: TDBGrid;
-    buttonValidaCampos: TButton;
+    PanelObrigatorio1: TPanelObrigatorio;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -35,7 +34,15 @@ type
     DBEdit4: TDBEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
+    memoLog: TMemo;
+    buttonValidaCampos: TButton;
+    dtsCampos: TDataSource;
+    Button2: TButton;
     procedure buttonValidaCamposClick(Sender: TObject);
+    procedure dtsCamposDataChange(Sender: TObject; Field: TField);
+    procedure dtsCamposStateChange(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure memCamposBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -49,9 +56,30 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  PanelObrigatorio1.DataSource := dtsCampos;
+end;
+
 procedure TForm1.buttonValidaCamposClick(Sender: TObject);
 begin
-  memLog.Text := PanelObrigatorio.ValidaCamposObrigatorios;
+  memoCampos.Text := PanelObrigatorio1.ValidaCamposObrigatorios;
+end;
+
+procedure TForm1.dtsCamposDataChange(Sender: TObject; Field: TField);
+begin
+//  if not(memCampos.State in [dsInactive]) then
+//    memoLog.Lines.Add(TimeToStr(Now) + ' - Field: ' + Field.DisplayLabel);
+end;
+
+procedure TForm1.dtsCamposStateChange(Sender: TObject);
+begin
+  //memoLog.Lines.Add(TimeToStr(Now) + ' - Dts: ' + IntToStr(Ord(memCampos.State)));
+end;
+
+procedure TForm1.memCamposBeforePost(DataSet: TDataSet);
+begin
+  ShowMessage('Before Post');
 end;
 
 end.
