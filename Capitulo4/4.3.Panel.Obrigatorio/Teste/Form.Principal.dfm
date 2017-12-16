@@ -11,112 +11,84 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object memoCampos: TMemo
-    Left = 193
+    Left = 170
     Top = 0
     Width = 144
-    Height = 312
+    Height = 277
     Align = alLeft
     TabOrder = 0
   end
-  object Panel1: TPanel
-    Left = 441
-    Top = 117
-    Width = 241
-    Height = 124
-    Caption = 'Panel1'
-    TabOrder = 1
-    object Edit1: TEdit
-      Left = 64
-      Top = 56
-      Width = 121
-      Height = 21
-      TabOrder = 0
-      Text = 'Edit1'
-    end
-    object Button1: TButton
-      Left = 64
-      Top = 25
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 1
-    end
-    object DBEdit1: TDBEdit
-      Left = 64
-      Top = 83
-      Width = 121
-      Height = 21
-      BevelInner = bvSpace
-      BevelOuter = bvRaised
-      BevelKind = bkTile
-      BevelWidth = 5
-      Color = clGrayText
-      TabOrder = 2
-    end
-  end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 312
+    Top = 277
     Width = 884
-    Height = 201
+    Height = 236
     Align = alBottom
     DataSource = dtsCampos
-    TabOrder = 2
+    TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
-  object PanelObrigatorio1: TPanelObrigatorio
+  object memoLog: TMemo
+    Left = 688
+    Top = 0
+    Width = 196
+    Height = 277
+    Align = alRight
+    TabOrder = 2
+  end
+  object panelBaseObrigatorio: TPanel
     Left = 0
     Top = 0
-    Width = 193
-    Height = 312
+    Width = 170
+    Height = 277
     Align = alLeft
-    DataSource = dtsCampos
-    DesenhaObrigatorios = False
+    TabOrder = 3
     object Label1: TLabel
-      Left = 118
-      Top = 16
+      Left = 142
+      Top = 24
       Width = 11
       Height = 13
       Caption = 'ID'
     end
     object Label2: TLabel
-      Left = 96
-      Top = 56
+      Left = 120
+      Top = 64
       Width = 33
       Height = 13
       Caption = 'C'#243'digo'
     end
     object Label3: TLabel
-      Left = 102
-      Top = 96
+      Left = 126
+      Top = 104
       Width = 27
       Height = 13
       Caption = 'Nome'
     end
     object Label4: TLabel
-      Left = 59
-      Top = 136
+      Left = 83
+      Top = 144
       Width = 70
       Height = 13
       Caption = 'Data Cadastro'
     end
     object Label5: TLabel
-      Left = 75
-      Top = 182
+      Left = 99
+      Top = 190
       Width = 54
       Height = 13
       Caption = 'Valor Inicial'
     end
     object DBEdit2: TDBEdit
-      Left = 8
-      Top = 29
+      Left = 32
+      Top = 37
       Width = 121
       Height = 21
       DataField = 'ID'
@@ -124,80 +96,57 @@ object Form1: TForm1
       TabOrder = 0
     end
     object DBEdit3: TDBEdit
-      Left = 8
-      Top = 75
+      Left = 32
+      Top = 77
       Width = 121
       Height = 21
+      Color = clGradientActiveCaption
       DataField = 'Codigo'
       DataSource = dtsCampos
       TabOrder = 1
     end
     object DBEdit4: TDBEdit
-      Left = 8
-      Top = 109
+      Left = 32
+      Top = 117
       Width = 121
       Height = 21
+      Color = clInfoBk
       DataField = 'Nome'
       DataSource = dtsCampos
       TabOrder = 2
     end
     object DBEdit5: TDBEdit
-      Left = 8
-      Top = 155
+      Left = 32
+      Top = 159
       Width = 121
       Height = 21
+      Color = clGrayText
       DataField = 'DataCadastro'
       DataSource = dtsCampos
       TabOrder = 3
     end
     object DBEdit6: TDBEdit
-      Left = 8
-      Top = 201
+      Left = 32
+      Top = 204
       Width = 121
       Height = 21
+      Color = clHighlight
       DataField = 'ValorInicial'
       DataSource = dtsCampos
       TabOrder = 4
     end
     object buttonValidaCampos: TButton
-      Left = 0
-      Top = 278
-      Width = 193
+      Left = 1
+      Top = 242
+      Width = 168
       Height = 34
       Align = alBottom
       Caption = 'Valida Campos'
       TabOrder = 5
     end
   end
-  object memoLog: TMemo
-    Left = 688
-    Top = 0
-    Width = 196
-    Height = 312
-    Align = alRight
-    TabOrder = 4
-  end
-  object checkStado: TCheckBox
-    Left = 423
-    Top = 8
-    Width = 97
-    Height = 17
-    Caption = 'checkStado'
-    TabOrder = 5
-  end
-  object Button2: TButton
-    Left = 423
-    Top = 51
-    Width = 75
-    Height = 25
-    Caption = 'Button2'
-    TabOrder = 6
-    OnClick = Button2Click
-  end
   object dtsCampos: TDataSource
     DataSet = memCampos
-    OnStateChange = dtsCamposStateChange
-    OnDataChange = dtsCamposDataChange
     Left = 288
     Top = 416
   end

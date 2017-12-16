@@ -6,24 +6,41 @@ uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.Forms, Data.DB, Vcl.DBCtrls,
   Vcl.Graphics, Dialogs, Generics.Collections;
 
-type  // Teste
-  TEditConfig = record
+type
+  // Todo: TEditConfig = class(TPersistent)
+  TEditConfig = class(TComponent)
+  private
     FBevelInner: TBevelCut;
     FBevelOuter: TBevelCut;
     FBevelKind: TBevelKind;
     FBevelWidth: TBevelWidth;
     FColor:  TColor;
-    constructor Create(pBevelInner: TBevelCut; pBevelOuter: TBevelCut; pBevelKind: TBevelKind; pBevelWidth: TBevelWidth; pColor:  TColor);
+    procedure PreencheProps(pBevelInner: TBevelCut; pBevelOuter: TBevelCut; pBevelKind: TBevelKind; pBevelWidth: TBevelWidth; pColor:  TColor);
+  public
+    constructor Create(pControl: TDBEdit); overload;
+  published
+    property BevelInner: TBevelCut read FBevelInner write FBevelInner;
+    property BevelOuter: TBevelCut read FBevelOuter write FBevelOuter;
+    property BevelKind: TBevelKind read FBevelKind write FBevelKind;
+    property BevelWidth: TBevelWidth read FBevelWidth write FBevelWidth;
+    property Color:  TColor read FColor write FColor default clRed;
   end;
 
   TPanelObrigatorioCustom = class(TCustomPanel)
+  private const
+    CAMPO_OBRIGATORIO = 'Campo %s é obrigatório';
   private
-    // TODO: Implementar dictionary
+    FListaComps: TDictionary<TControl, TEditConfig>;
+
     FOldOnBeforePost: TDataSetNotifyEvent;
     FDataSource: TDataSource;
     FDesenhaObrigatorios: Boolean;
+    FMensagem: string;
+    FDestaqueCampoObrigatorio: TEditConfig;
     procedure SetDataSource(const Value: TDataSource);
+    procedure SetMensagem(const Value: string);
   protected
+    function GetMensagem: string; virtual;
     procedure OnBeforePostDataSet(DataSet: TDataSet);
     procedure CreateParams(var Params: TCreateParams); override;
 
@@ -31,6 +48,12 @@ type  // Teste
 
     property DesenhaObrigatorios: Boolean read FDesenhaObrigatorios write FDesenhaObrigatorios;
     property DataSource: TDataSource read FDataSource write SetDataSource;
+
+    property DestaqueCampoObrigatorio: TEditConfig read FDestaqueCampoObrigatorio write FDestaqueCampoObrigatorio;
+    property Mensagem: string read FMensagem write SetMensagem;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
   end;
 
   TPanelObrigatorio = class(TPanelObrigatorioCustom)
@@ -39,14 +62,28 @@ type  // Teste
   published
     property Align;
     property DataSource;
-    property DesenhaObrigatorios stored True; // default para Ordinais
+    property DestaqueCampoObrigatorio;
+    property DesenhaObrigatorios stored False;
   end;
-
 
 implementation
 
 
 { TPanelObrigatorio }
+
+constructor TPanelObrigatorioCustom.Create(AOwner: TComponent);
+begin
+  inherited;
+  FDesenhaObrigatorios := True;
+  FListaComps := TDictionary<TControl, TEditConfig>.Create;
+  FDestaqueCampoObrigatorio := TEditConfig.Create(Self);
+
+  FDestaqueCampoObrigatorio.BevelInner := bvSpace;
+  FDestaqueCampoObrigatorio.BevelOuter := bvRaised;
+  FDestaqueCampoObrigatorio.BevelKind := bkTile;
+  FDestaqueCampoObrigatorio.BevelWidth := 2;
+  FDestaqueCampoObrigatorio.Color := clRed;
+end;
 
 procedure TPanelObrigatorioCustom.CreateParams(var Params: TCreateParams);
 begin
@@ -54,6 +91,19 @@ begin
   BevelOuter := bvNone;
   Caption := '';
   ShowCaption := False;
+end;
+
+destructor TPanelObrigatorioCustom.Destroy;
+begin
+  FListaComps.Free;
+  inherited;
+end;
+
+function TPanelObrigatorioCustom.GetMensagem: string;
+begin
+  Result := FMensagem;
+  if FMensagem = '' then
+    Result := CAMPO_OBRIGATORIO;
 end;
 
 procedure TPanelObrigatorioCustom.OnBeforePostDataSet(DataSet: TDataSet);
@@ -99,6 +149,16 @@ begin
   end;
 end;
 
+procedure TPanelObrigatorioCustom.SetMensagem(const Value: string);
+begin
+  if (Value <> '') and (Pos('%', Value) = 0) then
+  begin
+    raise Exception.Create('Informe o "%s" para preenchimento dinâmico pelo format.');
+  end;
+
+  FMensagem := Value;
+end;
+
 function TPanelObrigatorioCustom.ValidaCamposObrigatorios: string;
 var
   i: Integer;
@@ -118,13 +178,32 @@ begin
             begin
               if FDesenhaObrigatorios then
               begin
-                TDBEdit(Self.Controls[i]).BevelInner := bvSpace;
-                TDBEdit(Self.Controls[i]).BevelOuter := bvRaised;
-                TDBEdit(Self.Controls[i]).BevelKind := bkTile;
-                TDBEdit(Self.Controls[i]).BevelWidth := 2;
-                TDBEdit(Self.Controls[i]).Color := clRed;
+                if not FListaComps.ContainsKey(Self.Controls[i]) then
+                begin
+                  FListaComps.Add(Self.Controls[i], TEditConfig.Create(TDBEdit(Self.Controls[i])));
+                end;
+
+                TDBEdit(Self.Controls[i]).BevelInner := FDestaqueCampoObrigatorio.BevelInner;
+                TDBEdit(Self.Controls[i]).BevelOuter := FDestaqueCampoObrigatorio.FBevelOuter;
+                TDBEdit(Self.Controls[i]).BevelKind := FDestaqueCampoObrigatorio.BevelKind;
+                TDBEdit(Self.Controls[i]).BevelWidth := FDestaqueCampoObrigatorio.BevelWidth;
+                TDBEdit(Self.Controls[i]).Color := FDestaqueCampoObrigatorio.Color;
               end;
-              Result := Result + sLineBreak + 'O campo ' + TDBEdit(Self.Controls[i]).Field.DisplayLabel + ' é obrigatório';// TODO: property mensagem
+              Result := Result + sLineBreak + Format(GetMensagem, [TDBEdit(Self.Controls[i]).Field.DisplayLabel]);
+            end;
+          end;
+        end else begin
+          if FDesenhaObrigatorios and FListaComps.ContainsKey(Self.Controls[i]) then
+          begin
+            if Self.Controls[i] is TDBEdit then
+            begin
+              TDBEdit(Self.Controls[i]).BevelInner := FListaComps[Self.Controls[i]].FBevelInner;
+              TDBEdit(Self.Controls[i]).BevelOuter := FListaComps[Self.Controls[i]].FBevelOuter;
+              TDBEdit(Self.Controls[i]).BevelKind := FListaComps[Self.Controls[i]].FBevelKind;
+              TDBEdit(Self.Controls[i]).BevelWidth := FListaComps[Self.Controls[i]].FBevelWidth;
+              TDBEdit(Self.Controls[i]).Color := FListaComps[Self.Controls[i]].FColor;
+
+              FListaComps.Remove(Self.Controls[i]);
             end;
           end;
         end;
@@ -142,7 +221,7 @@ end;
 
 { TEditConfig }
 
-constructor TEditConfig.Create(pBevelInner, pBevelOuter: TBevelCut; pBevelKind: TBevelKind; pBevelWidth: TBevelWidth;
+procedure TEditConfig.PreencheProps(pBevelInner, pBevelOuter: TBevelCut; pBevelKind: TBevelKind; pBevelWidth: TBevelWidth;
   pColor: TColor);
 begin
   FBevelInner :=  pBevelInner;
@@ -150,6 +229,12 @@ begin
   FBevelKind := pBevelKind;
   FBevelWidth := pBevelWidth;
   FColor := pColor;
+end;
+
+constructor TEditConfig.Create(pControl: TDBEdit);
+begin
+  inherited Create(pControl);
+  PreencheProps(pControl.BevelInner, pControl.BevelOuter, pControl.BevelKind, pControl.BevelWidth, pControl.Color);
 end;
 
 end.

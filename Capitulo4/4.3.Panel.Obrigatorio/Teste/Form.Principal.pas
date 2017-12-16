@@ -10,12 +10,7 @@ uses
 
 type
   TForm1 = class(TForm)
-    checkStado: TCheckBox;
     memoCampos: TMemo;
-    Panel1: TPanel;
-    Edit1: TEdit;
-    Button1: TButton;
-    DBEdit1: TDBEdit;
     memCampos: TFDMemTable;
     memCamposCodigo: TIntegerField;
     memCamposID: TIntegerField;
@@ -23,7 +18,9 @@ type
     memCamposDataCadastro: TDateField;
     memCamposValorInicial: TCurrencyField;
     DBGrid1: TDBGrid;
-    PanelObrigatorio1: TPanelObrigatorio;
+    memoLog: TMemo;
+    dtsCampos: TDataSource;
+    panelBaseObrigatorio: TPanel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -34,19 +31,13 @@ type
     DBEdit4: TDBEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
-    memoLog: TMemo;
     buttonValidaCampos: TButton;
-    dtsCampos: TDataSource;
-    Button2: TButton;
     procedure buttonValidaCamposClick(Sender: TObject);
-    procedure dtsCamposDataChange(Sender: TObject; Field: TField);
-    procedure dtsCamposStateChange(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure memCamposBeforePost(DataSet: TDataSet);
+    procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
+    FPanelObrigatorio: TPanelObrigatorio;
   public
-    { Public declarations }
   end;
 
 var
@@ -56,25 +47,31 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.Button2Click(Sender: TObject);
-begin
-  PanelObrigatorio1.DataSource := dtsCampos;
-end;
-
 procedure TForm1.buttonValidaCamposClick(Sender: TObject);
 begin
-  memoCampos.Text := PanelObrigatorio1.ValidaCamposObrigatorios;
+  memoCampos.Text := FPanelObrigatorio.ValidaCamposObrigatorios;
 end;
 
-procedure TForm1.dtsCamposDataChange(Sender: TObject; Field: TField);
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  i: Integer;
 begin
-//  if not(memCampos.State in [dsInactive]) then
-//    memoLog.Lines.Add(TimeToStr(Now) + ' - Field: ' + Field.DisplayLabel);
-end;
+  ReportMemoryLeaksOnShutdown := True;
+  FPanelObrigatorio := TPanelObrigatorio.Create(Self);
+  FPanelObrigatorio.Parent := Self;
 
-procedure TForm1.dtsCamposStateChange(Sender: TObject);
-begin
-  //memoLog.Lines.Add(TimeToStr(Now) + ' - Dts: ' + IntToStr(Ord(memCampos.State)));
+  FPanelObrigatorio.Align := panelBaseObrigatorio.Align;
+
+  for i:= panelBaseObrigatorio.ControlCount -1 downto 0 do
+  begin
+    panelBaseObrigatorio.Controls[i].Parent := FPanelObrigatorio;
+  end;
+
+  FPanelObrigatorio.DataSource := dtsCampos;
+
+  panelBaseObrigatorio.Visible := False;
+  memoCampos.Align := alNone;
+  memoCampos.Align := alLeft;
 end;
 
 procedure TForm1.memCamposBeforePost(DataSet: TDataSet);
