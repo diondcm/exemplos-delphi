@@ -9,6 +9,7 @@ uses
 type
   TfrmPrincipal = class(TForm)
     buttonSalvar: TButton;
+    memoPropriedades: TMemo;
     procedure buttonSalvarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -29,6 +30,7 @@ var
   lType: TRttiType;
   lProp: TRttiProperty;
   lDicProps: TDictionary<string, string>;
+  lPair: TPair<string, string>;
 
   function ValueToString(const [Ref] pVal: TValue): string;
   begin
@@ -40,13 +42,18 @@ var
       tkChar:
          Result := pVal.AsString;
 
-      tkUnknown: ;
-      tkInteger: ;
+//      tkMethod,
+//      tkProcedure:
+//        Result := pVal.AsType<TRttiMethod>.Name;
+
+      tkFloat:
+        Result := FloatToStr(pVal.AsExtended);
+      tkInteger:
+        Result := IntToStr(pVal.AsInteger);
+
       tkEnumeration: ;
-      tkFloat: ;
       tkSet: ;
       tkClass: ;
-      tkMethod: ;
       tkWChar: ;
       tkVariant: ;
       tkArray: ;
@@ -56,7 +63,7 @@ var
       tkDynArray: ;
       tkClassRef: ;
       tkPointer: ;
-      tkProcedure: ;
+      tkUnknown: ;
     end;
   end;
 
@@ -64,13 +71,28 @@ begin
   lType := TRttiContext.Create.GetType(Sender.ClassInfo); // Button.ClassInfo
   lDicProps := TDictionary<string, string>.Create;
   try
-    for lProp in lType.GetProperties do
-    begin
-      if lProp.IsReadable then
+    try
+      for lProp in lType.GetDeclaredProperties do
       begin
-        lDicProps.Add(lProp.Name, ValueToString(lProp.GetValue(Sender)));
+        if lProp.IsReadable then
+        begin
+          lDicProps.Add(lProp.Name, ValueToString(lProp.GetValue(Sender)));
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+        raise Exception.Create('Prop: ' + lProp.Name + sLineBreak + E.Message);
       end;
     end;
+
+    memoPropriedades.Lines.Add('{');
+    for lPair in lDicProps.ToArray do
+    begin
+      memoPropriedades.Lines.Add('"' + lPair.Key + '":"' + lPair.Value + '",');
+    end;
+    memoPropriedades.Lines.Text := Copy(memoPropriedades.Lines.Text, 1, memoPropriedades.Lines.Text.Length -3 {Linebkeak + Última ','});
+    memoPropriedades.Lines.Add('}');
   finally
     lDicProps.Free;
   end;

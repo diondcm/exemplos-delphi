@@ -23,4 +23,20 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 0
     OnClick = buttonSalvarClick
   end
+  object memoPropriedades: TMemo
+    AlignWithMargins = True
+    Left = 444
+    Top = 6
+    Width = 185
+    Height = 287
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
+    Align = alRight
+    TabOrder = 1
+    ExplicitLeft = 232
+    ExplicitTop = 128
+    ExplicitHeight = 89
+  end
 end
