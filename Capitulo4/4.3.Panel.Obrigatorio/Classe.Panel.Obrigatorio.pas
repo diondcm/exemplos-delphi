@@ -17,7 +17,7 @@ type
     FColor:  TColor;
     procedure PreencheProps(pBevelInner: TBevelCut; pBevelOuter: TBevelCut; pBevelKind: TBevelKind; pBevelWidth: TBevelWidth; pColor:  TColor);
   public
-    constructor Create(pControl: TDBEdit); overload;
+    constructor Create(pControl: TDBEdit); reintroduce; overload;
   published
     property BevelInner: TBevelCut read FBevelInner write FBevelInner;
     property BevelOuter: TBevelCut read FBevelOuter write FBevelOuter;
@@ -32,6 +32,7 @@ type
   private
     FListaComps: TDictionary<TControl, TEditConfig>;
 
+    FSobre: string;
     FOldOnBeforePost: TDataSetNotifyEvent;
     FDataSource: TDataSource;
     FDesenhaObrigatorios: Boolean;
@@ -51,6 +52,7 @@ type
 
     property DestaqueCampoObrigatorio: TEditConfig read FDestaqueCampoObrigatorio write FDestaqueCampoObrigatorio;
     property Mensagem: string read FMensagem write SetMensagem;
+    property Sobre: string read FSobre write FSobre;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -64,6 +66,7 @@ type
     property DataSource;
     property DestaqueCampoObrigatorio;
     property DesenhaObrigatorios stored False;
+    property Sobre;
   end;
 
 implementation
@@ -74,6 +77,7 @@ implementation
 constructor TPanelObrigatorioCustom.Create(AOwner: TComponent);
 begin
   inherited;
+  FSobre := '4.5'; // todo: buscar do form-sobre ou carregar de arquivo de versão
   FDesenhaObrigatorios := True;
   FListaComps := TDictionary<TControl, TEditConfig>.Create;
   FDestaqueCampoObrigatorio := TEditConfig.Create(Self);

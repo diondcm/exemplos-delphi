@@ -34,6 +34,7 @@ type
     DBEdit6: TDBEdit;
     buttonValidaCampos: TButton;
     DBDateTimePicker1: TDBDateTimePicker;
+    PanelObrigatorio1: TPanelObrigatorio;
     procedure buttonValidaCamposClick(Sender: TObject);
     procedure memCamposBeforePost(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
