@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{81383861-DEC9-431D-BBFB-A9F72A2F2D0F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pkgGridPlus.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Testes\TestGrid.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgGridPlus">
+        <MSBuild Projects="pkgGridPlus.dproj"/>
+    </Target>
+    <Target Name="pkgGridPlus:Clean">
+        <MSBuild Projects="pkgGridPlus.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgGridPlus:Make">
+        <MSBuild Projects="pkgGridPlus.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestGrid">
+        <MSBuild Projects="Testes\TestGrid.dproj"/>
+    </Target>
+    <Target Name="TestGrid:Clean">
+        <MSBuild Projects="Testes\TestGrid.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestGrid:Make">
+        <MSBuild Projects="Testes\TestGrid.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgGridPlus;TestGrid"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgGridPlus:Clean;TestGrid:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgGridPlus:Make;TestGrid:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
