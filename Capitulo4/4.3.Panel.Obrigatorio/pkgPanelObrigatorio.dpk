@@ -35,6 +35,7 @@ requires
 
 contains
   Classe.Panel.Obrigatorio in 'Classe.Panel.Obrigatorio.pas',
-  Geral.Registra.Componentes in 'Geral.Registra.Componentes.pas';
+  Geral.Registra.Componentes in 'Geral.Registra.Componentes.pas',
+  Classe.DB.DateEdit in 'Classe.DB.DateEdit.pas';
 
 end.

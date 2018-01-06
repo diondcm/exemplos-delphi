@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Data.DB,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Controls,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Forms, Vcl.Dialogs, Classe.Panel.Obrigatorio;
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Forms, Vcl.Dialogs, Classe.Panel.Obrigatorio, Vcl.ComCtrls,
+  Classe.DB.DateEdit;
 
 type
   TForm1 = class(TForm)
@@ -32,9 +33,11 @@ type
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
     buttonValidaCampos: TButton;
+    DBDateTimePicker1: TDBDateTimePicker;
     procedure buttonValidaCamposClick(Sender: TObject);
     procedure memCamposBeforePost(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
+    procedure DBDateTimePicker1Change(Sender: TObject);
   private
     FPanelObrigatorio: TPanelObrigatorio;
   public
@@ -50,6 +53,11 @@ implementation
 procedure TForm1.buttonValidaCamposClick(Sender: TObject);
 begin
   memoCampos.Text := FPanelObrigatorio.ValidaCamposObrigatorios;
+end;
+
+procedure TForm1.DBDateTimePicker1Change(Sender: TObject);
+begin
+  ShowMessage('Teste');
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

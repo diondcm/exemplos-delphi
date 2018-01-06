@@ -145,6 +145,18 @@ object Form1: TForm1
       TabOrder = 5
     end
   end
+  object DBDateTimePicker1: TDBDateTimePicker
+    Left = 368
+    Top = 64
+    Width = 186
+    Height = 21
+    Date = 43106.420867476850000000
+    Time = 43106.420867476850000000
+    TabOrder = 4
+    OnChange = DBDateTimePicker1Change
+    DataSource = dtsCampos
+    DataField = 'DataCadastro'
+  end
   object dtsCampos: TDataSource
     DataSet = memCampos
     Left = 288
