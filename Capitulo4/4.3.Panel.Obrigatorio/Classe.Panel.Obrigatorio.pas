@@ -46,6 +46,7 @@ type
     procedure CreateParams(var Params: TCreateParams); override;
 
     function ValidaCamposObrigatorios: string; virtual;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
 
     property DesenhaObrigatorios: Boolean read FDesenhaObrigatorios write FDesenhaObrigatorios;
     property DataSource: TDataSource read FDataSource write SetDataSource;
@@ -108,6 +109,11 @@ begin
   Result := FMensagem;
   if FMensagem = '' then
     Result := CAMPO_OBRIGATORIO;
+end;
+
+procedure TPanelObrigatorioCustom.Notification(AComponent: TComponent; Operation: TOperation);
+begin
+  inherited;
 end;
 
 procedure TPanelObrigatorioCustom.OnBeforePostDataSet(DataSet: TDataSet);
