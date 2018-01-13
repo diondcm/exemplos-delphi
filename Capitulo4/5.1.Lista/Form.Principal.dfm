@@ -35,7 +35,6 @@ object frmPrincipal: TfrmPrincipal
     DataSource = dtsAluno
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 83
   end
   object panelControles: TPanel
     Left = 0
@@ -44,7 +43,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 89
     Align = alTop
     TabOrder = 2
-    ExplicitTop = -6
     object buttonAbrir: TButton
       Left = 16
       Top = 16
@@ -1188,6 +1186,20 @@ object frmPrincipal: TfrmPrincipal
         DataSet = frxDBqryAluno
         DataSetName = 'frxDBAluno'
         RowCount = 0
+        object Memo8: TfrxMemoView
+          Width = 721.890230000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.Kind = fkDateTime
+          Highlight.ApplyFont = False
+          Highlight.Font.Charset = DEFAULT_CHARSET
+          Highlight.Font.Color = clRed
+          Highlight.Font.Height = -13
+          Highlight.Font.Name = 'Arial'
+          Highlight.Font.Style = []
+          Highlight.Condition = '(<Line#> mod 2) = 0'
+          Highlight.FillType = ftBrush
+          Highlight.Fill.BackColor = 14211288
+        end
         object frxDBAlunoNOME: TfrxMemoView
           Left = 264.567100000000000000
           Top = 1.220469999999977000
@@ -1282,11 +1294,13 @@ object frmPrincipal: TfrmPrincipal
     Params.Strings = (
       'Database=C:\Users\Aluno\Desktop\exemplos-delphi\SQLite\fast.db'
       'DriverID=SQLite')
+    Connected = True
     LoginPrompt = False
     Left = 352
     Top = 8
   end
   object qryAluno: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'select * from aluno')

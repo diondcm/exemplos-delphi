@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
   FireDAC.VCLUI.Wait, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, frxClass, frxDBSet;
+  FireDAC.Comp.DataSet, frxClass, frxDBSet, frxExportXLSX, frxExportXLS, frxExportHTML, frxExportImage, frxExportPDF,
+  Vcl.Menus;
 
 type
   TfrmPrincipal = class(TForm)
@@ -29,8 +30,24 @@ type
     frxDBListaProdutos: TfrxDBDataset;
     frxReportListaProdutos: TfrxReport;
     buttonProdutoPorCategoria: TButton;
+    PopupMenu: TPopupMenu;
+    PDF1: TMenuItem;
+    JPG1: TMenuItem;
+    HTML1: TMenuItem;
+    XLS1: TMenuItem;
+    XLSX1: TMenuItem;
+    frxPDFExport1: TfrxPDFExport;
+    frxJPEGExport1: TfrxJPEGExport;
+    frxHTMLExport1: TfrxHTMLExport;
+    frxXLSExport1: TfrxXLSExport;
+    frxXLSXExport1: TfrxXLSXExport;
     procedure buttonImpCategoriaAtualClick(Sender: TObject);
     procedure buttonProdutoPorCategoriaClick(Sender: TObject);
+    procedure PDF1Click(Sender: TObject);
+    procedure JPG1Click(Sender: TObject);
+    procedure HTML1Click(Sender: TObject);
+    procedure XLS1Click(Sender: TObject);
+    procedure XLSX1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,6 +72,31 @@ procedure TfrmPrincipal.buttonProdutoPorCategoriaClick(Sender: TObject);
 begin
   qryListaProdutos.Open;
   frxReportListaProdutos.ShowReport;
+end;
+
+procedure TfrmPrincipal.HTML1Click(Sender: TObject);
+begin
+  frxReportListaProdutos.Export(frxHTMLExport1);
+end;
+
+procedure TfrmPrincipal.JPG1Click(Sender: TObject);
+begin
+  frxReportListaProdutos.Export(frxJPEGExport1);
+end;
+
+procedure TfrmPrincipal.PDF1Click(Sender: TObject);
+begin
+  frxReportListaProdutos.Export(frxPDFExport1);
+end;
+
+procedure TfrmPrincipal.XLS1Click(Sender: TObject);
+begin
+  frxReportListaProdutos.Export(frxXLSExport1);
+end;
+
+procedure TfrmPrincipal.XLSX1Click(Sender: TObject);
+begin
+  frxReportListaProdutos.Export(frxXLSXExport1);
 end;
 
 end.
