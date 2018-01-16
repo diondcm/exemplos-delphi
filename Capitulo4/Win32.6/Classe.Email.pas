@@ -14,6 +14,20 @@ type
     class function Enviar(const pUser, pSenha, pDestinatarios, pAssunto : string; pBody: TStrings = nil; pAttach: TStrings = nil): string;
   end;
 
+  TEmailThread = class(TThread)
+  private
+    FUser: string;
+    FSenha: string;
+    FDestinatarios: string;
+    FAssunto: string;
+    FBody: string;
+    FAttach: string;
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(const pUser, pSenha, pDestinatarios, pAssunto: string; const pBody: string = ''; const pAttach: string = ''); overload;
+  end;
+
 implementation
 
 { TEmail }
@@ -110,6 +124,44 @@ begin
     lSSL.Free;
     lMessage.Free;
   end;
+end;
+
+{ TEmailThread }
+
+constructor TEmailThread.Create(const pUser, pSenha, pDestinatarios, pAssunto,
+  pBody, pAttach: string);
+begin
+  FUser := pUser;
+  FSenha := pSenha;
+  FDestinatarios := pDestinatarios;
+  FAssunto := pAssunto;
+  FBody := pBody;
+  FAttach := pAttach;
+  FreeOnTerminate := True;
+  inherited Create(False);
+end;
+
+procedure TEmailThread.Execute;
+var
+  lBody: TStringList;
+  lAtch: TStringList;
+begin
+  lBody := nil;
+  if FBody <> '' then
+  begin
+    lBody := TStringList.Create;
+    lBody.Text := FBody;
+  end;
+
+  lAtch := nil;
+  if FAttach <> '' then
+  begin
+    lAtch := TStringList.Create;
+    lAtch.Text := FBody;
+  end;
+
+  // não trata retorno, melhoria para futuro
+  TEmail.Enviar(FUser, FSenha, FDestinatarios, FAssunto, lBody, lAtch);
 end;
 
 end.
