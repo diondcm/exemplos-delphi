@@ -54,6 +54,7 @@ begin
     begin
       lAnexos.Add('teste.txt');
     end;
+    // teste
     //lErroEnvio := TEmail.Enviar(editUsuario.Text, editSenha.Text, editDestinatario.Text, editAssunto.Text, memoBody.Lines, lAnexos);
     lBody := memoBody.Lines.Text;
     lStrAnexos := lAnexos.Text;
