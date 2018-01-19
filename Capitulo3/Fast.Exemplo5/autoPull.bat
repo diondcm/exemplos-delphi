@@ -1,3 +1,3 @@
 @echo off
-git push
+git pull
 @echo on
