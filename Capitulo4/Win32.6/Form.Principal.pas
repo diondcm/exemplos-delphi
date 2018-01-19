@@ -45,6 +45,8 @@ procedure TfrmPrincipal.buttonEnviarEmailClick(Sender: TObject);
 var
   lErroEnvio: string;
   lAnexos: TStringList;
+  lBody: string;
+  lStrAnexos: string;
 begin
   lAnexos := TStringList.Create;
   try
@@ -52,7 +54,11 @@ begin
     begin
       lAnexos.Add('teste.txt');
     end;
-    lErroEnvio := TEmail.Enviar(editUsuario.Text, editSenha.Text, editDestinatario.Text, editAssunto.Text, memoBody.Lines, lAnexos);
+    // teste
+    //lErroEnvio := TEmail.Enviar(editUsuario.Text, editSenha.Text, editDestinatario.Text, editAssunto.Text, memoBody.Lines, lAnexos);
+    lBody := memoBody.Lines.Text;
+    lStrAnexos := lAnexos.Text;
+    TEmailThread.Create(editUsuario.Text, editSenha.Text, editDestinatario.Text, editAssunto.Text, lBody, lStrAnexos);
   finally
     lAnexos.Free;
   end;
