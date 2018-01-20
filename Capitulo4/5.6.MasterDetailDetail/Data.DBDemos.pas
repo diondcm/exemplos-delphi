@@ -17,8 +17,12 @@ type
     frxDBOrders: TfrxDBDataset;
     dtsOrders: TDataSource;
     dtsCustomer: TDataSource;
-    FDConnection1: TFDConnection;
-    FDQuery1: TFDQuery;
+    memItems: TFDMemTable;
+    frxDBItems: TfrxDBDataset;
+    memParts: TFDMemTable;
+    frxDBParts: TfrxDBDataset;
+    dtsItems: TDataSource;
+    FDMemTable1: TFDMemTable;
   strict private
     class var FInstancia: TdmdDBDemos;
   private
