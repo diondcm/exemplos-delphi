@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object buttonMasterDetail: TButton
@@ -22,5 +23,11 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Master Detail'
     TabOrder = 0
     OnClick = buttonMasterDetailClick
+  end
+  object timerTeste: TTimer
+    Enabled = False
+    OnTimer = timerTesteTimer
+    Left = 560
+    Top = 224
   end
 end
