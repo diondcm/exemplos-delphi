@@ -38,6 +38,14 @@ object frmMasterDetail: TfrmMasterDetail
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
+  object Button2: TButton
+    Left = 144
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Button2'
+    TabOrder = 2
+  end
   object dtsCustomer: TDataSource
     DataSet = dmdDBDemos.memCustomer
     Left = 480

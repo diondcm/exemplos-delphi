@@ -4,13 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DBDemos, Data.DB, frxClass, Vcl.Grids, Vcl.DBGrids;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DBDemos, Data.DB, frxClass, Vcl.Grids, Vcl.DBGrids, frxDesgn;
 
 type
   TfrmMasterDetail = class(TForm)
     Button1: TButton;
     DBGrid1: TDBGrid;
     dtsCustomer: TDataSource;
+    Button2: TButton;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

@@ -1,7 +1,7 @@
 object dmdDBDemos: TdmdDBDemos
   OldCreateOrder = False
-  Height = 547
-  Width = 951
+  Height = 781
+  Width = 1234
   object memCustomer: TFDMemTable
     Active = True
     Filter = 'custno=1231'
@@ -17,7 +17,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 80
     Top = 216
     Content = {
-      414442530F00D24270400000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00FF3870400000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000C0000
       0043007500730074004E006F0005000C00000043007500730074004E006F000C
@@ -577,23 +577,23 @@ object dmdDBDemos: TdmdDBDemos
     Datasets = <
       item
         DataSet = frxDBCustomer
-        DataSetName = 'Customer'
+        DataSetName = 'CustomerMem'
       end
       item
         DataSet = frxDBItems
-        DataSetName = 'Items'
+        DataSetName = 'ItemsMem'
       end
       item
         DataSet = frxDBOrders
-        DataSetName = 'Orders'
+        DataSetName = 'OrdersMem'
       end
       item
         DataSet = frxDBParts
-        DataSetName = 'Parts'
+        DataSetName = 'PartsMem'
       end
       item
         DataSet = frxDBVendors
-        DataSetName = 'Vendors'
+        DataSetName = 'VendorsMem'
       end>
     Variables = <>
     Style = <>
@@ -9522,7 +9522,7 @@ object dmdDBDemos: TdmdDBDemos
         Top = 430.866420000000000000
         Width = 718.110700000000000000
         DataSet = frxDBCustomer
-        DataSetName = 'Customer'
+        DataSetName = 'CustomerMem'
         RowCount = 0
         StartNewPage = True
         object Line4: TfrxLineView
@@ -9537,7 +9537,7 @@ object dmdDBDemos: TdmdDBDemos
           Width = 238.110390000000000000
           Height = 22.677180000000000000
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -19
@@ -9561,14 +9561,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 22.677180000000000000
           DataField = 'City'
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Memo.UTF8W = (
-            '[Customer."City"]')
+            '[CustomerMem."City"]')
           ParentFont = False
         end
         object CustomerCustNo: TfrxMemoView
@@ -9577,14 +9577,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 22.677180000000000000
           DataField = 'CustNo'
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Memo.UTF8W = (
-            '[Customer."CustNo"]')
+            '[CustomerMem."CustNo"]')
           ParentFont = False
         end
       end
@@ -9638,7 +9638,7 @@ object dmdDBDemos: TdmdDBDemos
         Top = 532.913730000000000000
         Width = 718.110700000000000000
         DataSet = frxDBOrders
-        DataSetName = 'Orders'
+        DataSetName = 'OrdersMem'
         RowCount = 0
         object OrdersOrderNo: TfrxMemoView
           Left = 34.015770000000000000
@@ -9646,14 +9646,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'OrderNo'
           DataSet = frxDBOrders
-          DataSetName = 'Orders'
+          DataSetName = 'OrdersMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Orders."OrderNo"]')
+            '[OrdersMem."OrderNo"]')
           ParentFont = False
         end
         object OrdersSaleDate: TfrxMemoView
@@ -9662,14 +9662,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'SaleDate'
           DataSet = frxDBOrders
-          DataSetName = 'Orders'
+          DataSetName = 'OrdersMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Orders."SaleDate"]')
+            '[OrdersMem."SaleDate"]')
           ParentFont = False
         end
         object OrdersShipDate: TfrxMemoView
@@ -9678,14 +9678,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'ShipDate'
           DataSet = frxDBOrders
-          DataSetName = 'Orders'
+          DataSetName = 'OrdersMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Orders."ShipDate"]')
+            '[OrdersMem."ShipDate"]')
           ParentFont = False
         end
         object OrdersItemsTotal: TfrxMemoView
@@ -9693,7 +9693,7 @@ object dmdDBDemos: TdmdDBDemos
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           DataSet = frxDBOrders
-          DataSetName = 'Orders'
+          DataSetName = 'OrdersMem'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -9782,7 +9782,7 @@ object dmdDBDemos: TdmdDBDemos
         Top = 582.047620000000000000
         Width = 718.110700000000000000
         DataSet = frxDBItems
-        DataSetName = 'Items'
+        DataSetName = 'ItemsMem'
         RowCount = 0
         object ItemsItemNo: TfrxMemoView
           Left = 52.913420000000000000
@@ -9791,14 +9791,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'ItemNo'
           DataSet = frxDBItems
-          DataSetName = 'Items'
+          DataSetName = 'ItemsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Items."ItemNo"]')
+            '[ItemsMem."ItemNo"]')
           ParentFont = False
         end
         object ItemsQty: TfrxMemoView
@@ -9808,14 +9808,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'Qty'
           DataSet = frxDBItems
-          DataSetName = 'Items'
+          DataSetName = 'ItemsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Items."Qty"]')
+            '[ItemsMem."Qty"]')
           ParentFont = False
         end
         object ItemsDiscount: TfrxMemoView
@@ -9825,14 +9825,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'Discount'
           DataSet = frxDBItems
-          DataSetName = 'Items'
+          DataSetName = 'ItemsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Items."Discount"]')
+            '[ItemsMem."Discount"]')
           ParentFont = False
         end
         object Line6: TfrxLineView
@@ -9892,14 +9892,14 @@ object dmdDBDemos: TdmdDBDemos
         Width = 718.110700000000000000
         Child = frxReportMasterDetail.childParts
         DataSet = frxDBParts
-        DataSetName = 'Parts'
+        DataSetName = 'PartsMem'
         RowCount = 0
         object PartsCost: TfrxMemoView
           Left = 502.677490000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataSet = frxDBParts
-          DataSetName = 'Parts'
+          DataSetName = 'PartsMem'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           HAlign = haRight
@@ -9911,7 +9911,7 @@ object dmdDBDemos: TdmdDBDemos
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DataSet = frxDBParts
-          DataSetName = 'Parts'
+          DataSetName = 'PartsMem'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           HAlign = haRight
@@ -9924,9 +9924,9 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'Description'
           DataSet = frxDBParts
-          DataSetName = 'Parts'
+          DataSetName = 'PartsMem'
           Memo.UTF8W = (
-            '[Parts."Description"]')
+            '[PartsMem."Description"]')
         end
         object Line9: TfrxLineView
           Left = 75.590600000000000000
@@ -9969,7 +9969,7 @@ object dmdDBDemos: TdmdDBDemos
         Top = 793.701300000000000000
         Width = 718.110700000000000000
         DataSet = frxDBVendors
-        DataSetName = 'Vendors'
+        DataSetName = 'VendorsMem'
         RowCount = 0
         object VendorsVendorNo: TfrxMemoView
           Left = 113.385900000000000000
@@ -9977,14 +9977,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'VendorNo'
           DataSet = frxDBVendors
-          DataSetName = 'Vendors'
+          DataSetName = 'VendorsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Vendors."VendorNo"]')
+            '[VendorsMem."VendorNo"]')
           ParentFont = False
         end
         object VendorsVendorName: TfrxMemoView
@@ -9993,14 +9993,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'VendorName'
           DataSet = frxDBVendors
-          DataSetName = 'Vendors'
+          DataSetName = 'VendorsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Vendors."VendorName"]')
+            '[VendorsMem."VendorName"]')
           ParentFont = False
         end
         object VendorsCountry: TfrxMemoView
@@ -10009,14 +10009,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'Country'
           DataSet = frxDBVendors
-          DataSetName = 'Vendors'
+          DataSetName = 'VendorsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Vendors."Country"]')
+            '[VendorsMem."Country"]')
           ParentFont = False
         end
         object VendorsCity: TfrxMemoView
@@ -10025,14 +10025,14 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'City'
           DataSet = frxDBVendors
-          DataSetName = 'Vendors'
+          DataSetName = 'VendorsMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[Vendors."City"]')
+            '[VendorsMem."City"]')
           ParentFont = False
         end
         object Line10: TfrxLineView
@@ -10095,7 +10095,7 @@ object dmdDBDemos: TdmdDBDemos
     end
   end
   object frxDBCustomer: TfrxDBDataset
-    UserName = 'Customer'
+    UserName = 'CustomerMem'
     CloseDataSource = False
     DataSet = memCustomer
     BCDToCurrency = False
@@ -10119,7 +10119,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 168
     Top = 216
     Content = {
-      414442530F00D242F47C0000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00FF38F47C0000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000E0000
       004F0072006400650072004E006F0005000E0000004F0072006400650072004E
@@ -11144,7 +11144,7 @@ object dmdDBDemos: TdmdDBDemos
       6F0069006E0074000E004300680061006E00670065007300}
   end
   object frxDBOrders: TfrxDBDataset
-    UserName = 'Orders'
+    UserName = 'OrdersMem'
     CloseDataSource = False
     DataSet = memOrders
     BCDToCurrency = False
@@ -11177,7 +11177,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 248
     Top = 216
     Content = {
-      414442530F00D24238D80000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00FF3838D80000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000E0000
       004F0072006400650072004E006F0005000E0000004F0072006400650072004E
@@ -12930,7 +12930,7 @@ object dmdDBDemos: TdmdDBDemos
       680061006E00670065007300}
   end
   object frxDBItems: TfrxDBDataset
-    UserName = 'Items'
+    UserName = 'ItemsMem'
     CloseDataSource = False
     DataSet = memItems
     BCDToCurrency = False
@@ -12953,7 +12953,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 328
     Top = 216
     Content = {
-      414442530F00D242B01E0000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00FF38B01E0000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000C0000
       0050006100720074004E006F0005000C00000050006100720074004E006F000C
@@ -13223,7 +13223,7 @@ object dmdDBDemos: TdmdDBDemos
       4300680061006E00670065007300}
   end
   object frxDBParts: TfrxDBDataset
-    UserName = 'Parts'
+    UserName = 'PartsMem'
     CloseDataSource = False
     DataSet = memParts
     BCDToCurrency = False
@@ -13251,7 +13251,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 400
     Top = 216
     Content = {
-      414442530F00D242DE180000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00FF38DE180000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B0400100000
       00560065006E0064006F0072004E006F00050010000000560065006E0064006F
@@ -13480,7 +13480,7 @@ object dmdDBDemos: TdmdDBDemos
     Top = 272
   end
   object frxDBVendors: TfrxDBDataset
-    UserName = 'Vendors'
+    UserName = 'VendorsMem'
     CloseDataSource = False
     DataSet = memVendors
     BCDToCurrency = False
@@ -13507,7 +13507,7 @@ object dmdDBDemos: TdmdDBDemos
     Datasets = <
       item
         DataSet = frxDBSalary
-        DataSetName = 'Salary'
+        DataSetName = 'SalaryMem'
       end>
     Variables = <>
     Style = <>
@@ -13558,7 +13558,7 @@ object dmdDBDemos: TdmdDBDemos
         ColumnFields.Strings = (
           'Year')
         DataSet = frxDBSalary
-        DataSetName = 'Salary'
+        DataSetName = 'SalaryMem'
         RowFields.Strings = (
           'Name')
         Memos = {
@@ -13777,7 +13777,7 @@ object dmdDBDemos: TdmdDBDemos
     end
   end
   object frxDBSalary: TfrxDBDataset
-    UserName = 'Salary'
+    UserName = 'SalaryMem'
     CloseDataSource = False
     DataSet = memSalary
     BCDToCurrency = False
@@ -13799,7 +13799,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 712
     Top = 216
     Content = {
-      414442530F00F93882050000FF00010001FF02FF030400120000006D0065006D
+      414442530F00FF3882050000FF00010001FF02FF030400120000006D0065006D
       00530061006C0061007200790005000A0000005400610062006C006500060000
       000000070000080032000000090000FF0AFF0B0400080000004E0061006D0065
       000500080000004E0061006D0065000C00010000000E000D000F001400000010
@@ -13907,11 +13907,11 @@ object dmdDBDemos: TdmdDBDemos
     Datasets = <
       item
         DataSet = frxDBCountry
-        DataSetName = 'Country'
+        DataSetName = 'CountryMem'
       end
       item
         DataSet = frxDBCustomer
-        DataSetName = 'Customer'
+        DataSetName = 'CustomerMem'
       end>
     Variables = <>
     Style = <>
@@ -13967,14 +13967,14 @@ object dmdDBDemos: TdmdDBDemos
         Top = 222.992270000000000000
         Width = 718.110700000000000000
         DataSet = frxDBCountry
-        DataSetName = 'Country'
+        DataSetName = 'CountryMem'
         RowCount = 0
         object CustomerCountry: TfrxMemoView
           Left = 7.559060000000000000
           Width = 374.173470000000000000
           Height = 37.795300000000000000
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -24
@@ -14047,7 +14047,7 @@ object dmdDBDemos: TdmdDBDemos
         Top = 204.094620000000000000
         Width = 718.110700000000000000
         DataSet = frxDBCustomer
-        DataSetName = 'Customer'
+        DataSetName = 'CustomerMem'
         Filter = '<Country."Country">=<Customer."Country">'
         RowCount = 0
         object CustomerCompany: TfrxMemoView
@@ -14056,7 +14056,7 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'Company'
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Memo.UTF8W = (
             '[Customer."Company"]')
         end
@@ -14066,7 +14066,7 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'CustNo'
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Memo.UTF8W = (
             '[Customer."CustNo"]')
         end
@@ -14076,7 +14076,7 @@ object dmdDBDemos: TdmdDBDemos
           Height = 18.897650000000000000
           DataField = 'City'
           DataSet = frxDBCustomer
-          DataSetName = 'Customer'
+          DataSetName = 'CustomerMem'
           Memo.UTF8W = (
             '[Customer."City"]')
         end
@@ -14232,7 +14232,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 80
     Top = 384
     Content = {
-      414442530F00F93808030000FF00010001FF02FF030400100000004D0065006D
+      414442530F00FF3808030000FF00010001FF02FF030400100000004D0065006D
       006C00690073007400610005000A0000005400610062006C0065000600000000
       00070000080032000000090000FF0AFF0B04001200000043006F0075006E0074
       00720079004E006F0005001200000043006F0075006E007400720079004E006F
@@ -14281,11 +14281,842 @@ object dmdDBDemos: TdmdDBDemos
       65007300}
   end
   object frxDBCountry: TfrxDBDataset
-    UserName = 'Country'
+    UserName = 'CountryMem'
     CloseDataSource = False
     DataSet = memCountry
     BCDToCurrency = False
     Left = 80
     Top = 336
+  end
+  object frxReportDrillDrownCustomer: TfrxReport
+    Version = '5.5.11'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43120.686890451400000000
+    ReportOptions.LastChange = 43120.686890451400000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 104
+    Top = 24
+    Datasets = <
+      item
+        DataSet = frxDBCustomer
+        DataSetName = 'CustomerMem'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 181.417440000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 177.637910000000000000
+          Top = 52.913420000000000000
+          Width = 264.567100000000000000
+          Height = 45.354360000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -33
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Drill Drown')
+          ParentFont = False
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Height = 49.133890000000000000
+        Top = 260.787570000000000000
+        Width = 718.110700000000000000
+        Condition = 'Customer."Country"'
+        DrillDown = True
+        object CustomerCountry: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 3.779530000000022000
+          Width = 260.787570000000000000
+          Height = 34.015770000000000000
+          DataField = 'Country'
+          DataSet = frxDBCustomer
+          DataSetName = 'CustomerMem'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -24
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[CustomerMem."Country"]')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 332.598640000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBCustomer
+        DataSetName = 'CustomerMem'
+        RowCount = 0
+        object CustomerCustNo: TfrxMemoView
+          Left = 18.897650000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'CustNo'
+          DataSet = frxDBCustomer
+          DataSetName = 'CustomerMem'
+          Memo.UTF8W = (
+            '[CustomerMem."CustNo"]')
+        end
+        object CustomerCompany: TfrxMemoView
+          Left = 136.063080000000000000
+          Width = 238.110390000000000000
+          Height = 18.897650000000000000
+          DataField = 'Company'
+          DataSet = frxDBCustomer
+          DataSetName = 'CustomerMem'
+          Memo.UTF8W = (
+            '[CustomerMem."Company"]')
+        end
+        object CustomerCity: TfrxMemoView
+          Left = 540.472790000000000000
+          Width = 120.944960000000000000
+          Height = 18.897650000000000000
+          DataField = 'City'
+          DataSet = frxDBCustomer
+          DataSetName = 'CustomerMem'
+          Memo.UTF8W = (
+            '[CustomerMem."City"]')
+        end
+      end
+      object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 377.953000000000000000
+        Width = 718.110700000000000000
+        object Memo2: TfrxMemoView
+          Left = 15.118120000000000000
+          Top = 3.779530000000022000
+          Width = 272.126160000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Quantidade no pa'#237's [COUNT(MasterData1)]')
+        end
+      end
+    end
+  end
+  object frxReportGeral: TfrxReport
+    Version = '5.5.11'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43120.705531481480000000
+    ReportOptions.LastChange = 43120.705531481480000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 456
+    Top = 32
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object frxDesigner: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 544
+    Top = 32
+  end
+  object Customers: TADOTable
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    IndexFieldNames = 'Company'
+    TableName = 'CUSTOMER'
+    Left = 584
+    Top = 352
+    object CustomersCustNo: TFloatField
+      FieldName = 'CustNo'
+    end
+    object CustomersCompany: TStringField
+      FieldName = 'Company'
+      Size = 30
+    end
+    object CustomersAddr1: TStringField
+      FieldName = 'Addr1'
+      Size = 30
+    end
+    object CustomersAddr2: TStringField
+      FieldName = 'Addr2'
+      Size = 30
+    end
+    object CustomersCity: TStringField
+      FieldName = 'City'
+      Size = 15
+    end
+    object CustomersState: TStringField
+      FieldName = 'State'
+    end
+    object CustomersZip: TStringField
+      FieldName = 'Zip'
+      Size = 10
+    end
+    object CustomersCountry: TStringField
+      FieldName = 'Country'
+    end
+    object CustomersPhone: TStringField
+      FieldName = 'Phone'
+      Size = 15
+    end
+    object CustomersFAX: TStringField
+      FieldName = 'FAX'
+      Size = 15
+    end
+    object CustomersTaxRate: TFloatField
+      FieldName = 'TaxRate'
+    end
+    object CustomersContact: TStringField
+      FieldName = 'Contact'
+    end
+    object CustomersLastInvoiceDate: TDateTimeField
+      FieldName = 'LastInvoiceDate'
+    end
+  end
+  object Orders: TADOTable
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    IndexFieldNames = 'CustNo'
+    MasterFields = 'CustNo'
+    MasterSource = CustomerSource
+    TableName = 'ORDERS'
+    Left = 656
+    Top = 352
+    object OrdersOrderNo: TFloatField
+      FieldName = 'OrderNo'
+    end
+    object OrdersCustNo: TFloatField
+      FieldName = 'CustNo'
+      Required = True
+    end
+    object OrdersCustCompany: TStringField
+      FieldKind = fkLookup
+      FieldName = 'CustCompany'
+      LookupDataSet = Customers
+      LookupKeyFields = 'CustNo'
+      LookupResultField = 'Company'
+      KeyFields = 'CustNo'
+      Lookup = True
+    end
+    object OrdersSaleDate: TDateTimeField
+      FieldName = 'SaleDate'
+    end
+    object OrdersShipDate: TDateTimeField
+      FieldName = 'ShipDate'
+    end
+    object OrdersEmpNo: TIntegerField
+      FieldName = 'EmpNo'
+      Required = True
+    end
+    object OrdersShipToContact: TStringField
+      FieldName = 'ShipToContact'
+    end
+    object OrdersShipToAddr1: TStringField
+      FieldName = 'ShipToAddr1'
+      Size = 30
+    end
+    object OrdersShipToAddr2: TStringField
+      FieldName = 'ShipToAddr2'
+      Size = 30
+    end
+    object OrdersShipToCity: TStringField
+      FieldName = 'ShipToCity'
+      Size = 15
+    end
+    object OrdersShipToState: TStringField
+      FieldName = 'ShipToState'
+    end
+    object OrdersShipToZip: TStringField
+      FieldName = 'ShipToZip'
+      Size = 10
+    end
+    object OrdersShipToCountry: TStringField
+      FieldName = 'ShipToCountry'
+    end
+    object OrdersShipToPhone: TStringField
+      FieldName = 'ShipToPhone'
+      Size = 15
+    end
+    object OrdersShipVIA: TStringField
+      FieldName = 'ShipVIA'
+      Size = 7
+    end
+    object OrdersPO: TStringField
+      FieldName = 'PO'
+      Size = 15
+    end
+    object OrdersTerms: TStringField
+      FieldName = 'Terms'
+      Size = 6
+    end
+    object OrdersPaymentMethod: TStringField
+      FieldName = 'PaymentMethod'
+      Size = 7
+    end
+    object OrdersItemsTotal: TCurrencyField
+      FieldName = 'ItemsTotal'
+    end
+    object OrdersTaxRate: TFloatField
+      FieldName = 'TaxRate'
+    end
+    object OrdersFreight: TCurrencyField
+      FieldName = 'Freight'
+    end
+    object OrdersAmountPaid: TCurrencyField
+      FieldName = 'AmountPaid'
+    end
+  end
+  object LineItems: TADOTable
+    Connection = ADOConnection1
+    IndexFieldNames = 'OrderNo'
+    MasterFields = 'OrderNo'
+    MasterSource = OrderSource
+    TableName = 'ITEMS'
+    Left = 728
+    Top = 352
+    object LineItemsOrderNo: TFloatField
+      FieldName = 'OrderNo'
+      Visible = False
+    end
+    object LineItemsItemNo: TFloatField
+      FieldName = 'ItemNo'
+    end
+    object LineItemsPartNo: TFloatField
+      FieldName = 'PartNo'
+    end
+    object LineItemsPartName: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PartName'
+      LookupDataSet = Parts
+      LookupKeyFields = 'PartNo'
+      LookupResultField = 'Description'
+      KeyFields = 'PartNo'
+      Size = 30
+      Lookup = True
+    end
+    object LineItemsQty: TIntegerField
+      FieldName = 'Qty'
+    end
+    object LineItemsPrice: TCurrencyField
+      FieldKind = fkLookup
+      FieldName = 'Price'
+      LookupDataSet = Parts
+      LookupKeyFields = 'PartNo'
+      LookupResultField = 'ListPrice'
+      KeyFields = 'PartNo'
+      Lookup = True
+    end
+    object LineItemsDiscount: TFloatField
+      FieldName = 'Discount'
+      DisplayFormat = '#0.#%'
+      EditFormat = '##.#'
+      Precision = 3
+    end
+    object LineItemsTotal: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'Total'
+      Calculated = True
+    end
+    object LineItemsExtendedPrice: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'ExtendedPrice'
+      Calculated = True
+    end
+  end
+  object Parts: TADOTable
+    Connection = ADOConnection1
+    TableName = 'PARTS'
+    Left = 800
+    Top = 352
+    object PartsPartNo: TFloatField
+      FieldName = 'PartNo'
+    end
+    object PartsVendorNo: TFloatField
+      FieldName = 'VendorNo'
+    end
+    object PartsDescription: TStringField
+      FieldName = 'Description'
+      Size = 30
+    end
+    object PartsOnHand: TFloatField
+      FieldName = 'OnHand'
+    end
+    object PartsOnOrder: TFloatField
+      FieldName = 'OnOrder'
+    end
+    object PartsCost: TCurrencyField
+      FieldName = 'Cost'
+    end
+    object PartsListPrice: TCurrencyField
+      FieldName = 'ListPrice'
+    end
+  end
+  object CustomerSource: TDataSource
+    DataSet = Customers
+    Left = 584
+    Top = 396
+  end
+  object OrderSource: TDataSource
+    DataSet = Orders
+    Left = 656
+    Top = 396
+  end
+  object LineItemSource: TDataSource
+    DataSet = LineItems
+    Left = 728
+    Top = 396
+  end
+  object PartSource: TDataSource
+    DataSet = Parts
+    Left = 800
+    Top = 396
+  end
+  object RepQuery: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from customer a, orders b, items c, parts d'
+      'where a.custno = b.custno'
+      '  and b.orderno = c.orderno'
+      '  and c.partno = d.partno'
+      'order by a.company, b.orderno')
+    Left = 584
+    Top = 516
+    object RepQueryaCustNo: TFloatField
+      FieldName = 'a.CustNo'
+    end
+    object RepQueryCompany: TWideStringField
+      FieldName = 'Company'
+      Size = 30
+    end
+    object RepQueryAddr1: TWideStringField
+      FieldName = 'Addr1'
+      Size = 30
+    end
+    object RepQueryAddr2: TWideStringField
+      FieldName = 'Addr2'
+      Size = 30
+    end
+    object RepQueryCity: TWideStringField
+      FieldName = 'City'
+      Size = 15
+    end
+    object RepQueryState: TWideStringField
+      FieldName = 'State'
+    end
+    object RepQueryZip: TWideStringField
+      FieldName = 'Zip'
+      Size = 10
+    end
+    object RepQueryCountry: TWideStringField
+      FieldName = 'Country'
+    end
+    object RepQueryPhone: TWideStringField
+      FieldName = 'Phone'
+      Size = 15
+    end
+    object RepQueryFAX: TWideStringField
+      FieldName = 'FAX'
+      Size = 15
+    end
+    object RepQueryaTaxRate: TFloatField
+      FieldName = 'a.TaxRate'
+    end
+    object RepQueryContact: TWideStringField
+      FieldName = 'Contact'
+    end
+    object RepQueryLastInvoiceDate: TDateTimeField
+      FieldName = 'LastInvoiceDate'
+    end
+    object RepQuerybOrderNo: TFloatField
+      FieldName = 'b.OrderNo'
+    end
+    object RepQuerybCustNo: TFloatField
+      FieldName = 'b.CustNo'
+    end
+    object RepQuerySaleDate: TDateTimeField
+      FieldName = 'SaleDate'
+    end
+    object RepQueryShipDate: TDateTimeField
+      FieldName = 'ShipDate'
+    end
+    object RepQueryEmpNo: TIntegerField
+      FieldName = 'EmpNo'
+    end
+    object RepQueryShipToContact: TWideStringField
+      FieldName = 'ShipToContact'
+    end
+    object RepQueryShipToAddr1: TWideStringField
+      FieldName = 'ShipToAddr1'
+      Size = 30
+    end
+    object RepQueryShipToAddr2: TWideStringField
+      FieldName = 'ShipToAddr2'
+      Size = 30
+    end
+    object RepQueryShipToCity: TWideStringField
+      FieldName = 'ShipToCity'
+      Size = 15
+    end
+    object RepQueryShipToState: TWideStringField
+      FieldName = 'ShipToState'
+    end
+    object RepQueryShipToZip: TWideStringField
+      FieldName = 'ShipToZip'
+      Size = 10
+    end
+    object RepQueryShipToCountry: TWideStringField
+      FieldName = 'ShipToCountry'
+    end
+    object RepQueryShipToPhone: TWideStringField
+      FieldName = 'ShipToPhone'
+      Size = 15
+    end
+    object RepQueryShipVIA: TWideStringField
+      FieldName = 'ShipVIA'
+      Size = 7
+    end
+    object RepQueryPO: TWideStringField
+      FieldName = 'PO'
+      Size = 15
+    end
+    object RepQueryTerms: TWideStringField
+      FieldName = 'Terms'
+      Size = 6
+    end
+    object RepQueryPaymentMethod: TWideStringField
+      FieldName = 'PaymentMethod'
+      Size = 7
+    end
+    object RepQueryItemsTotal: TFloatField
+      FieldName = 'ItemsTotal'
+    end
+    object RepQuerybTaxRate: TFloatField
+      FieldName = 'b.TaxRate'
+    end
+    object RepQueryFreight: TFloatField
+      FieldName = 'Freight'
+    end
+    object RepQueryAmountPaid: TFloatField
+      FieldName = 'AmountPaid'
+    end
+    object RepQuerycOrderNo: TFloatField
+      FieldName = 'c.OrderNo'
+    end
+    object RepQueryItemNo: TFloatField
+      FieldName = 'ItemNo'
+    end
+    object RepQuerycPartNo: TFloatField
+      FieldName = 'c.PartNo'
+    end
+    object RepQueryQty: TIntegerField
+      FieldName = 'Qty'
+    end
+    object RepQueryDiscount: TFloatField
+      FieldName = 'Discount'
+    end
+    object RepQuerydPartNo: TFloatField
+      FieldName = 'd.PartNo'
+    end
+    object RepQueryVendorNo: TFloatField
+      FieldName = 'VendorNo'
+    end
+    object RepQueryDescription: TWideStringField
+      FieldName = 'Description'
+      Size = 30
+    end
+    object RepQueryOnHand: TFloatField
+      FieldName = 'OnHand'
+    end
+    object RepQueryOnOrder: TFloatField
+      FieldName = 'OnOrder'
+    end
+    object RepQueryCost: TFloatField
+      FieldName = 'Cost'
+    end
+    object RepQueryListPrice: TFloatField
+      FieldName = 'ListPrice'
+    end
+  end
+  object RepQuerySource: TDataSource
+    DataSet = RepQuery
+    Left = 584
+    Top = 560
+  end
+  object CustomersDS: TfrxDBDataset
+    UserName = 'Customers'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'CustNo=Cust No'
+      'Company=Company'
+      'Addr1=Addr1'
+      'Addr2=Addr2'
+      'City=City'
+      'State=State'
+      'Zip=Zip'
+      'Country=Country'
+      'Phone=Phone'
+      'FAX=FAX'
+      'TaxRate=Tax Rate'
+      'Contact=Contact'
+      'LastInvoiceDate=Last Invoice Date')
+    DataSource = CustomerSource
+    BCDToCurrency = False
+    Left = 584
+    Top = 440
+  end
+  object OrdersDS: TfrxDBDataset
+    UserName = 'Orders'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'OrderNo=Order No'
+      'CustNo=Cust No'
+      'CustCompany=Cust Company'
+      'SaleDate=Sale Date'
+      'ShipDate=Ship Date'
+      'EmpNo=Emp No'
+      'ShipToContact=Ship To Contact'
+      'ShipToAddr1=Ship To Addr1'
+      'ShipToAddr2=Ship To Addr2'
+      'ShipToCity=Ship To City'
+      'ShipToState=Ship To State'
+      'ShipToZip=Ship To Zip'
+      'ShipToCountry=Ship To Country'
+      'ShipToPhone=Ship To Phone'
+      'ShipVIA=Ship VIA'
+      'PO=PO'
+      'Terms=Terms'
+      'PaymentMethod=Payment Method'
+      'ItemsTotal=Items Total'
+      'TaxRate=Tax Rate'
+      'Freight=Freight'
+      'AmountPaid=Amount Paid')
+    DataSource = OrderSource
+    BCDToCurrency = False
+    Left = 656
+    Top = 440
+  end
+  object ItemsDS: TfrxDBDataset
+    UserName = 'Items'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'OrderNo=Order No'
+      'ItemNo=Item No'
+      'PartNo=Part No'
+      'PartName=Part Name'
+      'Qty=Qty'
+      'Price=Price'
+      'Discount=Discount'
+      'Total=Total'
+      'ExtendedPrice=Extended Price')
+    DataSource = LineItemSource
+    BCDToCurrency = False
+    Left = 728
+    Top = 440
+  end
+  object PartDS: TfrxDBDataset
+    UserName = 'Parts'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'PartNo=Part No'
+      'VendorNo=Vendor No'
+      'Description=Description'
+      'OnHand=On Hand'
+      'OnOrder=On Order'
+      'Cost=Cost'
+      'ListPrice=List Price')
+    DataSource = PartSource
+    BCDToCurrency = False
+    Left = 800
+    Top = 440
+  end
+  object QueryDS: TfrxDBDataset
+    UserName = 'Sales'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'a.CustNo=Cust No'
+      'Company=Company'
+      'Addr1=Addr1'
+      'Addr2=Addr2'
+      'City=City'
+      'State=State'
+      'Zip=Zip'
+      'Country=Country'
+      'Phone=Phone'
+      'FAX=FAX'
+      'a.TaxRate=a.TaxRate'
+      'Contact=Contact'
+      'LastInvoiceDate=LastInvoiceDate'
+      'b.OrderNo=Order No'
+      'b.CustNo=b.CustNo'
+      'SaleDate=Sale Date'
+      'ShipDate=ShipDate'
+      'EmpNo=EmpNo'
+      'ShipToContact=ShipToContact'
+      'ShipToAddr1=ShipToAddr1'
+      'ShipToAddr2=ShipToAddr2'
+      'ShipToCity=ShipToCity'
+      'ShipToState=ShipToState'
+      'ShipToZip=ShipToZip'
+      'ShipToCountry=ShipToCountry'
+      'ShipToPhone=ShipToPhone'
+      'ShipVIA=ShipVIA'
+      'PO=PO'
+      'Terms=Terms'
+      'PaymentMethod=PaymentMethod'
+      'ItemsTotal=ItemsTotal'
+      'b.TaxRate=b.TaxRate'
+      'Freight=Freight'
+      'AmountPaid=AmountPaid'
+      'c.OrderNo=c.OrderNo'
+      'ItemNo=ItemNo'
+      'c.PartNo=Part No'
+      'Qty=Qty'
+      'Discount=Discount'
+      'd.PartNo=d.PartNo'
+      'VendorNo=VendorNo'
+      'Description=Description'
+      'OnHand=OnHand'
+      'OnOrder=OnOrder'
+      'Cost=Cost'
+      'ListPrice=List Price')
+    DataSource = RepQuerySource
+    BCDToCurrency = False
+    Left = 584
+    Top = 604
+  end
+  object Bio: TADOTable
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'biolife'
+    Left = 656
+    Top = 516
+  end
+  object BioSource: TDataSource
+    DataSet = Bio
+    Left = 656
+    Top = 560
+  end
+  object BioDS: TfrxDBDataset
+    UserName = 'Bio'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'Species No=Species No'
+      'Category=Category'
+      'Common_Name=Common Name'
+      'Species Name=Species Name'
+      'Length (cm)=Length (cm)'
+      'Length_In=Length In'
+      'Notes=Notes'
+      'Graphic=Graphic')
+    DataSource = BioSource
+    BCDToCurrency = False
+    Left = 656
+    Top = 604
+  end
+  object Country: TADOTable
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'country'
+    Left = 728
+    Top = 516
+  end
+  object CountrySource: TDataSource
+    DataSet = Country
+    Left = 728
+    Top = 560
+  end
+  object CountryDS: TfrxDBDataset
+    UserName = 'Country'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'Name=Name'
+      'Capital=Capital'
+      'Continent=Continent'
+      'Area=Area'
+      'Population=Population')
+    DataSource = CountrySource
+    BCDToCurrency = False
+    Left = 728
+    Top = 604
+  end
+  object Cross: TADOTable
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'crosstest'
+    Left = 800
+    Top = 516
+  end
+  object CrossSource: TDataSource
+    DataSet = Cross
+    Left = 808
+    Top = 568
+  end
+  object CrossDS: TfrxDBDataset
+    UserName = 'Cross'
+    CloseDataSource = False
+    DataSource = CrossSource
+    BCDToCurrency = False
+    Left = 800
+    Top = 604
+  end
+  object ADOConnection1: TADOConnection
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Aluno\Desk' +
+      'top\exemplos-delphi\SQLite\demo.mdb;Persist Security Info=False'
+    LoginPrompt = False
+    Mode = cmRead
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 884
+    Top = 364
   end
 end
