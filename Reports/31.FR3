@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" DotMatrixReport="False" EngineOptions.MaxMemSize="10000000" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="2047" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37875,5872434375" ReportOptions.Description.Text="New rotation types, fill styles, shadow, shapes." ReportOptions.LastChange="38112,9189174769" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730E00095661726961626C65730E00055374796C650E00">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="Memo1" Left="151,1812" Top="37,7953" Width="75,5906" Height="79,37013" Frame.Typ="15" HAlign="haCenter" Memo.Text="Rotated text" Rotation="45" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo2" Left="264,5671" Top="37,7953" Width="75,5906" Height="79,37013" Frame.Typ="15" HAlign="haCenter" Memo.Text="Rotated text" Rotation="90" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo3" Left="377,953" Top="37,7953" Width="75,5906" Height="79,37013" Frame.Typ="15" HAlign="haCenter" Memo.Text="Rotated text" Rotation="180" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo4" Left="491,3389" Top="37,7953" Width="75,5906" Height="79,37013" Frame.Typ="15" HAlign="haCenter" Memo.Text="Rotated text" Rotation="270" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo5" Left="37,7953" Top="188,9765" Width="75,5906" Height="75,5906" BrushStyle="bsHorizontal" Frame.Typ="15" HAlign="haCenter" Memo.Text="New fills" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo6" Left="151,1812" Top="188,9765" Width="75,5906" Height="75,5906" BrushStyle="bsVertical" Frame.Typ="15" HAlign="haCenter" Memo.Text="New fills" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo7" Left="264,5671" Top="188,9765" Width="75,5906" Height="75,5906" BrushStyle="bsFDiagonal" Frame.Typ="15" HAlign="haCenter" Memo.Text="New fills" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo8" Left="377,953" Top="188,9765" Width="75,5906" Height="75,5906" BrushStyle="bsBDiagonal" Frame.Typ="15" HAlign="haCenter" Memo.Text="New fills" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo9" Left="491,3389" Top="188,9765" Width="75,5906" Height="75,5906" BrushStyle="bsCross" Frame.Typ="15" HAlign="haCenter" Memo.Text="New fills" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo10" Left="604,7248" Top="188,9765" Width="75,5906" Height="75,5906" BrushStyle="bsDiagCross" Frame.Typ="15" HAlign="haCenter" Memo.Text="New fills" VAlign="vaCenter"/>
+    <TfrxMemoView Name="Memo11" Left="94,48825" Top="343,93723" Width="75,5906" Height="75,5906" Frame.DropShadow="True" Frame.ShadowColor="8421504" Frame.Typ="15" HAlign="haCenter" Memo.Text="shadow" VAlign="vaCenter"/>
+    <TfrxLineView Name="Line1" Left="90,70872" Top="495,11843" Width="75,5906" Height="75,5906" Diagonal="True"/>
+    <TfrxLineView Name="Line2" Left="166,29932" Top="570,70903" Width="75,5906" Height="-75,5906" Diagonal="True"/>
+    <TfrxLineView Name="Line3" Left="166,29932" Top="457,32313" Width="75,5906" Height="37,7953" Diagonal="True"/>
+    <TfrxLineView Name="Line4" Left="90,70872" Top="495,11843" Width="75,5906" Height="-37,7953" Diagonal="True"/>
+    <TfrxShapeView Name="Shape1" Left="207,87415" Top="343,93723" Width="75,5906" Height="75,5906" Shape="skRoundRectangle"/>
+    <TfrxShapeView Name="Shape2" Left="321,26005" Top="343,93723" Width="75,5906" Height="75,5906" Shape="skEllipse"/>
+    <TfrxShapeView Name="Shape3" Left="434,64595" Top="343,93723" Width="75,5906" Height="75,5906" Shape="skTriangle"/>
+    <TfrxShapeView Name="Shape4" Left="548,03185" Top="343,93723" Width="75,5906" Height="75,5906" Shape="skDiamond"/>
+  </TfrxReportPage>
+</TfrxReport>

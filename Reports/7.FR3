@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37871,9966810995" ReportOptions.Description.Text="This example shows how to print multi-column bands. To make data-band multi-column, set its Columns property to 2 or more." ReportOptions.LastChange="38842,9201587847" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B00008446174617365747301010C3900000020446174615365743D225265706F7274446174612E437573746F6D65727344532220446174615365744E616D653D22437573746F6D657273220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band1" Height="45,35436" Left="0" Top="18,89765" Width="755,906">
+      <TfrxMemoView Name="Memo1" Left="3,77953" Top="3,77953" Width="710,55164" Height="22,67718" Color="8421504" Font.Charset="1" Font.Color="16777215" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Customers"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="Band4" Height="26,45671" Left="0" Top="136,06308" Width="755,906" Columns="3" ColumnWidth="200" ColumnGap="10" DataSet="ReportData.CustomersDS" DataSetName="Customers" RowCount="0">
+      <TfrxMemoView Name="Memo8" Left="7,55906" Top="0" Width="192,75603" Height="18,89765" DataField="Company" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Company&#34;]"/>
+      <TfrxLineView Name="Line1" Left="7,55906" Top="22,67718" Width="211,65368" Height="0" Frame.Color="12632256" Frame.Typ="4"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

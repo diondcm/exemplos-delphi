@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37871,9973703935" ReportOptions.Description.Text="Demonstrates how to create side-by-side subreports. Each subreport can have different number of records." ReportOptions.LastChange="38842,9413295023" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730100095661726961626C657301010C14000000204E616D653D22204465736372697074696F6E2200010C84000000204E616D653D224465736372697074696F6E222056616C75653D2244656D6F6E7374726174657320686F7720746F2063726561746520736964652D62792D73696465207375627265706F7274732E2045616368207375627265706F72742063616E206861766520646966666572656E74206E756D626572206F66207265636F7264732E220000055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="Band2" Height="41,57483" Left="0" Top="18,89765" Width="755,906" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="20">
+      <TfrxMemoView Name="Memo2" Left="0" Top="0" Width="495,11843" Height="18,89765" Color="12632256" Text="[LINE]"/>
+      <TfrxSubreport Name="Subreport1" Left="0" Top="22,67718" Width="94,48825" Height="18,89765" Page="Page4"/>
+      <TfrxSubreport Name="Subreport2" Left="249,44898" Top="22,67718" Width="94,48825" Height="18,89765" Page="Page5"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+  <TfrxReportPage Name="Page4" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData1" Height="22,67718" Left="0" Top="18,89765" Width="718,1107" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="6">
+      <TfrxMemoView Name="Memo4" Left="0" Top="0" Width="245,66945" Height="18,89765" Color="13296895" Text="[LINE]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+  <TfrxReportPage Name="Page5" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData2" Height="41,57483" Left="0" Top="18,89765" Width="718,1107" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="4">
+      <TfrxMemoView Name="Memo5" Left="0" Top="0" Width="245,66945" Height="37,7953" Color="13434828" Text="[LINE]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

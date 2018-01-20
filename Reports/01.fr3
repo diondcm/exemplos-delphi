@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inherited ParentReport="0.fr3" ReportOptions.LastChange="39189,6276175463" PropData="044C656674025803546F700370010844617461736574730100095661726961626C65730100055374796C650100">
+  <inherited Name="Data"/>
+  <inherited Name="Page1" Orientation="poLandscape" PaperWidth="297" PaperHeight="210" PaperSize="9">
+    <inherited Name="ReportTitle1" Width="1046,92981">
+      <inherited Name="Memo2" Left="502,67749"/>
+    </inherited>
+    <inherited Name="PageFooter1" Width="1046,92981">
+      <inherited Name="Memo1"/>
+    </inherited>
+  </inherited>
+</inherited>

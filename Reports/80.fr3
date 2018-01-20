@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" DotMatrixReport="True" EngineOptions.MaxMemSize="10000000" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="2047" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38064,0206020833" ReportOptions.Description.Text="Demonstrates dot-matrix functionality." ReportOptions.LastChange="38134,6810417824" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730E01074461746153657407165265706F7274446174612E437573746F6D65727344530B446174615365744E616D650609437573746F6D6572730000095661726961626C65730E00055374796C650E00">
+  <TfrxDMPPage Name="Page1" PaperWidth="198,119872047583" PaperHeight="277,839202228849" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="0" BottomMargin="0" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="" FontStyle="0" FontType="fsxRegular">
+    <TfrxReportTitle Name="ReportTitle1" Height="54,3156" Left="0" Top="18,1052" Width="748,8">
+      <TfrxDMPMemoView Name="DMPMemo1" Align="baWidth" Left="0" Top="18,1052" Width="748,8" Height="18,1052" FontStyle="3" HAlign="haCenter" Memo.Text="Customer list" ParentFont="False" VAlign="vaCenter"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="PageHeader1" Height="36,2104" Left="0" Top="90,526" Width="748,8">
+      <TfrxDMPMemoView Name="DMPMemo3" Left="9,6" Top="0" Width="240" Height="18,1052" FontStyle="1" Memo.Text="Company" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo4" Left="259,2" Top="0" Width="220,8" Height="18,1052" FontStyle="1" Memo.Text="Address" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo5" Left="489,6" Top="0" Width="124,8" Height="18,1052" FontStyle="1" Memo.Text="Phone" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo6" Left="624" Top="0" Width="124,8" Height="18,1052" FontStyle="1" Memo.Text="FAX" ParentFont="False"/>
+    </TfrxPageHeader>
+    <TfrxMasterData Name="MasterData1" Height="18,1052" Left="0" Top="162,9468" Width="748,8" ColumnWidth="0" ColumnGap="0" DataSet="ReportData.CustomersDS" DataSetName="Customers" RowCount="0" Stretched="True">
+      <TfrxDMPMemoView Name="DMPMemo2" Left="9,6" Top="0" Width="240" Height="18,1052" StretchMode="smMaxHeight" DataField="Company" DataSet="ReportData.CustomersDS" DataSetName="Customers" Memo.Text="Customers.&#34;Company&#34;"/>
+      <TfrxDMPMemoView Name="DMPMemo7" Left="259,2" Top="0" Width="220,8" Height="18,1052" StretchMode="smMaxHeight" DataField="Addr1" DataSet="ReportData.CustomersDS" DataSetName="Customers" Memo.Text="Customers.&#34;Addr1&#34;"/>
+      <TfrxDMPMemoView Name="DMPMemo8" Left="489,6" Top="0" Width="124,8" Height="18,1052" StretchMode="smMaxHeight" DataField="Phone" DataSet="ReportData.CustomersDS" DataSetName="Customers" Memo.Text="Customers.&#34;Phone&#34;"/>
+      <TfrxDMPMemoView Name="DMPMemo9" Left="624" Top="0" Width="124,8" Height="18,1052" StretchMode="smMaxHeight" DataField="FAX" DataSet="ReportData.CustomersDS" DataSetName="Customers" Memo.Text="Customers.&#34;FAX&#34;"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" Height="18,1052" Left="0" Top="217,2624" Width="748,8">
+      <TfrxDMPMemoView Name="DMPMemo11" Left="9,6" Top="0" Width="124,8" Height="18,1052" AutoWidth="True" Memo.Text="[Date] [Time]"/>
+      <TfrxDMPMemoView Name="DMPMemo12" Align="baRight" Left="672" Top="0" Width="76,8" Height="18,1052" HAlign="haRight" Memo.Text="Page [Page#]"/>
+    </TfrxPageFooter>
+  </TfrxDMPPage>
+</TfrxReport>

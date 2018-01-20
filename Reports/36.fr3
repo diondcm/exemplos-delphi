@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.20" DotMatrixReport="False" EngineOptions.DoublePass="True" EngineOptions.UseFileCache="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.OutlineWidth="180" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.Author="FastReport" ReportOptions.ConnectionName="FR Demo Base" ReportOptions.CreateDate="37871,9953986921" ReportOptions.Description.Text="Demonstrates how to create simple unicode report." ReportOptions.Name="Unicode report" ReportOptions.LastChange="38804,0465254861" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." OnStartReport="frxReport1OnStartReport" PropData="08446174617365747301010C2800000020446174615365743D22556E69636F64652220446174615365744E616D653D22556E69636F6465220000095661726961626C657301010C0F000000204E616D653D22204D79566172732200010C0E000000204E616D653D22506172616D312200010C0E000000204E616D653D22506172616D322200010C11000000204E616D653D222044617461626173652200010C2C000000204E616D653D2250617468546F4461746142617365222056616C75653D22272E2E5C64656D6F2E6D646227220000055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" PrintOnPreviousPage="True" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band1" Height="26,45671" Left="0" Top="18,89765" Width="718,1107">
+      <TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="3,77953" Width="718,1107" Height="22,67718" Color="8421376" Font.Charset="1" Font.Color="16777215" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Unicode example"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="Band2" Height="34,01577" Left="0" Top="68,03154" Width="718,1107">
+      <TfrxMemoView Name="Memo4" Align="baRight" Left="370,39394" Top="7,55906" Width="347,71676" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Value"/>
+      <TfrxMemoView Name="Memo3" Align="baLeft" Left="0" Top="7,55906" Width="362,83488" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Description"/>
+    </TfrxPageHeader>
+    <TfrxPageFooter Name="Band3" Height="26,45671" Left="0" Top="245,66945" Width="718,1107">
+      <TfrxMemoView Name="Memo2" Align="baWidth" Left="0" Top="7,55905999999999" Width="718,1107" Height="15,11812" Color="16777215" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="4" Frame.Width="2" HAlign="haRight" ParentFont="False" Text="Page [Page] of [TotalPages]"/>
+    </TfrxPageFooter>
+    <TfrxMasterData Name="Band4" Height="22,67718" Left="0" Top="162,51979" Width="718,1107" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="Unicode" DataSetName="Unicode" RowCount="0">
+      <TfrxMemoView Name="Memo9" Align="baRight" Left="366,61441" Top="0" Width="351,49629" Height="18,89765" DataField="Value" DataSet="Unicode" DataSetName="Unicode" Text="[Unicode.&#34;Value&#34;]"/>
+      <TfrxMemoView Name="Memo8" Align="baLeft" Left="0" Top="0" Width="359,05535" Height="18,89765" DataSet="Unicode" DataSetName="Unicode" Text="[Unicode.&#34;Description&#34;]"/>
+    </TfrxMasterData>
+    <TfrxADOQuery Name="Unicode" UserName="Unicode" CloseDataSource="True" FieldAliases.Text="Description=Description&#13;&#10;Value=Value" SQL.Text="select * from unicode" CommandTimeout="30" PropData="0A506172616D65746572730100"/>
+  </TfrxReportPage>
+</TfrxReport>

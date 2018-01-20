@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.0a" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.DoubleBuffered="False" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="38976,8813707986" ReportOptions.Description.Text="" ReportOptions.LastChange="39018,8399435764" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C656674026003546F700370010844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="22,67718" Left="0" Top="18,89765" Width="718,1107">
+      <TfrxMemoView Name="Memo2" Left="139,84261" Top="0" Width="200,31509" Height="22,67718" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="-2147483640" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="object from base report"/>
+    </TfrxReportTitle>
+    <TfrxPageFooter Name="PageFooter1" Height="22,67718" Left="0" Top="102,04731" Width="718,1107">
+      <TfrxMemoView Name="Memo3" Left="139,84261" Top="0" Width="200,31509" Height="22,67718" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="-2147483640" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="object from base report"/>
+    </TfrxPageFooter>
+    <TfrxMemoView Name="Memo1" Left="238,11039" Top="264,5671" Width="215,43321" Height="154,96073" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="-2147483640" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" Frame.Width="2" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Note: objects from base report cannot be deleted or renamed. You also cannot move them to another bands."/>
+  </TfrxReportPage>
+</TfrxReport>

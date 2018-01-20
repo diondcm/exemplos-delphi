@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37871,9964986574" ReportOptions.Description.Text="Demonstrates how to create simple report with columns. Just set number of columns in page options." ReportOptions.LastChange="38842,9317989005" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B00008446174617365747301010C3900000020446174615365743D225265706F7274446174612E437573746F6D65727344532220446174615365744E616D653D22437573746F6D657273220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5,08" RightMargin="5,08" TopMargin="5,08" BottomMargin="5,08" Columns="2" ColumnWidth="100,076" ColumnPositions.Text="0&#13;&#10;100,08" PrintOnPreviousPage="True" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band1" Height="26,45671" Left="0" Top="18,89765" Width="755,3012752">
+      <TfrxMemoView Name="Memo1" Left="0" Top="0" Width="737,00835" Height="22,67718" Color="8421504" Font.Charset="1" Font.Color="16777215" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Customers"/>
+    </TfrxReportTitle>
+    <TfrxPageFooter Name="Band2" Height="31,77953" Left="0" Top="328,81911" Width="755,3012752">
+      <TfrxMemoView Name="Memo2" Left="0" Top="8" Width="712" Height="16" Color="16777215" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="4" Frame.Width="2" HAlign="haRight" ParentFont="False" Text="Page [PAGE#] of [TOTALPAGES#]"/>
+    </TfrxPageFooter>
+    <TfrxMasterData Name="Band3" Height="139,84261" Left="0" Top="117,16543" Width="755,3012752" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="ReportData.CustomersDS" DataSetName="Customers" RowCount="0">
+      <TfrxMemoView Name="Memo3" Left="0" Top="22,67718" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Company"/>
+      <TfrxMemoView Name="Memo4" Left="0" Top="41,57483" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Address"/>
+      <TfrxMemoView Name="Memo5" Left="0" Top="60,47248" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Contact"/>
+      <TfrxMemoView Name="Memo6" Left="0" Top="79,37013" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Phone"/>
+      <TfrxMemoView Name="Memo7" Left="0" Top="98,26778" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Fax"/>
+      <TfrxMemoView Name="Memo8" Left="132,28355" Top="22,67718" Width="196,53556" Height="18,89765" Color="15790320" DataField="Company" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Company&#34;]"/>
+      <TfrxMemoView Name="Memo9" Left="132,28355" Top="41,57483" Width="196,53556" Height="18,89765" Color="15790320" DataField="Addr1" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Addr1&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="132,28355" Top="60,47248" Width="196,53556" Height="18,89765" Color="15790320" DataField="Contact" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Contact&#34;]"/>
+      <TfrxMemoView Name="Memo11" Left="132,28355" Top="79,37013" Width="196,53556" Height="18,89765" Color="15790320" DataField="Phone" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Phone&#34;]"/>
+      <TfrxMemoView Name="Memo12" Left="132,28355" Top="98,26778" Width="196,53556" Height="18,89765" Color="15790320" DataField="FAX" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;FAX&#34;]"/>
+      <TfrxMemoView Name="Memo13" Left="0" Top="3,77952999999999" Width="132,28355" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Color="15790320" Frame.Typ="8" ParentFont="False" Text="[LINE]."/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>
