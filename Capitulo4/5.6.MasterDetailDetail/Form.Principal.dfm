@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Exemplos Fast'
-  ClientHeight = 299
-  ClientWidth = 635
+  ClientHeight = 444
+  ClientWidth = 811
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,10 +24,30 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 0
     OnClick = buttonMasterDetailClick
   end
+  object Memo1: TMemo
+    Left = 536
+    Top = 294
+    Width = 267
+    Height = 142
+    Color = clScrollBar
+    Lines.Strings = (
+      'Possibilidade  de converter relat'#243'rios do Rave e do '
+      'Report Builder.'
+      'Por meio dos uses:'
+      'ConverterRR2FR - converte de Rave para Fast'
+      'ConverterRB2FR - converte de ReportBuilder para '
+      'Fast'
+      ''
+      'lReport := TfrxReport.Create(Self);'
+      'lReport.LoadFromFile(Arquivo Rave ou RB);'
+      'lReport.SaveToFile(Rel em FR);'
+      '')
+    TabOrder = 1
+  end
   object timerTeste: TTimer
     Enabled = False
     OnTimer = timerTesteTimer
-    Left = 560
-    Top = 224
+    Left = 24
+    Top = 392
   end
 end

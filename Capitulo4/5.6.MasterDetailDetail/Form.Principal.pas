@@ -12,6 +12,7 @@ type
   TfrmPrincipal = class(TForm)
     buttonMasterDetail: TButton;
     timerTeste: TTimer;
+    Memo1: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure buttonMasterDetailClick(Sender: TObject);
     procedure timerTesteTimer(Sender: TObject);
