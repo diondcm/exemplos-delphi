@@ -16,7 +16,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 56
     Top = 216
     Content = {
-      414442530F00C60770400000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00922C70400000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000C0000
       0043007500730074004E006F0005000C00000043007500730074004E006F000C
@@ -577,6 +577,10 @@ object dmdDBDemos: TdmdDBDemos
       item
         DataSet = frxDBCustomer
         DataSetName = 'Customer'
+      end
+      item
+        DataSet = frxDBOrders
+        DataSetName = 'Orders'
       end>
     Variables = <>
     Style = <>
@@ -9317,7 +9321,7 @@ object dmdDBDemos: TdmdDBDemos
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 574.488560000000000000
+        Top = 653.858690000000000000
         Width = 718.110700000000000000
       end
       object PageHeader1: TfrxPageHeader
@@ -9325,17 +9329,31 @@ object dmdDBDemos: TdmdDBDemos
         Height = 30.236240000000000000
         Top = 192.756030000000000000
         Width = 718.110700000000000000
+        object Memo4: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 3.779529999999994000
+          Width = 302.362400000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsItalic, fsUnderline]
+          Memo.UTF8W = (
+            'Pedidos por Pa'#237's/Cliente/Ordem Compra/Itens')
+          ParentFont = False
+        end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 619.842920000000000000
+        Top = 699.213050000000000000
         Width = 718.110700000000000000
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
         Height = 34.015770000000000000
-        Top = 336.378170000000000000
+        Top = 325.039580000000000000
         Width = 718.110700000000000000
         Child = frxReportMasterDetail.childGroupHeaderCustomer
         Condition = 'Customer."Country"'
@@ -9355,52 +9373,62 @@ object dmdDBDemos: TdmdDBDemos
       end
       object Header1: TfrxHeader
         FillType = ftBrush
-        Height = 30.236240000000000000
+        Height = 18.897650000000000000
         Top = 283.464750000000000000
         Width = 718.110700000000000000
-        object Memo4: TfrxMemoView
-          Left = 11.338590000000000000
-          Top = 7.559059999999988000
-          Width = 302.362400000000000000
-          Height = 18.897650000000000000
-          Memo.UTF8W = (
-            'Pedidos por Pa'#237's/Cliente/Ordem Compra/Itens')
-        end
       end
       object childGroupHeaderCustomer: TfrxChild
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 393.071120000000000000
+        Top = 381.732530000000000000
         Width = 718.110700000000000000
         object Memo5: TfrxMemoView
           Left = 7.559060000000000000
           Top = 3.779530000000022000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
           Memo.UTF8W = (
             'C'#243'digo')
+          ParentFont = False
         end
         object Memo6: TfrxMemoView
           Left = 181.417440000000000000
-          Top = 3.779529999999965000
+          Top = 3.779530000000022000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
           Memo.UTF8W = (
             'Cliente')
+          ParentFont = False
         end
         object Memo7: TfrxMemoView
           Left = 472.441250000000000000
-          Top = 3.779529999999965000
+          Top = 3.779530000000022000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
           Memo.UTF8W = (
             'Cidade')
+          ParentFont = False
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 438.425480000000000000
+        Top = 427.086890000000000000
         Width = 718.110700000000000000
         DataSet = frxDBCustomer
         DataSetName = 'Customer'
@@ -9413,8 +9441,14 @@ object dmdDBDemos: TdmdDBDemos
           DataField = 'CustNo'
           DataSet = frxDBCustomer
           DataSetName = 'Customer'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
           Memo.UTF8W = (
             '[Customer."CustNo"]')
+          ParentFont = False
         end
         object CustomerCompany: TfrxMemoView
           Left = 181.417440000000000000
@@ -9423,8 +9457,14 @@ object dmdDBDemos: TdmdDBDemos
           DataField = 'Company'
           DataSet = frxDBCustomer
           DataSetName = 'Customer'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
           Memo.UTF8W = (
             '[Customer."Company"]')
+          ParentFont = False
         end
         object CustomerCity: TfrxMemoView
           Left = 472.441250000000000000
@@ -9433,14 +9473,20 @@ object dmdDBDemos: TdmdDBDemos
           DataField = 'City'
           DataSet = frxDBCustomer
           DataSetName = 'Customer'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
           Memo.UTF8W = (
             '[Customer."City"]')
+          ParentFont = False
         end
       end
       object GroupFooterCustomer: TfrxGroupFooter
         FillType = ftBrush
         Height = 30.236240000000000000
-        Top = 483.779840000000000000
+        Top = 472.441250000000000000
         Width = 718.110700000000000000
         object Line2: TfrxLineView
           Align = baWidth
@@ -9456,6 +9502,95 @@ object dmdDBDemos: TdmdDBDemos
           Frame.Typ = [ftTop]
         end
       end
+      object DetailData1: TfrxDetailData
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 570.709030000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBOrders
+        DataSetName = 'Orders'
+        RowCount = 0
+        object OrdersOrderNo: TfrxMemoView
+          Left = 22.677180000000000000
+          Width = 90.708720000000000000
+          Height = 18.897650000000000000
+          DataField = 'OrderNo'
+          DataSet = frxDBOrders
+          DataSetName = 'Orders'
+          Memo.UTF8W = (
+            '[Orders."OrderNo"]')
+        end
+        object OrdersSaleDate: TfrxMemoView
+          Left = 170.078850000000000000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          DataField = 'SaleDate'
+          DataSet = frxDBOrders
+          DataSetName = 'Orders'
+          Memo.UTF8W = (
+            '[Orders."SaleDate"]')
+        end
+        object OrdersShipDate: TfrxMemoView
+          Left = 381.732530000000000000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          DataField = 'ShipDate'
+          DataSet = frxDBOrders
+          DataSetName = 'Orders'
+          Memo.UTF8W = (
+            '[Orders."ShipDate"]')
+        end
+        object OrdersItemsTotal: TfrxMemoView
+          Left = 589.606680000000000000
+          Width = 120.944960000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBOrders
+          DataSetName = 'Orders'
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Orders."ItemsTotal"]')
+        end
+      end
+      object HeaderOrders: TfrxHeader
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 525.354670000000100000
+        Width = 718.110700000000000000
+        object Memo8: TfrxMemoView
+          Left = 22.677180000000000000
+          Top = 3.779527559055168000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'N'#250'mero Pedido')
+        end
+        object Memo9: TfrxMemoView
+          Left = 166.299320000000000000
+          Top = 3.779527559055168000
+          Width = 120.944960000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Dada de Compra')
+        end
+        object Memo10: TfrxMemoView
+          Left = 381.732530000000000000
+          Top = 3.779527559055168000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Data de Envio')
+        end
+        object Memo11: TfrxMemoView
+          Left = 589.606680000000000000
+          Top = 3.779527559055168000
+          Width = 109.606370000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Total do Pedido')
+        end
+      end
     end
   end
   object frxDBCustomer: TfrxDBDataset
@@ -9469,6 +9604,8 @@ object dmdDBDemos: TdmdDBDemos
   object memOrders: TFDMemTable
     Active = True
     IndexFieldNames = 'CustNo'
+    MasterSource = dtsCustomer
+    MasterFields = 'CustNo'
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
@@ -9480,7 +9617,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 144
     Top = 216
     Content = {
-      414442530F00C607F47C0000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F00922CF47C0000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000E0000
       004F0072006400650072004E006F0005000E0000004F0072006400650072004E
@@ -10511,5 +10648,27 @@ object dmdDBDemos: TdmdDBDemos
     BCDToCurrency = False
     Left = 144
     Top = 160
+  end
+  object dtsOrders: TDataSource
+    DataSet = memOrders
+    Left = 144
+    Top = 272
+  end
+  object dtsCustomer: TDataSource
+    DataSet = memCustomer
+    Left = 56
+    Top = 272
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=C:\Users\Aluno\Desktop\exemplos-delphi\SQLite\fast.db'
+      'DriverID=SQLite')
+    Left = 688
+    Top = 312
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Left = 688
+    Top = 360
   end
 end

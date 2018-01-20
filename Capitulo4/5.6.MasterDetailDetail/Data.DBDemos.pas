@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, frxClass, frxDBSet;
+  FireDAC.Comp.Client, frxClass, frxDBSet, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.VCLUI.Wait, FireDAC.DApt;
 
 type
   TdmdDBDemos = class(TDataModule)
@@ -14,6 +15,10 @@ type
     frxDBCustomer: TfrxDBDataset;
     memOrders: TFDMemTable;
     frxDBOrders: TfrxDBDataset;
+    dtsOrders: TDataSource;
+    dtsCustomer: TDataSource;
+    FDConnection1: TFDConnection;
+    FDQuery1: TFDQuery;
   strict private
     class var FInstancia: TdmdDBDemos;
   private
