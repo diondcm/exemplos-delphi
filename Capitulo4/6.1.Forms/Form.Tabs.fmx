@@ -35,27 +35,31 @@ object frmTabs: TfrmTabs
       StyleLookup = ''
       TabOrder = 0
       Text = 'Pesquisar'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
       object Layout1: TLayout
-        Position.X = 120.000000000000000000
-        Position.Y = 54.000000000000000000
-        Size.Width = 529.000000000000000000
+        Align = Top
+        Size.Width = 779.000000000000000000
         Size.Height = 83.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object buttonPesquisa: TButton
-          Position.X = 424.000000000000000000
-          Position.Y = 29.000000000000000000
+          Align = Right
+          Position.X = 648.000000000000000000
+          Size.Width = 131.000000000000000000
+          Size.Height = 83.000000000000000000
+          Size.PlatformDefault = False
           TabOrder = 0
           Text = 'Pesquisar'
           OnClick = actPesquisarExecute
         end
         object Edit1: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = VertCenter
           TabOrder = 1
-          Position.X = 24.000000000000000000
-          Position.Y = 29.000000000000000000
-          Size.Width = 241.000000000000000000
-          Size.Height = 22.000000000000000000
+          Position.Y = 23.000000000000000000
+          Size.Width = 648.000000000000000000
+          Size.Height = 36.000000000000000000
           Size.PlatformDefault = False
         end
       end
@@ -71,50 +75,94 @@ object frmTabs: TfrmTabs
       StyleLookup = ''
       TabOrder = 0
       Text = 'Cadastro'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
       object Layout2: TLayout
-        Position.X = 72.000000000000000000
-        Position.Y = 30.000000000000000000
-        Size.Width = 601.000000000000000000
-        Size.Height = 371.000000000000000000
+        Align = Client
+        Size.Width = 779.000000000000000000
+        Size.Height = 496.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        object Edit2: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
+        object Layout4: TLayout
+          Align = Top
+          Size.Width = 779.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
           TabOrder = 0
-          Position.X = 56.000000000000000000
-          Position.Y = 24.000000000000000000
-          TextPrompt = 'Nome'
+          object Edit2: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = VertCenter
+            TabOrder = 0
+            Position.Y = 14.000000000000000000
+            Size.Width = 779.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Nome'
+          end
         end
-        object Edit3: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
+        object Layout5: TLayout
+          Align = Top
+          Position.Y = 100.000000000000000000
+          Size.Width = 779.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
           TabOrder = 1
-          Position.X = 56.000000000000000000
-          Position.Y = 80.000000000000000000
-          TextPrompt = 'Teleforne'
+          object Edit4: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = VertCenter
+            TabOrder = 0
+            Position.Y = 14.000000000000000000
+            Size.Width = 779.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Cidade'
+          end
         end
-        object Edit4: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
+        object Layout6: TLayout
+          Align = Top
+          Position.Y = 50.000000000000000000
+          Size.Width = 779.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
           TabOrder = 2
-          Position.X = 56.000000000000000000
-          Position.Y = 128.000000000000000000
-          TextPrompt = 'Cidade'
+          object Edit3: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = VertCenter
+            TabOrder = 0
+            Position.Y = 14.000000000000000000
+            Size.Width = 779.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Teleforne'
+          end
         end
       end
-      object buttonCancelar: TButton
-        Position.X = 496.000000000000000000
-        Position.Y = 422.000000000000000000
-        TabOrder = 1
-        Text = 'Cancelar'
-      end
-      object buttonSalvar: TButton
-        Position.X = 584.000000000000000000
-        Position.Y = 424.000000000000000000
-        Size.Width = 88.000000000000000000
-        Size.Height = 22.000000000000000000
+      object Layout3: TLayout
+        Align = Bottom
+        Position.Y = 496.000000000000000000
+        Size.Width = 779.000000000000000000
+        Size.Height = 73.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 2
-        Text = 'Cadastro'
-        OnClick = actCadastrarExecute
+        TabOrder = 1
+        object buttonCancelar: TButton
+          Align = Right
+          Position.X = 565.000000000000000000
+          Size.Width = 107.000000000000000000
+          Size.Height = 73.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'Cancelar'
+        end
+        object buttonSalvar: TButton
+          Align = Right
+          Position.X = 672.000000000000000000
+          Size.Width = 107.000000000000000000
+          Size.Height = 73.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'Cadastro'
+          OnClick = actCadastrarExecute
+        end
       end
     end
   end
@@ -137,9 +185,11 @@ object frmTabs: TfrmTabs
         Control = TabControl
         Collection = <
           item
+            Action = actCadastrar
             GestureID = sgiLeft
           end
           item
+            Action = actPesquisar
             GestureID = sgiRight
           end>
       end>

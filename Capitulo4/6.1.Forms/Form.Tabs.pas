@@ -16,15 +16,19 @@ type
     buttonPesquisa: TButton;
     Layout1: TLayout;
     Layout2: TLayout;
-    buttonCancelar: TButton;
-    buttonSalvar: TButton;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Edit4: TEdit;
     GestureManager: TGestureManager;
     ActionList: TActionList;
     actPesquisar: TAction;
     actCadastrar: TAction;
+    Layout3: TLayout;
+    buttonCancelar: TButton;
+    buttonSalvar: TButton;
+    Layout4: TLayout;
+    Edit2: TEdit;
+    Layout5: TLayout;
+    Layout6: TLayout;
+    Edit3: TEdit;
+    Edit4: TEdit;
     procedure actPesquisarExecute(Sender: TObject);
     procedure actCadastrarExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -53,7 +57,8 @@ end;
 
 procedure TfrmTabs.FormCreate(Sender: TObject);
 begin
-  TabControl.TabPosition :=  TTabPosition.PlatformDefault;
+//  TabControl.TabPosition :=  TTabPosition.PlatformDefault;
+
 //  {$IFDEF IOS}
 //     TabControl.TabPosition :=  TTabPosition.Bottom;
 //  {$ENDIF}

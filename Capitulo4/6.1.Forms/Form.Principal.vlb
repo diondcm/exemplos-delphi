@@ -1,0 +1,15 @@
+﻿[buttonOla]
+Coordinates=224,10,62,51
+
+[GridPanelLayout]
+Coordinates=10,71,96,33
+
+[buttonTabs]
+Coordinates=73,10,70,51
+
+[Button1]
+Coordinates=10,10,53,51
+
+[editNome]
+Coordinates=153,10,61,51
+

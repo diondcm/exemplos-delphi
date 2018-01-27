@@ -8,34 +8,88 @@ object frmPrincipal: TfrmPrincipal
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object buttonOla: TButton
-    Position.X = 128.000000000000000000
-    Position.Y = 72.000000000000000000
-    Size.Width = 137.000000000000000000
-    Size.Height = 73.000000000000000000
+  object GridPanelLayout: TGridPanelLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
-    Text = 'Ol'#225
-    OnClick = buttonOlaClick
-  end
-  object editNome: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 2
-    Position.X = 128.000000000000000000
-    Position.Y = 24.000000000000000000
-    Size.Width = 337.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
-    TextPrompt = 'Informe seu nome'
-  end
-  object buttonTabs: TButton
-    Position.X = 128.000000000000000000
-    Position.Y = 152.000000000000000000
-    Size.Width = 137.000000000000000000
-    Size.Height = 73.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 0
-    Text = 'Tabs'
-    OnClick = buttonTabsClick
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = editNome
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = buttonOla
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = buttonTabs
+        Row = 2
+      end
+      item
+        Column = 0
+        Control = Button1
+        Row = 3
+      end>
+    RowCollection = <
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 40.000000000000000000
+      end
+      item
+        SizeStyle = Auto
+      end>
+    object editNome: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 2
+      Size.Width = 230.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Informe seu nome'
+    end
+    object buttonOla: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 61.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Ol'#225
+      OnClick = buttonOlaClick
+    end
+    object buttonTabs: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Tabs'
+      OnClick = buttonTabsClick
+    end
+    object Button1: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Forms'
+      OnClick = Button1Click
+    end
   end
 end
