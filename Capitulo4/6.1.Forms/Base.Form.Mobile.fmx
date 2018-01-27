@@ -1,0 +1,47 @@
+object frmBase: TfrmBase
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 640
+  Fill.Kind = Gradient
+  Fill.Gradient.Points = <
+    item
+      Color = claGainsboro
+      Offset = 0.000000000000000000
+    end
+    item
+      Color = claWhite
+      Offset = 1.000000000000000000
+    end>
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Button1: TButton
+      Action = actClose
+      Align = Left
+      Enabled = True
+      ImageIndex = -1
+      Size.Width = 80.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Visible = True
+    end
+  end
+  object ActionList: TActionList
+    Left = 416
+    Top = 192
+    object actClose: TAction
+      Text = 'Fechar'
+      OnExecute = actCloseExecute
+    end
+  end
+end

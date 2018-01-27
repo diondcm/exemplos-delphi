@@ -1,0 +1,74 @@
+inherited frmWebBrowser: TfrmWebBrowser
+  Caption = 'WebBrowser'
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    object buttonAtivar: TButton
+      Action = actAtivar
+      Align = Right
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      TabOrder = 1
+      Visible = True
+    end
+  end
+  object LayoutURL: TLayout [1]
+    Align = Top
+    Position.Y = 57.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object editURL: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = VertCenter
+      TabOrder = 0
+      Position.X = 10.000000000000000000
+      Position.Y = 14.000000000000000000
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Size.Width = 540.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object buttonNavegar: TButton
+      Action = actNavegar
+      Align = Right
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowrighttoolbutton'
+      TabOrder = 1
+      Visible = True
+    end
+  end
+  object WebBrowser: TWebBrowser [2]
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 373.000000000000000000
+    Size.PlatformDefault = False
+  end
+  inherited ActionList: TActionList
+    Left = 568
+    Top = 184
+    object actAtivar: TAction
+      Text = 'Ativar'
+      OnExecute = actAtivarExecute
+    end
+    object actNavegar: TAction
+      Text = 'Navegar'
+      OnExecute = actNavegarExecute
+    end
+  end
+  object LocationSensor: TLocationSensor
+    Left = 568
+    Top = 128
+  end
+end

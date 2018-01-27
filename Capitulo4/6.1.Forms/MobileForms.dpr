@@ -6,7 +6,9 @@ uses
   Form.Principal in 'Form.Principal.pas' {frmPrincipal},
   Form.Tabs in 'Form.Tabs.pas' {frmTabs},
   Form.Menus in 'Form.Menus.pas' {frmMenus},
-  Form.Lista in 'Form.Lista.pas' {frmLista};
+  Form.Lista in 'Form.Lista.pas' {frmLista},
+  Base.Form.Mobile in 'Base.Form.Mobile.pas' {frmBase},
+  Form.WebBrowser in 'Form.WebBrowser.pas' {frmWebBrowser};
 
 {$R *.res}
 
