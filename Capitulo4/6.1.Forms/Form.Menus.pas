@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts,
-  System.Actions, FMX.ActnList, FMX.Objects, Form.Lista, Form.WebBrowser, Base.Form.Mobile;
+  System.Actions, FMX.ActnList, FMX.Objects, Form.Lista, Form.WebBrowser, Base.Form.Mobile, Form.Map.View;
 
 type
   TfrmMenus = class(TForm)
@@ -20,9 +20,12 @@ type
     buttonWebBrowser: TButton;
     actWebBrowser: TAction;
     labelURL: TLabel;
+    buttonMapView: TButton;
+    actMapView: TAction;
     procedure actCloseExecute(Sender: TObject);
     procedure actVisualizarListaExecute(Sender: TObject);
     procedure actWebBrowserExecute(Sender: TObject);
+    procedure actMapViewExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +42,11 @@ implementation
 procedure TfrmMenus.actCloseExecute(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmMenus.actMapViewExecute(Sender: TObject);
+begin
+  TfrmMapView.ExibeLikeModal(nil);
 end;
 
 procedure TfrmMenus.actVisualizarListaExecute(Sender: TObject);

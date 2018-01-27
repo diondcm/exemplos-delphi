@@ -26,17 +26,22 @@ object frmPrincipal: TfrmPrincipal
       end
       item
         Column = 0
-        Control = buttonOla
-        Row = 1
+        Control = buttonMultiView
+        Row = 4
       end
       item
         Column = 0
         Control = buttonTabs
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = buttonForms
         Row = 2
       end
       item
         Column = 0
-        Control = Button1
+        Control = buttonFrames
         Row = 3
       end>
     RowCollection = <
@@ -50,7 +55,13 @@ object frmPrincipal: TfrmPrincipal
         Value = 20.000000000000000000
       end
       item
-        Value = 40.000000000000000000
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        SizeStyle = Auto
       end
       item
         SizeStyle = Auto
@@ -59,19 +70,29 @@ object frmPrincipal: TfrmPrincipal
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Center
       TabOrder = 2
-      Size.Width = 230.000000000000000000
-      Size.Height = 25.000000000000000000
+      Size.Width = 236.000000000000000000
+      Size.Height = 46.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = 'Informe seu nome'
+      object buttonOla: TButton
+        Align = Right
+        Position.X = 158.000000000000000000
+        Size.Width = 78.000000000000000000
+        Size.Height = 46.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Ol'#225
+        OnClick = buttonOlaClick
+      end
     end
-    object buttonOla: TButton
+    object buttonMultiView: TButton
       Align = Center
       Size.Width = 230.000000000000000000
-      Size.Height = 61.000000000000000000
+      Size.Height = 73.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Text = 'Ol'#225
-      OnClick = buttonOlaClick
+      Text = 'Multi View'
+      OnClick = buttonMultiViewClick
     end
     object buttonTabs: TButton
       Align = Center
@@ -82,14 +103,23 @@ object frmPrincipal: TfrmPrincipal
       Text = 'Tabs'
       OnClick = buttonTabsClick
     end
-    object Button1: TButton
+    object buttonForms: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Forms'
+      OnClick = buttonFormsClick
+    end
+    object buttonFrames: TButton
       Align = Center
       Size.Width = 230.000000000000000000
       Size.Height = 73.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
-      Text = 'Forms'
-      OnClick = Button1Click
+      Text = 'Frames'
+      OnClick = buttonFramesClick
     end
   end
 end

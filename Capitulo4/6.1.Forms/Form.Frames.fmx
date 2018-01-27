@@ -1,0 +1,41 @@
+object frmFrames: TfrmFrames
+  Left = 0
+  Top = 0
+  Caption = 'Frames'
+  ClientHeight = 585
+  ClientWidth = 768
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  inline fraUsuario1: TfraUsuario
+    Align = Top
+    Position.Y = 57.000000000000000000
+    Size.Width = 768.000000000000000000
+    Size.Height = 280.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object ToolBar1: TToolBar
+    Align = MostTop
+    Size.Width = 768.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object butonClose: TButton
+      Align = Left
+      Size.Width = 81.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = 'butonClose'
+      OnClick = butonCloseClick
+    end
+  end
+  inline fraDialogs1: TfraDialogs
+    Align = Client
+    Size.Width = 768.000000000000000000
+    Size.Height = 248.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

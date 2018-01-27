@@ -5,18 +5,22 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls,
-  Form.Tabs, FMX.Layouts, Form.Menus;
+  Form.Tabs, FMX.Layouts, Form.Menus, Form.MultiView;
 
 type
   TfrmPrincipal = class(TForm)
     GridPanelLayout: TGridPanelLayout;
     editNome: TEdit;
-    buttonOla: TButton;
+    buttonMultiView: TButton;
     buttonTabs: TButton;
-    Button1: TButton;
-    procedure buttonOlaClick(Sender: TObject);
+    buttonForms: TButton;
+    buttonFrames: TButton;
+    buttonOla: TButton;
     procedure buttonTabsClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure buttonFormsClick(Sender: TObject);
+    procedure buttonFramesClick(Sender: TObject);
+    procedure buttonOlaClick(Sender: TObject);
+    procedure buttonMultiViewClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,9 +34,19 @@ implementation
 
 {$R *.fmx}
 
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
+procedure TfrmPrincipal.buttonFormsClick(Sender: TObject);
 begin
   frmMenus.Show;
+end;
+
+procedure TfrmPrincipal.buttonFramesClick(Sender: TObject);
+begin
+  //
+end;
+
+procedure TfrmPrincipal.buttonMultiViewClick(Sender: TObject);
+begin
+  frmMultiView.Show;
 end;
 
 procedure TfrmPrincipal.buttonOlaClick(Sender: TObject);

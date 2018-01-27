@@ -1,0 +1,97 @@
+inherited frmCamera: TfrmCamera
+  Caption = 'frmBaseMultiView1'
+  DesignerMasterStyle = 0
+  inherited LayoutClient: TLayout
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object buttonTirarFoto: TButton
+        Action = TakePhotoFromCameraAction
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'cameratoolbutton'
+        TabOrder = 0
+        Visible = True
+      end
+      object Button2: TButton
+        Align = Left
+        Position.X = 80.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Button2'
+      end
+      object Button3: TButton
+        Align = Left
+        Position.X = 160.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Button3'
+      end
+      object Button4: TButton
+        Align = Right
+        Position.X = 400.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Button4'
+      end
+      object Button5: TButton
+        Align = Right
+        Position.X = 480.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Text = 'Button5'
+      end
+      object Button6: TButton
+        Align = Right
+        Position.X = 560.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        Text = 'Button6'
+      end
+      object labelTitulo: TLabel
+        Align = Client
+        StyledSettings = [Family, FontColor]
+        Size.Width = 160.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = 'C'#226'mera'
+      end
+    end
+    object ImageResultado: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 431.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object ActionList: TActionList
+    Left = 584
+    Top = 64
+    object TakePhotoFromCameraAction: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromCameraActionDidFinishTaking
+    end
+  end
+end

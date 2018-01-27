@@ -8,7 +8,14 @@ uses
   Form.Menus in 'Form.Menus.pas' {frmMenus},
   Form.Lista in 'Form.Lista.pas' {frmLista},
   Base.Form.Mobile in 'Base.Form.Mobile.pas' {frmBase},
-  Form.WebBrowser in 'Form.WebBrowser.pas' {frmWebBrowser};
+  Form.WebBrowser in 'Form.WebBrowser.pas' {frmWebBrowser},
+  Form.Map.View in 'Form.Map.View.pas' {frmMapView},
+  Form.Frames in 'Form.Frames.pas' {frmFrames},
+  Frame.Usuario in 'Frame.Usuario.pas' {fraUsuario: TFrame},
+  Frame.Dialog in 'Frame.Dialog.pas' {fraDialogs: TFrame},
+  Form.MultiView in 'Form.MultiView.pas' {frmMultiView},
+  Base.Form.MultiView in 'Base.Form.MultiView.pas' {frmBaseMultiView},
+  Form.MultiView.Camera in 'Form.MultiView.Camera.pas' {frmCamera};
 
 {$R *.res}
 
@@ -18,5 +25,8 @@ begin
   Application.CreateForm(TfrmTabs, frmTabs);
   Application.CreateForm(TfrmMenus, frmMenus);
   Application.CreateForm(TfrmLista, frmLista);
+  Application.CreateForm(TfrmFrames, frmFrames);
+  Application.CreateForm(TfrmMultiView, frmMultiView);
+  Application.CreateForm(TfrmCamera, frmCamera);
   Application.Run;
 end.
