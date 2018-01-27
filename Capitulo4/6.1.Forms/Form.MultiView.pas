@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, System.ImageList, FMX.ImgList, FMX.ListBox,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.MultiView, Base.Form.MultiView, Form.MultiView.Camera;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.MultiView, Base.Form.MultiView, Form.MultiView.Camera,
+  Form.MultiView.Audio;
 
 type
   TfrmMultiView = class(TForm)
@@ -21,6 +22,7 @@ type
     ListBoxItem3: TListBoxItem;
     buttonMultiView: TButton;
     procedure ListBoxItem1Click(Sender: TObject);
+    procedure ListBoxItem2Click(Sender: TObject);
   private
     FActiveForm: TfrmBaseMultiView;
     procedure FormOpen(AForm: TComponentClass);
@@ -55,11 +57,18 @@ begin
     Application.CreateForm(AForm, FActiveForm);
     LayoutContainer.AddObject(TLayout(FActiveForm.FindComponent('LayoutClient')));
   end;
+
+  MultiView.HideMaster;
 end;
 
 procedure TfrmMultiView.ListBoxItem1Click(Sender: TObject);
 begin
   FormOpen(TfrmCamera);
+end;
+
+procedure TfrmMultiView.ListBoxItem2Click(Sender: TObject);
+begin
+  FormOpen(TfrmAudio);
 end;
 
 end.

@@ -15,7 +15,8 @@ uses
   Frame.Dialog in 'Frame.Dialog.pas' {fraDialogs: TFrame},
   Form.MultiView in 'Form.MultiView.pas' {frmMultiView},
   Base.Form.MultiView in 'Base.Form.MultiView.pas' {frmBaseMultiView},
-  Form.MultiView.Camera in 'Form.MultiView.Camera.pas' {frmCamera};
+  Form.MultiView.Camera in 'Form.MultiView.Camera.pas' {frmCamera},
+  Form.MultiView.Audio in 'Form.MultiView.Audio.pas' {frmAudio};
 
 {$R *.res}
 
@@ -28,5 +29,6 @@ begin
   Application.CreateForm(TfrmFrames, frmFrames);
   Application.CreateForm(TfrmMultiView, frmMultiView);
   Application.CreateForm(TfrmCamera, frmCamera);
+  Application.CreateForm(TfrmAudio, frmAudio);
   Application.Run;
 end.

@@ -371,6 +371,10 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>frmCamera</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="Form.MultiView.Audio.pas">
+            <Form>frmAudio</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -408,15 +412,20 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Android\Debug\libMobileForms.so" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Android">
-                        <RemoteName>libMobileForms.so</RemoteName>
+                <DeployFile LocalName="Win32\Debug\MobileForms.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>MobileForms.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest">
+                    <Platform Name="Android">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -429,6 +438,11 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile">
                     <Platform Name="Android">
                         <RemoteName>libMobileForms.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -464,16 +478,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Debug" Class="Android_SplashImage426">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest">
-                    <Platform Name="Android">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -516,6 +520,12 @@ $(PreBuildEvent)]]></PreBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Android\Debug\libMobileForms.so" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteName>libMobileForms.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Android\Debug\splash_image_def.xml" Configuration="Debug" Class="AndroidSplashImageDef">
                     <Platform Name="Android">
                         <Overwrite>true</Overwrite>
@@ -526,18 +536,27 @@ $(PreBuildEvent)]]></PreBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\MobileForms.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployClass Name="DependencyModule">
                     <Platform Name="Win32">
-                        <RemoteName>MobileForms.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
                     </Platform>
-                </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -888,27 +907,12 @@ $(PreBuildEvent)]]></PreBuildEvent>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

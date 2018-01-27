@@ -45,14 +45,15 @@
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Android'">
-        <DeployFile Include="Android\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MobileForms\res\drawable\</RemoteDir>
-            <RemoteName>splash_image_def.xml</RemoteName>
-            <DeployClass>AndroidSplashImageDef</DeployClass>
+        <DeployFile Include="Android\Debug\libMobileForms.so" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MobileForms\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libMobileForms.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
+            <Required>True</Required>
         </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>MobileForms\res\drawable-ldpi\</RemoteDir>
@@ -99,10 +100,19 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="Android\Debug\AndroidManifest.xml" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MobileForms\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
-            <DeployClass>ProjectAndroidManifest</DeployClass>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MobileForms\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MobileForms\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -117,19 +127,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MobileForms\res\drawable-normal\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>Android_SplashImage470</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MobileForms\res\drawable-xlarge\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>Android_SplashImage960</DeployClass>
+        <DeployFile Include="Android\Debug\AndroidManifest.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MobileForms\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -180,15 +181,14 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="Android\Debug\libMobileForms.so" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MobileForms\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libMobileForms.so</RemoteName>
-            <DeployClass>ProjectOutput</DeployClass>
+        <DeployFile Include="Android\Debug\splash_image_def.xml" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>MobileForms\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
-            <Required>True</Required>
         </DeployFile>
         <DeployFile Include="Android\Debug\styles.xml" Condition="'$(Config)'=='Debug'">
             <RemoteDir>MobileForms\res\values\</RemoteDir>
