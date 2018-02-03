@@ -265,8 +265,9 @@ object frmMenu: TfrmMenu
           FileName = 'C:\Users\Aluno\Downloads\logo.png'
         end>
       Align = Center
+      MarginWrapMode = Fit
       Size.Width = 214.000000000000000000
-      Size.Height = 118.000000000000000000
+      Size.Height = 130.000000000000000000
       Size.PlatformDefault = False
     end
   end

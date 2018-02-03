@@ -9,7 +9,8 @@ uses
   FMX.TabControl, IPPeerClient, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Net.URLClient,
   System.Net.HttpClient, System.Net.HttpClientComponent, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, REST.Response.Adapter, System.DateUtils;
+  FireDAC.Comp.Client, REST.Response.Adapter, System.DateUtils, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
+  IdSSLOpenSSL;
 
 type
   TfrmRESTGetImage = class(TForm)
@@ -38,6 +39,7 @@ type
     buttonDiaAnterior: TButton;
     labelDia: TLabel;
     buttonProximoDia: TButton;
+    IdSSLIOHandlerSocketOpenSSL: TIdSSLIOHandlerSocketOpenSSL;
     procedure buttonVoltarClick(Sender: TObject);
     procedure TimerLoadTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -69,6 +71,7 @@ procedure TfrmRESTGetImage.buttonDiaAnteriorClick(Sender: TObject);
 begin
   FDia := IncDay(FDia, -1);
   ExibeDia;
+  CarregaImagemAPI;
 end;
 
 procedure TfrmRESTGetImage.buttonGoClick(Sender: TObject);
@@ -80,6 +83,7 @@ procedure TfrmRESTGetImage.buttonProximoDiaClick(Sender: TObject);
 begin
   FDia := IncDay(FDia, 1);
   ExibeDia;
+  CarregaImagemAPI;
 end;
 
 procedure TfrmRESTGetImage.buttonVoltarClick(Sender: TObject);
