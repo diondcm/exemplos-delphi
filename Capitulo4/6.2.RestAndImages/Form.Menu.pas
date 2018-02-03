@@ -28,7 +28,8 @@ implementation
 
 procedure TfrmMenu.buttonImagemFromRestClick(Sender: TObject);
 begin
-  TfrmRESTGetImage.Create(Application).Show;
+//  TfrmRESTGetImage.Create(Application).Show;
+  TfrmRESTGetImage.GetInstance.Show;
 end;
 
 end.
