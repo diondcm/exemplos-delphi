@@ -14,6 +14,7 @@ type
     butonClose: TButton;
     fraDialogs1: TfraDialogs;
     procedure butonCloseClick(Sender: TObject);
+    procedure fraDialogs1buttonDialogsClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +31,13 @@ implementation
 procedure TfrmFrames.butonCloseClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmFrames.fraDialogs1buttonDialogsClick(Sender: TObject);
+begin
+  fraDialogs1.buttonDialogsClick(Sender);
+  ShowMessage(fraUsuario1.Edit1.Text);
+
 end;
 
 end.

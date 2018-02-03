@@ -3,7 +3,7 @@ unit Form.MultiView.Audio;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, Base.Form.MultiView, FMX.Layouts,
   System.Actions, FMX.ActnList, FMX.Controls.Presentation, FMX.Media, FMX.DialogService, System.IOUtils, FMX.Objects;
 
@@ -60,7 +60,7 @@ end;
 
 function TfrmAudio.GetAudioFile: string;
 begin
-  Result := TPath.Combine(TPath.GetDocumentsPath, 'teste.wav');
+  Result := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath, 'teste.wav');
 end;
 
 function TfrmAudio.HasMicrophone: Boolean;

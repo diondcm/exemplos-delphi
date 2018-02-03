@@ -37,5 +37,10 @@ object frmFrames: TfrmFrames
     Size.Width = 768.000000000000000000
     Size.Height = 248.000000000000000000
     Size.PlatformDefault = False
+    inherited Layout1: TLayout
+      inherited buttonDialogs: TButton
+        OnClick = fraDialogs1buttonDialogsClick
+      end
+    end
   end
 end

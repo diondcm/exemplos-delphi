@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls,
-  Form.Tabs, FMX.Layouts, Form.Menus, Form.MultiView;
+  Form.Tabs, FMX.Layouts, Form.Menus, Form.MultiView, Form.Frames;
 
 type
   TfrmPrincipal = class(TForm)
@@ -41,7 +41,7 @@ end;
 
 procedure TfrmPrincipal.buttonFramesClick(Sender: TObject);
 begin
-  //
+  frmFrames.Show;
 end;
 
 procedure TfrmPrincipal.buttonMultiViewClick(Sender: TObject);
