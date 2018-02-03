@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, System.ImageList, FMX.ImgList, FMX.ListBox,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.MultiView, Base.Form.MultiView, Form.MultiView.Camera,
-  Form.MultiView.Audio;
+  Form.MultiView.Audio, Form.MultiView.CameraComponent;
 
 type
   TfrmMultiView = class(TForm)
@@ -23,6 +23,7 @@ type
     buttonMultiView: TButton;
     procedure ListBoxItem1Click(Sender: TObject);
     procedure ListBoxItem2Click(Sender: TObject);
+    procedure ListBoxItem3Click(Sender: TObject);
   private
     FActiveForm: TfrmBaseMultiView;
     procedure FormOpen(AForm: TComponentClass);
@@ -69,6 +70,11 @@ end;
 procedure TfrmMultiView.ListBoxItem2Click(Sender: TObject);
 begin
   FormOpen(TfrmAudio);
+end;
+
+procedure TfrmMultiView.ListBoxItem3Click(Sender: TObject);
+begin
+  FormOpen(TfrmCameraComponent);
 end;
 
 end.

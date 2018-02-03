@@ -1,0 +1,135 @@
+inherited frmCameraComponent: TfrmCameraComponent
+  Caption = 'frmBaseMultiView1'
+  DesignerMasterStyle = 0
+  inherited LayoutClient: TLayout
+    object ToolBarCameraComp: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object buttonStart: TButton
+        Align = Right
+        Position.X = 552.000000000000000000
+        Size.Width = 44.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'playtoolbutton'
+        TabOrder = 0
+        OnClick = buttonStartClick
+      end
+      object buttonStop: TButton
+        Align = Right
+        Position.X = 596.000000000000000000
+        Size.Width = 44.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'stoptoolbutton'
+        TabOrder = 1
+        Text = 'buttonStop'
+        OnClick = buttonStopClick
+      end
+    end
+    object TabControlCamera: TTabControl
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 436.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 1
+      TabPosition = PlatformDefault
+      OnChange = TabControlCameraChange
+      Sizes = (
+        640s
+        387s
+        640s
+        387s)
+      object tabCamera: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 319.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'C'#226'mera'
+        object imageCamera: TImage
+          MultiResBitmap = <
+            item
+            end>
+          Align = Client
+          Size.Width = 640.000000000000000000
+          Size.Height = 387.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object tabConfig: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 319.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'Configura'#231#227'o'
+        object RectangleTipoCamera: TRectangle
+          Align = Center
+          Size.Width = 377.000000000000000000
+          Size.Height = 163.000000000000000000
+          Size.PlatformDefault = False
+          object labelConfig: TLabel
+            Align = Top
+            StyledSettings = [Family, Size, FontColor]
+            Margins.Left = 20.000000000000000000
+            Position.X = 20.000000000000000000
+            Size.Width = 357.000000000000000000
+            Size.Height = 17.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            Text = 'Tipo de C'#226'mera'
+          end
+          object buttonFront: TButton
+            Align = Left
+            StyledSettings = [Family, Size, FontColor]
+            Margins.Left = 20.000000000000000000
+            Margins.Top = 20.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Margins.Bottom = 20.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 37.000000000000000000
+            Size.Width = 169.000000000000000000
+            Size.Height = 106.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Frontal'
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            OnClick = buttonFrontClick
+          end
+          object buttonBack: TButton
+            Align = Client
+            StyledSettings = [Family, Size, FontColor]
+            Margins.Top = 20.000000000000000000
+            Margins.Right = 20.000000000000000000
+            Margins.Bottom = 20.000000000000000000
+            Size.Width = 148.000000000000000000
+            Size.Height = 106.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'Traseira'
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            OnClick = buttonBackClick
+          end
+        end
+      end
+    end
+  end
+  object CameraComponent: TCameraComponent
+    OnSampleBufferReady = CameraComponentSampleBufferReady
+    Left = 488
+    Top = 176
+  end
+end

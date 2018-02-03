@@ -26,9 +26,6 @@ type
     { Public declarations }
   end;
 
-var
-  frmAudio: TfrmAudio;
-
 implementation
 
 {$R *.fmx}

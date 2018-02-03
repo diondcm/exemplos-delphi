@@ -16,7 +16,8 @@ uses
   Form.MultiView in 'Form.MultiView.pas' {frmMultiView},
   Base.Form.MultiView in 'Base.Form.MultiView.pas' {frmBaseMultiView},
   Form.MultiView.Camera in 'Form.MultiView.Camera.pas' {frmCamera},
-  Form.MultiView.Audio in 'Form.MultiView.Audio.pas' {frmAudio};
+  Form.MultiView.Audio in 'Form.MultiView.Audio.pas' {frmAudio},
+  Form.MultiView.CameraComponent in 'Form.MultiView.CameraComponent.pas' {frmCameraComponent};
 
 {$R *.res}
 
@@ -28,7 +29,5 @@ begin
   Application.CreateForm(TfrmLista, frmLista);
   Application.CreateForm(TfrmFrames, frmFrames);
   Application.CreateForm(TfrmMultiView, frmMultiView);
-  Application.CreateForm(TfrmCamera, frmCamera);
-  Application.CreateForm(TfrmAudio, frmAudio);
   Application.Run;
 end.
