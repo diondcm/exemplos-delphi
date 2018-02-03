@@ -1,0 +1,61 @@
+object frmRESTGetImage: TfrmRESTGetImage
+  Left = 0
+  Top = 0
+  Caption = 'REST Get Image'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object buttonVoltar: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = 'buttonVoltar'
+      OnClick = buttonVoltarClick
+    end
+  end
+  object image: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 423.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object TimerLoad: TTimer
+    Enabled = False
+    OnTimer = TimerLoadTimer
+    Left = 576
+    Top = 88
+  end
+  object IdHTTP: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.ContentRangeEnd = -1
+    Request.ContentRangeStart = -1
+    Request.ContentRangeInstanceLength = -1
+    Request.Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    Request.Ranges.Units = 'bytes'
+    Request.Ranges = <>
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 576
+    Top = 144
+  end
+end
