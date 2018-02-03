@@ -84,19 +84,25 @@ begin
   begin
     TDialogService.ShowMessage('Carrege uma imagem para salvar.');
   end else begin
-    // Old is cool: lStream := TMemoryStream.Create;
+    lStream := TMemoryStream.Create;
     try
-      ///  todo: salvar em jpeg
-      ///  todo: gettickCount para nome da foto
       lUltimaFoto := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath, 'ultimafoto.bmp');
+      ImageResultado.Bitmap.SaveToStream(lStream);
+      lStream.SaveToFile(lUltimaFoto);
 
-      TDialogService.ShowMessage('Caminho foto:' + sLineBreak + lUltimaFoto);
+      if Tfile.Exists(lUltimaFoto) then
+      begin
+        TDialogService.ShowMessage('Imagem Salva com sucesso. Em: ' + sLineBreak + lUltimaFoto);
+      end;
 
+      lUltimaFoto := System.IOUtils.TPath.ChangeExtension(System.IOUtils.TPath.GetTempFileName, '.jpeg');
       ImageResultado.Bitmap.SaveToFile(lUltimaFoto);
-      //ImageResultado.Bitmap.SaveToStream(lStream);
-      //lStream.SaveToFile(lUltimaFoto);
+      if Tfile.Exists(lUltimaFoto) then
+      begin
+        TDialogService.ShowMessage('Jpeg Salvo com sucesso. Em: ' + sLineBreak + lUltimaFoto);
+      end;
     finally
-      //lStream.Free;
+      lStream.Free;
     end;
   end;
 end;
