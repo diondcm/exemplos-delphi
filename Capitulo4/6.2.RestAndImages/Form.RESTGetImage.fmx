@@ -32,6 +32,35 @@ object frmRESTGetImage: TfrmRESTGetImage
       Size.Height = 57.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
+      object buttonDiaAnterior: TButton
+        Align = Left
+        Size.Width = 97.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'arrowlefttoolbutton'
+        TabOrder = 0
+        OnClick = buttonDiaAnteriorClick
+      end
+      object labelDia: TLabel
+        Align = Client
+        StyledSettings = [Family, Size, FontColor]
+        Size.Width = 103.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = '03-02-2018'
+      end
+      object buttonProximoDia: TButton
+        Align = Right
+        Position.X = 200.000000000000000000
+        Size.Width = 96.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'arrowrighttoolbutton'
+        TabOrder = 2
+        OnClick = buttonProximoDiaClick
+      end
     end
   end
   object labelImagem: TLabel

@@ -9,7 +9,7 @@ uses
   FMX.TabControl, IPPeerClient, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Net.URLClient,
   System.Net.HttpClient, System.Net.HttpClientComponent, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, REST.Response.Adapter;
+  FireDAC.Comp.Client, REST.Response.Adapter, System.DateUtils;
 
 type
   TfrmRESTGetImage = class(TForm)
@@ -35,19 +35,28 @@ type
     memDallyImagetitle: TStringField;
     memDallyImageurl: TStringField;
     memDallyImagedate: TStringField;
+    buttonDiaAnterior: TButton;
+    labelDia: TLabel;
+    buttonProximoDia: TButton;
     procedure buttonVoltarClick(Sender: TObject);
     procedure TimerLoadTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure buttonGoClick(Sender: TObject);
+    procedure buttonDiaAnteriorClick(Sender: TObject);
+    procedure buttonProximoDiaClick(Sender: TObject);
   private
     FImageLoaded: Boolean;
+    FDia: TDate;
     FURLComKey: string;
     procedure CarregarImagem(const pURL: string);
+    procedure ExibeDia;
+    procedure CarregaImagemAPI;
   private
       class var
       FInstance: TfrmRESTGetImage;
   private const
     URL_NASA = 'https://api.nasa.gov/planetary/apod?api_key=';
+    DATE_NASA = '&date='; //Date format: 'yyyy-mm-dd'
   public
     class function GetInstance: TfrmRESTGetImage;
   end;
@@ -56,40 +65,21 @@ implementation
 
 {$R *.fmx}
 
-procedure TfrmRESTGetImage.buttonGoClick(Sender: TObject);
-var
-  lMS: TMemoryStream;
+procedure TfrmRESTGetImage.buttonDiaAnteriorClick(Sender: TObject);
 begin
-  if editKey.Text <> '' then
-  begin
-    FURLComKey := URL_NASA + editKey.Text;
-    RESTClient.BaseURL := FURLComKey;
-    try
-      RESTRequest.Execute;
-    except
-      on E: Exception do
-      begin
-        TDialogService.ShowMessage('Erro ao acessar a API da NASA.' + sLineBreak + 'Erro: ' + E.QualifiedClassName + ' - ' + E.Message);
-      end;
-    end;
+  FDia := IncDay(FDia, -1);
+  ExibeDia;
+end;
 
-    if (not (memDallyImage.IsEmpty)) and (not (memDallyImage.FieldByName('url').AsString = '')) then
-    begin
-      lMS := TMemoryStream.Create;
-      try
-        NetHTTPClient.Get(memDallyImage.FieldByName('url').AsString, lMS);
-        image.Bitmap.LoadFromStream(lMS);
-      except
-        on E: Exception do
-        begin
-          TDialogService.ShowMessage('Erro ao acessar Imagem.' + sLineBreak + 'Erro: ' + E.QualifiedClassName + ' - ' + E.Message);
-        end;
-      end;
-      lMS.Free;
-    end else begin
-      TDialogService.ShowMessage('Imagem não encontrada para este dia.');
-    end;
-  end;
+procedure TfrmRESTGetImage.buttonGoClick(Sender: TObject);
+begin
+  CarregaImagemAPI;
+end;
+
+procedure TfrmRESTGetImage.buttonProximoDiaClick(Sender: TObject);
+begin
+  FDia := IncDay(FDia, 1);
+  ExibeDia;
 end;
 
 procedure TfrmRESTGetImage.buttonVoltarClick(Sender: TObject);
@@ -123,8 +113,16 @@ begin
       end)).Start;
 end;
 
+procedure TfrmRESTGetImage.ExibeDia;
+begin
+  labelDia.Text := FormatDateTime('dd-mm-yyyy', FDia);
+end;
+
 procedure TfrmRESTGetImage.FormShow(Sender: TObject);
 begin
+  TabControl.ActiveTab := TabImagem;
+  FDia := Now;
+  ExibeDia;
   if not FImageLoaded then
   begin
     FImageLoaded := True;
@@ -140,6 +138,48 @@ begin
   end;
 
   Result := FInstance;
+end;
+
+procedure TfrmRESTGetImage.CarregaImagemAPI;
+var
+  lMS: TMemoryStream;
+begin
+  if editKey.Text <> '' then
+  begin
+    memDallyImage.Close;
+    FURLComKey := URL_NASA + editKey.Text;
+    if DateOf(FDia) <> DateOf(Now) then
+    begin
+      FURLComKey := FURLComKey + DATE_NASA + FormatDateTime('yyyy-mm-dd', FDia);
+    end;
+    RESTClient.BaseURL := FURLComKey;
+    try
+      RESTRequest.Execute;
+    except
+      on E: Exception do
+      begin
+        TDialogService.ShowMessage('Erro ao acessar a API da NASA.' + sLineBreak + 'Erro: ' + E.QualifiedClassName + ' - ' + E.Message);
+      end;
+    end;
+
+    if (not (memDallyImage.IsEmpty)) and (not (memDallyImage.FieldByName('url').AsString = '')) then
+    begin
+      MemoJson.Lines.Text := RESTResponse.Content;
+      lMS := TMemoryStream.Create;
+      try
+        NetHTTPClient.Get(memDallyImage.FieldByName('url').AsString, lMS);
+        image.Bitmap.LoadFromStream(lMS);
+      except
+        on E: Exception do
+        begin
+          TDialogService.ShowMessage('Erro ao acessar Imagem.' + sLineBreak + 'Erro: ' + E.QualifiedClassName + ' - ' + E.Message);
+        end;
+      end;
+      lMS.Free;
+    end else begin
+      TDialogService.ShowMessage('Imagem não encontrada para este dia.');
+    end;
+  end;
 end;
 
 procedure TfrmRESTGetImage.TimerLoadTimer(Sender: TObject);
