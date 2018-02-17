@@ -19,7 +19,7 @@ type
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
     GridDebug: TGrid;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    LinkGridToDataSourceBindSourceDB: TLinkGridToDataSource;
     procedure TimerGetTabelasTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ComboTabelasChange(Sender: TObject);
@@ -41,8 +41,44 @@ implementation
 
 procedure TfrmGetDados.ComboTabelasChange(Sender: TObject);
 begin
-  TdmdDados.GetInstance.CarregaTabela(ComboTabelas.Items[ComboTabelas.ItemIndex]);
-  BindSourceDB.DataSet := TdmdDados.GetInstance.memDados;
+  if ComboTabelas.ItemIndex > -1 then
+  begin
+    LinkListControlToField1.FillHeaderFieldName := '';
+    LinkListControlToField1.FieldName := '';
+
+    TdmdDados.GetInstance.CarregaTabela(ComboTabelas.Items[ComboTabelas.ItemIndex],
+      procedure // Ok
+      begin
+        LinkListControlToField1.FillHeaderFieldName := TdmdDados.GetInstance.memDados.Fields[0].FieldName;
+        LinkListControlToField1.FieldName := TdmdDados.GetInstance.memDados.Fields[1].FieldName;
+
+        BindSourceDB.DataSet := TdmdDados.GetInstance.memDados;
+
+        LinkListControlToField1.Active := True;
+      end,
+
+      procedure // Erro
+      begin
+        ShowMessage('Algo deu errado');
+      end);
+  end;
+
+
+
+//  if ComboTabelas.ItemIndex > -1 then
+//  begin
+//    LinkListControlToField1.FillHeaderFieldName := '';
+//    LinkListControlToField1.FieldName := '';
+//
+//    TdmdDados.GetInstance.CarregaTabela(ComboTabelas.Items[ComboTabelas.ItemIndex]);
+//
+//    LinkListControlToField1.FillHeaderFieldName := TdmdDados.GetInstance.memDados.Fields[0].FieldName;
+//    LinkListControlToField1.FieldName := TdmdDados.GetInstance.memDados.Fields[1].FieldName;
+//
+//    BindSourceDB.DataSet := TdmdDados.GetInstance.memDados;
+//
+//    LinkListControlToField1.Active := True;
+//  end;
 end;
 
 procedure TfrmGetDados.FormShow(Sender: TObject);

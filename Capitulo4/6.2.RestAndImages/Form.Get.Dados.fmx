@@ -15,11 +15,15 @@ object frmGetDados: TfrmGetDados
     Size.Width = 640.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 0
+    TabOrder = 1
     object ComboTabelas: TComboBox
-      Align = Center
+      Align = VertCenter
       Enabled = False
-      Size.Width = 417.000000000000000000
+      Margins.Left = 20.000000000000000000
+      Margins.Right = 20.000000000000000000
+      Position.X = 20.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 600.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -33,28 +37,29 @@ object frmGetDados: TfrmGetDados
     FooterAppearanceClassName = 'TListHeaderObjects'
     Align = Client
     Size.Width = 640.000000000000000000
-    Size.Height = 430.000000000000000000
+    Size.Height = 254.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 2
     SearchVisible = True
-    object GridDebug: TGrid
-      Align = Bottom
-      CanFocus = True
-      ClipChildren = True
-      Position.Y = 152.000000000000000000
-      Size.Width = 640.000000000000000000
-      Size.Height = 278.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      Viewport.Width = 636.000000000000000000
-      Viewport.Height = 253.000000000000000000
-    end
   end
   object TimerGetTabelas: TTimer
     Enabled = False
     OnTimer = TimerGetTabelasTimer
     Left = 536
     Top = 104
+  end
+  object GridDebug: TGrid
+    Align = Bottom
+    CanFocus = True
+    ClipChildren = True
+    Position.Y = 304.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 176.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    RowCount = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 151.000000000000000000
   end
   object BindSourceDB: TBindSourceDB
     DataSet = dmdDados.memDados
@@ -70,12 +75,14 @@ object frmGetDados: TfrmGetDados
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB
+      FieldName = 'teste'
       Control = ListViewDados
       FillExpressions = <>
       FillHeaderExpressions = <>
+      FillHeaderFieldName = 'codigo'
       FillBreakGroups = <>
     end
-    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+    object LinkGridToDataSourceBindSourceDB: TLinkGridToDataSource
       Category = 'Quick Bindings'
       DataSource = BindSourceDB
       GridControl = GridDebug

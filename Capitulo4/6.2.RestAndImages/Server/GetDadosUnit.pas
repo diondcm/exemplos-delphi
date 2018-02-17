@@ -42,6 +42,11 @@ var
   lJson: TJSONObject;
   lArr: TJSONArray;
 begin
+  if FileExists('sleepTab.txt') then
+  begin
+    Sleep(5000);
+  end;
+
   lArr := TJSONArray.Create;
   lArr.Add(TJSONObject.Create(TJSONPair.Create('nome', 'country')));
   lArr.Add(TJSONObject.Create(TJSONPair.Create('nome', 'produto'))); // TAB_PROD
@@ -60,6 +65,11 @@ function TGetDados.GetTabela(pNomeTabela: string): string;
 var
   lStm: TStringStream;
 begin
+   if FileExists('sleepGet.txt') then
+  begin
+    Sleep(8000);
+  end;
+
   //  Para ser anti-injection: ou usar lista de parâmetros, ou usar macros; TAB_PROD: produto
   qryDados.Open('select * from ' + pNomeTabela);
   lStm := TStringStream.Create;

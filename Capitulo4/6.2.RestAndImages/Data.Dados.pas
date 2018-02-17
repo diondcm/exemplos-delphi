@@ -20,7 +20,8 @@ type
     class function GetInstance: TdmdDados;
 
     function GetTabelas: string;
-    procedure CarregaTabela(const pTabela: string);
+    procedure CarregaTabela(const pTabela: string); overload;
+    procedure CarregaTabela(const pTabela: string; const pOk: TProc; const pErro: TProc); overload;
   end;
 
 implementation
@@ -42,6 +43,43 @@ begin
   lStm := TStringStream.Create(lResultado);
   memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
   lStm.Free;
+end;
+
+procedure TdmdDados.CarregaTabela(const pTabela: string; const pOk, pErro: TProc);
+begin
+  TThread.CreateAnonymousThread(
+    procedure
+    var
+      lClient: TClientModule;
+      lResultado: string;
+      lStm: TStringStream;
+    begin
+      try
+        lStm := TStringStream.Create;
+        lClient := TClientModule.Create(nil);
+        try
+          lResultado := lClient.GetDadosClient.GetTabela(pTabela);
+          lStm.WriteString(lResultado);
+          lStm.Position := 0;
+
+          TThread.Synchronize(nil,
+            procedure
+            begin
+              memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
+              pOk;
+            end);
+        finally
+          lClient.Free;
+          lStm.Free;
+        end;
+      except
+        on E: Exception do
+        begin
+          pErro; // passar E por param
+        end;
+      end;
+    end
+  ).Start;
 end;
 
 class function TdmdDados.GetInstance: TdmdDados;

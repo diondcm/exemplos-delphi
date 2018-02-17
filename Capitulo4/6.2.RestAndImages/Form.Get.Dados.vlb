@@ -16,7 +16,7 @@ Coordinates=330,110,88,123
 Visible=True
 
 []
-Coordinates=27,187,91,36
+Coordinates=410,30,67,51
 
 [BindingsList1]
 Coordinates=136,1,82,33
@@ -25,9 +25,10 @@ Coordinates=136,1,82,33
 Coordinates=10,10,89,141
 Visible=True
 
-[GridDebug]
-Coordinates=410,30,67,51
-
 [BindSourceDB]
-Coordinates=238,10,111,87
+Coordinates=200,20,111,123
+
+[GridDebug]
+Coordinates=390,20,67,51
+Visible=True
 
