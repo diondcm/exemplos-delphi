@@ -2,7 +2,7 @@ unit GetDadosUnit;
 
 interface
 
-uses System.SysUtils, System.Classes, System.Json,
+uses System.SysUtils, System.Classes, System.Json, System.Diagnostics,
     DataSnap.DSProviderDataModuleAdapter,
     Datasnap.DSServer, Datasnap.DSAuth, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.FMXUI.Wait, Data.DB,
@@ -24,6 +24,9 @@ type
     function CadastraCountry(pCountry, pCurrency: string): Integer; // e. g.: Negativos para Erro, positivos para ID
     function AutalizaCountry(pCountryID: string; pCurrency: string): Integer;
     function DeletaCountry(pCountryID: string): Integer; // 1: Ok
+
+    {  Stream }
+    function SalvaImagem(pStm: TStream): string;
 
     { Básicos }
     function EchoString(Value: string): string;
@@ -107,6 +110,18 @@ end;
 function TGetDados.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
+end;
+
+function TGetDados.SalvaImagem(pStm: TStream): string;
+var
+  lMemStm: TMemoryStream;
+begin
+  pStm.Position := 0;
+  Result := IntToStr(TStopwatch.GetTimeStamp) + '.bmp';
+  lMemStm := TMemoryStream.Create;
+  lMemStm.LoadFromStream(pStm);
+  lMemStm.SaveToFile(ExtractFilePath(ParamStr(0)) + Result);// buscar por Get Module Path
+  lMemStm.Free;
 end;
 
 function TGetDados.TrataRowsAffected(pRows: Integer): Integer;

@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 17/02/2018 16:35:47
+// 17/02/2018 17:18:26
 //
 
 unit ClientClassesUnit;
@@ -17,6 +17,7 @@ type
     FCadastraCountryCommand: TDSRestCommand;
     FAutalizaCountryCommand: TDSRestCommand;
     FDeletaCountryCommand: TDSRestCommand;
+    FSalvaImagemCommand: TDSRestCommand;
     FEchoStringCommand: TDSRestCommand;
     FReverseStringCommand: TDSRestCommand;
   public
@@ -28,6 +29,7 @@ type
     function CadastraCountry(pCountry: string; pCurrency: string; const ARequestFilter: string = ''): Integer;
     function AutalizaCountry(pCountryID: string; pCurrency: string; const ARequestFilter: string = ''): Integer;
     function DeletaCountry(pCountryID: string; const ARequestFilter: string = ''): Integer;
+    function SalvaImagem(pStm: TStream; const ARequestFilter: string = ''): string;
     function EchoString(Value: string; const ARequestFilter: string = ''): string;
     function ReverseString(Value: string; const ARequestFilter: string = ''): string;
   end;
@@ -62,6 +64,12 @@ const
   (
     (Name: 'pCountryID'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: ''; Direction: 4; DBXType: 6; TypeName: 'Integer')
+  );
+
+  TGetDados_SalvaImagem: array [0..1] of TDSRestParameterMetaData =
+  (
+    (Name: 'pStm'; Direction: 1; DBXType: 33; TypeName: 'TStream'),
+    (Name: ''; Direction: 4; DBXType: 26; TypeName: 'string')
   );
 
   TGetDados_EchoString: array [0..1] of TDSRestParameterMetaData =
@@ -149,6 +157,20 @@ begin
   Result := FDeletaCountryCommand.Parameters[1].Value.GetInt32;
 end;
 
+function TGetDadosClient.SalvaImagem(pStm: TStream; const ARequestFilter: string): string;
+begin
+  if FSalvaImagemCommand = nil then
+  begin
+    FSalvaImagemCommand := FConnection.CreateCommand;
+    FSalvaImagemCommand.RequestType := 'POST';
+    FSalvaImagemCommand.Text := 'TGetDados."SalvaImagem"';
+    FSalvaImagemCommand.Prepare(TGetDados_SalvaImagem);
+  end;
+  FSalvaImagemCommand.Parameters[0].Value.SetStream(pStm, FInstanceOwner);
+  FSalvaImagemCommand.Execute(ARequestFilter);
+  Result := FSalvaImagemCommand.Parameters[1].Value.GetWideString;
+end;
+
 function TGetDadosClient.EchoString(Value: string; const ARequestFilter: string): string;
 begin
   if FEchoStringCommand = nil then
@@ -194,6 +216,7 @@ begin
   FCadastraCountryCommand.DisposeOf;
   FAutalizaCountryCommand.DisposeOf;
   FDeletaCountryCommand.DisposeOf;
+  FSalvaImagemCommand.DisposeOf;
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
   inherited;

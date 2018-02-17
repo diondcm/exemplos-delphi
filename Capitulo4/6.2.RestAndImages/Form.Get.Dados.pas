@@ -7,7 +7,8 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.ListView.Types, FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, FMX.ListView, FMX.ListBox, FMX.Layouts, Data.Dados, System.Rtti, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.EngExt, Fmx.Bind.DBEngExt, FMX.Grid.Style, Fmx.Bind.Grid, Data.Bind.Grid,
-  FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid, Data.Bind.Components, Data.Bind.DBScope, FMX.StdCtrls, FMX.Edit;
+  FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid, Data.Bind.Components, Data.Bind.DBScope, FMX.StdCtrls, FMX.Edit,
+  System.Actions, FMX.ActnList, FMX.StdActns, FMX.MediaLibrary.Actions;
 
 type
   TfrmGetDados = class(TForm)
@@ -29,6 +30,9 @@ type
     buttonDeletaCountry: TButton;
     editCurrency: TEdit;
     editCountry: TEdit;
+    ActionList: TActionList;
+    buttonUploadImg: TButton;
+    TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction;
     procedure TimerGetTabelasTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ComboTabelasChange(Sender: TObject);
@@ -36,6 +40,7 @@ type
     procedure buttonAlteraCountryClick(Sender: TObject);
     procedure buttonDeletaCountryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
   private
     { Private declarations }
   private
@@ -141,6 +146,11 @@ begin
   end;
 
   Result := FInstance;
+end;
+
+procedure TfrmGetDados.TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
+begin
+  TdmdDados.GetInstance.UpLoadImagem(Image);
 end;
 
 procedure TfrmGetDados.TimerGetTabelasTimer(Sender: TObject);

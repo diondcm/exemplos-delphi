@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Classes, FMX.DialogService, System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON;
+  FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FMX.Graphics;
 
 type
   TdmdDados = class(TDataModule)
@@ -27,6 +27,8 @@ type
     procedure CadastraCountry(const pCountry, pCurrency: string);
     procedure AlteraCountry(const pCountry, pCurrency: string);
     procedure DeletaCountry(const pCountry: string);
+
+    procedure UpLoadImagem(pBitmap: TBitmap);
   end;
 
 implementation
@@ -147,6 +149,19 @@ begin
   else
     TDialogService.ShowMessage('Retorno não previsto: ' + IntToStr(pRetorno));
   end;
+end;
+
+procedure TdmdDados.UpLoadImagem(pBitmap: TBitmap);
+var
+  lStm: TMemoryStream;
+  lNome: string;
+begin
+  lStm := TMemoryStream.Create;
+  pBitmap.SaveToStream(lStm);
+  lStm.Position := 0;
+  lNome := ClientModule.GetDadosClient.SalvaImagem(lStm);
+  if lNome <> '' then
+    TDialogService.ShowMessage('Imagem salva com sucesso no servidor: ' + lNome);
 end;
 
 end.

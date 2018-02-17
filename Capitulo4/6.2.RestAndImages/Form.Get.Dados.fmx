@@ -90,6 +90,16 @@ object frmGetDados: TfrmGetDados
         Position.X = 288.000000000000000000
         Position.Y = 8.000000000000000000
       end
+      object buttonUploadImg: TButton
+        Position.X = 488.000000000000000000
+        Position.Y = 56.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 65.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'arrowuptoolbutton'
+        TabOrder = 5
+        Text = 'buttonUploadImg'
+      end
     end
     object LayoutTabelas: TLayout
       Align = Top
@@ -168,6 +178,14 @@ object frmGetDados: TfrmGetDados
       DataSource = BindSourceDB
       GridControl = GridDebug
       Columns = <>
+    end
+  end
+  object ActionList: TActionList
+    Left = 512
+    Top = 264
+    object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
     end
   end
 end
