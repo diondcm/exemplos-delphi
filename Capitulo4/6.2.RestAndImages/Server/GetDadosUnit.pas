@@ -14,11 +14,18 @@ type
     FDConnection: TFDConnection;
     qryDados: TFDQuery;
   private
-    { Private declarations }
+    function TrataRowsAffected(pRows: Integer): Integer;
   public
+    { Túnel de infos }
     function GetListaTabelas: string;
     function GetTabela(pNomeTabela: string): string;
 
+    { Preferência minha para CRUD }
+    function CadastraCountry(pCountry, pCurrency: string): Integer; // e. g.: Negativos para Erro, positivos para ID
+    function AutalizaCountry(pCountryID: string; pCurrency: string): Integer;
+    function DeletaCountry(pCountryID: string): Integer; // 1: Ok
+
+    { Básicos }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
   end;
@@ -31,6 +38,24 @@ implementation
 
 
 uses System.StrUtils;
+
+function TGetDados.AutalizaCountry(pCountryID, pCurrency: string): Integer;
+begin
+  qryDados.ExecSQL('update country set currency = :pcurrency where country = :pcountry', [pCurrency, pCountryID]);
+  Result := TrataRowsAffected(qryDados.RowsAffected);
+end;
+
+function TGetDados.CadastraCountry(pCountry, pCurrency: string): Integer;
+begin
+  qryDados.ExecSQL('insert into country (country, currency) values (:pcountry, :pcurrency)', [pCountry, pCurrency]);
+  Result := TrataRowsAffected(qryDados.RowsAffected);
+end;
+
+function TGetDados.DeletaCountry(pCountryID: string): Integer;
+begin
+  qryDados.ExecSQL('delete from country where country = :pcountry', [pCountryID]);
+  Result := TrataRowsAffected(qryDados.RowsAffected);
+end;
 
 function TGetDados.EchoString(Value: string): string;
 begin
@@ -82,6 +107,24 @@ end;
 function TGetDados.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
+end;
+
+function TGetDados.TrataRowsAffected(pRows: Integer): Integer;
+begin
+  if pRows = 1 then
+  begin
+    Exit(1);
+  end else begin
+    if pRows = 0 then
+    begin
+      // Rollback
+      Exit(-5);
+    end else if pRows > 1 then
+    begin
+      // Rollback
+      Exit(-6);
+    end;
+  end;
 end;
 
 end.

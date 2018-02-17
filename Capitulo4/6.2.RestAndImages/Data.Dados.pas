@@ -3,7 +3,7 @@ unit Data.Dados;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  System.SysUtils, System.Classes, FMX.DialogService, System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
   FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON;
 
@@ -16,12 +16,17 @@ type
   private
     class var
       FInstance: TdmdDados;
+    procedure TrataRetornoCRUD(pRetorno: Integer);
   public
     class function GetInstance: TdmdDados;
 
     function GetTabelas: string;
     procedure CarregaTabela(const pTabela: string); overload;
     procedure CarregaTabela(const pTabela: string; const pOk: TProc; const pErro: TProc); overload;
+
+    procedure CadastraCountry(const pCountry, pCurrency: string);
+    procedure AlteraCountry(const pCountry, pCurrency: string);
+    procedure DeletaCountry(const pCountry: string);
   end;
 
 implementation
@@ -43,6 +48,16 @@ begin
   lStm := TStringStream.Create(lResultado);
   memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
   lStm.Free;
+end;
+
+procedure TdmdDados.AlteraCountry(const pCountry, pCurrency: string);
+begin
+  TrataRetornoCRUD(ClientModule.GetDadosClient.AutalizaCountry(pCountry, pCurrency));
+end;
+
+procedure TdmdDados.CadastraCountry(const pCountry, pCurrency: string);
+begin
+  TrataRetornoCRUD(ClientModule.GetDadosClient.CadastraCountry(pCountry, pCurrency));
 end;
 
 procedure TdmdDados.CarregaTabela(const pTabela: string; const pOk, pErro: TProc);
@@ -82,6 +97,11 @@ begin
   ).Start;
 end;
 
+procedure TdmdDados.DeletaCountry(const pCountry: string);
+begin
+  TrataRetornoCRUD(ClientModule.GetDadosClient.DeletaCountry(pCountry));
+end;
+
 class function TdmdDados.GetInstance: TdmdDados;
 begin
   if not Assigned(FInstance) then
@@ -116,6 +136,17 @@ begin
   end;
 
   lJson.Free;
+end;
+
+procedure TdmdDados.TrataRetornoCRUD(pRetorno: Integer);
+begin
+  case pRetorno of
+    1 : TDialogService.ShowMessage('Registro Processado com sucesso.');
+    -5: TDialogService.ShowMessage('Nenhum registro localizado.');
+    -6: TDialogService.ShowMessage('Mais de um registro afetado pela instrução.');
+  else
+    TDialogService.ShowMessage('Retorno não previsto: ' + IntToStr(pRetorno));
+  end;
 end;
 
 end.

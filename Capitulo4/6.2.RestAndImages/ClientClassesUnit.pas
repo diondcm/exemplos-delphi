@@ -1,7 +1,7 @@
-// 
+//
 // Created by the DataSnap proxy generator.
-// 17/02/2018 10:48:36
-// 
+// 17/02/2018 16:35:47
+//
 
 unit ClientClassesUnit;
 
@@ -14,6 +14,9 @@ type
   private
     FGetListaTabelasCommand: TDSRestCommand;
     FGetTabelaCommand: TDSRestCommand;
+    FCadastraCountryCommand: TDSRestCommand;
+    FAutalizaCountryCommand: TDSRestCommand;
+    FDeletaCountryCommand: TDSRestCommand;
     FEchoStringCommand: TDSRestCommand;
     FReverseStringCommand: TDSRestCommand;
   public
@@ -22,6 +25,9 @@ type
     destructor Destroy; override;
     function GetListaTabelas(const ARequestFilter: string = ''): string;
     function GetTabela(pNomeTabela: string; const ARequestFilter: string = ''): string;
+    function CadastraCountry(pCountry: string; pCurrency: string; const ARequestFilter: string = ''): Integer;
+    function AutalizaCountry(pCountryID: string; pCurrency: string; const ARequestFilter: string = ''): Integer;
+    function DeletaCountry(pCountryID: string; const ARequestFilter: string = ''): Integer;
     function EchoString(Value: string; const ARequestFilter: string = ''): string;
     function ReverseString(Value: string; const ARequestFilter: string = ''): string;
   end;
@@ -36,6 +42,26 @@ const
   (
     (Name: 'pNomeTabela'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: ''; Direction: 4; DBXType: 26; TypeName: 'string')
+  );
+
+  TGetDados_CadastraCountry: array [0..2] of TDSRestParameterMetaData =
+  (
+    (Name: 'pCountry'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pCurrency'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 6; TypeName: 'Integer')
+  );
+
+  TGetDados_AutalizaCountry: array [0..2] of TDSRestParameterMetaData =
+  (
+    (Name: 'pCountryID'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pCurrency'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 6; TypeName: 'Integer')
+  );
+
+  TGetDados_DeletaCountry: array [0..1] of TDSRestParameterMetaData =
+  (
+    (Name: 'pCountryID'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: ''; Direction: 4; DBXType: 6; TypeName: 'Integer')
   );
 
   TGetDados_EchoString: array [0..1] of TDSRestParameterMetaData =
@@ -77,6 +103,50 @@ begin
   FGetTabelaCommand.Parameters[0].Value.SetWideString(pNomeTabela);
   FGetTabelaCommand.Execute(ARequestFilter);
   Result := FGetTabelaCommand.Parameters[1].Value.GetWideString;
+end;
+
+function TGetDadosClient.CadastraCountry(pCountry: string; pCurrency: string; const ARequestFilter: string): Integer;
+begin
+  if FCadastraCountryCommand = nil then
+  begin
+    FCadastraCountryCommand := FConnection.CreateCommand;
+    FCadastraCountryCommand.RequestType := 'GET';
+    FCadastraCountryCommand.Text := 'TGetDados.CadastraCountry';
+    FCadastraCountryCommand.Prepare(TGetDados_CadastraCountry);
+  end;
+  FCadastraCountryCommand.Parameters[0].Value.SetWideString(pCountry);
+  FCadastraCountryCommand.Parameters[1].Value.SetWideString(pCurrency);
+  FCadastraCountryCommand.Execute(ARequestFilter);
+  Result := FCadastraCountryCommand.Parameters[2].Value.GetInt32;
+end;
+
+function TGetDadosClient.AutalizaCountry(pCountryID: string; pCurrency: string; const ARequestFilter: string): Integer;
+begin
+  if FAutalizaCountryCommand = nil then
+  begin
+    FAutalizaCountryCommand := FConnection.CreateCommand;
+    FAutalizaCountryCommand.RequestType := 'GET';
+    FAutalizaCountryCommand.Text := 'TGetDados.AutalizaCountry';
+    FAutalizaCountryCommand.Prepare(TGetDados_AutalizaCountry);
+  end;
+  FAutalizaCountryCommand.Parameters[0].Value.SetWideString(pCountryID);
+  FAutalizaCountryCommand.Parameters[1].Value.SetWideString(pCurrency);
+  FAutalizaCountryCommand.Execute(ARequestFilter);
+  Result := FAutalizaCountryCommand.Parameters[2].Value.GetInt32;
+end;
+
+function TGetDadosClient.DeletaCountry(pCountryID: string; const ARequestFilter: string): Integer;
+begin
+  if FDeletaCountryCommand = nil then
+  begin
+    FDeletaCountryCommand := FConnection.CreateCommand;
+    FDeletaCountryCommand.RequestType := 'GET';
+    FDeletaCountryCommand.Text := 'TGetDados.DeletaCountry';
+    FDeletaCountryCommand.Prepare(TGetDados_DeletaCountry);
+  end;
+  FDeletaCountryCommand.Parameters[0].Value.SetWideString(pCountryID);
+  FDeletaCountryCommand.Execute(ARequestFilter);
+  Result := FDeletaCountryCommand.Parameters[1].Value.GetInt32;
 end;
 
 function TGetDadosClient.EchoString(Value: string; const ARequestFilter: string): string;
@@ -121,9 +191,13 @@ destructor TGetDadosClient.Destroy;
 begin
   FGetListaTabelasCommand.DisposeOf;
   FGetTabelaCommand.DisposeOf;
+  FCadastraCountryCommand.DisposeOf;
+  FAutalizaCountryCommand.DisposeOf;
+  FDeletaCountryCommand.DisposeOf;
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
   inherited;
 end;
 
 end.
+
