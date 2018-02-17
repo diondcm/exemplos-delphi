@@ -3,7 +3,7 @@ unit Data.Dados;
 interface
 
 uses
-  System.SysUtils, System.Classes, FMX.DialogService, System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  System.SysUtils, System.Classes, FMX.DialogService, FMX.Surfaces, System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
   FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FMX.Graphics;
 
@@ -17,6 +17,7 @@ type
     class var
       FInstance: TdmdDados;
     procedure TrataRetornoCRUD(pRetorno: Integer);
+
   public
     class function GetInstance: TdmdDados;
 
@@ -28,6 +29,7 @@ type
     procedure AlteraCountry(const pCountry, pCurrency: string);
     procedure DeletaCountry(const pCountry: string);
 
+    procedure SaveJpegToStream(Bitmap: TBitmap; Stream: TStream);
     procedure UpLoadImagem(pBitmap: TBitmap);
   end;
 
@@ -151,13 +153,28 @@ begin
   end;
 end;
 
+procedure TdmdDados.SaveJpegToStream(Bitmap: TBitmap; Stream: TStream);
+var
+  Surf: TBitmapSurface;
+begin
+  Surf := TBitmapSurface.Create;
+  try
+    Surf.Assign(Bitmap);
+    if not TBitmapCodecManager.SaveToStream(Stream, Surf, '.jpg') then
+      raise Exception.Create('Não foi possível converter em jpeg');
+  finally
+    Surf.Free;
+  end;
+end;
+
 procedure TdmdDados.UpLoadImagem(pBitmap: TBitmap);
 var
   lStm: TMemoryStream;
   lNome: string;
 begin
   lStm := TMemoryStream.Create;
-  pBitmap.SaveToStream(lStm);
+  // pBitmap.SaveToStream(lStm);
+  SaveJpegToStream(pBitmap, lStm);
   lStm.Position := 0;
   lNome := ClientModule.GetDadosClient.SalvaImagem(lStm);
   if lNome <> '' then

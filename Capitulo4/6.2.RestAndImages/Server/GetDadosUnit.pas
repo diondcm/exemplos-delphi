@@ -120,7 +120,7 @@ begin
   Result := IntToStr(TStopwatch.GetTimeStamp) + '.bmp';
   lMemStm := TMemoryStream.Create;
   lMemStm.LoadFromStream(pStm);
-  lMemStm.SaveToFile(ExtractFilePath(ParamStr(0)) + Result);// buscar por Get Module Path
+  lMemStm.SaveToFile(ExtractFilePath(ParamStr(0)) + Result);// buscar por Get Module Path no IIS
   lMemStm.Free;
 end;
 
