@@ -94,8 +94,8 @@ object frmGetDados: TfrmGetDados
         Action = TakePhotoFromLibraryAction1
         Enabled = True
         ImageIndex = -1
-        Position.X = 488.000000000000000000
-        Position.Y = 56.000000000000000000
+        Position.X = 408.000000000000000000
+        Position.Y = 32.000000000000000000
         Size.Width = 113.000000000000000000
         Size.Height = 65.000000000000000000
         Size.PlatformDefault = False

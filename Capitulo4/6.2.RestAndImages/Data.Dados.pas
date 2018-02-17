@@ -173,7 +173,7 @@ var
   lNome: string;
 begin
   lStm := TMemoryStream.Create;
-  // pBitmap.SaveToStream(lStm);
+  // pBitmap.SaveToStream(lStm); // em bitmap
   SaveJpegToStream(pBitmap, lStm);
   lStm.Position := 0;
   lNome := ClientModule.GetDadosClient.SalvaImagem(lStm);

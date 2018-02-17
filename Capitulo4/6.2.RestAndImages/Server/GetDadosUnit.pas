@@ -117,7 +117,7 @@ var
   lMemStm: TMemoryStream;
 begin
   pStm.Position := 0;
-  Result := IntToStr(TStopwatch.GetTimeStamp) + '.bmp';
+  Result := IntToStr(TStopwatch.GetTimeStamp) + '.jpg';
   lMemStm := TMemoryStream.Create;
   lMemStm.LoadFromStream(pStm);
   lMemStm.SaveToFile(ExtractFilePath(ParamStr(0)) + Result);// buscar por Get Module Path no IIS
