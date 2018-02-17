@@ -76,10 +76,10 @@ begin
       end;
     end;
 
-    ShowMessage(lJson);
-
     lTextJson.Free;
     lSR.Free;
+
+    ShowMessage(lJson);
   end;
 
 end;

@@ -107,6 +107,8 @@ object frmJSONFromRest: TfrmJSONFromRest
       StyleLookup = ''
       TabOrder = 0
       Text = 'tabMemo'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
       object memoJSON: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
@@ -130,6 +132,8 @@ object frmJSONFromRest: TfrmJSONFromRest
       StyleLookup = ''
       TabOrder = 0
       Text = 'tabGrid'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
       object Grid1: TGrid
         Align = Client
         CanFocus = True

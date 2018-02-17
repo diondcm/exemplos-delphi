@@ -13,6 +13,7 @@ type
     buttonImagemFromRest: TButton;
     Image1: TImage;
     buttonJSONFromRest: TButton;
+    ButtonGetClientes: TButton;
     procedure buttonImagemFromRestClick(Sender: TObject);
     procedure buttonJSONFromRestClick(Sender: TObject);
   private

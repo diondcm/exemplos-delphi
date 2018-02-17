@@ -101,7 +101,7 @@ object frmRESTGetImage: TfrmRESTGetImage
     Size.Width = 640.000000000000000000
     Size.Height = 372.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 5
     TabPosition = PlatformDefault
     Sizes = (
@@ -113,13 +113,15 @@ object frmRESTGetImage: TfrmRESTGetImage
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 64.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = 'Imagem'
+      ExplicitSize.cx = 64.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object image: TImage
         MultiResBitmap = <
           item
@@ -134,13 +136,15 @@ object frmRESTGetImage: TfrmRESTGetImage
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 49.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = 'JSON'
+      ExplicitSize.cx = 49.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object MemoJson: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
