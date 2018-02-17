@@ -297,6 +297,7 @@ object frmMenu: TfrmMenu
       Size.PlatformDefault = False
       TabOrder = 3
       Text = 'Get Clientes'
+      OnClick = ButtonGetClientesClick
     end
   end
 end

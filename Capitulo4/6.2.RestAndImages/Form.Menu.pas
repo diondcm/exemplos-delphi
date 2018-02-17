@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation,
-  FMX.StdCtrls, Form.RESTGetImage, Form.JSONFromRest;
+  FMX.StdCtrls, Form.RESTGetImage, Form.JSONFromRest, Form.Get.Dados;
 
 type
   TfrmMenu = class(TForm)
@@ -16,6 +16,7 @@ type
     ButtonGetClientes: TButton;
     procedure buttonImagemFromRestClick(Sender: TObject);
     procedure buttonJSONFromRestClick(Sender: TObject);
+    procedure ButtonGetClientesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,6 +29,11 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TfrmMenu.ButtonGetClientesClick(Sender: TObject);
+begin
+  TfrmGetDados.GetInstance.Show;
+end;
 
 procedure TfrmMenu.buttonImagemFromRestClick(Sender: TObject);
 begin

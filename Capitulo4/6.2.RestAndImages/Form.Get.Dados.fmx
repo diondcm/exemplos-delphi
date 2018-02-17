@@ -4,9 +4,11 @@ object frmGetDados: TfrmGetDados
   Caption = 'Get Dados'
   ClientHeight = 480
   ClientWidth = 640
+  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnShow = FormShow
   DesignerMasterStyle = 0
   object LayoutTabelas: TLayout
     Align = Top
@@ -16,13 +18,15 @@ object frmGetDados: TfrmGetDados
     TabOrder = 0
     object ComboTabelas: TComboBox
       Align = Center
+      Enabled = False
       Size.Width = 417.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
+      OnChange = ComboTabelasChange
     end
   end
-  object ListView1: TListView
+  object ListViewDados: TListView
     ItemAppearanceClassName = 'TListItemAppearance'
     ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
@@ -33,5 +37,49 @@ object frmGetDados: TfrmGetDados
     Size.PlatformDefault = False
     TabOrder = 1
     SearchVisible = True
+    object GridDebug: TGrid
+      Align = Bottom
+      CanFocus = True
+      ClipChildren = True
+      Position.Y = 152.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 278.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 636.000000000000000000
+      Viewport.Height = 253.000000000000000000
+    end
+  end
+  object TimerGetTabelas: TTimer
+    Enabled = False
+    OnTimer = TimerGetTabelasTimer
+    Left = 536
+    Top = 104
+  end
+  object BindSourceDB: TBindSourceDB
+    DataSet = dmdDados.memDados
+    ScopeMappings = <>
+    Left = 304
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB
+      Control = ListViewDados
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB
+      GridControl = GridDebug
+      Columns = <>
+    end
   end
 end
