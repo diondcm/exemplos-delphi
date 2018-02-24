@@ -22,6 +22,5 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TClientModule, ClientModule);
-  Application.CreateForm(TfrmListViewWS, frmListViewWS);
   Application.Run;
 end.

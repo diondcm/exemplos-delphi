@@ -38,9 +38,6 @@ type
     class function GetInstance: TfrmListViewWS;
   end;
 
-var
-  frmListViewWS: TfrmListViewWS;
-
 implementation
 
 {$R *.fmx}
@@ -98,7 +95,7 @@ begin
   FAdapter := TCustomAdapter.Create(FListView, FStrings);
   FAdapter.BackDropImage := imgBackDrop;
   FAdapter.OnButtonClicked := ButtonClicked;
-  //  FListView.Adapter := FAdapter;
+  FListView.Adapter := FAdapter;
 
   FListView.Parent := LayoutListView;
   FListView.Align := TAlignLayout.Client;
@@ -111,7 +108,7 @@ end;
 procedure TfrmListViewWS.FormDestroy(Sender: TObject);
 begin
   FListView.Adapter := nil;
-  //FAdapter.Free;
+  FAdapter.Free;
   FListView.Free;
   FStrings.Free;
 end;
