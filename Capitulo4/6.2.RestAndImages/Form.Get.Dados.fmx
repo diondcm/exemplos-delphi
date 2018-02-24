@@ -29,14 +29,18 @@ object frmGetDados: TfrmGetDados
       Align = Bottom
       CanFocus = True
       ClipChildren = True
-      Position.Y = 192.000000000000000000
-      Size.Width = 640.000000000000000000
-      Size.Height = 176.000000000000000000
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 262.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 96.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       RowCount = 0
-      Viewport.Width = 636.000000000000000000
-      Viewport.Height = 151.000000000000000000
+      Viewport.Width = 616.000000000000000000
+      Viewport.Height = 71.000000000000000000
     end
     object LayoutCountry: TLayout
       Align = Bottom
@@ -148,8 +152,11 @@ object frmGetDados: TfrmGetDados
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
       Align = Client
-      Size.Width = 640.000000000000000000
-      Size.Height = 103.000000000000000000
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Size.Width = 620.000000000000000000
+      Size.Height = 163.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
       SearchVisible = True

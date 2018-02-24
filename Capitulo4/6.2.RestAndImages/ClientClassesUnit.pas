@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 17/02/2018 17:18:26
+// 24/02/2018 11:36:13
 //
 
 unit ClientClassesUnit;
@@ -25,7 +25,7 @@ type
     constructor Create(ARestConnection: TDSRestConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
     function GetListaTabelas(const ARequestFilter: string = ''): string;
-    function GetTabela(pNomeTabela: string; const ARequestFilter: string = ''): string;
+    function GetTabela(pNomeTabela: string; pHash: string; const ARequestFilter: string = ''): string;
     function CadastraCountry(pCountry: string; pCurrency: string; const ARequestFilter: string = ''): Integer;
     function AutalizaCountry(pCountryID: string; pCurrency: string; const ARequestFilter: string = ''): Integer;
     function DeletaCountry(pCountryID: string; const ARequestFilter: string = ''): Integer;
@@ -40,9 +40,10 @@ const
     (Name: ''; Direction: 4; DBXType: 26; TypeName: 'string')
   );
 
-  TGetDados_GetTabela: array [0..1] of TDSRestParameterMetaData =
+  TGetDados_GetTabela: array [0..2] of TDSRestParameterMetaData =
   (
     (Name: 'pNomeTabela'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pHash'; Direction: 1; DBXType: 26; TypeName: 'string'),
     (Name: ''; Direction: 4; DBXType: 26; TypeName: 'string')
   );
 
@@ -99,7 +100,7 @@ begin
   Result := FGetListaTabelasCommand.Parameters[0].Value.GetWideString;
 end;
 
-function TGetDadosClient.GetTabela(pNomeTabela: string; const ARequestFilter: string): string;
+function TGetDadosClient.GetTabela(pNomeTabela: string; pHash: string; const ARequestFilter: string): string;
 begin
   if FGetTabelaCommand = nil then
   begin
@@ -109,8 +110,9 @@ begin
     FGetTabelaCommand.Prepare(TGetDados_GetTabela);
   end;
   FGetTabelaCommand.Parameters[0].Value.SetWideString(pNomeTabela);
+  FGetTabelaCommand.Parameters[1].Value.SetWideString(pHash);
   FGetTabelaCommand.Execute(ARequestFilter);
-  Result := FGetTabelaCommand.Parameters[1].Value.GetWideString;
+  Result := FGetTabelaCommand.Parameters[2].Value.GetWideString;
 end;
 
 function TGetDadosClient.CadastraCountry(pCountry: string; pCurrency: string; const ARequestFilter: string): Integer;

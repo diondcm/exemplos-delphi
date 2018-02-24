@@ -7,7 +7,7 @@ uses
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
   FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FMX.Graphics,
   FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
-  FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, System.IOUtils;
+  FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, System.IOUtils, System.Hash, System.IniFiles;
 
 type
   TdmdDados = class(TDataModule)
@@ -22,6 +22,7 @@ type
     class var
       FInstance: TdmdDados;
     procedure TrataRetornoCRUD(pRetorno: Integer);
+    function GetArqIni: string;
 
   public
     class function GetInstance: TdmdDados;
@@ -53,7 +54,7 @@ var
   lResultado: string;
   lStm: TStringStream;
 begin
-  lResultado := ClientModule.GetDadosClient.GetTabela(pTabela);
+  lResultado := ClientModule.GetDadosClient.GetTabela(pTabela, '');
   lStm := TStringStream.Create(lResultado);
   memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
   lStm.Free;
@@ -71,60 +72,91 @@ end;
 
 procedure TdmdDados.CarregaTabela(const pTabela: string; const pOk, pErro: TProc);
 begin
-  qryDadosLocais.Open('SELECT name FROM sqlite_master WHERE type=''table'' AND lower(name)=:tabela', [LowerCase(pTabela)]);
-  if qryDadosLocais.IsEmpty then
-  begin
-    TThread.CreateAnonymousThread(
-      procedure
-      var
-        lClient: TClientModule;
-        lResultado: string;
-        lStm: TStringStream;
-      begin
+  memDados.Close;
+
+  // Config, qtd dias para atualizacao
+  TThread.CreateAnonymousThread(
+    procedure
+    var
+      lClient: TClientModule;
+      lResultado: string;
+      lStm: TStringStream;
+      lIni: TIniFile;
+      lLocalHash: string;
+    begin
+      try
+        lIni := TIniFile.Create(GetArqIni);
+        lStm := TStringStream.Create;
+        lClient := TClientModule.Create(nil);
         try
-          lStm := TStringStream.Create;
-          lClient := TClientModule.Create(nil);
-          try
-            lResultado := lClient.GetDadosClient.GetTabela(pTabela);
+          lLocalHash := lIni.ReadString('HASH', pTabela, '');
+          qryDadosLocais.Open('SELECT name FROM sqlite_master WHERE type=''table'' AND lower(name)=:tabela', [LowerCase(pTabela)]);
+          if qryDadosLocais.IsEmpty then
+          begin
+            lLocalHash := '';
+          end;
+
+          lResultado := lClient.GetDadosClient.GetTabela(pTabela, lLocalHash);
+          if Pos('atualizada', lResultado) > 0 then
+          begin
+            TThread.Synchronize(nil,
+              procedure
+              begin
+                qryDadosLocais.Open('select * from ' + pTabela);
+                if qryDadosLocais.IsEmpty then
+                begin
+                  // Melhor avisar com Toast, ou outros recursos, que não exigam click
+                  TDialogService.ShowMessage('Nenhum registro encontrado.');
+                  pOk;
+                end else begin
+                  memDados.Data := qryDadosLocais.Data;
+                  pOk;
+                end;
+              end);
+          end else begin
             lStm.WriteString(lResultado);
             lStm.Position := 0;
+            lLocalHash := THashMD5.GetHashString(lStm.DataString);
+            lIni.WriteString('HASH', pTabela, lLocalHash);
 
             TThread.Synchronize(nil,
               procedure
+              var
+                lIniFIm: TIniFile;
               begin
                 memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
                 tbCriaTabela.Close;
                 tbCriaTabela.TableName := pTabela;
                 tbCriaTabela.FieldDefs.Assign(memDados.FieldDefs);
-                tbCriaTabela.CreateTable;
+                tbCriaTabela.CreateTable(False);
+                  // tbCriaTabela.Data := memDados.Data; // Preferência por este, por ser mais rápido
+                  // outra maneira é por while...
                 tbCriaTabela.Open;
-                tbCriaTabela.CopyDataSet(memDados, [coRestart, coAppend]);
+                tbCriaTabela.CopyDataSet(memDados, [coAppend]); // Apresentou problemas com infos de produto nos testes no Berlin
+                tbCriaTabela.Connection.Commit;
+
+                if tbCriaTabela.RecordCount <> memDados.RecordCount then
+                begin
+                  lIniFIm := TIniFile.Create(GetArqIni);
+                  lIniFIm.WriteString('HASH', pTabela, '');
+                  lIniFIm.Free
+                end;
+
                 pOk;
               end);
-          finally
-            lClient.Free;
-            lStm.Free;
           end;
-        except
-          on E: Exception do
-          begin
-            pErro; // passar E por param
-          end;
+        finally
+          lClient.Free;
+          lStm.Free;
+          lIni.Free;
         end;
-      end
-    ).Start;
-  end else begin
-    qryDadosLocais.Open('select * from ' + pTabela);
-    if qryDadosLocais.IsEmpty then
-    begin
-      // Melhor avisar com Toast, ou outros recursos, que não exigam click
-      TDialogService.ShowMessage('Nenhum registro encontrado.');
-      pOk;
-    end else begin
-      memDados.Data := qryDadosLocais.Data;
-      pOk;
-    end;
-  end;
+      except
+        on E: Exception do
+        begin
+          pErro; // passar E por param
+        end;
+      end;
+    end).Start;
 end;
 
 procedure TdmdDados.DeletaCountry(const pCountry: string);
@@ -135,6 +167,11 @@ end;
 procedure TdmdDados.FDConnectionBeforeConnect(Sender: TObject);
 begin
   FDConnection.Params.Values['Database'] := System.IOUtils.TPath.GetDocumentsPath + '\dadosLocais.db';
+end;
+
+function TdmdDados.GetArqIni: string;
+begin
+  Result := TPath.Combine(TPath.GetDocumentsPath, 'get_dados.ini');
 end;
 
 class function TdmdDados.GetInstance: TdmdDados;

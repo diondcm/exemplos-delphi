@@ -3,22 +3,31 @@ unit GetDadosUnit;
 interface
 
 uses System.SysUtils, System.Classes, System.Json, System.Diagnostics,
-    DataSnap.DSProviderDataModuleAdapter,
-    Datasnap.DSServer, Datasnap.DSAuth, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  DataSnap.DSProviderDataModuleAdapter, System.Generics.Collections, System.Hash,
+  Datasnap.DSServer, Datasnap.DSAuth, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.FMXUI.Wait, Data.DB,
   FireDAC.Comp.Client, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.Stan.Param,
-  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageBin;
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageBin,
+  FireDAC.VCLUI.Wait;
 
 type
   TGetDados = class(TDSServerModule)
     FDConnection: TFDConnection;
     qryDados: TFDQuery;
   private
+     type
+       THashTabela = class(TDictionary<string, string>)
+       end;
+
+     class var FHashTabelas: THashTabela;
+     class function GetHashTabelas: THashTabela;
+  private
     function TrataRowsAffected(pRows: Integer): Integer;
+    class destructor Destroy;
   public
     { Túnel de infos }
     function GetListaTabelas: string;
-    function GetTabela(pNomeTabela: string): string;
+    function GetTabela(pNomeTabela, pHash: string): string;
 
     { Preferência minha para CRUD }
     function CadastraCountry(pCountry, pCurrency: string): Integer; // e. g.: Negativos para Erro, positivos para ID
@@ -60,9 +69,24 @@ begin
   Result := TrataRowsAffected(qryDados.RowsAffected);
 end;
 
+class destructor TGetDados.Destroy;
+begin
+  FHashTabelas.Free;
+end;
+
 function TGetDados.EchoString(Value: string): string;
 begin
   Result := Value;
+end;
+
+class function TGetDados.GetHashTabelas: THashTabela;
+begin
+  if not Assigned(FHashTabelas) then
+  begin
+    FHashTabelas := THashTabela.Create;
+  end;
+
+  Result := FHashTabelas;
 end;
 
 function TGetDados.GetListaTabelas: string;
@@ -89,22 +113,43 @@ begin
   lJson.Free;
 end;
 
-function TGetDados.GetTabela(pNomeTabela: string): string;
+function TGetDados.GetTabela(pNomeTabela, pHash: string): string;
 var
   lStm: TStringStream;
+  lJsResult: TJSONObject;
 begin
-   if FileExists('sleepGet.txt') then
+  if FileExists('sleepGet.txt') then
   begin
     Sleep(8000);
   end;
 
-  //  Para ser anti-injection: ou usar lista de parâmetros, ou usar macros; TAB_PROD: produto
-  qryDados.Open('select * from ' + pNomeTabela);
-  lStm := TStringStream.Create;
-  qryDados.SaveToStream(lStm, TFDStorageFormat.sfJSON);
-  Result := lStm.DataString;
-  lStm.Free;
-  qryDados.Close;
+  /// Outra opção: recebido json no parâmetro e usado TJsonObject.ParseJSONValue()
+  if (GetHashTabelas.ContainsKey(pNomeTabela)) and (CompareStr(GetHashTabelas[pNomeTabela], pHash) = 0) then
+  begin
+    lJsResult := TJSONObject.Create;
+    lJsResult.AddPair('tabela', pNomeTabela);
+    lJsResult.AddPair('hash', pHash);
+    lJsResult.AddPair('atualizada', 'sim');
+    lJsResult.AddPair('data_atual', DateTimeToStr(Now));
+
+    Result := lJsResult.ToString;
+    lJsResult.Free;
+  end else begin
+    //  Para ser anti-injection: ou usar lista de parâmetros, ou usar macros; TAB_PROD: produto
+    qryDados.Open('select * from ' + pNomeTabela);
+    lStm := TStringStream.Create;
+    qryDados.SaveToStream(lStm, TFDStorageFormat.sfJSON);
+    Result := lStm.DataString;
+
+    // usar seção crítica
+    if not GetHashTabelas.ContainsKey(pNomeTabela) then
+      GetHashTabelas.Add(pNomeTabela, THashMD5.GetHashString(Result))
+    else
+      GetHashTabelas[pNomeTabela] := THashMD5.GetHashString(Result);
+
+    lStm.Free;
+    qryDados.Close;
+  end;
 end;
 
 function TGetDados.ReverseString(Value: string): string;
@@ -138,6 +183,8 @@ begin
     begin
       // Rollback
       Exit(-6);
+    end else begin
+      Exit(-10);
     end;
   end;
 end;

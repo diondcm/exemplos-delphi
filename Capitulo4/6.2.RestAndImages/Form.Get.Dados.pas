@@ -87,18 +87,20 @@ begin
     TdmdDados.GetInstance.CarregaTabela(ComboTabelas.Items[ComboTabelas.ItemIndex],
       procedure // Ok
       begin
-        LinkListControlToField1.FillHeaderFieldName := TdmdDados.GetInstance.memDados.Fields[0].FieldName;
-        LinkListControlToField1.FieldName := TdmdDados.GetInstance.memDados.Fields[1].FieldName;
+        if not TdmdDados.GetInstance.memDados.IsEmpty then
+        begin
+          LinkListControlToField1.FillHeaderFieldName := TdmdDados.GetInstance.memDados.Fields[0].FieldName;
+          LinkListControlToField1.FieldName := TdmdDados.GetInstance.memDados.Fields[1].FieldName;
 
-        BindSourceDB.DataSet := TdmdDados.GetInstance.memDados;
+          BindSourceDB.DataSet := TdmdDados.GetInstance.memDados;
+          LinkListControlToField1.Active := True;
+          LayoutCountry.Visible := ComboTabelas.Items[ComboTabelas.ItemIndex] = 'country';
+        end;
 
-        LinkListControlToField1.Active := True;
         ComboTabelas.Enabled := True;
         AniIndicator.Enabled := False;
         AniIndicator.Visible := False;
         labelStatus.Text := '';
-        LayoutCountry.Visible := ComboTabelas.Items[ComboTabelas.ItemIndex] = 'country';
-
       end,
 
       procedure // Erro
