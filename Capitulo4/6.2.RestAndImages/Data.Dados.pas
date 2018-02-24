@@ -5,12 +5,17 @@ interface
 uses
   System.SysUtils, System.Classes, FMX.DialogService, FMX.Surfaces, System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FMX.Graphics;
+  FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FMX.Graphics,
+  FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
+  FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, System.IOUtils;
 
 type
   TdmdDados = class(TDataModule)
-    qryDados: TFDQuery;
+    qryDadosLocais: TFDQuery;
     memDados: TFDMemTable;
+    FDConnection: TFDConnection;
+    tbCriaTabela: TFDTable;
+    procedure FDConnectionBeforeConnect(Sender: TObject);
   private
     { Private declarations }
   private
@@ -66,44 +71,70 @@ end;
 
 procedure TdmdDados.CarregaTabela(const pTabela: string; const pOk, pErro: TProc);
 begin
-  TThread.CreateAnonymousThread(
-    procedure
-    var
-      lClient: TClientModule;
-      lResultado: string;
-      lStm: TStringStream;
-    begin
-      try
-        lStm := TStringStream.Create;
-        lClient := TClientModule.Create(nil);
+  qryDadosLocais.Open('SELECT name FROM sqlite_master WHERE type=''table'' AND lower(name)=:tabela', [LowerCase(pTabela)]);
+  if qryDadosLocais.IsEmpty then
+  begin
+    TThread.CreateAnonymousThread(
+      procedure
+      var
+        lClient: TClientModule;
+        lResultado: string;
+        lStm: TStringStream;
+      begin
         try
-          lResultado := lClient.GetDadosClient.GetTabela(pTabela);
-          lStm.WriteString(lResultado);
-          lStm.Position := 0;
+          lStm := TStringStream.Create;
+          lClient := TClientModule.Create(nil);
+          try
+            lResultado := lClient.GetDadosClient.GetTabela(pTabela);
+            lStm.WriteString(lResultado);
+            lStm.Position := 0;
 
-          TThread.Synchronize(nil,
-            procedure
-            begin
-              memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
-              pOk;
-            end);
-        finally
-          lClient.Free;
-          lStm.Free;
+            TThread.Synchronize(nil,
+              procedure
+              begin
+                memDados.LoadFromStream(lStm, TFDStorageFormat.sfJson);
+                tbCriaTabela.Close;
+                tbCriaTabela.TableName := pTabela;
+                tbCriaTabela.FieldDefs.Assign(memDados.FieldDefs);
+                tbCriaTabela.CreateTable;
+                tbCriaTabela.Open;
+                tbCriaTabela.CopyDataSet(memDados, [coRestart, coAppend]);
+                pOk;
+              end);
+          finally
+            lClient.Free;
+            lStm.Free;
+          end;
+        except
+          on E: Exception do
+          begin
+            pErro; // passar E por param
+          end;
         end;
-      except
-        on E: Exception do
-        begin
-          pErro; // passar E por param
-        end;
-      end;
-    end
-  ).Start;
+      end
+    ).Start;
+  end else begin
+    qryDadosLocais.Open('select * from ' + pTabela);
+    if qryDadosLocais.IsEmpty then
+    begin
+      // Melhor avisar com Toast, ou outros recursos, que não exigam click
+      TDialogService.ShowMessage('Nenhum registro encontrado.');
+      pOk;
+    end else begin
+      memDados.Data := qryDadosLocais.Data;
+      pOk;
+    end;
+  end;
 end;
 
 procedure TdmdDados.DeletaCountry(const pCountry: string);
 begin
   TrataRetornoCRUD(ClientModule.GetDadosClient.DeletaCountry(pCountry));
+end;
+
+procedure TdmdDados.FDConnectionBeforeConnect(Sender: TObject);
+begin
+  FDConnection.Params.Values['Database'] := System.IOUtils.TPath.GetDocumentsPath + '\dadosLocais.db';
 end;
 
 class function TdmdDados.GetInstance: TdmdDados;

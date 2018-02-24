@@ -2,9 +2,10 @@ object dmdDados: TdmdDados
   OldCreateOrder = False
   Height = 372
   Width = 564
-  object qryDados: TFDQuery
-    Left = 472
-    Top = 280
+  object qryDadosLocais: TFDQuery
+    Connection = FDConnection
+    Left = 48
+    Top = 96
   end
   object memDados: TFDMemTable
     FieldDefs = <>
@@ -19,5 +20,17 @@ object dmdDados: TdmdDados
     StoreDefs = True
     Left = 256
     Top = 152
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite')
+    BeforeConnect = FDConnectionBeforeConnect
+    Left = 48
+    Top = 32
+  end
+  object tbCriaTabela: TFDTable
+    Connection = FDConnection
+    Left = 128
+    Top = 96
   end
 end

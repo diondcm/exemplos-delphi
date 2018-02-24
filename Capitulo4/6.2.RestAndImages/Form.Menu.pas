@@ -13,10 +13,10 @@ type
     buttonImagemFromRest: TButton;
     Image1: TImage;
     buttonJSONFromRest: TButton;
-    ButtonGetClientes: TButton;
+    ButtonGetDados: TButton;
     procedure buttonImagemFromRestClick(Sender: TObject);
     procedure buttonJSONFromRestClick(Sender: TObject);
-    procedure ButtonGetClientesClick(Sender: TObject);
+    procedure ButtonGetDadosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,7 +30,7 @@ implementation
 
 {$R *.fmx}
 
-procedure TfrmMenu.ButtonGetClientesClick(Sender: TObject);
+procedure TfrmMenu.ButtonGetDadosClick(Sender: TObject);
 begin
   TfrmGetDados.GetInstance.Show;
 end;
