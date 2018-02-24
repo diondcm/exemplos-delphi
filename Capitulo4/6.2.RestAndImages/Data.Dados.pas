@@ -104,7 +104,8 @@ begin
             begin
               lUltAtualizacao := lIni.ReadDateTime('SERVER', 'ultimo_acesso', 0);
               // Sensível a regra de negócio, cuidado!
-              if (lLocalHash <> '') and ((lUltAtualizacao <> 0) and (DaysBetween(lUltAtualizacao, Now) < 5)) then
+              if (lLocalHash <> '') and
+                ((lUltAtualizacao = 0) or ((lUltAtualizacao <> 0) and (DaysBetween(lUltAtualizacao, Now) < 5))) then
               begin
                 lResultado := '{ "atualizada": "sim" }';
                 if lUltAtualizacao = 0 then

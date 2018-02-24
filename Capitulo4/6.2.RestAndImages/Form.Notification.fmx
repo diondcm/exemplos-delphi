@@ -1,0 +1,120 @@
+object frmNotifications: TfrmNotifications
+  Left = 0
+  Top = 0
+  Caption = 'Notifica'#231#245'es'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnKeyDown = FormKeyDown
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 65.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object buttonBack: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 1
+      Text = 'buttonBack'
+      OnClick = buttonBackClick
+    end
+  end
+  object gridControles: TGridPanelLayout
+    Align = Client
+    Margins.Left = 50.000000000000000000
+    Margins.Right = 50.000000000000000000
+    Margins.Bottom = 50.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 365.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = buttonNotificationAgendada
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = buttonNotificacao
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = buttonNotificacaoRepetitiva
+        Row = 2
+      end
+      item
+        Column = 0
+        Control = buttonCancelNotification
+        Row = 3
+      end>
+    RowCollection = <
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end>
+    object buttonNotificationAgendada: TButton
+      Align = Center
+      Size.Width = 238.000000000000000000
+      Size.Height = 63.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Notifica'#231#227'o Agendada'
+      OnClick = buttonNotificationAgendadaClick
+    end
+    object buttonNotificacao: TButton
+      Align = Center
+      Size.Width = 238.000000000000000000
+      Size.Height = 64.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Notifica'#231#227'o'
+      OnClick = buttonNotificacaoClick
+    end
+    object buttonNotificacaoRepetitiva: TButton
+      Align = Center
+      Size.Width = 238.000000000000000000
+      Size.Height = 64.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Notifica'#231#227'o Repetitiva'
+      OnClick = buttonNotificacaoRepetitivaClick
+    end
+    object buttonCancelNotification: TButton
+      Align = Center
+      Size.Width = 238.000000000000000000
+      Size.Height = 64.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Cancelar Notifica'#231#227'o'
+      OnClick = buttonCancelNotificationClick
+    end
+  end
+  object NotificationCenter: TNotificationCenter
+    Left = 544
+    Top = 80
+  end
+end

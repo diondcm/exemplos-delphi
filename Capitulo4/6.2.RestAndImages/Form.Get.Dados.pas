@@ -44,7 +44,7 @@ type
   private
     { Private declarations }
   private
-      class var
+    class var
       FInstance: TfrmGetDados;
   public
     class function GetInstance: TfrmGetDados;
@@ -113,21 +113,6 @@ begin
         LayoutCountry.Visible := False;
       end);
   end;
-
-//  if ComboTabelas.ItemIndex > -1 then
-//  begin
-//    LinkListControlToField1.FillHeaderFieldName := '';
-//    LinkListControlToField1.FieldName := '';
-//
-//    TdmdDados.GetInstance.CarregaTabela(ComboTabelas.Items[ComboTabelas.ItemIndex]);
-//
-//    LinkListControlToField1.FillHeaderFieldName := TdmdDados.GetInstance.memDados.Fields[0].FieldName;
-//    LinkListControlToField1.FieldName := TdmdDados.GetInstance.memDados.Fields[1].FieldName;
-//
-//    BindSourceDB.DataSet := TdmdDados.GetInstance.memDados;
-//
-//    LinkListControlToField1.Active := True;
-//  end;
 end;
 
 procedure TfrmGetDados.FormCreate(Sender: TObject);

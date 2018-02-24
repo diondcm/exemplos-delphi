@@ -1,4 +1,4 @@
-program RESTAndImages;
+program RESTAndImagesBuilder;
 
 uses
   System.StartUpCopy,
@@ -12,9 +12,7 @@ uses
   ClientModuleUnit in 'ClientModuleUnit.pas' {ClientModule: TDataModule},
   Form.Notification in 'Form.Notification.pas' {frmNotifications},
   Form.Intents in 'Form.Intents.pas' {frmIntent},
-  Classe.Intent.Email in 'Classe.Intent.Email.pas',
-  Form.ListView.WS in 'Form.ListView.WS.pas' {frmListViewWS},
-  Classe.Custom.Adapter in 'Classe.Custom.Adapter.pas';
+  Classe.Intent.Email in 'Classe.Intent.Email.pas';
 
 {$R *.res}
 
@@ -22,6 +20,5 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TClientModule, ClientModule);
-  Application.CreateForm(TfrmListViewWS, frmListViewWS);
   Application.Run;
 end.

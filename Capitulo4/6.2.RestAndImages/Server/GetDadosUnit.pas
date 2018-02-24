@@ -22,6 +22,7 @@ type
      class var FHashTabelas: THashTabela;
      class function GetHashTabelas: THashTabela;
   private
+    function GetIDTransacao: Integer;
     function TrataRowsAffected(pRows: Integer): Integer;
     class destructor Destroy;
   public
@@ -55,6 +56,11 @@ function TGetDados.AutalizaCountry(pCountryID, pCurrency: string): Integer;
 begin
   qryDados.ExecSQL('update country set currency = :pcurrency where country = :pcountry', [pCurrency, pCountryID]);
   Result := TrataRowsAffected(qryDados.RowsAffected);
+  if (Result >= 1) then
+  begin
+    Result := GetIDTransacao;
+    // GravaLog(Result);
+  end;
 end;
 
 function TGetDados.CadastraCountry(pCountry, pCurrency: string): Integer;
@@ -87,6 +93,11 @@ begin
   end;
 
   Result := FHashTabelas;
+end;
+
+function TGetDados.GetIDTransacao: Integer;
+begin
+  Result := TThread.GetTickCount;
 end;
 
 function TGetDados.GetListaTabelas: string;
