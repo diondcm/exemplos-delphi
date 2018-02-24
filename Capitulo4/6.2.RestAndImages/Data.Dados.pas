@@ -7,7 +7,7 @@ uses
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
   FireDAC.Comp.DataSet, ClientModuleUnit, FireDAC.Stan.StorageBin, FireDAC.Stan.StorageJSON, FMX.Graphics,
   FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
-  FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, System.IOUtils, System.Hash, System.IniFiles;
+  FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, System.IOUtils, System.Hash, System.IniFiles, System.DateUtils;
 
 type
   TdmdDados = class(TDataModule)
@@ -83,6 +83,7 @@ begin
       lStm: TStringStream;
       lIni: TIniFile;
       lLocalHash: string;
+      lUltAtualizacao: TDateTime;
     begin
       try
         lIni := TIniFile.Create(GetArqIni);
@@ -96,7 +97,28 @@ begin
             lLocalHash := '';
           end;
 
-          lResultado := lClient.GetDadosClient.GetTabela(pTabela, lLocalHash);
+          try
+            lResultado := lClient.GetDadosClient.GetTabela(pTabela, lLocalHash);
+          except
+            on E: Exception do
+            begin
+              lUltAtualizacao := lIni.ReadDateTime('SERVER', 'ultimo_acesso', 0);
+              // Sensível a regra de negócio, cuidado!
+              if (lLocalHash <> '') and ((lUltAtualizacao <> 0) and (DaysBetween(lUltAtualizacao, Now) < 5)) then
+              begin
+                lResultado := '{ "atualizada": "sim" }';
+                if lUltAtualizacao = 0 then
+                  lIni.WriteDateTime('SERVER', 'ultimo_acesso', Now);
+              end else begin
+                TThread.Synchronize(nil,
+                  procedure
+                  begin
+                    raise Exception.Create('Erro ao contactar servido: ' + E.Message);
+                  end);
+              end;
+            end;
+          end;
+
           if Pos('atualizada', lResultado) > 0 then
           begin
             TThread.Synchronize(nil,
