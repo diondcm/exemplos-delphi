@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{841FA767-5053-4A96-98D1-FA77B043C7F9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TiposEObjetos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TipoEObjetosVCL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PalavrasReservadas.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TiposEObjetos">
+        <MSBuild Projects="TiposEObjetos.dproj"/>
+    </Target>
+    <Target Name="TiposEObjetos:Clean">
+        <MSBuild Projects="TiposEObjetos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TiposEObjetos:Make">
+        <MSBuild Projects="TiposEObjetos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TipoEObjetosVCL">
+        <MSBuild Projects="TipoEObjetosVCL.dproj"/>
+    </Target>
+    <Target Name="TipoEObjetosVCL:Clean">
+        <MSBuild Projects="TipoEObjetosVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TipoEObjetosVCL:Make">
+        <MSBuild Projects="TipoEObjetosVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PalavrasReservadas">
+        <MSBuild Projects="PalavrasReservadas.dproj"/>
+    </Target>
+    <Target Name="PalavrasReservadas:Clean">
+        <MSBuild Projects="PalavrasReservadas.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PalavrasReservadas:Make">
+        <MSBuild Projects="PalavrasReservadas.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TiposEObjetos;TipoEObjetosVCL;PalavrasReservadas"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TiposEObjetos:Clean;TipoEObjetosVCL:Clean;PalavrasReservadas:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TiposEObjetos:Make;TipoEObjetosVCL:Make;PalavrasReservadas:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

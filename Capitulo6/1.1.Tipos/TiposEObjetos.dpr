@@ -5,7 +5,12 @@
 {$R *.res}
 
 uses
-  System.SysUtils, WinApi.Windows, System.Classes, System.IOUtils, System.Variants;
+  System.SysUtils,
+  WinApi.Windows,
+  System.Classes,
+  System.IOUtils,
+  System.Variants,
+  Classes.Teste in 'Classes.Teste.pas';
 
 type
   TArr = array [0..4] of string;
@@ -24,6 +29,16 @@ type
   end;
 
 type
+  TMinhaCLasse = class
+    class function RetornaArray: TArr;
+  end;
+
+class function TMinhaCLasse.RetornaArray: TArr;
+begin
+end;
+
+
+type
    TDateRec = record
      Year: Integer;
      Month: (Jan, Feb, Mar, Apr, May, Jun,
@@ -32,35 +47,78 @@ type
    end;
 
 
+//var
+//  //lValor: Currency; // 4 casas
+//  lValor: Double; // 名
+//  lAnsi: Ansistring;
+//  名, i: Integer;
+//
+//  lArr: array [0..0] of array [0..40] of string;
+//  lArrP: packed array of char;
+//
+//  Arq: File of TDateRec;
+//  Arq2: TextFile;
+//  lStl: TStringList;
+////  lBol: Boolean;
+//
+//  lData: TDateRec;
+//  lI: IEnumerator;
+//
+////  n: Variant;
+//  lStr: string;
+//  lStr2: string[30];
+//  lVarD:  TVarData;
+//  lp: TPoint;
+//  lVar: Variant;
+//  lPoint: Pointer;
+//  lPIntPoint: PInteger;
+//  lPPIntPoint: ^PInteger;
+//  lIntPoint: Integer;
+
 var
-  //lValor: Currency; // 4 casas
-  lValor: Double; // 名
-  lAnsi: Ansistring;
-  名, i: Integer;
+  strict: Integer;
+  lOla: OlaMundo;
+  lOla2: OlaMundo2;
 
-  lArr: array [0..0] of array [0..40] of string;
-  lArrP: packed array of char;
-
-  Arq: File of TDateRec;
-  Arq2: TextFile;
-  lStl: TStringList;
-//  lBol: Boolean;
-
-  lData: TDateRec;
-  lI: IEnumerator;
-
-//  n: Variant;
-  lStr: string;
-  lStr2: string[30];
-  lVarD:  TVarData;
-  lp: TPoint;
-  lVar: Variant;
 begin
+  ReportMemoryLeaksOnShutdown := True;
   try
-    lVar := null;
+
+    strict := 9;
+    lOla2 := OlaMundo2.Create;
+    lOla := OlaMundo.Create;
+    lOla.Free;
+
+//    OlaMundo.
+
+
+//    OlaMundo.Teste2;
+
+//    OlaMundo.parametros
+    Writeln(SizeOf(OlaMundo));
+
+//    lPoint := nil;
+//    lPoint := Pointer(0);
+
+    //lPIntPoint^ := 5;
+
+//    lPoint := @lIntPoint; //Pointer($43243);
+//    Integer(lPoint^) := 5;
+//    lPIntPoint := @lIntPoint;
+//    lPIntPoint^ := 5;
+//    Writeln(lIntPoint);
+
+//    lPIntPoint := @lIntPoint;
+//    lPPIntPoint := @lPIntPoint;
+//    lPPIntPoint^^ := 7;
+//    Writeln(lIntPoint);
+
+//    Inc(lPoint, Sizeof(Integer));
+
+//    lVar := null;
 //    lvar := Integer(Pointer(TStringList.Create));
-    lvar := lData;
-    lvar := lI;
+//    lvar := lData;
+//    lvar := lI;
 
     // VarIsClear()
 //    VarIsEmpty() // ''
@@ -68,11 +126,8 @@ begin
 //    VarToStr(lVar);
 //    lInt := lVar;
 
-
-
-
-    名 := 1;
-    lData.Year := 2018;
+//    名 := 1;
+//    lData.Year := 2018;
     //i.ToString
 
     //RetornaArray
@@ -80,20 +135,20 @@ begin
 //    BoolToStr()
 //    S_OK
 
-    lStr:= 'teste名 char' + CHar(67) + #66;
-    Writeln(lStr + lStr2[0]);
-    Writeln(Ord('F'));
-    lAnsi := 'Outro Teste';
-    Write(lAnsi[1] + ' - '); // lAnsi[0] => Erro
-    Writeln(SizeOf(lAnsi[1]));
+//    lStr:= 'teste名 char' + CHar(67) + #66;
+//    Writeln(lStr + lStr2[0]);
+//    Writeln(Ord('F'));
+//    lAnsi := 'Outro Teste';
+//    Write(lAnsi[1] + ' - '); // lAnsi[0] => Erro
+//    Writeln(SizeOf(lAnsi[1]));
 
-    Write(lStr[1] + ' - ');  // lStr[0] => Erro
-    Writeln(SizeOf(lStr[1]));
+//    Write(lStr[1] + ' - ');  // lStr[0] => Erro
+//    Writeln(SizeOf(lStr[1]));
 
 //    lStl.LoadFromFile();
 
-    Readln(Arq2, lStr);
-    Write(Arq, lData);
+//    Readln(Arq2, lStr);
+//    Write(Arq, lData);
 
 
 //    string(PCHar[0])[1]
@@ -103,12 +158,12 @@ begin
     // for i := 1 to Length(lStr) + SizeOf(Char){ 4 antes = 2} do
 
 
-    lValor := 0.00001;
-    if (lValor - 0.00001) > 0.0001 then
-    begin
-      Write('Teste');
-      Writeln('Outro teste');
-    end;
+//    lValor := 0.00001;
+//    if (lValor - 0.00001) > 0.0001 then
+//    begin
+//      Write('Teste');
+//      Writeln('Outro teste');
+//    end;
 
 
 
