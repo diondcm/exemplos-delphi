@@ -25,6 +25,7 @@ type
     Button3: TButton;
     procedure Button1Click(Sender: TObject);
     procedure buttonIdHttpClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,9 +39,30 @@ implementation
 
 {$R *.fmx}
 
+uses ClientModuleUnit1;
+
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   WebBrowser1.Navigate(Edit1.Text);
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+var
+  lTeste: string;
+begin
+  try
+    Memo1.Lines.Clear;
+    ClientModule1.DSRestConnection1.Host := StringReplace(StringReplace(Edit1.Text, 'http://', '', []), ':8080/', '', []);
+    lTeste := ClientModule1.ServerMethods1Client.EchoString('teste');
+    Memo1.Lines.Add(lTeste);
+  except
+    on E: Exception do
+    begin
+      Memo1.Lines.Add('Erro ao acessar ipv6:');
+      Memo1.Lines.Add(E.Message);
+    end;
+  end;
+
 end;
 
 procedure TForm1.buttonIdHttpClick(Sender: TObject);
