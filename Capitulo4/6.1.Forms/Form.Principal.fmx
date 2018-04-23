@@ -1,0 +1,125 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Forms'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object GridPanelLayout: TGridPanelLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = editNome
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = buttonMultiView
+        Row = 4
+      end
+      item
+        Column = 0
+        Control = buttonTabs
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = buttonForms
+        Row = 2
+      end
+      item
+        Column = 0
+        Control = buttonFrames
+        Row = 3
+      end>
+    RowCollection = <
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        SizeStyle = Auto
+      end
+      item
+        SizeStyle = Auto
+      end>
+    object editNome: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 2
+      Size.Width = 236.000000000000000000
+      Size.Height = 46.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Informe seu nome'
+      object buttonOla: TButton
+        Align = Right
+        Position.X = 158.000000000000000000
+        Size.Width = 78.000000000000000000
+        Size.Height = 46.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Ol'#225
+        OnClick = buttonOlaClick
+      end
+    end
+    object buttonMultiView: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Multi View'
+      OnClick = buttonMultiViewClick
+    end
+    object buttonTabs: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Tabs'
+      OnClick = buttonTabsClick
+    end
+    object buttonForms: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Forms'
+      OnClick = buttonFormsClick
+    end
+    object buttonFrames: TButton
+      Align = Center
+      Size.Width = 230.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Frames'
+      OnClick = buttonFramesClick
+    end
+  end
+end

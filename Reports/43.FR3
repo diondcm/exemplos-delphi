@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" EngineOptions.MaxMemSize="10000000" IniFile="\Software\FastReport" PreviewOptions.Buttons="2047" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37875,6208219213" ReportOptions.Description.Text="Demonstrates simple script that enables or disables some controls depending on state of another controls." ReportOptions.LastChange="38013,7146677083" ScriptLanguage="PascalScript" ScriptText.Text="procedure CheckBox1OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  Edit1.Enabled := CheckBox1.Checked;&#13;&#10;end;&#13;&#10;&#13;&#10;procedure CheckBox2OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  Edit2.Enabled := CheckBox2.Checked;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730E00095661726961626C65730E00055374796C650E00">
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Height="165" Left="265" Top="150" Width="300">
+    <TfrxButtonControl Name="Button1" Left="68" Top="96" Width="75" Height="25" Caption="OK" ModalResult="1"/>
+    <TfrxButtonControl Name="Button2" Left="148" Top="96" Width="75" Height="25" Caption="Cancel" ModalResult="2"/>
+    <TfrxCheckBoxControl Name="CheckBox1" Left="8" Top="12" Width="97" Height="17" Alignment="taRightJustify" Caption="Enable Edit1" Checked="True" OnClick="CheckBox1OnClick"/>
+    <TfrxCheckBoxControl Name="CheckBox2" Left="8" Top="48" Width="97" Height="17" Alignment="taRightJustify" Caption="Enable Edit2" Checked="True" OnClick="CheckBox2OnClick"/>
+    <TfrxEditControl Name="Edit1" Left="120" Top="12" Width="121" Height="21" Color="-2147483643" MaxLength="0" PasswordChar="0" Text="Edit1"/>
+    <TfrxEditControl Name="Edit2" Left="120" Top="48" Width="121" Height="21" Color="-2147483643" MaxLength="0" PasswordChar="0" Text="Edit2"/>
+  </TfrxDialogPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="Memo1" Left="75,5906" Top="37,7953" Width="566,9295" Height="37,7953" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" Memo.Text="THE REPORT" ParentFont="False"/>
+  </TfrxReportPage>
+</TfrxReport>

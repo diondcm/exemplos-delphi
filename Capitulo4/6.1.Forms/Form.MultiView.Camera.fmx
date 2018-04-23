@@ -1,0 +1,140 @@
+inherited frmCamera: TfrmCamera
+  Caption = 'frmBaseMultiView1'
+  DesignerMasterStyle = 3
+  inherited LayoutClient: TLayout
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object buttonTirarFoto: TButton
+        Action = TakePhotoFromCameraAction
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'cameratoolbutton'
+        TabOrder = 0
+        Visible = True
+      end
+      object buttonSelecionarDaGaleria: TButton
+        Action = TakePhotoFromLibraryAction
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 48.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'searchtoolbutton'
+        TabOrder = 1
+        Visible = True
+      end
+      object buttonCompartilhar: TButton
+        Action = ShowShareSheetAction
+        Align = Left
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 96.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'actiontoolbutton'
+        TabOrder = 2
+        Visible = True
+      end
+      object buttonDelete: TButton
+        Action = actionDeletarFoto
+        Align = Right
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 496.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'trashtoolbutton'
+        TabOrder = 3
+        Visible = True
+      end
+      object buttonSalvarUltimaFoto: TButton
+        Action = actionSalvarUltimaFoto
+        Align = Right
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 544.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'donetoolbutton'
+        TabOrder = 4
+        Visible = True
+      end
+      object buttonCarregarFoto: TButton
+        Action = actionCarregarFoto
+        Align = Right
+        Enabled = True
+        ImageIndex = -1
+        Position.X = 592.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'organizetoolbutton'
+        TabOrder = 5
+        Visible = True
+      end
+      object labelTitulo: TLabel
+        Align = Client
+        StyledSettings = [Family, FontColor]
+        Size.Width = 352.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = 'C'#226'mera'
+      end
+    end
+    object ImageResultado: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 432.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object ActionList: TActionList
+    Left = 320
+    Top = 64
+    object TakePhotoFromCameraAction: TTakePhotoFromCameraAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromCameraActionDidFinishTaking
+    end
+    object TakePhotoFromLibraryAction: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryActionDidFinishTaking
+    end
+    object ShowShareSheetAction: TShowShareSheetAction
+      Category = 'Media Library'
+      OnBeforeExecute = ShowShareSheetActionBeforeExecute
+    end
+    object actionCarregarFoto: TAction
+      Category = 'ArqFoto'
+      Text = 'Carregar Foto'
+      OnExecute = actionCarregarFotoExecute
+    end
+    object actionSalvarUltimaFoto: TAction
+      Category = 'ArqFoto'
+      Text = 'Salvar Foto'
+      OnExecute = actionSalvarUltimaFotoExecute
+    end
+    object actionDeletarFoto: TAction
+      Category = 'ArqFoto'
+      Text = 'Deletar Foto'
+      OnExecute = actionDeletarFotoExecute
+    end
+  end
+end

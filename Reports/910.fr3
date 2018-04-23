@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inherited ParentReport="BasicReport.fr3" ReportOptions.CreateDate="41800,4038565856" ReportOptions.LastChange="41829,0244302199" ScriptText.Text="&#13;&#10;procedure Memo2OnBeforePrint_inherited(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  TfrxMemoView(Sender).Text := 'Changed text from child report event';&#13;&#10;  //call parent script event                                                           &#13;&#10;  Memo2OnBeforePrint(Sender);                          &#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end.&#13;&#10;">
+  <Datasets>
+    <item DataSet="ReportData.CountryDS" DataSetName="Country"/>
+  </Datasets>
+  <Styles>
+    <item InheritedName="NewStyle" Color="65280"/>
+  </Styles>
+  <inherited Name="Data"/>
+  <inherited Name="Page1" PaperSize="9">
+    <inherited Name="ReportTitle1">
+      <inherited Name="Memo2" OnBeforePrint="Memo2OnBeforePrint_inherited" Text="Report Title Inherited"/>
+    </inherited>
+    <inherited Name="PageFooter1" Height="52,91342" Top="241,88992">
+      <inherited Name="Page" Height="41,57483"/>
+    </inherited>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="52,91342" Left="0" Top="128,50402" Width="718,1107" ColumnWidth="0" ColumnGap="0" RowCount="1">
+      <TfrxMemoView Name="CountryName" Left="0" Top="3,77953" Width="404,40971" Height="41,57483" DataSet="ReportData.CountryDS" DataSetName="Country" Font.Charset="1" Font.Color="8421504" Font.Height="-33" Font.Name="Arial" Font.Style="0" Frame.Style="fsDouble" Frame.Typ="15" Fill.BackColor="65280" HAlign="haCenter" ParentFont="False" Style="NewStyle" Text="Inehrited style"/>
+    </TfrxMasterData>
+  </inherited>
+</inherited>

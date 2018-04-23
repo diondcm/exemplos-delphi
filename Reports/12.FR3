@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37871,9975287269" ReportOptions.Description.Text="This report contains two pages (title and list). You can have several pages in your report. Each page can contains one report and can have own paper settings (size, margins, orientation and etc)." ReportOptions.LastChange="38842,9416201968" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B00008446174617365747301010C3900000020446174615365743D225265706F7274446174612E437573746F6D65727344532220446174615365744E616D653D22437573746F6D657273220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" PrintOnPreviousPage="True" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="Memo1" Left="75,5906" Top="336,37817" Width="604,7248" Height="151,1812" Font.Charset="1" Font.Color="0" Font.Height="-35" Font.Name="Tahoma" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Our customers"/>
+  </TfrxReportPage>
+  <TfrxReportPage Name="Page2" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band1" Height="26,45671" Left="0" Top="18,89765" Width="755,906">
+      <TfrxMemoView Name="Memo2" Left="0" Top="3,77953" Width="718,1107" Height="18,89765" Color="8421504" Font.Charset="1" Font.Color="16777215" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="Customers"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="Band2" Height="30,23624" Left="0" Top="79,37013" Width="755,906">
+      <TfrxMemoView Name="Memo4" Left="3,77953" Top="7,55906" Width="196,53556" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Company"/>
+      <TfrxMemoView Name="Memo5" Left="204,09462" Top="7,55906" Width="166,29932" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Address"/>
+      <TfrxMemoView Name="Memo6" Left="377,953" Top="7,55906" Width="128,50402" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Contact"/>
+      <TfrxMemoView Name="Memo7" Left="514,01608" Top="7,55906" Width="90,70872" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Phone"/>
+      <TfrxMemoView Name="Memo8" Left="612,28386" Top="7,55906" Width="102,04731" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Fax"/>
+    </TfrxPageHeader>
+    <TfrxPageFooter Name="Band3" Height="26,45671" Left="0" Top="275,90569" Width="755,906">
+      <TfrxMemoView Name="Memo3" Left="3,77953" Top="7,55905999999999" Width="710,55164" Height="15,11812" Color="16777215" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="4" Frame.Width="2" HAlign="haRight" ParentFont="False" Text="Page [Page#] of [TotalPages#]"/>
+    </TfrxPageFooter>
+    <TfrxMasterData Name="Band4" Height="22,67718" Left="0" Top="181,41744" Width="755,906" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="ReportData.CustomersDS" DataSetName="Customers" RowCount="0">
+      <TfrxMemoView Name="Memo9" Left="3,77953" Top="0" Width="196,53556" Height="18,89765" DataField="Company" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Company&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="204,09462" Top="0" Width="166,29932" Height="18,89765" DataField="Addr1" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Addr1&#34;]"/>
+      <TfrxMemoView Name="Memo11" Left="377,953" Top="0" Width="128,50402" Height="18,89765" DataField="Contact" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Contact&#34;]"/>
+      <TfrxMemoView Name="Memo12" Left="514,01608" Top="0" Width="90,70872" Height="18,89765" DataField="Phone" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;Phone&#34;]"/>
+      <TfrxMemoView Name="Memo13" Left="612,28386" Top="0" Width="102,04731" Height="18,89765" DataField="FAX" DataSet="ReportData.CustomersDS" DataSetName="Customers" Text="[Customers.&#34;FAX&#34;]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

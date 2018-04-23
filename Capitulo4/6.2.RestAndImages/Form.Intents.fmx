@@ -1,0 +1,149 @@
+object frmIntent: TfrmIntent
+  Left = 0
+  Top = 0
+  Caption = 'Intents'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 65.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object buttonVoltar: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = 'buttonVoltar'
+      OnClick = buttonVoltarClick
+    end
+  end
+  object gridControles: TGridPanelLayout
+    Align = Client
+    Margins.Left = 20.000000000000000000
+    Margins.Right = 20.000000000000000000
+    Margins.Bottom = 20.000000000000000000
+    Size.Width = 600.000000000000000000
+    Size.Height = 395.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = editDestinatario
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = editAssunto
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = editTexto
+        Row = 2
+      end
+      item
+        Column = 0
+        Control = Layout1
+        Row = 3
+      end>
+    RowCollection = <
+      item
+        Value = 15.000000000000000000
+      end
+      item
+        Value = 15.000000000000000000
+      end
+      item
+        Value = 30.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end>
+    object editDestinatario: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = VertCenter
+      TabOrder = 2
+      TextSettings.HorzAlign = Center
+      Position.X = 30.000000000000000000
+      Position.Y = 13.000000000000000000
+      Margins.Left = 30.000000000000000000
+      Margins.Right = 30.000000000000000000
+      Size.Width = 540.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Destinat'#225'rio'
+    end
+    object editAssunto: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = VertCenter
+      TabOrder = 1
+      TextSettings.HorzAlign = Center
+      Position.X = 30.000000000000000000
+      Position.Y = 72.250000000000000000
+      Margins.Left = 30.000000000000000000
+      Margins.Right = 30.000000000000000000
+      Size.Width = 540.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Assunto'
+    end
+    object editTexto: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = VertCenter
+      TabOrder = 0
+      TextSettings.HorzAlign = Center
+      Position.X = 30.000000000000000000
+      Position.Y = 145.500000000000000000
+      Margins.Left = 30.000000000000000000
+      Margins.Right = 30.000000000000000000
+      Size.Width = 540.000000000000000000
+      Size.Height = 64.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Texto'
+    end
+    object Layout1: TLayout
+      Align = Center
+      Size.Width = 397.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object buttonEnvia: TButton
+        Align = Left
+        Size.Width = 80.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'donetoolbutton'
+        TabOrder = 0
+        Text = 'Enviar'
+        OnClick = buttonEnviaClick
+      end
+      object buttonCancelar: TButton
+        Align = Right
+        Position.X = 317.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'listitemdeletebutton'
+        TabOrder = 1
+        Text = 'Cancelar'
+        OnClick = buttonCancelarClick
+      end
+    end
+  end
+end

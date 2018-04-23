@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inherited ParentReport="90.fr3" PreviewOptions.DoubleBuffered="False" ReportOptions.Description.Text="This report is based on 90.fr3 report file. To create inherited report, go &#34;File|New...&#34; menu, select the &#34;Templates&#34; tab, select the base report and check the &#34;Inherit the report&#34; checkbox." ReportOptions.LastChange="39018,8378871875" PropData="044C656674026003546F700370010844617461736574730100095661726961626C65730100055374796C650100">
+  <inherited Name="Data"/>
+  <inherited Name="Page1">
+    <inherited Name="ReportTitle1">
+      <inherited Name="Memo2" Left="143,62214" Width="207,87415"/>
+    </inherited>
+    <inherited Name="PageFooter1" Top="185,19697">
+      <inherited Name="Memo3" Left="143,62214" Width="207,87415"/>
+    </inherited>
+    <inherited Name="Memo1"/>
+    <TfrxMasterData Name="MasterData1" Height="22,67718" Left="0" Top="102,04731" Width="718,1107" ColumnWidth="0" ColumnGap="0" RowCount="0">
+      <TfrxMemoView Name="Memo4" Left="143,62214" Top="0" Width="207,87415" Height="22,67718" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="-2147483640" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Width="2" ParentFont="False" Text="this report's object"/>
+    </TfrxMasterData>
+  </inherited>
+</inherited>

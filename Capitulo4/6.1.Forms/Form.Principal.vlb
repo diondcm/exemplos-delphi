@@ -1,0 +1,15 @@
+﻿[GridPanelLayout]
+Coordinates=10,71,96,33
+
+[buttonTabs]
+Coordinates=73,10,70,51
+
+[editNome]
+Coordinates=153,10,61,51
+
+[buttonMultiView]
+Coordinates=224,10,62,51
+
+[buttonForms]
+Coordinates=10,10,53,51
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37871,996337662" ReportOptions.Description.Text="Demonstrates how to create Master/Detail/Detail reports. Just put on the page one MasterData band and two DetailData bands and connect each of them to the appropriate dataset. Of course, you can create Master/Master, Master/Detail/Detail/Detail and other reports with the same way." ReportOptions.LastChange="38842,9283153009" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730100095661726961626C657301010C14000000204E616D653D22204465736372697074696F6E2200010C35010000204E616D653D224465736372697074696F6E222056616C75653D2244656D6F6E7374726174657320686F7720746F20637265617465204D61737465722F44657461696C2F44657461696C207265706F7274732E204A75737420707574206F6E207468652070616765206F6E65204D6173746572446174612062616E6420616E642074776F2044657461696C446174612062616E647320616E6420636F6E6E6563742065616368206F66207468656D20746F2074686520617070726F70726961746520646174617365742E204F6620636F757273652C20796F752063616E20637265617465204D61737465722F4D61737465722C204D61737465722F44657461696C2F44657461696C2F44657461696C20616E64206F74686572207265706F7274732077697468207468652073616D65207761792E220000055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="Band2" Height="18,89765" Left="0" Top="18,89765" Width="755,906" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="5">
+      <TfrxMemoView Name="Memo2" Left="3,77953" Top="0" Width="710,55164" Height="18,89765" Color="128" Font.Charset="1" Font.Color="16777215" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[LINE#]. master"/>
+    </TfrxMasterData>
+    <TfrxDetailData Name="Band4" Height="22,67718" Left="0" Top="71,81107" Width="755,906" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="6">
+      <TfrxMemoView Name="Memo4" Left="3,77953" Top="0" Width="245,66945" Height="18,89765" Color="13421772" Text="[LINE#]. detail1"/>
+    </TfrxDetailData>
+    <TfrxDetailData Name="Band5" Height="41,57483" Left="0" Top="128,50402" Width="755,906" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="4">
+      <TfrxMemoView Name="Memo5" Left="3,77953" Top="0" Width="245,66945" Height="37,7953" Color="15000804" Text="[LINE#]. detail2"/>
+    </TfrxDetailData>
+  </TfrxReportPage>
+</TfrxReport>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" DotMatrixReport="False" EngineOptions.MaxMemSize="10000000" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="2047" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37875,6208219213" ReportOptions.Description.Text="Demonstrates how to pass a parameter from dialog form to the report." ReportOptions.LastChange="38344,7227262268" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" BorderStyle="bsDialog" Height="139" Left="265" Top="150" Width="300">
+    <TfrxButtonControl Name="Button1" Left="68" Top="64" Width="75" Height="25" Caption="OK" ModalResult="1"/>
+    <TfrxButtonControl Name="Button2" Left="148" Top="64" Width="75" Height="25" Caption="Cancel" ModalResult="2"/>
+    <TfrxLabelControl Name="Label1" Left="12" Top="12" Width="95" Height="13" Caption="Print any text here:" Color="-2147483633"/>
+    <TfrxEditControl Name="Edit1" Left="112" Top="8" Width="169" Height="21" Color="-2147483643" MaxLength="0" PasswordChar="0" Text=" "/>
+    <TfrxLabelControl Name="Label2" Left="112" Top="32" Width="170" Height="13" Caption="it will be displayed in the report title" Color="-2147483633"/>
+  </TfrxDialogPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="Memo1" Left="75,5906" Top="37,7953" Width="566,9295" Height="45,35436" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" Memo.Text="The text you've entered:&#13;&#10;[Edit1.Text]" ParentFont="False"/>
+  </TfrxReportPage>
+</TfrxReport>

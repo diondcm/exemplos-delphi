@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" DotMatrixReport="True" EngineOptions.MaxMemSize="10000000" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="2047" PreviewOptions.DoubleBuffered="False" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38064,0169684028" ReportOptions.Description.Text="Demonstrates dot-matrix functionality." ReportOptions.LastChange="38078,9322686343" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730E01074461746153657407105265706F7274446174612E42696F44530B446174615365744E616D65060342696F0000095661726961626C65730E00055374796C650E00">
+  <TfrxDMPPage Name="Page1" PaperWidth="200" PaperHeight="280" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="0" BottomMargin="3,8" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="" FontStyle="0" FontType="fsxRegular">
+    <TfrxReportTitle Name="ReportTitle1" Height="18,1052" Left="0" Top="18,1052" Width="755,906">
+      <TfrxDMPMemoView Name="DMPMemo1" Align="baWidth" Left="0" Top="0" Width="758,4" Height="18,1052" FontStyle="3" HAlign="haCenter" Memo.Text="Fish list" ParentFont="False" VAlign="vaCenter"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" Height="162,9468" Left="0" Top="72,4208" Width="755,906" ColumnWidth="0" ColumnGap="0" DataSet="ReportData.BioDS" DataSetName="Bio" RowCount="0" Stretched="True">
+      <TfrxDMPMemoView Name="DMPMemo5" Left="9,6" Top="18,1052" Width="115,2" Height="18,1052" FontStyle="1" Memo.Text="Species No" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo6" Left="9,6" Top="36,2104" Width="115,2" Height="18,1052" FontStyle="1" Memo.Text="Category" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo7" Left="9,6" Top="54,3156" Width="115,2" Height="18,1052" FontStyle="1" Memo.Text="Common Name" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo8" Left="9,6" Top="72,4208" Width="115,2" Height="18,1052" FontStyle="1" Memo.Text="Length (cm)" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo9" Left="134,4" Top="18,1052" Width="76,8" Height="18,1052" DataField="Species No" DataSet="ReportData.BioDS" DataSetName="Bio" FontStyle="0" Memo.Text="90310" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo10" Left="134,4" Top="36,2104" Width="115,2" Height="18,1052" DataField="Category" DataSet="ReportData.BioDS" DataSetName="Bio" FontStyle="0" Memo.Text="Smelt" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo11" Left="134,4" Top="54,3156" Width="240" Height="18,1052" DataField="Common Name" DataSet="ReportData.BioDS" DataSetName="Bio" FontStyle="0" Memo.Text="Surf Smelt" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo12" Left="134,4" Top="72,4208" Width="76,8" Height="18,1052" DataField="Length (cm)" DataSet="ReportData.BioDS" DataSetName="Bio" FontStyle="0" Memo.Text="25" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo13" Left="9,6" Top="144,8416" Width="729,6" Height="18,1052" StretchMode="smActualHeight" DataField="Notes" DataSet="ReportData.BioDS" DataSetName="Bio" FontStyle="32" Memo.Text="(MEMO)" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo14" Left="9,6" Top="108,6312" Width="124,8" Height="18,1052" FontStyle="5" Memo.Text="Description:" ParentFont="False"/>
+      <TfrxDMPLineView Name="DMPLine1" Left="14,4" Top="9,0526" Width="720" Height="0"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" Height="18,1052" Left="0" Top="271,578" Width="755,906">
+      <TfrxDMPMemoView Name="DMPMemo2" Align="baWidth" Left="0" Top="0" Width="758,4" Height="0" FontStyle="0" Memo.Text="" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo3" Left="9,6" Top="0" Width="124,8" Height="18,1052" AutoWidth="True" FontStyle="0" Memo.Text="[Date] [Time]" ParentFont="False"/>
+      <TfrxDMPMemoView Name="DMPMemo4" Left="652,8" Top="0" Width="86,4" Height="18,1052" FontStyle="0" HAlign="haRight" Memo.Text="Page [Page#]" ParentFont="False"/>
+    </TfrxPageFooter>
+  </TfrxDMPPage>
+</TfrxReport>

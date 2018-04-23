@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37871,9953986921" ReportOptions.Description.Text="Demonstrates how to create simple list report with an internal table." ReportOptions.LastChange="38843,0161078704" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B00008446174617365747301010C3500000020446174615365743D224244455461626C65312220446174615365744E616D653D22496E7465726E616C20437573746F6D657273220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" Columns="1" ColumnWidth="210" ColumnPositions.Text="0" PrintOnPreviousPage="True" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band1" Height="26,45671" Left="0" Top="18,89765" Width="755,906">
+      <TfrxMemoView Name="Memo1" Left="7,55906" Top="3,77953" Width="740,78788" Height="18,89765" Color="8421504" Font.Charset="1" Font.Color="16777215" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaBottom" Text="Customers"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="Band2" Height="34,01577" Left="0" Top="79,37013" Width="755,906">
+      <TfrxMemoView Name="Memo3" Left="7,55906" Top="3,77952999999999" Width="192,75603" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Company"/>
+      <TfrxMemoView Name="Memo4" Left="207,87415" Top="3,77952999999999" Width="162,51979" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Address"/>
+      <TfrxMemoView Name="Memo5" Left="377,953" Top="3,77952999999999" Width="128,50402" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Contact"/>
+      <TfrxMemoView Name="Memo6" Left="514,01608" Top="3,77952999999999" Width="90,70872" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Phone"/>
+      <TfrxMemoView Name="Memo7" Left="612,28386" Top="3,77952999999999" Width="102,04731" Height="18,89765" Color="16777215" Font.Charset="1" Font.Color="128" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" Text="Fax"/>
+    </TfrxPageHeader>
+    <TfrxPageFooter Name="Band3" Height="26,45671" Left="0" Top="279,68522" Width="755,906">
+      <TfrxMemoView Name="Memo2" Left="7,55906" Top="7,55905999999999" Width="702,99258" Height="15,11812" Color="16777215" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="4" Frame.Width="2" HAlign="haRight" ParentFont="False" Text="Page [Page#] of [TotalPages#]"/>
+    </TfrxPageFooter>
+    <TfrxMasterData Name="Band4" Height="22,67718" Left="0" Top="185,19697" Width="755,906" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="BDETable1" DataSetName="Internal Customers" RowCount="0">
+      <TfrxMemoView Name="Memo13" Left="3,77953" Top="0" Width="710,55164" Height="18,89765" DataSet="BDETable1" DataSetName="Internal Customers" Highlight.Font.Charset="1" Highlight.Font.Color="-370606080" Highlight.Font.Height="-13" Highlight.Font.Name="Arial" Highlight.Font.Style="0" Highlight.Color="15790320" Highlight.Condition="&#60;Line#&#62; mod 2" WordWrap="False" Text=""/>
+      <TfrxMemoView Name="Memo8" Left="7,55906" Top="0" Width="200,31509" Height="18,89765" DataField="Company" DataSet="BDETable1" DataSetName="Internal Customers" Text="[Internal Customers.&#34;Company&#34;]"/>
+      <TfrxMemoView Name="Memo9" Left="207,87415" Top="0" Width="170,07885" Height="18,89765" DataField="Addr1" DataSet="BDETable1" DataSetName="Internal Customers" Text="[Internal Customers.&#34;Addr1&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="377,953" Top="0" Width="136,06308" Height="18,89765" DataField="Contact" DataSet="BDETable1" DataSetName="Internal Customers" Text="[Internal Customers.&#34;Contact&#34;]"/>
+      <TfrxMemoView Name="Memo11" Left="514,01608" Top="0" Width="98,26778" Height="18,89765" DataField="Phone" DataSet="BDETable1" DataSetName="Internal Customers" Text="[Internal Customers.&#34;Phone&#34;]"/>
+      <TfrxMemoView Name="Memo12" Left="612,28386" Top="0" Width="94,48825" Height="18,89765" DataField="FAX" DataSet="BDETable1" DataSetName="Internal Customers" Text="[Internal Customers.&#34;FAX&#34;]"/>
+    </TfrxMasterData>
+    <TfrxADOTable Name="BDETable1" UserName="Internal Customers" CloseDataSource="True" FieldAliases.Text="CustNo=Cust No&#13;&#10;Company=Company&#13;&#10;Addr1=Addr1&#13;&#10;Addr2=Addr2&#13;&#10;City=City&#13;&#10;State=State&#13;&#10;Zip=Zip&#13;&#10;Country=Country&#13;&#10;Phone=Phone&#13;&#10;FAX=FAX&#13;&#10;TaxRate=Tax Rate&#13;&#10;Contact=Contact&#13;&#10;LastInvoiceDate=Last Invoice Date" TableName="customer" IndexName="ByCompany" IndexFieldNames="Company"/>
+  </TfrxReportPage>
+</TfrxReport>

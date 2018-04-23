@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Name="" DotMatrixReport="False" EngineOptions.MaxMemSize="10000000" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="2047" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37875,6208219213" ReportOptions.Description.Text="Demonstrates how to add a dialog form to the report.&#13;&#10;If you press OK button you will see the report. Otherwise report will be cancelled." ReportOptions.LastChange="38344,7228706366" ScriptLanguage="PascalScript" ScriptText.Text="procedure Label2OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403880003546F7003B0000844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" BorderStyle="bsDialog" Height="139" Left="265" Top="150" Width="300">
+    <TfrxButtonControl Name="Button1" Left="68" Top="64" Width="75" Height="25" Caption="OK" ModalResult="1"/>
+    <TfrxLabelControl Name="Label1" Left="104" Top="28" Width="84" Height="13" Alignment="taCenter" Caption="Hello FastReport!" Color="-2147483633"/>
+    <TfrxButtonControl Name="Button2" Left="148" Top="64" Width="75" Height="25" Caption="Cancel" ModalResult="2"/>
+  </TfrxDialogPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="Memo1" Left="75,5906" Top="37,7953" Width="566,9295" Height="37,7953" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" Memo.Text="THE REPORT" ParentFont="False"/>
+  </TfrxReportPage>
+</TfrxReport>
