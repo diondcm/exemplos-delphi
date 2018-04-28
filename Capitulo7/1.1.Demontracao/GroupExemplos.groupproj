@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{90733275-BC4A-42B0-962B-920DE08FB46D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Demontracao.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ExemplosETipos.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Demontracao">
+        <MSBuild Projects="Demontracao.dproj"/>
+    </Target>
+    <Target Name="Demontracao:Clean">
+        <MSBuild Projects="Demontracao.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Demontracao:Make">
+        <MSBuild Projects="Demontracao.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ExemplosETipos">
+        <MSBuild Projects="ExemplosETipos.dproj"/>
+    </Target>
+    <Target Name="ExemplosETipos:Clean">
+        <MSBuild Projects="ExemplosETipos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExemplosETipos:Make">
+        <MSBuild Projects="ExemplosETipos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Demontracao;ExemplosETipos"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Demontracao:Clean;ExemplosETipos:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Demontracao:Make;ExemplosETipos:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
