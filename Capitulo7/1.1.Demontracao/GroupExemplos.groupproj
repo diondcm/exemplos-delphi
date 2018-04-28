@@ -9,6 +9,9 @@
         <Projects Include="ExemplosETipos.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Server\Server.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="ExemplosETipos:Make">
         <MSBuild Projects="ExemplosETipos.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Server">
+        <MSBuild Projects="Server\Server.dproj"/>
+    </Target>
+    <Target Name="Server:Clean">
+        <MSBuild Projects="Server\Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Server:Make">
+        <MSBuild Projects="Server\Server.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Demontracao;ExemplosETipos"/>
+        <CallTarget Targets="Demontracao;ExemplosETipos;Server"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Demontracao:Clean;ExemplosETipos:Clean"/>
+        <CallTarget Targets="Demontracao:Clean;ExemplosETipos:Clean;Server:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Demontracao:Make;ExemplosETipos:Make"/>
+        <CallTarget Targets="Demontracao:Make;ExemplosETipos:Make;Server:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
