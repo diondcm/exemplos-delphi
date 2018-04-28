@@ -19,7 +19,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 65
     Width = 524
-    Height = 349
+    Height = 302
     Align = alClient
     DataSource = dtsDados
     TabOrder = 0
@@ -37,7 +37,56 @@ object frmPrincipal: TfrmPrincipal
     DataSource = dtsDados
     Align = alTop
     TabOrder = 1
-    ExplicitTop = -6
+  end
+  object panelConversao: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 370
+    Width = 518
+    Height = 41
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 2
+    ExplicitLeft = 176
+    ExplicitTop = 200
+    ExplicitWidth = 185
+    object labelResultado: TLabel
+      AlignWithMargins = True
+      Left = 290
+      Top = 3
+      Width = 3
+      Height = 35
+      Align = alLeft
+      Layout = tlCenter
+      ExplicitHeight = 13
+    end
+    object buttonConverte: TButton
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 75
+      Height = 35
+      Align = alLeft
+      Caption = 'Converter'
+      TabOrder = 0
+      OnClick = buttonConverteClick
+      ExplicitLeft = 128
+      ExplicitHeight = 25
+    end
+    object editValor: TEdit
+      AlignWithMargins = True
+      Left = 84
+      Top = 9
+      Width = 200
+      Height = 24
+      Margins.Top = 9
+      Align = alLeft
+      Constraints.MaxHeight = 24
+      Constraints.MaxWidth = 200
+      TabOrder = 1
+      TextHint = 'Informe um valor'
+      ExplicitTop = 3
+    end
   end
   object cdsDados: TClientDataSet
     PersistDataPacket.Data = {

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.DBCtrls,
-  Datasnap.DBClient, Vcl.Grids, Vcl.DBGrids;
+  Datasnap.DBClient, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Classe.ConversorMoeda;
 
 const
   ARQ_DADOS = 'dados.xml';
@@ -18,8 +18,13 @@ type
     navigatorDados: TDBNavigator;
     cdsDadosCodigo: TIntegerField;
     cdsDadosDescricao: TStringField;
+    panelConversao: TPanel;
+    buttonConverte: TButton;
+    editValor: TEdit;
+    labelResultado: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure buttonConverteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +37,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.buttonConverteClick(Sender: TObject);
+begin
+//  labelResultado.Caption := FloatToStr(TConversorMoeda.RealParaDolar(StrToFloat(editValor.Text)));
+  labelResultado.Caption := TConversorMoeda.RealParaDolar(editValor.Text);
+end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin

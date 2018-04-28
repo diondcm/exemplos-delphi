@@ -2,7 +2,8 @@ program Demontracao;
 
 uses
   Vcl.Forms,
-  Form.Principal in 'Form.Principal.pas' {frmPrincipal};
+  Form.Principal in 'Form.Principal.pas' {frmPrincipal},
+  Classe.ConversorMoeda in 'Classe.ConversorMoeda.pas';
 
 {$R *.res}
 
