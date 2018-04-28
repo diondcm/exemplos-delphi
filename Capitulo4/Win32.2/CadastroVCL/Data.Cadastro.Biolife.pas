@@ -28,6 +28,8 @@ var
 
 implementation
 
+uses
+  Form.Principal;
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
