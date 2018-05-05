@@ -44,6 +44,14 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Cadastro Pessoa'
     TabOrder = 1
   end
+  object buttonREST: TButton
+    Left = 8
+    Top = 160
+    Width = 161
+    Height = 65
+    Action = actionREST
+    TabOrder = 2
+  end
   object ActionList1: TActionList
     Left = 368
     Top = 176
@@ -52,22 +60,13 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Cadastro Pessoa'
       OnExecute = actionCadastroPessoaExecute
     end
+    object actionREST: TAction
+      Caption = 'REST'
+      OnExecute = actionRESTExecute
+    end
   end
   object MainMenu1: TMainMenu
     Left = 328
     Top = 96
-  end
-  object ClientDataSet1: TClientDataSet
-    PersistDataPacket.Data = {
-      280000009619E0BD010000001800000001000000000003000000280005746573
-      746504000100000000000000}
-    Active = True
-    Aggregates = <>
-    Params = <>
-    Left = 256
-    Top = 160
-    object ClientDataSet1teste: TIntegerField
-      FieldName = 'teste'
-    end
   end
 end

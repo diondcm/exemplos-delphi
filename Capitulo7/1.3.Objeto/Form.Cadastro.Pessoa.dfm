@@ -3,7 +3,7 @@ object frmCadastroPessoa: TfrmCadastroPessoa
   Top = 0
   Caption = 'Cadastro de Pessoas'
   ClientHeight = 441
-  ClientWidth = 621
+  ClientWidth = 471
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,6 +12,7 @@ object frmCadastroPessoa: TfrmCadastroPessoa
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -19,29 +20,25 @@ object frmCadastroPessoa: TfrmCadastroPessoa
     AlignWithMargins = True
     Left = 3
     Top = 293
-    Width = 615
+    Width = 465
     Height = 145
     Align = alBottom
     PopupMenu = PopupMenu
     TabOrder = 0
-    ExplicitTop = 320
-    ExplicitWidth = 472
+    ExplicitWidth = 615
   end
   object panelControles: TPanel
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 615
+    Width = 465
     Height = 284
     Align = alClient
     BevelOuter = bvNone
     Caption = 'panelControles'
     ShowCaption = False
     TabOrder = 1
-    ExplicitLeft = 24
-    ExplicitTop = 22
-    ExplicitWidth = 361
-    ExplicitHeight = 225
+    ExplicitWidth = 615
     object labelNome: TLabel
       Left = 24
       Top = 24
@@ -83,19 +80,63 @@ object frmCadastroPessoa: TfrmCadastroPessoa
     object buttonSalvaPessoa: TButton
       Left = 24
       Top = 168
-      Width = 97
+      Width = 120
       Height = 49
       Caption = 'Salva Pessoa'
       TabOrder = 2
       OnClick = buttonSalvaPessoaClick
     end
+    object radioCDS: TRadioButton
+      Left = 208
+      Top = 240
+      Width = 113
+      Height = 17
+      Caption = 'Cds'
+      TabOrder = 3
+      OnClick = radioCDSClick
+    end
+    object radioMem: TRadioButton
+      Left = 344
+      Top = 240
+      Width = 113
+      Height = 17
+      Caption = 'MemTable'
+      TabOrder = 4
+      OnClick = radioMemClick
+    end
+    object ToggleSwitchSalvar: TToggleSwitch
+      Left = 24
+      Top = 248
+      Width = 107
+      Height = 20
+      StateCaptions.CaptionOn = 'Salvando'
+      StateCaptions.CaptionOff = 'N'#227'o salvar'
+      TabOrder = 5
+    end
   end
   object PopupMenu: TPopupMenu
-    Left = 328
-    Top = 208
+    Left = 248
+    Top = 176
     object ExibePessoa1: TMenuItem
       Caption = 'Exibe Pessoa'
       OnClick = ExibePessoa1Click
     end
+  end
+  object cdsPessoa: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 296
+    Top = 48
+  end
+  object memPessoa: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 392
+    Top = 48
   end
 end
