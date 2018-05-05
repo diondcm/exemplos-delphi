@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.ExtCtrls, Data.Usuario;
+  Vcl.ExtCtrls, Data.Usuario, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TfrmUsuario = class(TForm)
@@ -14,6 +14,14 @@ type
     grudUsuarios: TDBGrid;
     dtsUsuarios: TDataSource;
     timerOpen: TTimer;
+    DBNavigator1: TDBNavigator;
+    panalCadastroUsuario: TCategoryPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure timerOpenTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -38,6 +46,10 @@ end;
 procedure TfrmUsuario.FormShow(Sender: TObject);
 begin
   timerOpen.Enabled := True;
+  /// <>
+  ///
+  ///
+  ///
 end;
 
 procedure TfrmUsuario.timerOpenTimer(Sender: TObject);

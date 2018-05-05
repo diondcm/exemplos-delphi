@@ -20,5 +20,20 @@ object dmdUsuario: TdmdUsuario
       'select * from usuario')
     Left = 104
     Top = 144
+    object qryUsuarioID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object qryUsuarioNOME: TWideStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 32767
+    end
+    object qryUsuarioDATACADATRO: TDateTimeField
+      DisplayLabel = 'Data Cadastro'
+      FieldName = 'DATACADATRO'
+      Origin = 'DATACADATRO'
+    end
   end
 end

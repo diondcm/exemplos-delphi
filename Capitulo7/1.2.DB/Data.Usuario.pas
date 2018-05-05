@@ -14,6 +14,9 @@ type
   TdmdUsuario = class(TDataModule)
     FDConnection: TFDConnection;
     qryUsuario: TFDQuery;
+    qryUsuarioID: TIntegerField;
+    qryUsuarioNOME: TWideStringField;
+    qryUsuarioDATACADATRO: TDateTimeField;
     procedure FDConnectionBeforeConnect(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
   private
