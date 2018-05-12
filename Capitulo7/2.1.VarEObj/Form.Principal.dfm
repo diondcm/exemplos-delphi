@@ -53,43 +53,42 @@ object frmPrincipal: TfrmPrincipal
       ExplicitTop = 4
       ExplicitWidth = 177
     end
-    object Button1: TButton
+    object buttonLerObjGlobal: TButton
+      AlignWithMargins = True
+      Left = 3
+      Top = 102
+      Width = 179
+      Height = 43
+      Align = alTop
+      Caption = 'Obj Global - Ler'
+      TabOrder = 1
+      OnClick = buttonLerObjGlobalClick
+      ExplicitLeft = 6
+      ExplicitTop = 148
+    end
+    object buttonGlobalCreate: TButton
       AlignWithMargins = True
       Left = 3
       Top = 54
       Width = 179
-      Height = 43
+      Height = 42
       Align = alTop
-      Caption = 'Obj Global'
-      TabOrder = 1
-      OnClick = Button1Click
-    end
-    object Button2: TButton
-      Left = 24
-      Top = 103
-      Width = 75
-      Height = 25
-      Caption = 'Button2'
+      Caption = 'Global Create'
       TabOrder = 2
-      OnClick = Button2Click
+      OnClick = buttonGlobalCreateClick
+      ExplicitLeft = 6
+      ExplicitTop = 71
     end
-    object Button3: TButton
-      Left = 24
-      Top = 134
-      Width = 75
-      Height = 25
-      Caption = 'Button3'
+    object ButtonGlobalFree: TButton
+      AlignWithMargins = True
+      Left = 3
+      Top = 151
+      Width = 179
+      Height = 42
+      Align = alTop
+      Caption = 'Global Free'
       TabOrder = 3
-      OnClick = Button3Click
-    end
-    object Button4: TButton
-      Left = 56
-      Top = 232
-      Width = 75
-      Height = 25
-      Caption = 'Button4'
-      TabOrder = 4
-      OnClick = Button4Click
+      OnClick = ButtonGlobalFreeClick
     end
   end
 end
