@@ -56,6 +56,7 @@ object frmPrincipal: TfrmPrincipal
       Align = alTop
       Caption = 'Gerar'
       TabOrder = 1
+      OnClick = buttonGerarClick
     end
   end
   object Panel2: TPanel

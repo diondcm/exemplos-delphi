@@ -1,0 +1,53 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Center
+    Size.Width = 310.000000000000000000
+    Size.Height = 278.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object buttonInstanciaEmpresa: TButton
+      Align = Center
+      Size.Width = 174.000000000000000000
+      Size.Height = 81.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'buttonInstanciaEmpresa'
+      OnClick = buttonInstanciaEmpresaClick
+    end
+    object buttonSelecionaIndustriaCalcado: TButton
+      Position.X = 56.000000000000000000
+      Position.Y = 232.000000000000000000
+      Size.Width = 208.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'buttonSelecionaIndustriaCalcado'
+      OnClick = buttonSelecionaIndustriaCalcadoClick
+    end
+  end
+  object memoLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Bottom
+    Margins.Left = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Position.X = 10.000000000000000000
+    Position.Y = 326.000000000000000000
+    Size.Width = 620.000000000000000000
+    Size.Height = 144.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 616.000000000000000000
+    Viewport.Height = 140.000000000000000000
+  end
+end
