@@ -116,7 +116,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Base\Base.Form.Cadastro.pas">
-            <Form>frmBase1</Form>
+            <Form>frmBaseCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
