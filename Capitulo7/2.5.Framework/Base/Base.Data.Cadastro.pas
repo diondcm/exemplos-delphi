@@ -6,20 +6,35 @@ uses
   System.SysUtils, System.Classes, Data.Db, System.StrUtils;
 
 type
+  TMetodoModificacao = reference to procedure; // = TProc
+
   TdmdBaseCadastro = class(TDataModule)
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   protected
+    const
+      WHERE_SQL = '/* WHERE */';
+      AND_SQL = '/* AND */';
+  protected
     FDataSet: TDataSet;
+    FSQL: TStringList;
+    procedure AtribuiSQL; virtual; abstract;
+
     procedure ValidarDadosCadastro; virtual; { abstract; }
 
     procedure SetarDadosNovoRegistro; virtual;
 
     procedure SetCamposGerador;
     // todo: na sequencia com RTTi
+
+    procedure AbrirCadastroComCondicao(const pCondicao: string);
+    procedure AdicionarCondicao(const pCondicao: string);
+    procedure AbrirCadastroComModificacao(const pMetodoModificacao: TMetodoModificacao);
+
   public
     constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
     procedure OnDataSetBeforePost(DataSet: TDataSet);
     procedure OnDataSetAfterPost(DataSet: TDataSet);
     procedure OnDataSetAfterCancel(DataSet: TDataSet);
@@ -53,7 +68,7 @@ type
     procedure AtualizarDataSet; virtual;
 
     procedure Pesquisar(const pTexto: string);
-
+    property DataSet: TDataSet read FDataSet write FDataSet;
   end;
 
 implementation
@@ -63,6 +78,50 @@ implementation
 {$R *.dfm}
 
 { TdmdBaseCadastro }
+
+procedure TdmdBaseCadastro.AbrirCadastroComCondicao(const pCondicao: string);
+var
+  lMetodo: TMetodoModificacao;
+begin
+  lMetodo :=
+    procedure
+    begin
+      AdicionarCondicao(pCondicao);
+    end;
+
+  AbrirCadastroComModificacao(lMetodo);
+end;
+
+procedure TdmdBaseCadastro.AbrirCadastroComModificacao(const pMetodoModificacao: TMetodoModificacao);
+var
+  lSQLOriginal: string;
+begin
+  lSQLOriginal := FSQL.Text;
+  try
+    pMetodoModificacao;
+
+    FDataSet.Close;
+    AtribuiSQL;
+    FDataSet.Open;
+
+  finally
+    FSQL.Text := lSQLOriginal;
+  end;
+end;
+
+procedure TdmdBaseCadastro.AdicionarCondicao(const pCondicao: string);
+begin
+  if pCondicao <> '' then
+  begin
+    if (Pos(WHERE_SQL, FSQL.Text.ToUpper) > 0) then
+    begin
+      FSQL.Text := StringReplace(FSQL.Text, WHERE_SQL, ' where (' + pCondicao + ')' + AND_SQL, [rfIgnoreCase]);
+    end else if (Pos(AND_SQL, FSQL.Text.ToUpper) > 0) then
+    begin
+      FSQL.Text := StringReplace(FSQL.Text, AND_SQL, ' and (' + pCondicao + ')' + AND_SQL, [rfIgnoreCase]);
+    end;
+  end;
+end;
 
 procedure TdmdBaseCadastro.AlterarRegistro;
 begin
@@ -89,13 +148,20 @@ end;
 constructor TdmdBaseCadastro.Create(AOwner: TComponent);
 begin
   inherited;
-  FDataset := TDataSet.Create(Self);
+  //FDataset := TDataSet.Create(Self);
+  FSQL := TStringList.Create;
 end;
 
 procedure TdmdBaseCadastro.DataModuleCreate(Sender: TObject);
 begin
   // FDataset := TDataSet.Create(Self)
   // mesmo comportamento que sobreescrever o constructor
+end;
+
+destructor TdmdBaseCadastro.Destroy;
+begin
+  FSQL.Free;
+  inherited;
 end;
 
 procedure TdmdBaseCadastro.ExcluirRegistro;
@@ -230,7 +296,7 @@ begin
     end;
   end;
 
-//  AbrirCadastroComCondicao(lWhere);
+  AbrirCadastroComCondicao(lWhere);
 end;
 
 procedure TdmdBaseCadastro.SalvarRegistro;

@@ -17,7 +17,7 @@ object frmBase: TfrmBase
   object MainMenu: TMainMenu
     Images = dmdImagens.ImageList
     Left = 144
-    Top = 40
+    Top = 48
     object Ajuda1: TMenuItem
       Caption = 'Ajuda'
       object Sobre1: TMenuItem
@@ -25,5 +25,9 @@ object frmBase: TfrmBase
         OnClick = Sobre1Click
       end
     end
+  end
+  object ActionList: TActionList
+    Left = 216
+    Top = 48
   end
 end
