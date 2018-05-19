@@ -50,4 +50,15 @@ object frmPrincipal: TfrmPrincipal
     Viewport.Width = 616.000000000000000000
     Viewport.Height = 140.000000000000000000
   end
+  object Button1: TButton
+    Position.X = 40.000000000000000000
+    Position.Y = 192.000000000000000000
+    TabOrder = 4
+    Text = 'Button1'
+    OnClick = Button1Click
+  end
+  object FDQuery1: TFDQuery
+    Left = 88
+    Top = 112
+  end
 end

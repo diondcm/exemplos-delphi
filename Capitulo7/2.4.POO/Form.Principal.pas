@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts, Classe.Empresa, FMX.Controls.Presentation, FMX.StdCtrls, FMX.ScrollBox, FMX.Memo;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts, Classe.Empresa, FMX.Controls.Presentation, FMX.StdCtrls, FMX.ScrollBox, FMX.Memo, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmPrincipal = class(TForm)
@@ -12,8 +13,11 @@ type
     buttonInstanciaEmpresa: TButton;
     memoLog: TMemo;
     buttonSelecionaIndustriaCalcado: TButton;
+    FDQuery1: TFDQuery;
+    Button1: TButton;
     procedure buttonInstanciaEmpresaClick(Sender: TObject);
     procedure buttonSelecionaIndustriaCalcadoClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,11 +31,22 @@ implementation
 
 {$R *.fmx}
 
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+var
+  lSt: TStrings;
+begin
+  lSt := TStrings.Create;
+  lSt.Add('Teste');
+  Caption := lSt.Text;
+  lSt.Free;
+end;
+
 procedure TfrmPrincipal.buttonInstanciaEmpresaClick(Sender: TObject);
 var
   lFrig: TFrigorifico;
   lIndC: TIndustriaCalcado;
 begin
+
   lFrig := TFrigorifico.Create;
   lFrig.CNPJ := '00.000.000/0000-00';
   lFrig.RazaoSocial := 'MarFrig';
