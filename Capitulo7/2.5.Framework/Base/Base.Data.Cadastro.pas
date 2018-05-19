@@ -3,7 +3,7 @@ unit Base.Data.Cadastro;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.Db;
+  System.SysUtils, System.Classes, Data.Db, System.StrUtils;
 
 type
   TdmdBaseCadastro = class(TDataModule)
@@ -17,6 +17,7 @@ type
     procedure SetarDadosNovoRegistro; virtual;
 
     procedure SetCamposGerador;
+    // todo: na sequencia com RTTi
   public
     constructor Create(AOwner: TComponent); override;
     procedure OnDataSetBeforePost(DataSet: TDataSet);
@@ -65,17 +66,24 @@ implementation
 
 procedure TdmdBaseCadastro.AlterarRegistro;
 begin
-
+  FDataSet.Edit;
 end;
 
 procedure TdmdBaseCadastro.AtualizarDataSet;
 begin
+  //FDataSet.Refresh;
 
+  FDataSet.Close;
+  FDataSet.Open;
+
+  {$MESSAGE HINT 'Tratar abrir com parâmetros'}
+  //{$MESSAGE WARN 'Tratar abrir com parâmetros'}
+  //{$MESSAGE ERROR 'Tratar abrir com parâmetros'}
 end;
 
 procedure TdmdBaseCadastro.CancelarRegistro;
 begin
-
+  FDataSet.Cancel;
 end;
 
 constructor TdmdBaseCadastro.Create(AOwner: TComponent);
@@ -92,67 +100,147 @@ end;
 
 procedure TdmdBaseCadastro.ExcluirRegistro;
 begin
-
+  FDataSet.Delete;
 end;
 
 procedure TdmdBaseCadastro.InserirRegistro;
 begin
-
+  FDataSet.Append;
 end;
 
 procedure TdmdBaseCadastro.IrParaAnterior;
 begin
-
+  FDataSet.Prior;
 end;
 
 procedure TdmdBaseCadastro.IrParaPrimeiro;
 begin
-
+  FDataSet.First;
 end;
 
 procedure TdmdBaseCadastro.IrParaProximo;
 begin
-
+  FDataSet.Next;
 end;
 
 procedure TdmdBaseCadastro.IrParaUltimo;
 begin
-
+  FDataSet.Last;
 end;
 
 procedure TdmdBaseCadastro.OnDataSetAfterCancel(DataSet: TDataSet);
 begin
-
+  // todo: executar cancel updates
 end;
 
 procedure TdmdBaseCadastro.OnDataSetAfterDelete(DataSet: TDataSet);
 begin
-
+  // todo: executar apply updates
 end;
 
 procedure TdmdBaseCadastro.OnDataSetAfterPost(DataSet: TDataSet);
 begin
-
+  // todo: executar apply updates
 end;
 
 procedure TdmdBaseCadastro.OnDataSetBeforePost(DataSet: TDataSet);
 begin
-
+  ValidarDadosCadastro;
+  SetCamposGerador;
 end;
 
 procedure TdmdBaseCadastro.Pesquisar(const pTexto: string);
-begin
+var
+  lWhere: string;
+  lValorEhInteiro: Boolean;
+  lInt: Int64;
+  lDate: TDateTime;
+  lValorEhData: Boolean;
+  lValorEhFloat: Boolean;
+  lFloat: Extended;
+  i: Integer;
+  lDataType: TFieldType;
 
+  procedure AdicionaCondicaoPesquisa(pField: TField; const pCondicao: string; pIgnoreCase: Boolean = False);
+  var
+    lCampo: string;
+  begin
+    if lWhere <> '' then
+    begin
+      lWhere := lWhere + ' or ';
+    end;
+
+    // ? :
+    lCampo := ifThen(pField.Origin <> '', pField.Origin, pField.FieldName);
+    if pIgnoreCase then { Evitar: = True }
+    begin
+      // não é multi-banco
+      // FB: UPPER
+      lCampo := ' UCASE(' + lCampo + ')';
+    end;
+
+    lWhere := lWhere + lCampo + ' ' + pCondicao;
+  end;
+
+begin
+//  Assert(FDataSet.FieldCount = 0, 'DataSet "' + FDataSet.Name + '" sem fields.');
+//  ou
+  if FDataSet.FieldCount = 0 then
+  begin
+    raise Exception.Create('DataSet "' + FDataSet.Name + '" sem fields.');
+  end;
+
+  if pTexto <> '' then
+  begin
+  //    NÃO USAR:
+  //    try
+  //      StrToInt(pTexto);
+  //      lValorEhInteiro := True;
+  //    except
+  //      lValorEhInteiro := False;
+  //    end;
+    lValorEhInteiro := TryStrToInt64(pTexto, lInt);
+    lValorEhData := TryStrToDate(pTexto, lDate);
+    lValorEhFloat := TryStrToFloat(pTexto, lFloat);
+
+    for i := 0 to {Pred()}FDataSet.FieldCount -1  do
+    begin
+      lDataType := FDataSet.Fields[i].DataType;
+      if lValorEhInteiro and (lDataType in [ftInteger, ftByte, ftWord, ftShortint]) then
+      begin
+        AdicionaCondicaoPesquisa(FDataSet.Fields[i], ' = ' + pTexto);
+      end else if lValorEhData and (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) then
+      begin
+        AdicionaCondicaoPesquisa(FDataSet.Fields[i], ' = ' + QuotedStr(pTexto)); // #39 + pTexto + #39 // '''' + pTexto + '''';
+      end else if lValorEhFloat and (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) then
+      begin
+        AdicionaCondicaoPesquisa(FDataSet.Fields[i], ' = ' + pTexto);
+      end else if lDataType in [ftString, ftMemo, ftWideString, ftWideMemo] then
+      begin
+        AdicionaCondicaoPesquisa(FDataSet.Fields[i], ' like ' + QuotedStr('%' + pTexto + '%'));
+      end else begin
+        // revalidados tipos, por considerar as conversões também
+        if not(lDataType in [ftInteger, ftByte, ftWord, ftShortint, ftDate, ftDateTime, ftTimeStamp, ftTime, ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD, ftString, ftMemo, ftWideString, ftWideMemo]) then
+        begin
+          raise Exception.Create('Tipo de dado não tratado no field: ' +
+            FDataSet.Name + '.' + FDataSet.Fields[i].FieldName + '(' +
+              IntToStr(Ord(lDataType)) + ')');
+        end;
+      end;
+    end;
+  end;
+
+//  AbrirCadastroComCondicao(lWhere);
 end;
 
 procedure TdmdBaseCadastro.SalvarRegistro;
 begin
-
+  FDataSet.Post;
 end;
 
 procedure TdmdBaseCadastro.SetarDadosNovoRegistro;
 begin
-
+  // Implementar nos filhos
 end;
 
 procedure TdmdBaseCadastro.SetCamposGerador;
@@ -162,62 +250,63 @@ end;
 
 procedure TdmdBaseCadastro.ValidarDadosCadastro;
 begin
-
+  // Implementado nos filhos
 end;
 
 function TdmdBaseCadastro.VerificaAlterarRegistro: Boolean;
 begin
-
+  Result := (not VerificaEmEdicao) and (not FDataSet.IsEmpty);
+  // RecordCount é uma proc, mais lenta que isEmpty(funciona para closed também)
 end;
 
 function TdmdBaseCadastro.VerificaCancelarRegistro: Boolean;
 begin
-
+  Result := VerificaEmEdicao;
 end;
 
 function TdmdBaseCadastro.VerificaEmEdicao: Boolean;
 begin
-
+  Result := (FDataSet.State in dsEditModes);
 end;
 
 function TdmdBaseCadastro.VerificaExcluirRegistro: Boolean;
 begin
-
+  Result := (not VerificaEmEdicao) and (not FDataSet.IsEmpty);
 end;
 
 function TdmdBaseCadastro.VerificaInserirRegistro: Boolean;
 begin
-
+  Result := not VerificaEmEdicao;
 end;
 
 function TdmdBaseCadastro.VerificaIrParaAnterior: Boolean;
 begin
-
+  Result := VerificaIrParaPrimeiro;
 end;
 
 function TdmdBaseCadastro.VerificaIrParaPrimeiro: Boolean;
 begin
-
+  Result := VerificaNavegacao and (not FDataSet.Bof);
 end;
 
 function TdmdBaseCadastro.VerificaIrParaProximo: Boolean;
 begin
-
+  Result := VerificaIrParaUltimo;
 end;
 
 function TdmdBaseCadastro.VerificaIrParaUltimo: Boolean;
 begin
-
+  Result := VerificaNavegacao and (not FDataSet.Eof);
 end;
 
 function TdmdBaseCadastro.VerificaNavegacao: Boolean;
 begin
-
+  Result := (FDataSet.State = dsBrowse);
 end;
 
 function TdmdBaseCadastro.VerificaSalvarRegistro: Boolean;
 begin
-
+  Result := VerificaEmEdicao;
 end;
 
 end.
