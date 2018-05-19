@@ -19,6 +19,7 @@ type
     procedure SetDmdCadastro(const Value: TdmdBaseCadastro);
   protected
     procedure SetDataSets; virtual;
+    class function GetClasseDmdBaseCadastro: TDmdBaseCadastroClass; virtual; abstract;
   public
     constructor Create(Aowner: TComponent; ADmdCadastro: TdmdBaseCadastro; pInstanciaDMD: Boolean = False); reintroduce; overload;
     property DmdCadastro: TdmdBaseCadastro read GetDmdCadastro write SetDmdCadastro;
@@ -36,9 +37,9 @@ begin
   inherited Create(Aowner);
 
   FDmdCadastro := ADmdCadastro;
-  if pInstanciaDMD and not Assigned(FDmdCadastro) then
+  if pInstanciaDMD and (not Assigned(FDmdCadastro)) then
   begin
-//    FDmdCadastro := /// ???
+    //FDmdCadastro := /// ???
   end;
 end;
 

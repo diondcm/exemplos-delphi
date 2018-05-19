@@ -8,6 +8,7 @@ uses
 type
   TMetodoModificacao = reference to procedure; // = TProc
 
+  TDmdBaseCadastroClass = class of TdmdBaseCadastro;
   TdmdBaseCadastro = class(TDataModule)
     procedure DataModuleCreate(Sender: TObject);
   private
