@@ -49,6 +49,8 @@ begin
 end;
 
 procedure TThreadExec.Execute;
+const
+  MAX_VAL = 1000000;
 var
   i: Integer;
 begin
@@ -56,8 +58,8 @@ begin
 
   FGauge.Progress := 0;
   FGauge.MinValue := 0;
-  FGauge.MaxValue := 1000000;
-  for i := 0 to 1000000 do
+  FGauge.MaxValue := MAX_VAL;
+  for i := 0 to MAX_VAL do
   begin
     FGauge.Progress := FGauge.Progress + 1;
   end;
