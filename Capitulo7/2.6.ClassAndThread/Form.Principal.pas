@@ -11,10 +11,12 @@ type
     buttonClasse: TButton;
     timerOpen: TTimer;
     buttonThreads: TButton;
+    buttonCidades: TButton;
     procedure buttonClasseClick(Sender: TObject);
     procedure timerOpenTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure buttonThreadsClick(Sender: TObject);
+    procedure buttonCidadesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,6 +29,13 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Form.Cidades;
+
+procedure TfrmPrincipal.buttonCidadesClick(Sender: TObject);
+begin
+  frmCidades.Show;
+end;
 
 procedure TfrmPrincipal.buttonClasseClick(Sender: TObject);
 begin
@@ -46,7 +55,7 @@ end;
 procedure TfrmPrincipal.timerOpenTimer(Sender: TObject);
 begin
   timerOpen.Enabled := False;
-  buttonThreads.Click;
+  buttonCidades.Click;
 end;
 
 end.

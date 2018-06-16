@@ -6,7 +6,8 @@ uses
   Base.Form in '..\Base\Base.Form.pas' {frmBase},
   Base.Data.Imagens in '..\Base\Base.Data.Imagens.pas' {dmdImagens: TDataModule},
   Base.Data.Cadastro in '..\Base\Base.Data.Cadastro.pas' {dmdBaseCadastro: TDataModule},
-  Base.Form.Cadastro in '..\Base\Base.Form.Cadastro.pas' {frmBaseCadastro};
+  Base.Form.Cadastro in '..\Base\Base.Form.Cadastro.pas' {frmBaseCadastro},
+  Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule};
 
 {$R *.res}
 
@@ -15,7 +16,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmdImagens, dmdImagens);
-  Application.CreateForm(TfrmBaseCadastro, frmBaseCadastro);
+  Application.CreateForm(TdmdConexao, dmdConexao);
   //  Application.CreateForm(TdmdBaseCadastro, dmdBaseCadastro);
   //  Application.CreateForm(TfrmBase, frmBase);
   Application.Run;

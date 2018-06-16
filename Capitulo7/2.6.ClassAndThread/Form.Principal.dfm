@@ -33,6 +33,15 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 1
     OnClick = buttonThreadsClick
   end
+  object buttonCidades: TButton
+    Left = 32
+    Top = 182
+    Width = 169
+    Height = 67
+    Caption = 'Cidades'
+    TabOrder = 2
+    OnClick = buttonCidadesClick
+  end
   object timerOpen: TTimer
     Enabled = False
     OnTimer = timerOpenTimer

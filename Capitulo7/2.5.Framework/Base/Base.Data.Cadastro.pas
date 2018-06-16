@@ -3,10 +3,34 @@ unit Base.Data.Cadastro;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.Db, System.StrUtils;
+  System.SysUtils, System.Classes, Data.Db, System.StrUtils, System.RTTI, System.Variants;
 
 type
+//  TUsuario = class
+//  private
+//    FNome: string;
+//    FDataNasc: TDateTime;
+//  public
+//    property Nome: string read FNome write FNome;
+//    [TAtributoCaption('Data Nascimento')]// invetado agora para exemplo
+//    property DataNasc: TDateTime read FDataNasc write FDataNasc;
+//  end;
+
+  TEventoObtemGerador = function (const pNomegerador: string; pIncremento: Byte): Int64 of object;
   TMetodoModificacao = reference to procedure; // = TProc
+
+
+  ///  Exemplo de uso
+  ///  [TAtributoGerador('ID_CLIENTE', 'SEQ_CLIENTE')]
+  TAtributoGerador = class(TCustomAttribute)
+  private
+    FNomeField: string;
+    FNomeGerador: string;
+  public
+    constructor Create(const pNomeField, pNomeGerador: string);
+    property NomeField: string read FNomeField;
+    property NomeGerador: string read FNomeGerador;
+  end;
 
   TDmdBaseCadastroClass = class of TdmdBaseCadastro;
   TdmdBaseCadastro = class(TDataModule)
@@ -27,12 +51,12 @@ type
     procedure SetarDadosNovoRegistro; virtual;
 
     procedure SetCamposGerador;
-    // todo: na sequencia com RTTi
 
     procedure AbrirCadastroComCondicao(const pCondicao: string);
     procedure AdicionarCondicao(const pCondicao: string);
     procedure AbrirCadastroComModificacao(const pMetodoModificacao: TMetodoModificacao);
-
+  class var
+      FMetodoGerador: TEventoObtemGerador;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -70,6 +94,7 @@ type
 
     procedure Pesquisar(const pTexto: string);
     property DataSet: TDataSet read FDataSet write FDataSet;
+    class property MetodoGerador: TEventoObtemGerador read FMetodoGerador write FMetodoGerador;
   end;
 
 implementation
@@ -311,8 +336,44 @@ begin
 end;
 
 procedure TdmdBaseCadastro.SetCamposGerador;
+var
+  lType: TRttiType;
+  lAttr: TCustomAttribute;
+  lGerador: TAtributoGerador;
+  lStatus: Boolean;
+  lValor: Integer;
 begin
+  if FDataSet.State = dsInsert then
+  begin
+    lType := TRttiContext.Create.GetType(Self.ClassInfo);
+    for lAttr in lType.GetAttributes do
+    begin
+      if lAttr is  TAtributoGerador then
+      begin
+        lGerador := TAtributoGerador(lAttr);
 
+        lStatus := FDataSet.FieldByName(lGerador.NomeField).ReadOnly;
+        FDataSet.FieldByName(lGerador.NomeField).ReadOnly := False;
+        try
+          if VarToStr(FDataSet.FieldByName(lGerador.NomeField).Value) = '' then
+          begin
+            if not Assigned(FMetodoGerador) then
+            begin
+              raise Exception.Create('Sem método gerador preenchido.');
+            end;
+
+            lValor := FMetodoGerador(lGerador.NomeGerador, 1);
+            if lValor > 0 then
+            begin
+              FDataSet.FieldByName(lGerador.FNomeField).AsLargeInt := lValor;
+            end;
+          end;
+        finally
+          FDataSet.FieldByName(lGerador.NomeField).ReadOnly := lStatus;
+        end;
+      end;
+    end;
+  end;
 end;
 
 procedure TdmdBaseCadastro.ValidarDadosCadastro;
@@ -374,6 +435,14 @@ end;
 function TdmdBaseCadastro.VerificaSalvarRegistro: Boolean;
 begin
   Result := VerificaEmEdicao;
+end;
+
+{ TAtributoGerador }
+
+constructor TAtributoGerador.Create(const pNomeField, pNomeGerador: string);
+begin
+  FNomeField := pNomeField;
+  FNomeGerador := pNomeGerador;
 end;
 
 end.

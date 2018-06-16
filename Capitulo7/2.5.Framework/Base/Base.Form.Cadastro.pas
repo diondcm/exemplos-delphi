@@ -49,14 +49,14 @@ type
     { Public declarations }
   end;
 
-var
-  frmBaseCadastro: TfrmBaseCadastro;
+//var
+//  frmBaseCadastro: TfrmBaseCadastro;
 
 implementation
 
 {$R *.dfm}
 
-{ TfrmBase1 }
+{ TfrmBaseCadastro }
 
 procedure TfrmBaseCadastro.DatasetCancel1Execute(Sender: TObject);
 begin
