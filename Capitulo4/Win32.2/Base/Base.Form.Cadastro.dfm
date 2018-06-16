@@ -2,6 +2,7 @@ inherited frmBaseCadastro: TfrmBaseCadastro
   ClientWidth = 782
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 798
+  ExplicitHeight = 358
   PixelsPerInch = 96
   TextHeight = 13
   object panelControles: TPanel [0]
@@ -11,7 +12,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
     Height = 57
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 635
     object buttonCancelar: TBitBtn
       Left = 577
       Top = 1
@@ -21,8 +21,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Cancelar'
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonUltimo: TBitBtn
       Left = 217
@@ -33,8 +31,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&'#218'ltimo'
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonProximo: TBitBtn
       Left = 145
@@ -45,8 +41,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Pr'#243'ximo'
       TabOrder = 2
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonAnterior: TBitBtn
       Left = 73
@@ -57,8 +51,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Anterior'
       TabOrder = 3
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonPrimeiro: TBitBtn
       Left = 1
@@ -69,7 +61,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Primeiro'
       TabOrder = 4
-      ExplicitHeight = 95
     end
     object buttonSalvar: TBitBtn
       Left = 505
@@ -80,8 +71,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Salvar'
       TabOrder = 5
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonDeletar: TBitBtn
       Left = 433
@@ -92,8 +81,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Deletar'
       TabOrder = 6
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonEditar: TBitBtn
       Left = 361
@@ -104,8 +91,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Editar'
       TabOrder = 7
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
     object buttonInserir: TBitBtn
       Left = 289
@@ -116,8 +101,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Inserir'
       TabOrder = 8
-      ExplicitLeft = 1
-      ExplicitHeight = 95
     end
   end
   inherited MainMenu: TMainMenu
@@ -134,7 +117,7 @@ inherited frmBaseCadastro: TfrmBaseCadastro
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C010101000800240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

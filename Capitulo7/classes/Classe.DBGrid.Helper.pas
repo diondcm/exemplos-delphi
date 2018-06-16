@@ -27,6 +27,7 @@ const
 var
   lFds: TFDDataSet;
   lIdx: TIndexDef;
+  lIxd: TFDIndex;
 
   function GetIndex(const pIndexName: string; pIndexDefs: TIndexDefs): TIndexDef;
   var
@@ -68,8 +69,11 @@ begin
           lFds.IndexFieldNames := '';
           lFds.IndexName := lIdx.Name;
         end else begin
-          lFds.IndexDefs.Add(pColumn.Field.FieldName + FIELD_DESC,
-            pColumn.Field.FieldName, [ixDescending]);
+          lIxd := lFds.Indexes.Add;
+          lIxd.Name := pColumn.Field.FieldName + FIELD_DESC;
+          lIxd.Fields := pColumn.Field.FieldName;
+          lIxd.Options := [soDescending];
+          lIxd.Active := True;
 
           lFds.IndexFieldNames := '';
           lFds.IndexName := pColumn.Field.FieldName + FIELD_DESC;

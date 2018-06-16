@@ -303,7 +303,8 @@ begin
       end else if lValorEhData and (lDataType in [ftDate, ftDateTime, ftTimeStamp, ftTime]) then
       begin
         AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + QuotedStr(pTexto)); // #39 + pTexto + #39
-      end else if lValorEhFloat and (lDataType in [ftCurrency, ftFloat, ftSingle, ftExtended, ftBCD]) then
+      end else if lValorEhFloat and (lDataType in [ftCurrency, ftFloat, ftSingle,
+        ftExtended, ftBCD]) then
       begin
         AdicionarCondicaoPesquisa(cdsCadastro.Fields[i], ' = ' + pTexto);
       end else if lDataType in [ftString, ftMemo, ftWideString, ftWideMemo] then

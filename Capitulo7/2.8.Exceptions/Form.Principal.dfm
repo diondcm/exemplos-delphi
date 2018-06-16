@@ -1,0 +1,73 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Exce'#231#245'es'
+  ClientHeight = 351
+  ClientWidth = 487
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 191
+    Top = 0
+    Height = 351
+    ExplicitLeft = 248
+    ExplicitTop = 144
+    ExplicitHeight = 100
+  end
+  object memoLog: TMemo
+    AlignWithMargins = True
+    Left = 197
+    Top = 3
+    Width = 287
+    Height = 345
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 191
+    ExplicitTop = 8
+    ExplicitWidth = 296
+  end
+  object panelControles: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 185
+    Height = 345
+    Align = alLeft
+    TabOrder = 1
+    ExplicitLeft = 6
+    ExplicitTop = 19
+    object buttonFinally: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 177
+      Height = 57
+      Align = alTop
+      Caption = 'Try...Finally'
+      TabOrder = 0
+      OnClick = buttonFinallyClick
+      ExplicitLeft = 8
+      ExplicitTop = 8
+      ExplicitWidth = 89
+    end
+    object buttonExcept: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 67
+      Width = 177
+      Height = 54
+      Align = alTop
+      Caption = 'Try...Except'
+      TabOrder = 1
+      OnClick = buttonExceptClick
+    end
+  end
+end
