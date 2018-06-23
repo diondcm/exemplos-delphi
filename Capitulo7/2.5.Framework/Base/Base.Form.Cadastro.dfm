@@ -16,9 +16,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = -2
-    ExplicitTop = 8
-    ExplicitWidth = 727
     object Bevel1: TBevel
       AlignWithMargins = True
       Left = 327
@@ -40,9 +37,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Cancel'
       TabOrder = 0
-      ExplicitLeft = 240
-      ExplicitTop = 8
-      ExplicitHeight = 25
     end
     object BitBtn2: TBitBtn
       AlignWithMargins = True
@@ -54,8 +48,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = 'P&ost'
       TabOrder = 1
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
     object BitBtn3: TBitBtn
       AlignWithMargins = True
@@ -67,8 +59,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Delete'
       TabOrder = 2
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
     object BitBtn4: TBitBtn
       AlignWithMargins = True
@@ -80,8 +70,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Edit'
       TabOrder = 3
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
     object BitBtn5: TBitBtn
       AlignWithMargins = True
@@ -93,7 +81,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Insert'
       TabOrder = 4
-      ExplicitLeft = 351
     end
     object BitBtn6: TBitBtn
       AlignWithMargins = True
@@ -105,8 +92,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Last'
       TabOrder = 5
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
     object BitBtn7: TBitBtn
       AlignWithMargins = True
@@ -118,8 +103,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Next'
       TabOrder = 6
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
     object BitBtn8: TBitBtn
       AlignWithMargins = True
@@ -131,8 +114,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&Prior'
       TabOrder = 7
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
     object BitBtn9: TBitBtn
       AlignWithMargins = True
@@ -144,8 +125,6 @@ inherited frmBaseCadastro: TfrmBaseCadastro
       Align = alLeft
       Caption = '&First'
       TabOrder = 8
-      ExplicitLeft = 11
-      ExplicitTop = 6
     end
   end
   inherited MainMenu: TMainMenu

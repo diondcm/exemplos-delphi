@@ -7,7 +7,8 @@ uses
   Base.Data.Imagens in '..\Base\Base.Data.Imagens.pas' {dmdImagens: TDataModule},
   Base.Data.Cadastro in '..\Base\Base.Data.Cadastro.pas' {dmdBaseCadastro: TDataModule},
   Base.Form.Cadastro in '..\Base\Base.Form.Cadastro.pas' {frmBaseCadastro},
-  Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule};
+  Data.Conexao in 'Data.Conexao.pas' {dmdConexao: TDataModule},
+  Base.Form.Pesquisa in '..\Base\Base.Form.Pesquisa.pas' {frmBasePesquisa};
 
 {$R *.res}
 

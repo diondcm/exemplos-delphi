@@ -161,7 +161,7 @@ begin
   FDataSet.Close;
   FDataSet.Open;
 
-  {$MESSAGE HINT 'Tratar abrir com parâmetros'}
+//  {$MESSAGE HINT 'Tratar abrir com parâmetros'}
   //{$MESSAGE WARN 'Tratar abrir com parâmetros'}
   //{$MESSAGE ERROR 'Tratar abrir com parâmetros'}
 end;

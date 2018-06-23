@@ -1,19 +1,12 @@
-object frmPrincipal: TfrmPrincipal
-  Left = 0
-  Top = 0
+inherited frmPrincipal: TfrmPrincipal
   Caption = 'Cadastros VCL'
   ClientHeight = 428
   ClientWidth = 740
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
+  ExplicitWidth = 756
+  ExplicitHeight = 487
   PixelsPerInch = 96
   TextHeight = 13
-  object Button1: TButton
+  object Button1: TButton [0]
     Left = 88
     Top = 128
     Width = 169

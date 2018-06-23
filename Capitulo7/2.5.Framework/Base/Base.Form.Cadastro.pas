@@ -7,6 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Base.Form, Vcl.Menus, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, System.Actions, Vcl.ActnList, Vcl.DBActns, Data.DB;
 
 type
+  TFrmBaseCadastroClass = class of TfrmBaseCadastro;
   TfrmBaseCadastro = class(TfrmBase)
     Panel1: TPanel;
     BitBtn1: TBitBtn;

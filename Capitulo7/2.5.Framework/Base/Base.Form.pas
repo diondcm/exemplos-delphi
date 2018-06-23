@@ -71,7 +71,7 @@ end;
 
 procedure TfrmBase.Sobre1Click(Sender: TObject);
 begin
-  ShowMessage('Em construção');
+  Application.MessageBox('Modelo base de cadastro - Tel: 2233.5566.', 'Sobre', MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON1);
 end;
 
 end.
