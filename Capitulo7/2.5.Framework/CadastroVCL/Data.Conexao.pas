@@ -4,12 +4,14 @@ interface
 
 uses
   WinApi.Windows, System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
-  FireDAC.Phys, FireDAC.VCLUI.Wait, Data.SqlExpr, Data.DB, FireDAC.Comp.Client, Base.Data.Cadastro;
+  FireDAC.Phys, FireDAC.VCLUI.Wait, Data.SqlExpr, Data.DB, FireDAC.Comp.Client, Base.Data.Cadastro, FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TdmdConexao = class(TDataModule)
-    FDConnection1: TFDConnection;
+    FDConnection: TFDConnection;
     SQLConnection1: TSQLConnection;
+    qryGenerator: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -33,10 +35,10 @@ implementation
 
 procedure TdmdConexao.DataModuleCreate(Sender: TObject);
 begin
-  if CompareStr(UpperCase(FDConnection1.DriverName), 'SQLITE') = 0 then
+  if CompareStr(UpperCase(FDConnection.DriverName), 'SQLITE') = 0 then
   begin
     TdmdBaseCadastro.MetodoGerador := ObtemGeradorSQLite;
-  end else if CompareStr(UpperCase(FDConnection1.DriverName), 'FB') = 0 then
+  end else if CompareStr(UpperCase(FDConnection.DriverName), 'FB') = 0 then
   begin
     TdmdBaseCadastro.MetodoGerador := ObtemGeradorFB;
   end;
@@ -45,8 +47,23 @@ begin
 end;
 
 function TdmdConexao.ObtemGeradorFB(const pNomeGerador: string; pIncremento: Byte): Int64;
+var
+  lSql: string;
 begin
-  //
+  lSql := qryGenerator.SQL.Text;
+  try
+    qryGenerator.SQL.Text := StringReplace(
+      qryGenerator.SQL.Text,
+      '/*GEN_NAME*/',
+      pNomeGerador,
+      [rfIgnoreCase]);
+    qryGenerator.Open;
+
+    Result := qryGenerator.Fields[0].AsLargeInt;
+  finally
+    qryGenerator.Close;
+    qryGenerator.SQL.Text := lSQL;
+  end;
 end;
 
 function TdmdConexao.ObtemGeradorSQLite(const pNomeGerador: string; pIncremento: Byte): Int64;
