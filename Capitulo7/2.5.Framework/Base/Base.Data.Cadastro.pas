@@ -36,6 +36,7 @@ type
   TdmdBaseCadastro = class(TDataModule)
     procedure DataModuleCreate(Sender: TObject);
   private
+    procedure SetDataSet(const Value: TDataSet);
     { Private declarations }
   protected
     const
@@ -93,7 +94,7 @@ type
     procedure AtualizarDataSet; virtual;
 
     procedure Pesquisar(const pTexto: string);
-    property DataSet: TDataSet read FDataSet write FDataSet;
+    property DataSet: TDataSet read FDataSet write SetDataSet;
     class property MetodoGerador: TEventoObtemGerador read FMetodoGerador write FMetodoGerador;
   end;
 
@@ -175,13 +176,13 @@ constructor TdmdBaseCadastro.Create(AOwner: TComponent);
 begin
   inherited;
   //FDataset := TDataSet.Create(Self);
-  FSQL := TStringList.Create;
 end;
 
 procedure TdmdBaseCadastro.DataModuleCreate(Sender: TObject);
 begin
   // FDataset := TDataSet.Create(Self)
   // mesmo comportamento que sobreescrever o constructor
+  FSQL := TStringList.Create;
 end;
 
 destructor TdmdBaseCadastro.Destroy;
@@ -373,6 +374,18 @@ begin
         end;
       end;
     end;
+  end;
+end;
+
+procedure TdmdBaseCadastro.SetDataSet(const Value: TDataSet);
+begin
+  FDataSet := Value;
+  if Assigned(FDataSet) then
+  begin
+    FDataSet.BeforePost := OnDataSetBeforePost;
+    FDataSet.AfterPost := OnDataSetAfterPost;
+    FDataSet.AfterCancel := OnDataSetAfterCancel;
+    FDataSet.AfterDelete := OnDataSetAfterDelete;
   end;
 end;
 

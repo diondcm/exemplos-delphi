@@ -3,6 +3,8 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   ClientHeight = 340
   ClientWidth = 468
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
   ExplicitWidth = 484
   ExplicitHeight = 399
   PixelsPerInch = 96
@@ -16,8 +18,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
     object editPesquisa: TButtonedEdit
       AlignWithMargins = True
       Left = 50
@@ -36,9 +36,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
       TextHint = 'Texto para pesquisa'
       OnKeyDown = editPesquisaKeyDown
       OnRightButtonClick = editPesquisaRightButtonClick
-      ExplicitLeft = 168
-      ExplicitTop = 11
-      ExplicitWidth = 121
     end
   end
   object panelControles: TPanel [1]
@@ -50,9 +47,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 152
-    ExplicitTop = 176
-    ExplicitWidth = 185
     object buttonInserir: TButton
       AlignWithMargins = True
       Left = 84
@@ -61,7 +55,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
       Height = 35
       Action = DatasetInsert1
       Align = alLeft
-      Images = dmdImagens.ImageList
       TabOrder = 0
     end
     object buttonEditar: TButton
@@ -74,7 +67,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
       Align = alLeft
       Images = dmdImagens.ImageList
       TabOrder = 1
-      ExplicitTop = 0
     end
     object Button3: TButton
       AlignWithMargins = True
@@ -86,8 +78,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
       Align = alRight
       Images = dmdImagens.ImageList
       TabOrder = 2
-      ExplicitLeft = 272
-      ExplicitTop = 0
     end
     object buttonCancelar: TButton
       AlignWithMargins = True
@@ -98,7 +88,6 @@ inherited frmBasePesquisa: TfrmBasePesquisa
       Action = actionCancelar
       Align = alRight
       TabOrder = 3
-      ExplicitTop = 0
     end
   end
   object gridPesquisa: TDBGrid [2]
@@ -150,5 +139,11 @@ inherited frmBasePesquisa: TfrmBasePesquisa
   object dtsPesquisa: TDataSource
     Left = 408
     Top = 80
+  end
+  object timerOpen: TTimer
+    Enabled = False
+    OnTimer = timerOpenTimer
+    Left = 232
+    Top = 184
   end
 end

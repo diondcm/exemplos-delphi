@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Base.Form, System.Actions, Vcl.ActnList, Vcl.Menus, Vcl.StdCtrls, Vcl.ExtCtrls, Base.Data.Imagens, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.DBActns,
-  Base.Form.Cadastro;
+  Base.Form.Cadastro, System.Threading;
 
 type
   TfrmBasePesquisa = class(TfrmBase)
@@ -23,6 +23,7 @@ type
     actionPesquisar: TAction;
     DatasetInsert1: TDataSetInsert;
     DatasetEdit1: TDataSetEdit;
+    timerOpen: TTimer;
     procedure actionSelecionarExecute(Sender: TObject);
     procedure actionCancelarExecute(Sender: TObject);
     procedure actionPesquisarExecute(Sender: TObject);
@@ -32,7 +33,11 @@ type
     procedure gridPesquisaDblClick(Sender: TObject);
     procedure DatasetInsert1Execute(Sender: TObject);
     procedure DatasetEdit1Execute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure timerOpenTimer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    FJaExecutouQuery: Boolean;
     FFrmBaseCadastro: TfrmBaseCadastro;
     FModoSelecao: Boolean;
   protected
@@ -79,13 +84,13 @@ end;
 procedure TfrmBasePesquisa.DatasetEdit1Execute(Sender: TObject);
 begin
   inherited;
-  //
+  GetFrmBaseCadastro.Show;
 end;
 
 procedure TfrmBasePesquisa.DatasetInsert1Execute(Sender: TObject);
 begin
   inherited;
-  //
+  GetFrmBaseCadastro.Show;
 end;
 
 procedure TfrmBasePesquisa.editPesquisaKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -112,6 +117,33 @@ begin
   end;
 end;
 
+procedure TfrmBasePesquisa.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dtsPesquisa.DataSet := DmdCadastro.DataSet;
+  actionSelecionar.Visible := False;
+  actionCancelar.Visible := False;
+end;
+
+procedure TfrmBasePesquisa.FormShow(Sender: TObject);
+begin
+  inherited;
+  if not FJaExecutouQuery then
+  begin
+    FJaExecutouQuery := True;
+
+    timerOpen.Enabled := True;
+
+//    TTask.Create(
+//      procedure
+//      begin
+//        actionPesquisar.Execute;
+//      end).Start;
+//    Leak de memória
+//    Sleep
+  end;
+end;
+
 function TfrmBasePesquisa.GetFrmBaseCadastro: TFrmBaseCadastro;
 begin
   if not Assigned(FFrmBaseCadastro) then
@@ -131,9 +163,16 @@ begin
     begin
       actionSelecionar.Execute
     end else begin
-      //
+      GetFrmBaseCadastro.Show;
     end;
   end;
+end;
+
+procedure TfrmBasePesquisa.timerOpenTimer(Sender: TObject);
+begin
+  timerOpen.Enabled := False;
+  actionPesquisar.Execute;
+
 end;
 
 end.

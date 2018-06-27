@@ -34,13 +34,15 @@ implementation
 
 constructor TfrmBase.Create(Aowner: TComponent; ADmdCadastro: TdmdBaseCadastro; pInstanciaDMD: Boolean);
 begin
-  inherited Create(Aowner);
-
   FDmdCadastro := ADmdCadastro;
   if pInstanciaDMD and (not Assigned(FDmdCadastro)) then
   begin
-    //FDmdCadastro := /// ???
+    FDmdCadastro := GetClasseDmdBaseCadastro.Create(Aowner);
   end;
+
+
+  inherited Create(Aowner);
+  SetDataSets;
 end;
 
 function TfrmBase.GetDmdCadastro: TdmdBaseCadastro;
