@@ -4,7 +4,7 @@ program RemoteDebug;
 
 
 
-{$R *.dres}
+//{$R *.dres}
 
 uses
   Vcl.Forms,

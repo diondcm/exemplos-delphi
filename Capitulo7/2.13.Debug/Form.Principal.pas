@@ -7,6 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Classe.Remote.Debug, Vcl.StdCtrls, System.Zip;
 
 type
+  {$WARNINGS OFF}
   TfrmPrincipal = class(TForm)
     buttonZip: TButton;
     FileOpenDialog: TFileOpenDialog;
@@ -16,6 +17,7 @@ type
   public
     { Public declarations }
   end;
+  {$WARNINGS ON}
 
 var
   frmPrincipal: TfrmPrincipal;
@@ -24,8 +26,7 @@ implementation
 
 {$R *.dfm}
 
-uses
-  FileCtrl;
+{uses FileCtrl;}
 
 procedure TfrmPrincipal.buttonZipClick(Sender: TObject);
 const
@@ -41,7 +42,9 @@ begin
 //      Caption := lDir;
     if FileOpenDialog.Execute then
     begin
+      {$WARNINGS OFF}
       lPath := IncludeTrailingPathDelimiter(FileOpenDialog.FileName);
+      {$WARNINGS ON}
       lZip.Open(lPath + 'remote.zip', zmWrite);
 
       lZip.Add(lPath +'RMTDBG250.EXE');
