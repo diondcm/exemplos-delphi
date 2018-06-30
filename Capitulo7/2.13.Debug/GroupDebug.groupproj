@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3F030100-F354-498E-9713-59A30FB826ED}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="RemoteDebug.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ProjExemplo\ProjetoExemplo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RemoteDebug">
+        <MSBuild Projects="RemoteDebug.dproj"/>
+    </Target>
+    <Target Name="RemoteDebug:Clean">
+        <MSBuild Projects="RemoteDebug.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RemoteDebug:Make">
+        <MSBuild Projects="RemoteDebug.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProjetoExemplo">
+        <MSBuild Projects="ProjExemplo\ProjetoExemplo.dproj"/>
+    </Target>
+    <Target Name="ProjetoExemplo:Clean">
+        <MSBuild Projects="ProjExemplo\ProjetoExemplo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjetoExemplo:Make">
+        <MSBuild Projects="ProjExemplo\ProjetoExemplo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RemoteDebug;ProjetoExemplo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RemoteDebug:Clean;ProjetoExemplo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RemoteDebug:Make;ProjetoExemplo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

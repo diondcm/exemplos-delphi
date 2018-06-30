@@ -1,0 +1,6 @@
+RMTDBG250 RCDATA "..\\..\\Arqs\\Debug-Tokyo\\rmtdbg250.exe"
+BCCIDE RCDATA "..\\..\\Arqs\\Debug-Tokyo\\bccide.dll"
+BORDBK250 RCDATA "..\\..\\Arqs\\Debug-Tokyo\\bordbk250.dll"
+BORDBK250N RCDATA "..\\..\\Arqs\\Debug-Tokyo\\bordbk250N.dll"
+COMP32X RCDATA "..\\..\\Arqs\\Debug-Tokyo\\comp32x.dll"
+DCC32250 RCDATA "..\\..\\Arqs\\Debug-Tokyo\\dcc32250.dll"
