@@ -13,13 +13,21 @@ object frmPrincipal: TfrmPrincipal
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Button1: TButton
+  object buttonZip: TButton
     Left = 8
-    Top = 16
+    Top = 8
     Width = 129
     Height = 89
-    Caption = 'Button1'
+    Caption = 'Zip'
     TabOrder = 0
-    OnClick = Button1Click
+    OnClick = buttonZipClick
+  end
+  object FileOpenDialog: TFileOpenDialog
+    FavoriteLinks = <>
+    FileTypes = <>
+    OkButtonLabel = 'Selecione a pasta'
+    Options = [fdoPickFolders]
+    Left = 432
+    Top = 16
   end
 end

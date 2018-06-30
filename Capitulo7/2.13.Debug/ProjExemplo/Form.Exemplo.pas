@@ -11,6 +11,7 @@ type
     buttonTest: TButton;
     OpenDialog1: TOpenDialog;
     Image1: TImage;
+    Edit1: TEdit;
     procedure buttonTestClick(Sender: TObject);
   private
     { Private declarations }
@@ -27,10 +28,8 @@ implementation
 
 procedure TfrmExemplo.buttonTestClick(Sender: TObject);
 begin
-  if OpenDialog1.Execute then
-  begin
-    Image1.Picture.LoadFromFile(OpenDialog1.FileName);
-  end;
+  Caption := TimeToStr(Now);
+  Image1.Picture.LoadFromFile(Edit1.Text);
 end;
 
 end.

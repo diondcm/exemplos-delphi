@@ -98,35 +98,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Classe.Remote.Debug.pas"/>
-        <RcItem Include="..\..\Arqs\Debug-Tokyo\rmtdbg250.exe">
+        <RcItem Include="..\..\Arqs\Debug-Tokyo\remote.zip">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
-            <ResourceId>RMTDBG250</ResourceId>
-        </RcItem>
-        <RcItem Include="..\..\Arqs\Debug-Tokyo\bccide.dll">
-            <ContainerId>ResourceItem</ContainerId>
-            <ResourceType>RCDATA</ResourceType>
-            <ResourceId>BCCIDE</ResourceId>
-        </RcItem>
-        <RcItem Include="..\..\Arqs\Debug-Tokyo\bordbk250.dll">
-            <ContainerId>ResourceItem</ContainerId>
-            <ResourceType>RCDATA</ResourceType>
-            <ResourceId>BORDBK250</ResourceId>
-        </RcItem>
-        <RcItem Include="..\..\Arqs\Debug-Tokyo\bordbk250N.dll">
-            <ContainerId>ResourceItem</ContainerId>
-            <ResourceType>RCDATA</ResourceType>
-            <ResourceId>BORDBK250N</ResourceId>
-        </RcItem>
-        <RcItem Include="..\..\Arqs\Debug-Tokyo\comp32x.dll">
-            <ContainerId>ResourceItem</ContainerId>
-            <ResourceType>RCDATA</ResourceType>
-            <ResourceId>COMP32X</ResourceId>
-        </RcItem>
-        <RcItem Include="..\..\Arqs\Debug-Tokyo\dcc32250.dll">
-            <ContainerId>ResourceItem</ContainerId>
-            <ResourceType>RCDATA</ResourceType>
-            <ResourceId>DCC32250</ResourceId>
+            <ResourceId>REMOTO</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -156,31 +131,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\comp32x.dll" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\bccide.dll" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\dcc32250.dll" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\bordbk250.dll" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\rmtdbg250.exe" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\remote.zip" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
@@ -189,12 +140,6 @@
                 <DeployFile LocalName="Win32\Debug\RemoteDebug.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>RemoteDebug.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\Arqs\Debug-Tokyo\bordbk250N.dll" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

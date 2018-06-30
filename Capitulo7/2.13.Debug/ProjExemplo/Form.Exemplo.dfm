@@ -33,8 +33,16 @@ object frmExemplo: TfrmExemplo
     TabOrder = 0
     OnClick = buttonTestClick
   end
+  object Edit1: TEdit
+    Left = 8
+    Top = 334
+    Width = 373
+    Height = 21
+    TabOrder = 1
+    Text = 'Edit1'
+  end
   object OpenDialog1: TOpenDialog
-    Left = 288
-    Top = 184
+    Left = 520
+    Top = 216
   end
 end
