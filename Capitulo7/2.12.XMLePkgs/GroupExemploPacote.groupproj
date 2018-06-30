@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7E6D2088-D650-4486-B0D5-B7D541A8D33C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ExemploPacote.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="XMLePkgs.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ExemploPacote">
+        <MSBuild Projects="ExemploPacote.dproj"/>
+    </Target>
+    <Target Name="ExemploPacote:Clean">
+        <MSBuild Projects="ExemploPacote.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExemploPacote:Make">
+        <MSBuild Projects="ExemploPacote.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="XMLePkgs">
+        <MSBuild Projects="XMLePkgs.dproj"/>
+    </Target>
+    <Target Name="XMLePkgs:Clean">
+        <MSBuild Projects="XMLePkgs.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XMLePkgs:Make">
+        <MSBuild Projects="XMLePkgs.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ExemploPacote;XMLePkgs"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ExemploPacote:Clean;XMLePkgs:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ExemploPacote:Make;XMLePkgs:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
