@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{ED14039A-810E-492A-8205-D4EF76E2516B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CDS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Server\ServerDS2010.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CDS">
+        <MSBuild Projects="CDS.dproj"/>
+    </Target>
+    <Target Name="CDS:Clean">
+        <MSBuild Projects="CDS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CDS:Make">
+        <MSBuild Projects="CDS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ServerDS2010">
+        <MSBuild Projects="Server\ServerDS2010.dproj"/>
+    </Target>
+    <Target Name="ServerDS2010:Clean">
+        <MSBuild Projects="Server\ServerDS2010.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ServerDS2010:Make">
+        <MSBuild Projects="Server\ServerDS2010.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CDS;ServerDS2010"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CDS:Clean;ServerDS2010:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CDS:Make;ServerDS2010:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

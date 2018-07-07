@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{90BB6931-D7A5-4388-9581-A9824F91C967}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DSTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\ClientTestREST.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DSTests">
+        <MSBuild Projects="DSTests.dproj"/>
+    </Target>
+    <Target Name="DSTests:Clean">
+        <MSBuild Projects="DSTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DSTests:Make">
+        <MSBuild Projects="DSTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ClientTestREST">
+        <MSBuild Projects="Client\ClientTestREST.dproj"/>
+    </Target>
+    <Target Name="ClientTestREST:Clean">
+        <MSBuild Projects="Client\ClientTestREST.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClientTestREST:Make">
+        <MSBuild Projects="Client\ClientTestREST.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DSTests;ClientTestREST"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DSTests:Clean;ClientTestREST:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DSTests:Make;ClientTestREST:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

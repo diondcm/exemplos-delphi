@@ -77,6 +77,24 @@ object frmCDS: TfrmCDS
       Caption = 'Fechar Conex'#227'o'
       TabOrder = 3
     end
+    object Button1: TButton
+      Left = 304
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = 'Button1'
+      TabOrder = 4
+      OnClick = Button1Click
+    end
+    object buttonDS2010: TButton
+      Left = 451
+      Top = 3
+      Width = 135
+      Height = 42
+      Caption = 'DS - 2010'
+      TabOrder = 5
+      OnClick = buttonDS2010Click
+    end
   end
   object panelMoeda: TPanel
     AlignWithMargins = True
@@ -95,9 +113,6 @@ object frmCDS: TfrmCDS
       DataSource = dtsMoeda
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 176
-      ExplicitTop = 32
-      ExplicitWidth = 240
     end
     object DBGrid1: TDBGrid
       AlignWithMargins = True
@@ -107,6 +122,7 @@ object frmCDS: TfrmCDS
       Height = 103
       Align = alClient
       DataSource = dtsMoeda
+      PopupMenu = PopupMenu
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -123,21 +139,15 @@ object frmCDS: TfrmCDS
     Height = 229
     Align = alClient
     TabOrder = 2
-    ExplicitLeft = 216
-    ExplicitTop = 232
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object DBNavigator2: TDBNavigator
       AlignWithMargins = True
       Left = 4
       Top = 4
       Width = 391
       Height = 25
+      DataSource = dtsCotacao
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 80
-      ExplicitTop = 88
-      ExplicitWidth = 240
     end
     object DBGrid2: TDBGrid
       AlignWithMargins = True
@@ -146,6 +156,7 @@ object frmCDS: TfrmCDS
       Width = 391
       Height = 190
       Align = alClient
+      DataSource = dtsCotacao
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -163,11 +174,9 @@ object frmCDS: TfrmCDS
     Align = alRight
     TabOrder = 3
     Visible = False
-    ExplicitLeft = 192
-    ExplicitTop = 184
-    ExplicitHeight = 41
   end
   object dtsCotacao: TDataSource
+    DataSet = dmdCDS.cdsCotacao
     Left = 208
     Top = 224
   end
@@ -179,7 +188,15 @@ object frmCDS: TfrmCDS
   object timerOpen: TTimer
     Enabled = False
     OnTimer = timerOpenTimer
-    Left = 520
-    Top = 160
+    Left = 480
+    Top = 248
+  end
+  object PopupMenu: TPopupMenu
+    Left = 456
+    Top = 64
+    object ExibirHistrico1: TMenuItem
+      Caption = 'Exibir Hist'#243'rico'
+      OnClick = ExibirHistrico1Click
+    end
   end
 end

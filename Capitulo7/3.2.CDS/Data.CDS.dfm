@@ -5,13 +5,31 @@ object dmdCDS: TdmdCDS
   object cdsMoeda: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 96
-    Top = 104
+    Left = 56
+    Top = 40
   end
   object cdsCotacao: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 280
-    Top = 104
+    Left = 192
+    Top = 48
+  end
+  object cdsHistorico: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 136
+    Top = 232
+  end
+  object cdsDeletados: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 80
+    Top = 304
+  end
+  object cdsAlteracoes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 192
+    Top = 304
   end
 end
