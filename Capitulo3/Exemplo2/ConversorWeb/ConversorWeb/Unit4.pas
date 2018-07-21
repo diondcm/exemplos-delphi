@@ -5,7 +5,7 @@ interface
 uses
   Classes, SysUtils, IWAppForm, IWApplication, IWColor, IWTypes, IWCompEdit,
   IWCompButton, Vcl.Controls, IWVCLBaseControl, IWBaseControl,
-  IWBaseHTMLControl, IWControl, IWCompLabel, Classe.Converte.Unidades;
+  IWBaseHTMLControl, IWControl, IWCompLabel, Classe.Converte.Unidades, IWCompCheckbox;
 
 type
   TIWForm4 = class(TIWAppForm)
@@ -13,6 +13,7 @@ type
     iwbRealParaDolar: TIWButton;
     iweValor: TIWEdit;
     iwlRealParaDolar: TIWLabel;
+    IWCheckBox1: TIWCheckBox;
     procedure iwbRealParaDolarAsyncClick(Sender: TObject;
       EventParams: TStringList);
   public

@@ -45,3 +45,5 @@ autoCommit.exe
 /Capitulo7/1.3.Objeto/*.~dsk
 /Capitulo7/1.3.Objeto/ModelSupport_CadastroComObjeto/*.txaPackage
 *.~dsk
+/Capitulo7/2.13.Debug/ResourceDebug.dres
+/Capitulo7/2.13.Debug/RemoteDebug.dres

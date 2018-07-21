@@ -3,15 +3,15 @@ program Client;
 uses
   Vcl.Forms,
   Form.Principal in 'Form.Principal.pas' {frmPrincipal},
-  ClientClassesUnit1 in 'ClientClassesUnit1.pas',
-  ClientModuleUnit1 in 'ClientModuleUnit1.pas' {ClientModule1: TDataModule};
+  ClientClassesUnit2 in 'ClientClassesUnit2.pas',
+  ClientModuleUnit2 in 'ClientModuleUnit2.pas' {ClientModule2: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TClientModule1, ClientModule1);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TClientModule2, ClientModule2);
   Application.Run;
 end.

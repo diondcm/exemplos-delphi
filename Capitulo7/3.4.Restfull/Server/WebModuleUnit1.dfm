@@ -43,8 +43,8 @@ object WebModule1: TWebModule1
   object DSServerClass1: TDSServerClass
     OnGetClass = DSServerClass1GetClass
     Server = DSServer1
-    Left = 200
-    Top = 11
+    Left = 280
+    Top = 19
   end
   object ServerFunctionInvoker: TPageProducer
     HTMLFile = 'templates/serverfunctioninvoker.html'
@@ -110,5 +110,11 @@ object WebModule1: TWebModule1
     Server = DSServer1
     Left = 208
     Top = 248
+  end
+  object DSServerClassCotacao: TDSServerClass
+    OnGetClass = DSServerClassCotacaoGetClass
+    Server = DSServer1
+    Left = 320
+    Top = 91
   end
 end

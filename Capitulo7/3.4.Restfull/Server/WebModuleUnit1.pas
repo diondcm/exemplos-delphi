@@ -7,7 +7,7 @@ uses
   Datasnap.DSHTTPWebBroker, Datasnap.DSServer,
   Web.WebFileDispatcher, Web.HTTPProd,
   DataSnap.DSAuth,
-  Datasnap.DSProxyJavaScript, IPPeerServer, Datasnap.DSMetadata, Datasnap.DSServerMetadata, Datasnap.DSClientMetadata, Datasnap.DSCommonServer, Datasnap.DSHTTP;
+  Datasnap.DSProxyJavaScript, IPPeerServer, Datasnap.DSMetadata, Datasnap.DSServerMetadata, Datasnap.DSClientMetadata, Datasnap.DSCommonServer, Datasnap.DSHTTP, ServerMethodsCotacao;
 
 type
   TWebModule1 = class(TWebModule)
@@ -20,6 +20,7 @@ type
     WebFileDispatcher1: TWebFileDispatcher;
     DSProxyGenerator1: TDSProxyGenerator;
     DSServerMetaDataProvider1: TDSServerMetaDataProvider;
+    DSServerClassCotacao: TDSServerClass;
     procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     procedure DSAuthenticationManager1UserAuthorize(Sender: TObject;
@@ -37,6 +38,7 @@ type
       const AFileName: string; Request: TWebRequest; Response: TWebResponse;
       var Handled: Boolean);
     procedure WebModuleCreate(Sender: TObject);
+    procedure DSServerClassCotacaoGetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
   private
     { Private declarations }
     FServerFunctionInvokerAction: TWebActionItem;
@@ -59,6 +61,11 @@ procedure TWebModule1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := ServerMethodsUnit1.TServerMethods1;
+end;
+
+procedure TWebModule1.DSServerClassCotacaoGetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := ServerMethodsCotacao.TMethodsCotacao;
 end;
 
 procedure TWebModule1.DSAuthenticationManager1UserAuthenticate(

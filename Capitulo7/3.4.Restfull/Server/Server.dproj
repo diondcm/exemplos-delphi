@@ -54,6 +54,7 @@
 $(PostBuildEvent)]]></PostBuildEvent>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+        <SanitizedProjectName>Server</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;fmxase;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;tethering;svnui;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;inetdb;FmxTeeUI;emsedge;fmx;fmxdae;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;DataSnapConnectors;VCLRESTComponents;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;DataSnapClient;IndyIPCommon;bindcompdbx;vcl;IndyIPServer;DBXSybaseASEDriver;IndySystem;FireDACDb2Driver;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;emshosting;FireDACPgDriver;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;FMXTee;DbxCommonDriver;Tee;DataSnapServer;xmlrtl;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;DbxClientDriver;DBXSybaseASADriver;CustomIPTransport;vcldsnap;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;IndyProtocols;inetdbxpress;FireDACMongoDBDriver;DataSnapServerMidas;$(DCC_UsePackage)</DCC_UsePackage>
@@ -105,6 +106,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <FormType>dfm</FormType>
             <DesignClass>TWebModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="ServerMethodsCotacao.pas">
+            <Form>MethodsCotacao</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDSServerModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Classes\Classe.Cotacao.pas"/>
         <None Include="js\base64.js"/>
         <None Include="js\serverfunctionexecutor.js"/>
         <None Include="js\json2.js"/>

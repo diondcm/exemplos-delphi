@@ -95,9 +95,9 @@
             <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ClientClassesUnit1.pas"/>
-        <DCCReference Include="ClientModuleUnit1.pas">
-            <Form>ClientModule1</Form>
+        <DCCReference Include="ClientClassesUnit2.pas"/>
+        <DCCReference Include="ClientModuleUnit2.pas">
+            <Form>ClientModule2</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -549,7 +549,7 @@
                 <Platform value="Win32">True</Platform>
             </Platforms>
             <DataSnapProxyLookup>
-                <ClientClassesUnit1>{B974AEE8-07BE-4D41-8063-EBAC177CB257}</ClientClassesUnit1>
+                <ClientClassesUnit2>{717046E8-C8DE-451F-95A2-ABF96972DF0C}</ClientClassesUnit2>
             </DataSnapProxyLookup>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

@@ -1,0 +1,10 @@
+#Git
+https://www.youtube.com/watch?v=SWYqp7iY_Tc
+#TortoiseGit
+#Git
+
+#Encodings
+http://etutorials.org/Programming/actionscript/Appendix+A.+Unicode+Escape+Sequences+for+Latin+1+Characters/
+http://docwiki.embarcadero.com/CodeExamples/Tokyo/en/TStringsEncoding_(Delphi)
+http://docwiki.embarcadero.com/CodeExamples/Tokyo/en/UnicodeConversion_(Delphi)
+#Encodings

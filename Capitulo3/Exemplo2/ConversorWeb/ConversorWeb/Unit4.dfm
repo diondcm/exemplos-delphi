@@ -135,4 +135,34 @@ object IWForm4: TIWForm4
     Caption = 'Informe um Valor'
     RawText = False
   end
+  object IWCheckBox1: TIWCheckBox
+    Left = 271
+    Top = 88
+    Width = 121
+    Height = 21
+    Cursor = crAuto
+    ParentShowHint = False
+    ShowHint = True
+    ZIndex = 0
+    RenderSize = True
+    StyleRenderOptions.RenderSize = True
+    StyleRenderOptions.RenderPosition = True
+    StyleRenderOptions.RenderFont = True
+    StyleRenderOptions.RenderZIndex = True
+    StyleRenderOptions.RenderVisibility = True
+    StyleRenderOptions.RenderStatus = True
+    StyleRenderOptions.RenderAbsolute = True
+    Caption = 'IWCheckBox1'
+    Editable = True
+    Font.Color = clNone
+    Font.Size = 10
+    Font.Style = []
+    SubmitOnAsyncEvent = True
+    ScriptEvents = <>
+    DoSubmitValidation = True
+    Style = stNormal
+    TabOrder = 2
+    Checked = False
+    FriendlyName = 'IWCheckBox1'
+  end
 end
