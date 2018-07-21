@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Client Files'
-  ClientHeight = 353
+  ClientHeight = 514
   ClientWidth = 504
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -61,8 +61,8 @@ object frmPrincipal: TfrmPrincipal
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 64
-    Top = 288
+    Left = 5
+    Top = 240
     Width = 75
     Height = 25
     Caption = 'Button2'
@@ -70,12 +70,97 @@ object frmPrincipal: TfrmPrincipal
     OnClick = Button2Click
   end
   object Button3: TButton
-    Left = 200
-    Top = 288
+    Left = 86
+    Top = 240
     Width = 75
     Height = 25
     Caption = 'Button3'
     TabOrder = 4
     OnClick = Button3Click
+  end
+  object Panel1: TPanel
+    Left = 8
+    Top = 288
+    Width = 488
+    Height = 218
+    TabOrder = 5
+    object gauge: TGauge
+      AlignWithMargins = True
+      Left = 4
+      Top = 184
+      Width = 480
+      Height = 30
+      Align = alBottom
+      Progress = 0
+    end
+    object labelStatus: TLabel
+      AlignWithMargins = True
+      Left = 4
+      Top = 159
+      Width = 480
+      Height = 19
+      Align = alBottom
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitWidth = 5
+    end
+    object buttonDownLoad: TButton
+      Left = 24
+      Top = 16
+      Width = 129
+      Height = 49
+      Caption = 'Download'
+      TabOrder = 0
+      OnClick = buttonDownLoadClick
+    end
+    object comboArquivos: TComboBox
+      Left = 159
+      Top = 32
+      Width = 145
+      Height = 21
+      Style = csDropDownList
+      TabOrder = 1
+      Items.Strings = (
+        'Logo'
+        'Dados')
+    end
+    object buttonUpload: TButton
+      Left = 24
+      Top = 71
+      Width = 129
+      Height = 50
+      Cancel = True
+      Caption = 'Upload'
+      TabOrder = 2
+      OnClick = buttonUploadClick
+    end
+    object editPasta: TEdit
+      Left = 159
+      Top = 85
+      Width = 314
+      Height = 21
+      TabOrder = 3
+      TextHint = 'Clicke para selecionar o arquivo'
+      OnClick = editPastaClick
+    end
+    object buttonDownloadProgress: TButton
+      Left = 320
+      Top = 16
+      Width = 153
+      Height = 49
+      Caption = 'buttonDownloadProgress'
+      TabOrder = 4
+      OnClick = buttonDownloadProgressClick
+    end
+  end
+  object OpenDialog: TOpenDialog
+    Filter = 'Todos arquivos|*.*'
+    Options = [ofHideReadOnly, ofFileMustExist, ofEnableSizing]
+    Left = 448
+    Top = 368
   end
 end

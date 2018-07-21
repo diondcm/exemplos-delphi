@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 21/07/2018 11:54:00
+// 21/07/2018 17:38:39
 //
 
 unit ClientClassesUnit1;
@@ -28,6 +28,9 @@ type
     FGetListaPessoaCommand_Cache: TDSRestCommand;
     FGetCarroCommand: TDSRestCommand;
     FGetCarroSemTratamentoCommand: TDSRestCommand;
+    FGetFileCommand: TDSRestCommand;
+    FGetFileCommand_Cache: TDSRestCommand;
+    FSetFileCommand: TDSRestCommand;
   public
     constructor Create(ARestConnection: TDSRestConnection); overload;
     constructor Create(ARestConnection: TDSRestConnection; AInstanceOwner: Boolean); overload;
@@ -43,6 +46,9 @@ type
     function GetListaPessoa_Cache(const ARequestFilter: string = ''): IDSRestCachedTListaPessoa;
     function GetCarro(pID: Integer; const ARequestFilter: string = ''): Boolean;
     function GetCarroSemTratamento(pID: Integer; const ARequestFilter: string = ''): Boolean;
+    function GetFile(pAbrevArquivo: string; out pSize: Int64; const ARequestFilter: string = ''): TStream;
+    function GetFile_Cache(pAbrevArquivo: string; out pSize: Int64; const ARequestFilter: string = ''): IDSRestCachedStream;
+    procedure SetFile(pAbrevArquivo: string; pOperacao: string; out pSize: Int64; pStm: TStream; const ARequestFilter: string = '');
   end;
 
   IDSRestCachedTListaPessoa = interface(IDSRestCachedObject<TListaPessoa>)
@@ -122,6 +128,28 @@ const
   (
     (Name: 'pID'; Direction: 1; DBXType: 6; TypeName: 'Integer'),
     (Name: ''; Direction: 4; DBXType: 4; TypeName: 'Boolean')
+  );
+
+  TServerMethods1_GetFile: array [0..2] of TDSRestParameterMetaData =
+  (
+    (Name: 'pAbrevArquivo'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pSize'; Direction: 2; DBXType: 18; TypeName: 'Int64'),
+    (Name: ''; Direction: 4; DBXType: 33; TypeName: 'TStream')
+  );
+
+  TServerMethods1_GetFile_Cache: array [0..2] of TDSRestParameterMetaData =
+  (
+    (Name: 'pAbrevArquivo'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pSize'; Direction: 2; DBXType: 18; TypeName: 'Int64'),
+    (Name: ''; Direction: 4; DBXType: 26; TypeName: 'String')
+  );
+
+  TServerMethods1_SetFile: array [0..3] of TDSRestParameterMetaData =
+  (
+    (Name: 'pAbrevArquivo'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pOperacao'; Direction: 1; DBXType: 26; TypeName: 'string'),
+    (Name: 'pSize'; Direction: 2; DBXType: 18; TypeName: 'Int64'),
+    (Name: 'pStm'; Direction: 1; DBXType: 33; TypeName: 'TStream')
   );
 
 implementation
@@ -324,6 +352,52 @@ begin
   Result := FGetCarroSemTratamentoCommand.Parameters[1].Value.GetBoolean;
 end;
 
+function TServerMethods1Client.GetFile(pAbrevArquivo: string; out pSize: Int64; const ARequestFilter: string): TStream;
+begin
+  if FGetFileCommand = nil then
+  begin
+    FGetFileCommand := FConnection.CreateCommand;
+    FGetFileCommand.RequestType := 'GET';
+    FGetFileCommand.Text := 'TServerMethods1.GetFile';
+    FGetFileCommand.Prepare(TServerMethods1_GetFile);
+  end;
+  FGetFileCommand.Parameters[0].Value.SetWideString(pAbrevArquivo);
+  FGetFileCommand.Execute(ARequestFilter);
+  pSize := FGetFileCommand.Parameters[1].Value.GetInt64;
+  Result := FGetFileCommand.Parameters[2].Value.GetStream(FInstanceOwner);
+end;
+
+function TServerMethods1Client.GetFile_Cache(pAbrevArquivo: string; out pSize: Int64; const ARequestFilter: string): IDSRestCachedStream;
+begin
+  if FGetFileCommand_Cache = nil then
+  begin
+    FGetFileCommand_Cache := FConnection.CreateCommand;
+    FGetFileCommand_Cache.RequestType := 'GET';
+    FGetFileCommand_Cache.Text := 'TServerMethods1.GetFile';
+    FGetFileCommand_Cache.Prepare(TServerMethods1_GetFile_Cache);
+  end;
+  FGetFileCommand_Cache.Parameters[0].Value.SetWideString(pAbrevArquivo);
+  FGetFileCommand_Cache.ExecuteCache(ARequestFilter);
+  pSize := FGetFileCommand_Cache.Parameters[1].Value.GetInt64;
+  Result := TDSRestCachedStream.Create(FGetFileCommand_Cache.Parameters[2].Value.GetString);
+end;
+
+procedure TServerMethods1Client.SetFile(pAbrevArquivo: string; pOperacao: string; out pSize: Int64; pStm: TStream; const ARequestFilter: string);
+begin
+  if FSetFileCommand = nil then
+  begin
+    FSetFileCommand := FConnection.CreateCommand;
+    FSetFileCommand.RequestType := 'POST';
+    FSetFileCommand.Text := 'TServerMethods1."SetFile"';
+    FSetFileCommand.Prepare(TServerMethods1_SetFile);
+  end;
+  FSetFileCommand.Parameters[0].Value.SetWideString(pAbrevArquivo);
+  FSetFileCommand.Parameters[1].Value.SetWideString(pOperacao);
+  FSetFileCommand.Parameters[3].Value.SetStream(pStm, FInstanceOwner);
+  FSetFileCommand.Execute(ARequestFilter);
+  pSize := FSetFileCommand.Parameters[2].Value.GetInt64;
+end;
+
 constructor TServerMethods1Client.Create(ARestConnection: TDSRestConnection);
 begin
   inherited Create(ARestConnection);
@@ -347,6 +421,9 @@ begin
   FGetListaPessoaCommand_Cache.DisposeOf;
   FGetCarroCommand.DisposeOf;
   FGetCarroSemTratamentoCommand.DisposeOf;
+  FGetFileCommand.DisposeOf;
+  FGetFileCommand_Cache.DisposeOf;
+  FSetFileCommand.DisposeOf;
   inherited;
 end;
 
