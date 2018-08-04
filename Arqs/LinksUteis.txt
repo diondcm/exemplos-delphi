@@ -8,3 +8,9 @@ http://etutorials.org/Programming/actionscript/Appendix+A.+Unicode+Escape+Sequen
 http://docwiki.embarcadero.com/CodeExamples/Tokyo/en/TStringsEncoding_(Delphi)
 http://docwiki.embarcadero.com/CodeExamples/Tokyo/en/UnicodeConversion_(Delphi)
 #Encodings
+
+#Coderange - palestras Delphi
+https://community.embarcadero.com/article/16578-coderage
+https://www.youtube.com/watch?v=Fa3fNS0AJRo
+https://www.youtube.com/watch?v=3X12IHOsXB8
+#Coderange
