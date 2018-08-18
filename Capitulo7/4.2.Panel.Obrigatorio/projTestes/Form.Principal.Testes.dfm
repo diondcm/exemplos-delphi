@@ -56,6 +56,8 @@ object frmPrincipalTestes: TfrmPrincipalTestes
     Height = 106
     Align = alLeft
     DataSource = dtsDados
+    DesenhaObrigatorios = False
+    Notifica = PanelObrigatorio1Notifica
     object Label1: TLabel
       Left = 16
       Top = 16

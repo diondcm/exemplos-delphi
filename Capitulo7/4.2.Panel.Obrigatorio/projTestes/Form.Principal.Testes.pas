@@ -23,6 +23,7 @@ type
     DBEdit2: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure memDadosBeforePost(DataSet: TDataSet);
+    procedure PanelObrigatorio1Notifica(Sender: TObject; Index: Integer);
   private
     { Private declarations }
   public
@@ -46,6 +47,11 @@ end;
 procedure TfrmPrincipalTestes.memDadosBeforePost(DataSet: TDataSet);
 begin
   ShowMessage('On Before Post');
+end;
+
+procedure TfrmPrincipalTestes.PanelObrigatorio1Notifica(Sender: TObject; Index: Integer);
+begin
+  ShowMessage('Notifica');
 end;
 
 procedure TfrmPrincipalTestes.Teste;

@@ -7,6 +7,8 @@ uses
   Vcl.Graphics, Vcl.Dialogs, System.Generics.Collections;
 
 type
+  TNotificaPanel = procedure (Sender: TObject; Index: Integer) of object;
+
   TEditConfig = class(TComponent)
   private
     FBevelInner: TBevelCut;
@@ -36,6 +38,7 @@ type
     FMensagem: string;
     FDesenhaObrigatorios: Boolean;
     FDestaqueCampoObrigatorio: TEditConfig;
+    FNotifica: TNotificaPanel;
     procedure SetDataSource(const Value: TDataSource);
   protected
     function GetMensagem: string; virtual;
@@ -50,6 +53,7 @@ type
     property ConfigEditObrigatorio: TEditConfig read FDestaqueCampoObrigatorio write FDestaqueCampoObrigatorio;
     property DesenhaObrigatorios: Boolean read FDesenhaObrigatorios write FDesenhaObrigatorios default True;
     property Mensagem: string read FMensagem write FMensagem;
+    property Notifica: TNotificaPanel read FNotifica write FNotifica;
   end;
 
   TPanelObrigatorio = class(TCustomPanelObrigatorio)
@@ -60,6 +64,7 @@ type
     property ConfigEditObrigatorio;
     property DesenhaObrigatorios;
     property Mensagem;
+    property Notifica;
   end;
 
 
@@ -71,6 +76,15 @@ constructor TCustomPanelObrigatorio.Create(AOwner: TComponent);
 begin
   inherited;
   FListaComps := TDictionary<TControl, TEditConfig>.Create;
+
+  if not(csDesigning in ComponentState) then
+  begin
+    if Assigned(FNotifica) then
+    begin
+      FNotifica(Self, -1);
+    end;
+  end;
+
 
   FDestaqueCampoObrigatorio := TEditConfig.Create(Self);
 
