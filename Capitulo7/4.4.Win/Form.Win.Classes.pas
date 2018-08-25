@@ -18,12 +18,14 @@ type
     buttonSimulaKey: TButton;
     editTexto: TEdit;
     buttonParent: TButton;
+    buttonPerform: TButton;
     procedure checkAtivoClick(Sender: TObject);
     procedure timerCapturaTimer(Sender: TObject);
     procedure listHandlesClick(Sender: TObject);
     procedure buttonCloseClick(Sender: TObject);
     procedure buttonSimulaKeyClick(Sender: TObject);
     procedure buttonParentClick(Sender: TObject);
+    procedure buttonPerformClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +48,11 @@ begin
   end;
 end;
 
+procedure TfrmWinClasses.buttonPerformClick(Sender: TObject);
+begin
+  Perform(WM_CLOSE, 0, 0);
+end;
+
 procedure TfrmWinClasses.buttonSimulaKeyClick(Sender: TObject);
 begin
   if listHandles.ItemIndex <> -1 then
@@ -66,7 +73,7 @@ begin
   lHandle := FindWindow('Notepad', nil);
   if lHandle <> INVALID_HANDLE_VALUE then
   begin
-//    SendMessage(lHandle, WM_CLOSE, 0, 0);
+    //SendMessage(lHandle, WM_CLOSE, 0, 0);
     PostMessage(lHandle, WM_CLOSE, 0, 0);
     ShowMessage('Closed');
   end;

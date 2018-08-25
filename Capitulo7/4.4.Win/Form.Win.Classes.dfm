@@ -24,9 +24,6 @@ object frmWinClasses: TfrmWinClasses
     Caption = 'Capturar'
     TabOrder = 0
     OnClick = checkAtivoClick
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 97
   end
   object buttonClose: TButton
     Left = 35
@@ -48,9 +45,6 @@ object frmWinClasses: TfrmWinClasses
     Caption = 'panelList'
     ShowCaption = False
     TabOrder = 2
-    ExplicitLeft = 184
-    ExplicitTop = 72
-    ExplicitHeight = 263
     object labelCaption: TLabel
       AlignWithMargins = True
       Left = 3
@@ -64,8 +58,7 @@ object frmWinClasses: TfrmWinClasses
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 11
-      ExplicitTop = 0
+      ExplicitWidth = 5
     end
     object labelClass: TLabel
       AlignWithMargins = True
@@ -92,10 +85,6 @@ object frmWinClasses: TfrmWinClasses
       ItemHeight = 13
       TabOrder = 0
       OnClick = listHandlesClick
-      ExplicitLeft = 78
-      ExplicitTop = 0
-      ExplicitWidth = 121
-      ExplicitHeight = 255
     end
   end
   object buttonSimulaKey: TButton
@@ -122,6 +111,15 @@ object frmWinClasses: TfrmWinClasses
     Caption = 'Parent'
     TabOrder = 5
     OnClick = buttonParentClick
+  end
+  object buttonPerform: TButton
+    Left = 35
+    Top = 287
+    Width = 121
+    Height = 50
+    Caption = 'Perform'
+    TabOrder = 6
+    OnClick = buttonPerformClick
   end
   object timerCaptura: TTimer
     Enabled = False
