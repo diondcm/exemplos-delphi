@@ -25,8 +25,6 @@ object frmPrincipalGroup: TfrmPrincipalGroup
     TabOrder = 0
     object tabMasterDetail: TTabSheet
       Caption = 'Master-Detail'
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object panelControles: TPanel
         AlignWithMargins = True
         Left = 3
@@ -35,9 +33,6 @@ object frmPrincipalGroup: TfrmPrincipalGroup
         Height = 62
         Align = alTop
         TabOrder = 0
-        ExplicitLeft = 6
-        ExplicitTop = 11
-        ExplicitWidth = 393
         object buttonOpen: TButton
           AlignWithMargins = True
           Left = 4
@@ -60,6 +55,19 @@ object frmPrincipalGroup: TfrmPrincipalGroup
           TabOrder = 1
           OnClick = buttonReportClick
         end
+        object buttonExportarCateg: TButton
+          AlignWithMargins = True
+          Left = 311
+          Top = 4
+          Width = 175
+          Height = 54
+          Align = alLeft
+          Caption = 'Exportar'
+          DropDownMenu = PopupMenuExpo
+          Style = bsSplitButton
+          TabOrder = 2
+          OnDropDownClick = buttonExportarCategDropDownClick
+        end
       end
       object panelDados: TPanel
         AlignWithMargins = True
@@ -69,10 +77,6 @@ object frmPrincipalGroup: TfrmPrincipalGroup
         Height = 358
         Align = alClient
         TabOrder = 1
-        ExplicitLeft = 8
-        ExplicitTop = -81
-        ExplicitWidth = 535
-        ExplicitHeight = 386
         object Splitter1: TSplitter
           Left = 1
           Top = 205
@@ -122,8 +126,6 @@ object frmPrincipalGroup: TfrmPrincipalGroup
           Align = alBottom
           Caption = 'Panel1'
           TabOrder = 1
-          ExplicitTop = 80
-          ExplicitWidth = 391
           object labelProdutos: TLabel
             Left = 1
             Top = 1
@@ -160,8 +162,6 @@ object frmPrincipalGroup: TfrmPrincipalGroup
     object tabSQLJoin: TTabSheet
       Caption = 'SQL-Join'
       ImageIndex = 1
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object panelControleJoin: TPanel
         Left = 0
         Top = 0
@@ -189,6 +189,20 @@ object frmPrincipalGroup: TfrmPrincipalGroup
           Align = alLeft
           Caption = 'Report'
           TabOrder = 1
+          OnClick = buttonReportJoinClick
+          ExplicitTop = 5
+        end
+        object buttonExpoSQL: TButton
+          AlignWithMargins = True
+          Left = 271
+          Top = 4
+          Width = 106
+          Height = 57
+          Align = alLeft
+          Caption = 'Exportar'
+          TabOrder = 2
+          OnClick = buttonExpoSQLClick
+          ExplicitTop = 5
         end
       end
       object gridJoin: TDBGrid
@@ -228,5 +242,29 @@ object frmPrincipalGroup: TfrmPrincipalGroup
     DataSet = dmdGroup.qryListaProdutos
     Left = 464
     Top = 160
+  end
+  object PopupMenuExpo: TPopupMenu
+    Left = 376
+    Top = 152
+    object PDF1: TMenuItem
+      Caption = 'PDF'
+      OnClick = PDF1Click
+    end
+    object JPG1: TMenuItem
+      Caption = 'JPG'
+      OnClick = JPG1Click
+    end
+    object HTML1: TMenuItem
+      Caption = 'HTML'
+      OnClick = HTML1Click
+    end
+    object XLS1: TMenuItem
+      Caption = 'XLS'
+      OnClick = XLS1Click
+    end
+    object XLSX1: TMenuItem
+      Caption = 'XLSX'
+      OnClick = XLSX1Click
+    end
   end
 end
