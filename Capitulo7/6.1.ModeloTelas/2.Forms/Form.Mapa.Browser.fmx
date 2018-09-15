@@ -1,0 +1,43 @@
+inherited frmMapaBrowser: TfrmMapaBrowser
+  Caption = 'frmBase1'
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    object buttonGo: TButton
+      Align = Right
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      TabOrder = 1
+      Text = 'buttonGo'
+      OnClick = buttonGoClick
+    end
+  end
+  object Layout1: TLayout
+    Align = Top
+    Position.Y = 44.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object editURL: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Center
+      TabOrder = 0
+      Size.Width = 465.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object WebBrowser: TWebBrowser
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 386.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object LocationSensor: TLocationSensor
+    Left = 528
+    Top = 128
+  end
+end
