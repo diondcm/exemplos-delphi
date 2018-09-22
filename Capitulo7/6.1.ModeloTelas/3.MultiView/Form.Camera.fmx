@@ -7,4 +7,146 @@ object frmCamera: TfrmCamera
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+  object LayoutClient: TLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ToolBar1: TToolBar
+      Size.Width = 640.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object ButtonStartCamera: TButton
+        Align = Right
+        Position.X = 480.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'playtoolbutton'
+        TabOrder = 0
+        Text = 'ButtonStartCamera'
+        OnClick = ButtonStartCameraClick
+      end
+      object ButtonStopCamera: TButton
+        Align = Right
+        Position.X = 560.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'stoptoolbutton'
+        TabOrder = 1
+        Text = 'ButtonStopCamera'
+        OnClick = ButtonStopCameraClick
+      end
+    end
+    object TabControl: TTabControl
+      Align = Client
+      Size.Width = 640.000000000000000000
+      Size.Height = 431.000000000000000000
+      Size.PlatformDefault = False
+      TabIndex = 0
+      TabOrder = 1
+      TabPosition = PlatformDefault
+      Sizes = (
+        640s
+        405s
+        640s
+        405s)
+      object tabCamera: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 61.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'C'#226'mera'
+        object ImageCamera: TImage
+          MultiResBitmap = <
+            item
+            end>
+          Align = Client
+          Size.Width = 640.000000000000000000
+          Size.Height = 405.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object tabConfig: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 96.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'Configura'#231#245'es'
+        object Rectangle1: TRectangle
+          Align = Top
+          Size.Width = 640.000000000000000000
+          Size.Height = 113.000000000000000000
+          Size.PlatformDefault = False
+          object Layout1: TLayout
+            Position.X = 128.000000000000000000
+            Position.Y = 39.000000000000000000
+            Size.Width = 257.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object SwitchCamera: TSwitch
+              Align = Left
+              IsChecked = True
+              Margins.Top = 10.000000000000000000
+              Margins.Bottom = 10.000000000000000000
+              Position.X = 89.000000000000000000
+              Position.Y = 10.000000000000000000
+              Size.Width = 104.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              OnSwitch = SwitchCameraSwitch
+            end
+            object Label2: TLabel
+              Align = Left
+              Size.Width = 89.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              Text = 'Front'
+              TabOrder = 2
+            end
+            object Label3: TLabel
+              Align = Client
+              Margins.Left = 10.000000000000000000
+              Size.Width = 54.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.HorzAlign = Trailing
+              Text = 'Back'
+              TabOrder = 1
+            end
+          end
+          object Label1: TLabel
+            Align = Top
+            StyledSettings = [Family, Size, FontColor]
+            Size.Width = 640.000000000000000000
+            Size.Height = 17.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            Text = 'Tipo de c'#226'mera'
+            TabOrder = 1
+          end
+        end
+      end
+    end
+  end
+  object CameraComponent1: TCameraComponent
+    OnSampleBufferReady = CameraComponent1SampleBufferReady
+    Left = 496
+    Top = 144
+  end
 end
