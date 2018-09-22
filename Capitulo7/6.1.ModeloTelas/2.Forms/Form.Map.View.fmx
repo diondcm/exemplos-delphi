@@ -1,0 +1,27 @@
+inherited frmMapView: TfrmMapView
+  Caption = 'Map View'
+  DesignerMasterStyle = 0
+  inherited ToolBar1: TToolBar
+    object buttonLocalizacao: TButton
+      Align = Right
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      TabOrder = 1
+      Text = 'buttonLocalizacao'
+      OnClick = buttonLocalizacaoClick
+    end
+  end
+  object MapView: TMapView
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 436.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object LocationSensor: TLocationSensor
+    Left = 560
+    Top = 96
+  end
+end
