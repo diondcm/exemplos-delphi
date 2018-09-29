@@ -6,7 +6,7 @@
         <MainSource>FMGerais.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1117</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -274,11 +274,20 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Form.Principal.Gerais.pas">
-            <Form>frmPrincipal</Form>
+            <Form>frmPrincipalGerais</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Form.Download.Images.pas">
             <Form>frmDownloadImage</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Classe.Down.Image.pas"/>
+        <DCCReference Include="Form.Base.Mobile.pas">
+            <Form>frmBaseMobile</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Form.Principal.pas">
+            <Form>frmPrincipal</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -752,7 +761,6 @@
                 <Platform value="iOSSimulator">True</Platform>
                 <Platform value="OSX32">True</Platform>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

@@ -59,22 +59,24 @@ object frmDownloadImage: TfrmDownloadImage
       object LayoutControles: TLayout
         Align = Top
         Size.Width = 640.000000000000000000
-        Size.Height = 161.000000000000000000
+        Size.Height = 225.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object TabControl: TTabControl
           Align = Client
           Size.Width = 640.000000000000000000
-          Size.Height = 161.000000000000000000
+          Size.Height = 225.000000000000000000
           Size.PlatformDefault = False
-          TabIndex = 1
+          TabIndex = 2
           TabOrder = 0
           TabPosition = PlatformDefault
           Sizes = (
             640s
-            135s
+            199s
             640s
-            135s)
+            199s
+            640s
+            199s)
           object TabCalendario: TTabItem
             CustomIcon = <
               item
@@ -93,7 +95,7 @@ object frmDownloadImage: TfrmDownloadImage
             CustomIcon = <
               item
               end>
-            IsSelected = True
+            IsSelected = False
             Size.Width = 45.000000000000000000
             Size.Height = 26.000000000000000000
             Size.PlatformDefault = False
@@ -140,18 +142,51 @@ object frmDownloadImage: TfrmDownloadImage
               end
             end
           end
+          object tabJson: TTabItem
+            CustomIcon = <
+              item
+              end>
+            IsSelected = True
+            Size.Width = 44.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'Json'
+            object MemoJson: TMemo
+              Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+              DataDetectorTypes = []
+              Align = Client
+              Size.Width = 640.000000000000000000
+              Size.Height = 199.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              OnClick = MemoJsonClick
+              Viewport.Width = 636.000000000000000000
+              Viewport.Height = 195.000000000000000000
+            end
+          end
         end
       end
-      object ImagePrincipal: TImage
-        MultiResBitmap = <
-          item
-          end>
+      object VertScrollBox1: TVertScrollBox
         Align = Client
-        MarginWrapMode = Original
         Size.Width = 640.000000000000000000
-        Size.Height = 262.000000000000000000
+        Size.Height = 198.000000000000000000
         Size.PlatformDefault = False
-        WrapMode = Original
+        TabOrder = 1
+        Viewport.Width = 640.000000000000000000
+        Viewport.Height = 198.000000000000000000
+        object ImagePrincipal: TImage
+          MultiResBitmap = <
+            item
+            end>
+          Align = Client
+          MarginWrapMode = Original
+          Size.Width = 640.000000000000000000
+          Size.Height = 198.000000000000000000
+          Size.PlatformDefault = False
+          WrapMode = Original
+        end
       end
     end
   end
@@ -187,5 +222,26 @@ object frmDownloadImage: TfrmDownloadImage
     SSLOptions.VerifyDepth = 0
     Left = 536
     Top = 192
+  end
+  object RESTClient: TRESTClient
+    Params = <>
+    HandleRedirects = True
+    Left = 136
+    Top = 232
+  end
+  object RESTResponse: TRESTResponse
+    Left = 240
+    Top = 232
+  end
+  object RESTRequest: TRESTRequest
+    Client = RESTClient
+    Params = <
+      item
+        name = 'userId'
+      end>
+    Response = RESTResponse
+    SynchronizedEvents = False
+    Left = 176
+    Top = 312
   end
 end

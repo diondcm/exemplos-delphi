@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.StdCtrls, Form.Download.Images;
 
 type
-  TfrmPrincipal = class(TForm)
+  TfrmPrincipalGerais = class(TForm)
     GridPanelLayout: TGridPanelLayout;
     RectangleLogo: TRectangle;
     ButtonDownImage: TCornerButton;
@@ -19,13 +19,13 @@ type
   end;
 
 var
-  frmPrincipal: TfrmPrincipal;
+  frmPrincipalGerais: TfrmPrincipalGerais;
 
 implementation
 
 {$R *.fmx}
 
-procedure TfrmPrincipal.ButtonDownImageClick(Sender: TObject);
+procedure TfrmPrincipalGerais.ButtonDownImageClick(Sender: TObject);
 begin
   TfrmDownloadImage.Create(Self).Show;
 end;
