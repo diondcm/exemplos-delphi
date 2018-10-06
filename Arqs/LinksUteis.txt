@@ -14,3 +14,16 @@ https://community.embarcadero.com/article/16578-coderage
 https://www.youtube.com/watch?v=Fa3fNS0AJRo
 https://www.youtube.com/watch?v=3X12IHOsXB8
 #Coderange
+
+
+#Assinar executavel com certificado
+http://thundaxsoftware.blogspot.com/2011/04/signing-your-delphi-applications-with.html
+#
+
+#Images FM
+http://docwiki.embarcadero.com/RADStudio/Tokyo/en/FireMonkey_Image_Effects
+#
+
+# Horizontal View 
+https://github.com/rzaripov1990/ModernListView
+#
