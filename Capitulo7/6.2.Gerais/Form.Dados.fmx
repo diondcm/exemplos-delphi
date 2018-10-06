@@ -1,0 +1,88 @@
+object frmDados: TfrmDados
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ListViewDados: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Margins.Left = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 620.000000000000000000
+    Size.Height = 364.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    SearchVisible = True
+  end
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object ButtonClose: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'backtoolbutton'
+      TabOrder = 0
+      Text = 'Voltar'
+    end
+    object ButtonOpen: TButton
+      Align = Right
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbuttonbordered'
+      TabOrder = 2
+      OnClick = ButtonOpenClick
+    end
+  end
+  object NavigatorBindSourceDB1: TBindNavigator
+    Align = Bottom
+    Margins.Left = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Position.X = 10.000000000000000000
+    Position.Y = 414.000000000000000000
+    Size.Width = 620.000000000000000000
+    Size.Height = 56.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = dmdDados.qryCustomer
+    ScopeMappings = <>
+    Left = 304
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'CONTACT_FIRST'
+      Control = ListViewDados
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakFieldName = 'CITY'
+      FillHeaderFieldName = 'CUSTOMER'
+      FillBreakGroups = <>
+    end
+  end
+end

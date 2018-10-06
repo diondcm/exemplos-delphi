@@ -7,14 +7,18 @@ uses
   Form.Download.Images in 'Form.Download.Images.pas' {frmDownloadImage},
   Classe.Down.Image in 'Classe.Down.Image.pas',
   Form.Base.Mobile in 'Form.Base.Mobile.pas' {frmBaseMobile},
-  Form.Principal in 'Form.Principal.pas' {frmPrincipal};
+  Form.Principal in 'Form.Principal.pas' {frmPrincipal},
+  Form.Action.Camera in 'Form.Action.Camera.pas' {frmActionCamera},
+  Form.Dados in 'Form.Dados.pas' {frmDados},
+  Data.Dados in 'Data.Dados.pas' {dmdDados: TDataModule},
+  Form.Cadastro in 'Form.Cadastro.pas' {frmCadastro};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TfrmPrincipalGerais, frmPrincipalGerais);
-  Application.CreateForm(TfrmBaseMobile, frmBaseMobile);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmdDados, dmdDados);
+  Application.CreateForm(TfrmCadastro, frmCadastro);
   Application.Run;
 end.

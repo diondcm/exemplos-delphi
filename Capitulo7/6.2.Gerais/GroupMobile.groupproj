@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2F61B7B3-930D-4563-BBB0-36A8B56B0502}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FMGerais.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Server\Server.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FMGerais">
+        <MSBuild Projects="FMGerais.dproj"/>
+    </Target>
+    <Target Name="FMGerais:Clean">
+        <MSBuild Projects="FMGerais.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FMGerais:Make">
+        <MSBuild Projects="FMGerais.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Server">
+        <MSBuild Projects="Server\Server.dproj"/>
+    </Target>
+    <Target Name="Server:Clean">
+        <MSBuild Projects="Server\Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Server:Make">
+        <MSBuild Projects="Server\Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FMGerais;Server"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FMGerais:Clean;Server:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FMGerais:Make;Server:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
