@@ -1,0 +1,48 @@
+object frmFireBase: TfrmFireBase
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ButtonClose: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonClose'
+      OnClick = ButtonCloseClick
+    end
+  end
+  object Button1: TButton
+    Position.X = 224.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Button1'
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Center
+    Size.Width = 337.000000000000000000
+    Size.Height = 249.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 333.000000000000000000
+    Viewport.Height = 245.000000000000000000
+  end
+end

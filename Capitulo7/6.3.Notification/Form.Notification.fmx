@@ -1,0 +1,109 @@
+object frmNotification: TfrmNotification
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ButtonVoltar: TButton
+      Align = Left
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonVoltar'
+      OnClick = ButtonVoltarClick
+    end
+  end
+  object GridPanelLayout1: TGridPanelLayout
+    Align = Center
+    Size.Width = 362.000000000000000000
+    Size.Height = 330.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    ColumnCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = ButtonNotificacaoSimples
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = ButtonAgendada
+        Row = 1
+      end
+      item
+        Column = 0
+        Control = ButtonCancelar
+        Row = 2
+      end
+      item
+        Column = 0
+        Control = Button1
+        Row = 3
+      end>
+    RowCollection = <
+      item
+        Value = 25.000000000000000000
+      end
+      item
+        Value = 25.000000000000000000
+      end
+      item
+        Value = 25.000000000000000000
+      end
+      item
+        Value = 25.000000000000000000
+      end
+      item
+        SizeStyle = Auto
+      end>
+    object ButtonNotificacaoSimples: TButton
+      Align = Center
+      Size.Width = 148.000000000000000000
+      Size.Height = 51.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Simples'
+      OnClick = ButtonNotificacaoSimplesClick
+    end
+    object ButtonAgendada: TButton
+      Align = Center
+      Size.Width = 148.000000000000000000
+      Size.Height = 51.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Agendada'
+      OnClick = ButtonAgendadaClick
+    end
+    object ButtonCancelar: TButton
+      Align = Center
+      Size.Width = 148.000000000000000000
+      Size.Height = 51.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Cancelar'
+      OnClick = ButtonCancelarClick
+    end
+    object Button1: TButton
+      Anchors = []
+      Position.X = 141.000000000000000000
+      Position.Y = 277.750000000000000000
+      TabOrder = 3
+      Text = 'Button1'
+    end
+  end
+end

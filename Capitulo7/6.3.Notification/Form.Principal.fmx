@@ -1,0 +1,88 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object GridPanelLayout1: TGridPanelLayout
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    ColumnCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        ColumnSpan = 2
+        Control = ImageLogo
+        Row = 0
+      end
+      item
+        Column = 0
+        Control = ButtonNotification
+        Row = 1
+      end
+      item
+        Column = 1
+        Control = ButtonFireBase
+        Row = 1
+      end>
+    RowCollection = <
+      item
+        Value = 40.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end
+      item
+        Value = 20.000000000000000000
+      end>
+    object ImageLogo: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Align = Center
+      Size.Width = 98.000000000000000000
+      Size.Height = 82.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object ButtonNotification: TCornerButton
+      Align = Center
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 153.000000000000000000
+      Size.Height = 76.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Notification'
+      XRadius = 30.000000000000000000
+      YRadius = 5.000000000000000000
+      OnClick = ButtonNotificationClick
+    end
+    object ButtonFireBase: TCornerButton
+      Align = Center
+      Sides = [Top, Left, Bottom, Right]
+      Size.Width = 153.000000000000000000
+      Size.Height = 76.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'FireBase'
+      XRadius = 30.000000000000000000
+      YRadius = 5.000000000000000000
+      OnClick = ButtonFireBaseClick
+    end
+  end
+end
