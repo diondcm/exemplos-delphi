@@ -7,4 +7,221 @@ object frmCadastro: TfrmCadastro
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ButtonClose: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonClose'
+      OnClick = ButtonCloseClick
+    end
+  end
+  object VertScrollBox1: TVertScrollBox
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 624.000000000000000000
+    Viewport.Height = 440.000000000000000000
+    object Layout1: TLayout
+      Align = Top
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label1: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Label1'
+        TabOrder = 1
+      end
+    end
+    object Layout2: TLayout
+      Align = Top
+      Position.Y = 342.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      object Edit2: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label2: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Endere'#231'o'
+        TabOrder = 1
+      end
+    end
+    object Layout3: TLayout
+      Align = Top
+      Position.Y = 285.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object Edit3: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label3: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Cidade'
+        TabOrder = 1
+      end
+    end
+    object Layout4: TLayout
+      Align = Top
+      Position.Y = 228.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object Edit4: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label4: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Estado'
+        TabOrder = 1
+      end
+    end
+    object Layout5: TLayout
+      Align = Top
+      Position.Y = 171.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object Edit5: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label5: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Label1'
+        TabOrder = 1
+      end
+    end
+    object Layout6: TLayout
+      Align = Top
+      Position.Y = 114.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object Edit6: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label6: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Label1'
+        TabOrder = 1
+      end
+    end
+    object Layout7: TLayout
+      Align = Top
+      Position.Y = 57.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Edit7: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
+        TabOrder = 0
+        Size.Width = 240.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label7: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 57.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Label1'
+        TabOrder = 1
+      end
+    end
+    object Layout8: TLayout
+      Align = Top
+      Position.Y = 399.000000000000000000
+      Size.Width = 624.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      object Button1: TButton
+        Align = Right
+        Position.X = 544.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Button1'
+      end
+      object Button2: TButton
+        Align = Center
+        Size.Width = 121.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Button2'
+      end
+    end
+  end
 end

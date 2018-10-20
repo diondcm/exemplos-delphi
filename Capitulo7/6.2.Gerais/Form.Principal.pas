@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, Form.Base.Mobile, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, System.Actions, FMX.ActnList, Form.Action.Camera,
-  Form.Dados;
+  Form.Dados, Form.Cadastro, FMX.Effects;
 
 type
   TfrmPrincipal = class(TfrmBaseMobile)
@@ -25,6 +25,7 @@ type
     LayoutScroll: TLayout;
     Image3: TImage;
     Label3: TLabel;
+    GlowEffect1: TGlowEffect;
     procedure ActionCameraExecute(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure LayoutCheckInClick(Sender: TObject);
@@ -57,6 +58,7 @@ end;
 procedure TfrmPrincipal.LayoutCheckInClick(Sender: TObject);
 begin
   inherited;
+  GlowEffect1.Enabled := True;
   ActionCamera.Execute;
 end;
 
@@ -69,7 +71,7 @@ end;
 procedure TfrmPrincipal.LayoutScrollClick(Sender: TObject);
 begin
   inherited;
-  //
+  frmCadastro.Show;
 end;
 
 end.

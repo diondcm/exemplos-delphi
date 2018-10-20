@@ -65,8 +65,8 @@ object frmDados: TfrmDados
   object BindSourceDB1: TBindSourceDB
     DataSet = dmdDados.qryCustomer
     ScopeMappings = <>
-    Left = 304
-    Top = 224
+    Left = 384
+    Top = 136
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -84,5 +84,27 @@ object frmDados: TfrmDados
       FillHeaderFieldName = 'CUSTOMER'
       FillBreakGroups = <>
     end
+  end
+  object FDQuery1: TFDQuery
+    Left = 152
+    Top = 152
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 152
+    Top = 208
+  end
+  object FDQuery2: TFDQuery
+    MasterSource = DataSource1
+    MasterFields = 'ID_CLIENTE'
+    SQL.Strings = (
+      'select * from pedidos where id_cliente = :id_cliente')
+    Left = 232
+    Top = 208
+    ParamData = <
+      item
+        Name = 'ID_CLIENTE'
+        ParamType = ptInput
+      end>
   end
 end
