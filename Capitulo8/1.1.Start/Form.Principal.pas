@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, ClientModuleUnit1;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, ClientModuleUnit1, Classe.Conversor;
 
 type
   TfrmPrincipal = class(TForm)
@@ -36,9 +36,18 @@ implementation
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 const
   DOLAR_PARA_REAL{: Integer} = 0;
-var
-  lValorCotacao: Double;
+//var
+//  lValorCotacao: Double;
 begin
+  if ComboBoxConvercao.ItemIndex = 1 { Real para dolar } then
+  begin
+    LabelResultado.Caption := TConversor.RealParaDolar(EditValor.Text);
+  end else if ComboBoxConvercao.ItemIndex = DOLAR_PARA_REAL then
+  begin
+    LabelResultado.Caption := TConversor.DolarParaReal(EditValor.Text);
+  end;
+
+(*
   lValorCotacao := ClientModule1.ServerMethods1Client.GetCotacao;
   if ComboBoxConvercao.ItemIndex = 1 { Real para dolar } then
   begin
@@ -46,7 +55,7 @@ begin
   end else if ComboBoxConvercao.ItemIndex = DOLAR_PARA_REAL then
   begin
     LabelResultado.Caption := FormatFloat('0.,00', StrToFloat(EditValor.Text)/lValorCotacao);
-  end;
+  end; *)
 
 {  if RadioButtonDolar.Checked then
   begin
