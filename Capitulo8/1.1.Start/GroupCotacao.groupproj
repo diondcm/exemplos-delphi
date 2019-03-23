@@ -12,6 +12,15 @@
         <Projects Include="StartDOS.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="IntraWeb\StartWeb\StartWeb.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="StartMobile.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project1.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +56,41 @@
     <Target Name="StartDOS:Make">
         <MSBuild Projects="StartDOS.dproj" Targets="Make"/>
     </Target>
+    <Target Name="StartWeb">
+        <MSBuild Projects="IntraWeb\StartWeb\StartWeb.dproj"/>
+    </Target>
+    <Target Name="StartWeb:Clean">
+        <MSBuild Projects="IntraWeb\StartWeb\StartWeb.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StartWeb:Make">
+        <MSBuild Projects="IntraWeb\StartWeb\StartWeb.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="StartMobile">
+        <MSBuild Projects="StartMobile.dproj"/>
+    </Target>
+    <Target Name="StartMobile:Clean">
+        <MSBuild Projects="StartMobile.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StartMobile:Make">
+        <MSBuild Projects="StartMobile.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project1">
+        <MSBuild Projects="Project1.cbproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="Project1.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="Project1.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Server;Start;StartDOS"/>
+        <CallTarget Targets="Server;Start;StartDOS;StartWeb;StartMobile;Project1"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Server:Clean;Start:Clean;StartDOS:Clean"/>
+        <CallTarget Targets="Server:Clean;Start:Clean;StartDOS:Clean;StartWeb:Clean;StartMobile:Clean;Project1:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Server:Make;Start:Make;StartDOS:Make"/>
+        <CallTarget Targets="Server:Make;Start:Make;StartDOS:Make;StartWeb:Make;StartMobile:Make;Project1:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

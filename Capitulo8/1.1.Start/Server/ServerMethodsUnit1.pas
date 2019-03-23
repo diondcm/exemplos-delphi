@@ -4,7 +4,7 @@ interface
 
 uses System.SysUtils, System.Classes, System.Json,
     DataSnap.DSProviderDataModuleAdapter,
-    Datasnap.DSServer, Datasnap.DSAuth;
+    Datasnap.DSServer, Datasnap.DSAuth, FachadaWSSGS1, Soap.XSBuiltIns;
 
 type
   TServerMethods1 = class(TDSServerModule)
@@ -31,8 +31,13 @@ begin
 end;
 
 function TServerMethods1.GetCotacao: Double;
+var
+  lWS: FachadaWSSGS;
+  lResultado: TXSDecimal; // Soap.XSBuiltIns
 begin
-  Result := 3.8 * (1 + (Random(10)/100));
+  lWS := GetFachadaWSSGS;
+  lResultado := lWS.getValor(10813 { Dolar Venda }, FormatDateTime('dd/mm/yyyy', Now -1 ));
+  Result := StrToFloat(StringReplace(lResultado.DecimalString, '.', FormatSettings.DecimalSeparator, []));
 end;
 
 function TServerMethods1.ReverseString(Value: string): string;
