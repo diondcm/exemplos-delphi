@@ -9,6 +9,9 @@
         <Projects Include="Start.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="StartDOS.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="Start:Make">
         <MSBuild Projects="Start.dproj" Targets="Make"/>
     </Target>
+    <Target Name="StartDOS">
+        <MSBuild Projects="StartDOS.dproj"/>
+    </Target>
+    <Target Name="StartDOS:Clean">
+        <MSBuild Projects="StartDOS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StartDOS:Make">
+        <MSBuild Projects="StartDOS.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Server;Start"/>
+        <CallTarget Targets="Server;Start;StartDOS"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Server:Clean;Start:Clean"/>
+        <CallTarget Targets="Server:Clean;Start:Clean;StartDOS:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Server:Make;Start:Make"/>
+        <CallTarget Targets="Server:Make;Start:Make;StartDOS:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

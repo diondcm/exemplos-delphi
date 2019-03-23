@@ -42,10 +42,10 @@ begin
   lValorCotacao := ClientModule1.ServerMethods1Client.GetCotacao;
   if ComboBoxConvercao.ItemIndex = 1 { Real para dolar } then
   begin
-    LabelResultado.Caption := FloatToStr(StrToFloat(EditValor.Text)*lValorCotacao);
+    LabelResultado.Caption := FormatFloat('0.,00', StrToFloat(EditValor.Text)*lValorCotacao);
   end else if ComboBoxConvercao.ItemIndex = DOLAR_PARA_REAL then
   begin
-    LabelResultado.Caption := FloatToStr(StrToFloat(EditValor.Text)/lValorCotacao);
+    LabelResultado.Caption := FormatFloat('0.,00', StrToFloat(EditValor.Text)/lValorCotacao);
   end;
 
 {  if RadioButtonDolar.Checked then
