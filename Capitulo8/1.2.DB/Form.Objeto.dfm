@@ -1,0 +1,57 @@
+object frmObjeto: TfrmObjeto
+  Left = 0
+  Top = 0
+  Caption = 'Objeto'
+  ClientHeight = 282
+  ClientWidth = 576
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MemoLog: TMemo
+    AlignWithMargins = True
+    Left = 3
+    Top = 54
+    Width = 570
+    Height = 225
+    Align = alBottom
+    TabOrder = 0
+    ExplicitLeft = 40
+    ExplicitTop = 136
+    ExplicitWidth = 457
+  end
+  object PanelControle: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 570
+    Height = 41
+    Align = alTop
+    TabOrder = 1
+    ExplicitLeft = 240
+    ExplicitTop = 40
+    ExplicitWidth = 185
+    object ButtonPrintar: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 75
+      Height = 33
+      Align = alLeft
+      Caption = 'Printar'
+      TabOrder = 0
+      OnClick = ButtonPrintarClick
+      ExplicitLeft = 296
+      ExplicitTop = 24
+      ExplicitHeight = 25
+    end
+  end
+end

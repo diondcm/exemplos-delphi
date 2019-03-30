@@ -106,6 +106,19 @@
             <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Form.DadosDB.pas">
+            <Form>frmDadosDB</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Form.Objeto.pas">
+            <Form>frmObjeto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Form.Visualiza.QrCode.pas">
+            <Form>frmVIsualizaQrCode</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Classe.QrCode.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
