@@ -14,6 +14,7 @@ object frmPrincipal: TfrmPrincipal
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object PanelLog: TPanel
@@ -73,13 +74,36 @@ object frmPrincipal: TfrmPrincipal
     object ButtonImprimePessoa: TBitBtn
       AlignWithMargins = True
       Left = 4
-      Top = 4
+      Top = 44
       Width = 177
       Height = 37
       Action = ActionImprimePessoa
       Align = alTop
       Caption = 'Imprime Pessoa'
       TabOrder = 0
+      ExplicitTop = 4
+    end
+    object ButtonCriaPessoa: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 177
+      Height = 34
+      Align = alTop
+      Caption = 'Cria Pessoa'
+      TabOrder = 1
+      OnClick = ButtonCriaPessoaClick
+      ExplicitLeft = 8
+      ExplicitTop = -25
+    end
+    object Button1: TButton
+      Left = 48
+      Top = 128
+      Width = 75
+      Height = 25
+      Caption = 'Button1'
+      TabOrder = 2
+      OnClick = Button1Click
     end
   end
   object ActionList: TActionList
@@ -94,7 +118,7 @@ object frmPrincipal: TfrmPrincipal
       OnExecute = ActionCopiaPessoaExecute
     end
     object ActionExportCSV: TAction
-      Caption = 'ActionExportCSV'
+      Caption = 'Exportar CSV...'
       OnExecute = ActionExportCSVExecute
     end
   end
@@ -106,6 +130,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object CopiarPessoa1: TMenuItem
       Action = ActionCopiaPessoa
+    end
+    object ActionExportCSV1: TMenuItem
+      Action = ActionExportCSV
     end
   end
   object MainMenu: TMainMenu
@@ -141,7 +168,15 @@ object frmPrincipal: TfrmPrincipal
   end
   object dtsPessoa: TDataSource
     DataSet = memPessoa
+    OnDataChange = dtsPessoaDataChange
     Left = 368
     Top = 264
+  end
+  object SaveDialog: TSaveDialog
+    DefaultExt = '.csv'
+    Filter = 'CSV|*.csv'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Left = 328
+    Top = 56
   end
 end

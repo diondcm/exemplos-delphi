@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Menus, System.Actions, Vcl.ActnList, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Form.VIsualiza.Pessoa, Classe.Pessoa, Vcl.Clipbrd;
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Form.VIsualiza.Pessoa, Classe.Pessoa, Vcl.Clipbrd, System.IOUtils;
 
 type
   TfrmPrincipal = class(TForm)
@@ -30,13 +30,21 @@ type
     ActionCopiaPessoa: TAction;
     CopiarPessoa1: TMenuItem;
     ActionExportCSV: TAction;
+    SaveDialog: TSaveDialog;
+    ActionExportCSV1: TMenuItem;
+    ButtonCriaPessoa: TButton;
+    Button1: TButton;
     procedure ActionImprimePessoaExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure ActionCopiaPessoaExecute(Sender: TObject);
     procedure ActionExportCSVExecute(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure ButtonCriaPessoaClick(Sender: TObject);
+    procedure dtsPessoaDataChange(Sender: TObject; Field: TField);
+    procedure Button1Click(Sender: TObject);
   private
-    { Private declarations }
+    FPessoa: TPessoa;
   public
     { Public declarations }
   end;
@@ -49,45 +57,58 @@ implementation
 {$R *.dfm}
 
 procedure TfrmPrincipal.ActionCopiaPessoaExecute(Sender: TObject);
-var
-  lPess: TPessoa;
+//var
+//  lPess: TPessoa;
 begin
-  lPess := TPessoa.Create;
-  lPess.Nome := memPessoaNome.AsString;
-  lPess.ID := memPessoaID.AsInteger;
-  lPess.DataNascimento := memPessoaDataNascimento.AsDateTime;
+//  lPess := TPessoa.Create;
 
-  Clipboard.AsText := lPess.ToString;
+//  lPess.Nome := memPessoaNome.AsString;
+//  lPess.ID := memPessoaID.AsInteger;
+//  lPess.DataNascimento := memPessoaDataNascimento.AsDateTime;
 
-  lPess.Free;
+  Clipboard.AsText := FPessoa.ToString;
+
+//  lPess.Free;
 end;
 
 procedure TfrmPrincipal.ActionExportCSVExecute(Sender: TObject);
 var
-  lPess: TPessoa;
-  lStrCSV: string;
+  lStl: TStringList;
+//  lPess: TPessoa;
+//  lStrCSV: string;
+
 begin
-  lPess := TPessoa.Create;
-  lPess.Nome := memPessoaNome.AsString;
-  lPess.ID := memPessoaID.AsInteger;
-  lPess.DataNascimento := memPessoaDataNascimento.AsDateTime;
+  //SaveDialog.InitialDir := ExtractFilePath(ParamStr(0));
+  SaveDialog.InitialDir := IncludeTrailingPathDelimiter(TPath.GetDocumentsPath) + 'Desktop';
+  if SaveDialog.Execute then
+  begin
+//    lPess := TPessoa.Create;
+//    lPess.Nome := memPessoaNome.AsString;
+//    lPess.ID := memPessoaID.AsInteger;
+//    lPess.DataNascimento := memPessoaDataNascimento.AsDateTime;
 
-  lStrCSV := lPess.ToCSV;
+    lStl := TStringList.Create;
 
-  // salvar CSV
+    lStl.Text := FPessoa.ToCSV;
+
+    lStl.SaveToFile(SaveDialog.FileName);
+
+    lStl.Free;
+//    lPess.Free;
+  end;
 end;
 
 procedure TfrmPrincipal.ActionImprimePessoaExecute(Sender: TObject);
-var
-  lPess: TPessoa;
+//var
+//  lPess: TPessoa;
 begin
-  lPess := TPessoa.Create;
+//  lPess := TPessoa.Create;
   try
-    lPess.Nome := 'Fulano de teste';
-    lPess.ID := 534534;
-    lPess.DataNascimento := Now - (360 * 25); // (DateUtils.IncDay)
+    FPessoa.Nome := 'Fulano de teste';
+    FPessoa.ID := 534534;
+    FPessoa.DataNascimento := Now - (360 * 25); // (DateUtils.IncDay)
+    MemoLog.Lines.Insert(0, FPessoa.ToString);
 
-    MemoLog.Lines.Insert(0, lPess.ToString);
 //    lPess.ToMemo(MemoLog);
 
 //    MemoLog.Lines.Insert(0, 'DtNascimento: ' + DateToStr(lPess.DataNascimento));
@@ -96,31 +117,40 @@ begin
 //    MemoLog.Lines.Insert(0, TimeToStr(Now));
 
 //    if not memPessoa.Active then não precisa, já valida se está aberto
-    memPessoa.Open;
-
-    memPessoa.Append;
-    memPessoaID.AsInteger := lPess.ID;
-    memPessoa.FieldByName('nome').AsString := lPess.Nome;
-    memPessoaDataNascimento.AsDateTime := lPess.DataNascimento;
-    memPessoa.Post;
 
   finally
-    lPess.Free;
+//    lPess.Free;
     //FreeAndNil(lPess);
     //lPess.Destroy;
   end;
 end;
 
-procedure TfrmPrincipal.DBGrid1DblClick(Sender: TObject){ Self: TfrmPrincipal };
-var
-  lPess: TPessoa;
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
-  lPess := TPessoa.Create;
-  lPess.Nome := memPessoaNome.AsString;
-  lPess.ID := memPessoaID.AsInteger;
-  lPess.DataNascimento := memPessoaDataNascimento.AsDateTime;
+  FPessoa.Free
 
-  frmVisualizaPessoa.MemoPessoa.Lines.Insert(0, lPess.ToString);
+end;
+
+procedure TfrmPrincipal.ButtonCriaPessoaClick(Sender: TObject);
+begin
+  Randomize;
+  memPessoa.Append;
+  memPessoaID.AsInteger := Random(1000000); // GUID ['{A1D0F912-3CD4-4F40-BD80-B28755F52BCD}']
+  memPessoa.FieldByName('nome').AsString := 'Pessoa de teste -' + TimeToStr(Now);
+  memPessoaDataNascimento.AsDateTime := Now - (360 * Random(60));
+  memPessoa.Post;
+end;
+
+procedure TfrmPrincipal.DBGrid1DblClick(Sender: TObject){ Self: TfrmPrincipal };
+//var
+//  lPess: TPessoa;
+begin
+//  lPess := TPessoa.Create;
+//  lPess.Nome := memPessoaNome.AsString;
+//  lPess.ID := memPessoaID.AsInteger;
+//  lPess.DataNascimento := memPessoaDataNascimento.AsDateTime;
+
+  frmVisualizaPessoa.MemoPessoa.Lines.Insert(0, FPessoa.ToString);
 //  lPess.ToMemo(frmVisualizaPessoa.MemoPessoa);
 
 //  frmVisualizaPessoa.MemoPessoa.Lines.Insert(0, 'DtNascimento: ' + DateToStr(lPess.DataNascimento));
@@ -129,12 +159,31 @@ begin
 //  frmVisualizaPessoa.MemoPessoa.Lines.Insert(0, TimeToStr(Now));
   frmVisualizaPessoa.Show;
 
-  lPess.Free;
+//  lPess.Free;
+end;
+
+procedure TfrmPrincipal.dtsPessoaDataChange(Sender: TObject; Field: TField);
+begin
+  if not memPessoa.IsEmpty then
+  begin
+    FPessoa.ID := memPessoaID.AsInteger;
+    FPessoa.Nome := memPessoaNome.AsString;
+    FPessoa.DataNascimento := memPessoaDataNascimento.AsDateTime;
+  end else begin
+    FPessoa.Nome := 'Nenhuma pessoa selecionada';
+  end;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   ReportMemoryLeaksOnShutdown := True;
+  FPessoa := TPessoa.Create;
+  memPessoa.Open;
+end;
+
+procedure TfrmPrincipal.FormDestroy(Sender: TObject);
+begin
+  FPessoa.Free;
 end;
 
 end.

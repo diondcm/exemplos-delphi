@@ -6,6 +6,8 @@ uses
   System.SysUtils, Vcl.StdCtrls;
 
 type
+  TTipoPessoa = (Fisica = 78, Juridica = 10); // TTipoPessoa.Fisica
+
   TPessoa = class
   strict private
     FNome: string;
@@ -14,6 +16,7 @@ type
     procedure SetDataNascimento(const Value: TDate);
   private
     FCredito: Currency;
+    FTipo: TTipoPessoa;
   public
     procedure ToMemo(pMemo: TMemo);
 
@@ -25,6 +28,7 @@ type
     property DataNascimento: TDate read FDataNascimento write SetDataNascimento;
     property ID: Integer read FID write FID;
     property Credito: Currency read FCredito write FCredito;
+    property Tipo: TTipoPessoa read FTipo write FTipo;
   end;
 
 implementation

@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3A75F0DF-D914-4B0C-8734-91F7ADFDA6BF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TestesOO.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestesReferencias.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestesParametros.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TestesOO">
+        <MSBuild Projects="TestesOO.dproj"/>
+    </Target>
+    <Target Name="TestesOO:Clean">
+        <MSBuild Projects="TestesOO.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestesOO:Make">
+        <MSBuild Projects="TestesOO.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestesReferencias">
+        <MSBuild Projects="TestesReferencias.dproj"/>
+    </Target>
+    <Target Name="TestesReferencias:Clean">
+        <MSBuild Projects="TestesReferencias.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestesReferencias:Make">
+        <MSBuild Projects="TestesReferencias.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestesParametros">
+        <MSBuild Projects="TestesParametros.dproj"/>
+    </Target>
+    <Target Name="TestesParametros:Clean">
+        <MSBuild Projects="TestesParametros.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestesParametros:Make">
+        <MSBuild Projects="TestesParametros.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TestesOO;TestesReferencias;TestesParametros"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TestesOO:Clean;TestesReferencias:Clean;TestesParametros:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TestesOO:Make;TestesReferencias:Make;TestesParametros:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
