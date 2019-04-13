@@ -71,6 +71,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 340
     Align = alLeft
     TabOrder = 1
+    ExplicitTop = -2
     object ButtonImprimePessoa: TBitBtn
       AlignWithMargins = True
       Left = 4
@@ -81,7 +82,6 @@ object frmPrincipal: TfrmPrincipal
       Align = alTop
       Caption = 'Imprime Pessoa'
       TabOrder = 0
-      ExplicitTop = 4
     end
     object ButtonCriaPessoa: TButton
       AlignWithMargins = True
@@ -93,8 +93,6 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Cria Pessoa'
       TabOrder = 1
       OnClick = ButtonCriaPessoaClick
-      ExplicitLeft = 8
-      ExplicitTop = -25
     end
     object Button1: TButton
       Left = 48
@@ -104,6 +102,25 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Button1'
       TabOrder = 2
       OnClick = Button1Click
+    end
+    object ButtonInstaciaPessoa: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 296
+      Width = 177
+      Height = 40
+      Align = alBottom
+      Caption = 'Instancia Pessoa'
+      TabOrder = 3
+      OnClick = ButtonInstaciaPessoaClick
+    end
+    object CheckBoxSetaNil: TCheckBox
+      Left = 48
+      Top = 273
+      Width = 97
+      Height = 17
+      Caption = 'Seta Nil'
+      TabOrder = 4
     end
   end
   object ActionList: TActionList
@@ -120,6 +137,10 @@ object frmPrincipal: TfrmPrincipal
     object ActionExportCSV: TAction
       Caption = 'Exportar CSV...'
       OnExecute = ActionExportCSVExecute
+    end
+    object ActionHeranca: TAction
+      Caption = 'Heran'#231'a'
+      OnExecute = ActionHerancaExecute
     end
   end
   object PopupMenu: TPopupMenu
@@ -142,6 +163,9 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Arquivo'
       object ImprimePessoa2: TMenuItem
         Action = ActionImprimePessoa
+      end
+      object Herana1: TMenuItem
+        Action = ActionHeranca
       end
     end
   end

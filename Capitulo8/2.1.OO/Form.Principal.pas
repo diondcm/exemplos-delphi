@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Menus, System.Actions, Vcl.ActnList, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Form.VIsualiza.Pessoa, Classe.Pessoa, Vcl.Clipbrd, System.IOUtils;
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Form.VIsualiza.Pessoa, Classe.Pessoa, Vcl.Clipbrd, System.IOUtils,
+  Form.Heranca;
 
 type
   TfrmPrincipal = class(TForm)
@@ -34,6 +35,10 @@ type
     ActionExportCSV1: TMenuItem;
     ButtonCriaPessoa: TButton;
     Button1: TButton;
+    ButtonInstaciaPessoa: TButton;
+    CheckBoxSetaNil: TCheckBox;
+    ActionHeranca: TAction;
+    Herana1: TMenuItem;
     procedure ActionImprimePessoaExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
@@ -43,6 +48,8 @@ type
     procedure ButtonCriaPessoaClick(Sender: TObject);
     procedure dtsPessoaDataChange(Sender: TObject; Field: TField);
     procedure Button1Click(Sender: TObject);
+    procedure ButtonInstaciaPessoaClick(Sender: TObject);
+    procedure ActionHerancaExecute(Sender: TObject);
   private
     FPessoa: TPessoa;
   public
@@ -98,6 +105,11 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.ActionHerancaExecute(Sender: TObject);
+begin
+  frmHeranca.Show;
+end;
+
 procedure TfrmPrincipal.ActionImprimePessoaExecute(Sender: TObject);
 //var
 //  lPess: TPessoa;
@@ -139,6 +151,38 @@ begin
   memPessoa.FieldByName('nome').AsString := 'Pessoa de teste -' + TimeToStr(Now);
   memPessoaDataNascimento.AsDateTime := Now - (360 * Random(60));
   memPessoa.Post;
+end;
+
+procedure TfrmPrincipal.ButtonInstaciaPessoaClick(Sender: TObject);
+var
+  lPessoa: TPessoa;
+begin
+  lPessoa := TPessoa.Create;
+  try
+    lPessoa.ID := 543534;
+    lPessoa.Nome := 'Outro teste';
+
+  finally
+    lPessoa.Free;
+
+    if CheckBoxSetaNil.Checked then
+    begin
+      lPessoa := nil;
+//      lPessoa := nil;
+//      lPessoa := nil;
+    end;
+
+    //lPessoa.Free;
+  end;
+
+  if Assigned(lPessoa) then
+  begin
+//    TObject.Create.Free;
+
+    lPessoa.Nome := 'Teste';
+    Caption := lPessoa.Nome;
+    lPessoa.Free;
+  end;
 end;
 
 procedure TfrmPrincipal.DBGrid1DblClick(Sender: TObject){ Self: TfrmPrincipal };

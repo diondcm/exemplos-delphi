@@ -8,6 +8,14 @@ uses
   System.SysUtils,
   Classe.Pessoa in 'Classe.Pessoa.pas';
 
+type
+  TClasseSimples = class
+    class constructor Create;
+    class destructor Destroy;
+
+    constructor Create;
+    destructor Destroy; override;
+  end;
 
   procedure ListaPessoa(pPessoa: TPessoa);
   var
@@ -22,14 +30,45 @@ uses
 
 var
   lPessoa: TPessoa;
+{ TClasseSimples }
+
+class constructor TClasseSimples.Create;
+begin
+  Writeln('Class constructor: TClasseSimples');
+end;
+
+class destructor TClasseSimples.Destroy;
+begin
+  Writeln('Class destructor: TClasseSimples');
+end;
+
+constructor TClasseSimples.Create;
+begin
+  Writeln('Constructor: TClasseSimples');
+end;
+
+destructor TClasseSimples.Destroy;
+begin
+  Writeln('Destructor: TClasseSimples');
+  inherited;
+end;
+
+var
+  lCS: TClasseSimples;
 begin
   {$IFDEF DEBUG}
   ReportMemoryLeaksOnShutdown := True;
   {$ENDIF}
 
-  ReportMemoryLeaksOnShutdown := {$WARNINGS OFF}(DebugHook > 0) {$WARNINGS ON};
+//  ReportMemoryLeaksOnShutdown := {$WARNINGS OFF}(DebugHook > 0) {$WARNINGS ON};
   try
-    lPessoa := TPessoa.Create;
+
+    lCS := TClasseSimples.Create;
+
+    lCS.Free;
+
+
+   (* lPessoa := TPessoa.Create;
 
     lPessoa.Tipo := TTipoPessoa.Fisica;
     case lPessoa.Tipo of
@@ -68,7 +107,7 @@ begin
     if  lPessoa <> nil {Assigned(lPessoa)} then
     begin
       Writeln('Nome: ' + lPessoa.Nome);
-    end;
+    end; *)
 
   except
     on E: Exception do
