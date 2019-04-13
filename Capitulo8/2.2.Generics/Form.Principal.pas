@@ -25,10 +25,14 @@ type
     ListBoxCores: TListBox;
     ColorBoxCores: TColorBox;
     EditNomeCor: TEdit;
+    ButtonArrays: TButton;
+    Button2: TButton;
     procedure ButtonAlterarClick(Sender: TObject);
     procedure ListBoxCoresClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure ButtonArraysClick(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     FListaCores: TDictionary<string, TColor>;
   public
@@ -41,6 +45,30 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmGenerics.Button2Click(Sender: TObject);
+// TObjectList
+var
+  lList: TList<string>;
+  lStr: string;
+begin
+  lList := TList<string>.Create;
+  lList.Add('Teste');
+  lList.Add('Outro teste');
+  lList.Add('Mais um teste');
+
+  ListBoxCores.Items.AddStrings(lList.ToArray);
+
+  for lStr in lList do
+  begin
+    ListBoxCores.Items.Add(lStr);
+  end;
+
+  lList.Free;
+
+//  Button2.Click;
+//  Button2Click(Sender);
+end;
 
 procedure TfrmGenerics.ButtonAlterarClick(Sender: TObject);
 //var
@@ -74,6 +102,38 @@ constructor TCorPanel.Create(ANome: string; ACor: TColor);
 begin
   FNome := ANome;
   FCor := ACor;
+end;
+
+procedure TfrmGenerics.ButtonArraysClick(Sender: TObject);
+type
+  TIntArr = array [0..5] of Integer;
+
+var
+  lIntArr: array [0..(1+4)] of Integer;
+  lIntArr2: array [0..0] of Integer;
+  lIntArr3: array of Integer;
+
+  lIntArrx2: array of array of Integer;
+  lIntArrx3: array of array of array of Integer;
+  lIntArrx4: array of array of array of array of Integer;
+
+//  function GetArr: array [0..5] of Integer;
+  function GetArr: TIntArr;
+  begin
+
+  end;
+
+begin
+  lIntArr[0] := 2345345;
+  lIntArr[4] := 2345345;
+  lIntArr[5] := 432432;
+
+//  SetLength(lIntArr, 10);  // não pode aterar o tamanho em runtime
+
+//  SetLength(lIntArr2, 1);
+  lIntArr2[0] := 0;
+
+  SetLength(lIntArr3, 3);
 end;
 
 procedure TfrmGenerics.FormCreate(Sender: TObject);

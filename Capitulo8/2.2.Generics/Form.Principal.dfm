@@ -2,8 +2,8 @@ object frmGenerics: TfrmGenerics
   Left = 0
   Top = 0
   Caption = 'Generics'
-  ClientHeight = 340
-  ClientWidth = 606
+  ClientHeight = 434
+  ClientWidth = 611
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,26 +19,28 @@ object frmGenerics: TfrmGenerics
   object PanelCor: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 208
-    Width = 600
+    Top = 302
+    Width = 605
     Height = 129
     Align = alBottom
     Color = clLime
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 208
+    ExplicitWidth = 600
   end
   object PanelControle: TPanel
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 600
+    Width = 605
     Height = 46
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -2
+    ExplicitWidth = 600
     object ButtonAlterar: TButton
       AlignWithMargins = True
-      Left = 521
+      Left = 526
       Top = 4
       Width = 75
       Height = 38
@@ -46,9 +48,7 @@ object frmGenerics: TfrmGenerics
       Caption = 'Inserir'
       TabOrder = 0
       OnClick = ButtonAlterarClick
-      ExplicitLeft = 296
-      ExplicitTop = 24
-      ExplicitHeight = 25
+      ExplicitLeft = 521
     end
     object ColorBoxCores: TColorBox
       Left = 8
@@ -61,21 +61,40 @@ object frmGenerics: TfrmGenerics
       Left = 161
       Top = 12
       Width = 121
-      Height = 22
+      Height = 21
       TabOrder = 2
       TextHint = 'Nome da cor'
     end
   end
   object ListBoxCores: TListBox
     AlignWithMargins = True
-    Left = 376
+    Left = 381
     Top = 55
     Width = 227
-    Height = 147
+    Height = 241
     Align = alRight
     ItemHeight = 13
     TabOrder = 2
     OnClick = ListBoxCoresClick
-    ExplicitLeft = 371
+    ExplicitLeft = 376
+    ExplicitHeight = 147
+  end
+  object ButtonArrays: TButton
+    Left = 8
+    Top = 88
+    Width = 148
+    Height = 33
+    Caption = 'Arrays'
+    TabOrder = 3
+    OnClick = ButtonArraysClick
+  end
+  object Button2: TButton
+    Left = 8
+    Top = 136
+    Width = 148
+    Height = 33
+    Caption = 'Button2'
+    TabOrder = 4
+    OnClick = Button2Click
   end
 end
