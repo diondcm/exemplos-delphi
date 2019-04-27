@@ -97,6 +97,47 @@ implementation
 
 procedure TForm1.ButtonAddPessoaClick(Sender: TObject);
 var
+  lPessoa: TPessoa;
+  lValorCompra: Integer;
+  lValorLimiteAntesCompra: Currency;
+begin
+  if Switch1.IsChecked then
+  begin
+    lPessoa := TPessoaJuridica.Create;
+    (lPessoa as TPessoaJuridica).RazaoSocial := EditNome.Text;
+//  TPessoaJuridica(lPessoa).RazaoSocial := EditNome.Text; // igual ao anterior - menos "safe"
+
+  end else begin
+    lPessoa := TPessoaFisica.Create;
+    (lPessoa as TPessoaFisica).Nome := EditNome.Text;
+//    TPessoaFisica(lPessoa).Nome := EditNome.Text; // igual ao anterior - menos "safe"
+  end;
+
+  lPessoa.LimiteCredito := Random(1000) + 100;
+  lValorLimiteAntesCompra := lPessoa.LimiteCredito;
+  lValorCompra := Random(500);
+  lPessoa.ComputaFatura(lValorCompra);
+
+  MemoLog.Lines.Insert(0, 'Limite Crédito(pós-compra): ' + FormatFloat('R$ 0.,00', lPessoa.LimiteCredito));
+  MemoLog.Lines.Insert(0, 'Valor compra: ' + FormatFloat('R$ 0.,00', lValorCompra));
+  MemoLog.Lines.Insert(0, 'Limite Crédito: ' + FormatFloat('R$ 0.,00', lValorLimiteAntesCompra));
+
+  if (lPessoa is TPessoaJuridica) then
+  begin
+    MemoLog.Lines.Insert(0, 'Razão social: ' + (lPessoa as TPessoaJuridica).RazaoSocial);
+    MemoLog.Lines.Insert(0, 'Pessoa Jurídica');
+  end else if (lPessoa is TPessoaFisica) then
+  begin
+    MemoLog.Lines.Insert(0, 'Nome: ' + (lPessoa as TPessoaFisica).Nome);
+    MemoLog.Lines.Insert(0, 'Pessoa Física');
+  end;
+
+  MemoLog.Lines.Insert(0, '');
+  lPessoa.Free;
+end;
+
+(*
+var
   lPessoa: TPessoaJuridica;
   lValorCompra: Integer;
   lValorLimiteAntesCompra: Currency;
@@ -120,9 +161,24 @@ begin
       lPessoa.Free;
     end;
   end else begin
-
+    lPessoa := TPessoaFisica.Create;
+    try
+      lPessoa.Nome := EditNome.Text;
+      lPessoa.LimiteCredito := Random(1000) + 100;
+      lValorLimiteAntesCompra := lPessoa.LimiteCredito;
+      lValorCompra := Random(500);
+      lPessoa.ComputaFatura(lValorCompra);
+      MemoLog.Lines.Insert(0, 'Limite Crédito(pós-compra): ' + FormatFloat('R$ 0.,00', lPessoa.LimiteCredito));
+      MemoLog.Lines.Insert(0, 'Valor compra: ' + FormatFloat('R$ 0.,00', lValorCompra));
+      MemoLog.Lines.Insert(0, 'Limite Crédito: ' + FormatFloat('R$ 0.,00', lValorLimiteAntesCompra));
+      MemoLog.Lines.Insert(0, 'Nome: ' + lPessoa.Nome);
+      MemoLog.Lines.Insert(0, 'Pessoa Física');
+      MemoLog.Lines.Insert(0, '');
+    finally
+      lPessoa.Free;
+    end;
   end;
-end;
+*)
 
 { TPessoa }
 
