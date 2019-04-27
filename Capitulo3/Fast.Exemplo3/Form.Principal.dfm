@@ -52,7 +52,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 96
   end
   object frxReport1: TfrxReport
-    Version = '5.5.11'
+    Version = '5.6.17'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -361,7 +361,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 160
   end
   object frxReportFilho: TfrxReport
-    Version = '5.5.11'
+    Version = '5.6.17'
     ParentReport = '..\Fast.Exemplo3\RelBase.fr3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -766,7 +766,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object frxReportListaSimples: TfrxReport
-    Version = '5.5.11'
+    Version = '5.6.17'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

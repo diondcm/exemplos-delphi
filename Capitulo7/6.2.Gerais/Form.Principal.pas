@@ -26,6 +26,9 @@ type
     Image3: TImage;
     Label3: TLabel;
     GlowEffect1: TGlowEffect;
+    Layout1: TLayout;
+    Image4: TImage;
+    Label4: TLabel;
     procedure ActionCameraExecute(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure LayoutCheckInClick(Sender: TObject);

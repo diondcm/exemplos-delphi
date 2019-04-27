@@ -14,28 +14,28 @@ object frmPrincipal: TfrmPrincipal
   PixelsPerInch = 96
   TextHeight = 13
   object btnListaCodigos: TButton
-    Left = 16
+    Left = 8
     Top = 8
-    Width = 137
-    Height = 25
+    Width = 169
+    Height = 41
     Caption = 'Lista C'#243'digos'
     TabOrder = 0
     OnClick = btnListaCodigosClick
   end
   object btnCarregaDinamico: TButton
-    Left = 16
+    Left = 8
     Top = 104
-    Width = 137
-    Height = 25
+    Width = 169
+    Height = 41
     Caption = 'Carrega din'#226'mico'
     TabOrder = 1
     OnClick = btnCarregaDinamicoClick
   end
   object btnImpressao: TButton
-    Left = 16
-    Top = 39
-    Width = 137
-    Height = 25
+    Left = 8
+    Top = 55
+    Width = 169
+    Height = 43
     Caption = 'Impress'#227'o'
     TabOrder = 2
     OnClick = btnImpressaoClick
@@ -46,6 +46,7 @@ object frmPrincipal: TfrmPrincipal
         'Database=C:\Users\Aluno\Desktop\exemplos-delphi\SQLite\fast_novo' +
         '.db'
       'DriverID=SQLite')
+    Connected = True
     LoginPrompt = False
     Left = 408
     Top = 96
@@ -58,7 +59,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 168
   end
   object frxReportListaCodigo: TfrxReport
-    Version = '5.5.11'
+    Version = '5.6.17'
     DotMatrixReport = False
     EngineOptions.DoublePass = True
     IniFile = '\Software\Fast Reports'
@@ -143,6 +144,7 @@ object frmPrincipal: TfrmPrincipal
           BarType = bcCode128C
           Expression = '<Produtos."ID_PRODUTO">'
           Rotation = 90
+          TestLine = False
           Text = '12345678'
           WideBarRatio = 2.000000000000000000
           Zoom = 1.000000000000000000
@@ -186,7 +188,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 224
   end
   object frxReportDinamico: TfrxReport
-    Version = '5.5.11'
+    Version = '5.6.17'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

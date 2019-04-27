@@ -11,7 +11,8 @@ uses
   Form.Action.Camera in 'Form.Action.Camera.pas' {frmActionCamera},
   Form.Dados in 'Form.Dados.pas' {frmDados},
   Data.Dados in 'Data.Dados.pas' {dmdDados: TDataModule},
-  Form.Cadastro in 'Form.Cadastro.pas' {frmCadastro};
+  Form.Cadastro in 'Form.Cadastro.pas' {frmCadastro},
+  Form.Pedidos in 'Form.Pedidos.pas' {Form1};
 
 {$R *.res}
 
@@ -20,5 +21,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmdDados, dmdDados);
   Application.CreateForm(TfrmCadastro, frmCadastro);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

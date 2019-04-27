@@ -73,7 +73,7 @@ type
   end;
 
 
-  TForm1 = class(TForm)
+  TfrmPrincipal = class(TForm)
     MemoLog: TMemo;
     Layout1: TLayout;
     EditNome: TEdit;
@@ -89,13 +89,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmPrincipal: TfrmPrincipal;
 
 implementation
 
 {$R *.fmx}
 
-procedure TForm1.ButtonAddPessoaClick(Sender: TObject);
+procedure TfrmPrincipal.ButtonAddPessoaClick(Sender: TObject);
 var
   lPessoa: TPessoa;
   lValorCompra: Integer;
@@ -228,7 +228,7 @@ begin
   end;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   ReportMemoryLeaksOnShutdown := True;
 end;

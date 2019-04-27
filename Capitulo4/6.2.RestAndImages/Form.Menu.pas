@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation,
   FMX.StdCtrls, Form.RESTGetImage, Form.JSONFromRest, Form.Get.Dados, Form.Notification, Classe.Intent.Email,
-  Form.Intents, Form.ListView.WS;
+  Form.Intents, Form.ListView.WS, System.Bluetooth, System.Bluetooth.Components;
 
 type
   TfrmMenu = class(TForm)
@@ -18,6 +18,8 @@ type
     buttonNotifications: TButton;
     buttonIntent: TButton;
     buttonCustomAdapter: TButton;
+    Bluetooth1: TBluetooth;
+    BluetoothLE1: TBluetoothLE;
     procedure buttonImagemFromRestClick(Sender: TObject);
     procedure buttonJSONFromRestClick(Sender: TObject);
     procedure ButtonGetDadosClick(Sender: TObject);

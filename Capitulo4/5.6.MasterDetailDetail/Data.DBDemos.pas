@@ -7,7 +7,7 @@ uses
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, frxClass, frxDBSet, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
   FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.VCLUI.Wait, FireDAC.DApt,
-  FireDAC.Stan.StorageXML, frxCross, frxDCtrl, frxDesgn, Data.Win.ADODB, frxADOComponents;
+  FireDAC.Stan.StorageXML, frxCross, frxDCtrl, frxDesgn, Data.Win.ADODB, frxADOComponents, frxBarcode, frxRich, frxChart, frxOLE;
 
 type
   TdmdDBDemos = class(TDataModule)

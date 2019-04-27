@@ -310,7 +310,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Form.Principal.pas">
-            <Form>Form1</Form>
+            <Form>frmPrincipal</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
