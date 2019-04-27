@@ -1,0 +1,76 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object MemoLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 415.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 411.000000000000000000
+  end
+  object Layout1: TLayout
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 65.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object EditNome: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Left
+      TabOrder = 0
+      Position.X = 20.000000000000000000
+      Position.Y = 20.000000000000000000
+      Margins.Left = 20.000000000000000000
+      Margins.Top = 20.000000000000000000
+      Margins.Bottom = 20.000000000000000000
+      Size.Width = 205.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      object ButtonAddPessoa: TButton
+        Align = Right
+        Position.X = 136.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Add Pessoa'
+        OnClick = ButtonAddPessoaClick
+      end
+    end
+    object Switch1: TSwitch
+      Align = Left
+      IsChecked = False
+      Margins.Left = 20.000000000000000000
+      Margins.Top = 20.000000000000000000
+      Margins.Bottom = 20.000000000000000000
+      Position.X = 245.000000000000000000
+      Position.Y = 20.000000000000000000
+      Size.Width = 44.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+    object Label1: TLabel
+      Align = Left
+      Margins.Left = 10.000000000000000000
+      Position.X = 299.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Juridica'
+      TabOrder = 2
+    end
+  end
+end
