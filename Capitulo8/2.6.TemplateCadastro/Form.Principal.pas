@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.ToolWin, Form.Cadastro.Cliente, Form.Cadastro.Produto;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.ToolWin, Form.Cadastro.Cliente, Form.Cadastro.Produto, Form.Cadastro.Pedido;
 
 type
   TfrmPrincipal = class(TForm)
@@ -15,8 +15,11 @@ type
     ActionCadCliente: TAction;
     ToolButtonProdutos: TToolButton;
     ActionCadProduto: TAction;
+    ActionCadPedido: TAction;
+    ToolButtonPedido: TToolButton;
     procedure ActionCadClienteExecute(Sender: TObject);
     procedure ActionCadProdutoExecute(Sender: TObject);
+    procedure ActionCadPedidoExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,6 +36,11 @@ implementation
 procedure TfrmPrincipal.ActionCadClienteExecute(Sender: TObject);
 begin
   frmCadCliente.Show;
+end;
+
+procedure TfrmPrincipal.ActionCadPedidoExecute(Sender: TObject);
+begin
+  frmCadPedido.Show;
 end;
 
 procedure TfrmPrincipal.ActionCadProdutoExecute(Sender: TObject);

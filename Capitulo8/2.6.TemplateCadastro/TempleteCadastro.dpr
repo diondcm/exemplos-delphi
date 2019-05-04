@@ -11,7 +11,9 @@ uses
   Data.Base in 'Data.Base.pas' {dmdBase: TDataModule},
   Form.Base.Cadastro in 'Form.Base.Cadastro.pas' {frmCadBase},
   Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule},
-  Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadProduto};
+  Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadProduto},
+  Data.Pedido in 'Data.Pedido.pas' {dmdPedido: TDataModule},
+  Form.Cadastro.Pedido in 'Form.Cadastro.Pedido.pas' {frmCadPedido};
 
 {$R *.res}
 
@@ -25,5 +27,7 @@ begin
   Application.CreateForm(TfrmCadCliente, frmCadCliente);
   Application.CreateForm(TdmdProduto, dmdProduto);
   Application.CreateForm(TfrmCadProduto, frmCadProduto);
+  Application.CreateForm(TdmdPedido, dmdPedido);
+  Application.CreateForm(TfrmCadPedido, frmCadPedido);
   Application.Run;
 end.
