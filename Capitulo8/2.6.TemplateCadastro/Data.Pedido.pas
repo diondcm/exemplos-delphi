@@ -34,6 +34,8 @@ type
     procedure qryItensNewRecord(DataSet: TDataSet);
     procedure qryItensAfterOpen(DataSet: TDataSet);
     procedure qryItensAfterClose(DataSet: TDataSet);
+    procedure qryDadosAfterDelete(DataSet: TDataSet);
+    procedure qryDadosAfterCancel(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -49,10 +51,22 @@ implementation
 
 {$R *.dfm}
 
+procedure TdmdPedido.qryDadosAfterCancel(DataSet: TDataSet);
+begin
+  inherited;
+  qryItens.CancelUpdates;
+end;
+
 procedure TdmdPedido.qryDadosAfterClose(DataSet: TDataSet);
 begin
   inherited;
   qryCliente.Close;
+end;
+
+procedure TdmdPedido.qryDadosAfterDelete(DataSet: TDataSet);
+begin
+  inherited;
+  qryItens.ApplyUpdates(0);
 end;
 
 procedure TdmdPedido.qryDadosAfterInsert(DataSet: TDataSet);
@@ -70,7 +84,9 @@ end;
 procedure TdmdPedido.qryDadosAfterPost(DataSet: TDataSet);
 begin
   inherited;
+  qryItens.ApplyUpdates(0);
   DataSet.Refresh;
+ // qryItens.Refresh;
 end;
 
 procedure TdmdPedido.qryDadosAfterScroll(DataSet: TDataSet);
@@ -105,6 +121,7 @@ procedure TdmdPedido.qryItensNewRecord(DataSet: TDataSet);
 begin
   inherited;
   qryItensIDPEDIDO.AsInteger := qryDadosIDPEDIDO.AsInteger;
+  qryItensDESCONTO.AsCurrency := 0;
 end;
 
 end.

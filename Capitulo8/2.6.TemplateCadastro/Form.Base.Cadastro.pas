@@ -90,6 +90,7 @@ begin
     raise Exception.Create('Não informado o dataset no cadastro de "' + Self.Caption + '"');
   end;
 
+  dtsDados.DataSet.Close;
   dtsDados.DataSet.Open;
 //  (dtsDados.DataSet as TFDQuery).FetchAll;
   if (dtsDados.DataSet is TFDQuery) then

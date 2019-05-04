@@ -5,6 +5,8 @@ inherited dmdPedido: TdmdPedido
     AfterClose = qryDadosAfterClose
     AfterInsert = qryDadosAfterInsert
     AfterPost = qryDadosAfterPost
+    AfterCancel = qryDadosAfterCancel
+    AfterDelete = qryDadosAfterDelete
     AfterScroll = qryDadosAfterScroll
     OnNewRecord = qryDadosNewRecord
     SQL.Strings = (
@@ -77,6 +79,7 @@ inherited dmdPedido: TdmdPedido
     AfterOpen = qryItensAfterOpen
     AfterClose = qryItensAfterClose
     OnNewRecord = qryItensNewRecord
+    CachedUpdates = True
     Connection = dmdConexao.FDConnection
     SQL.Strings = (
       'select prod.descricao, item.* '

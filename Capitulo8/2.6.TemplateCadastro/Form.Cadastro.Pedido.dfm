@@ -10,7 +10,6 @@ inherited frmCadPedido: TfrmCadPedido
   inherited PageControl: TPageControl
     Width = 752
     Height = 464
-    ActivePage = TabCadastro
     ExplicitWidth = 752
     ExplicitHeight = 464
     inherited TabPesquisa: TTabSheet

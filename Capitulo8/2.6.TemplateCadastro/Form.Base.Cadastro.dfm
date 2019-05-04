@@ -27,6 +27,10 @@ object frmCadBase: TfrmCadBase
     TabOrder = 0
     object TabPesquisa: TTabSheet
       Caption = 'Pesquisar'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGridPEsquisa: TDBGrid
         Left = 0
         Top = 0
