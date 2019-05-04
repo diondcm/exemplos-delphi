@@ -16,10 +16,10 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmdConexao, dmdConexao);
   Application.CreateForm(TdmdCliente, dmdCliente);
   Application.CreateForm(TdmdImanges, dmdImanges);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmCadCliente, frmCadCliente);
   Application.Run;
 end.

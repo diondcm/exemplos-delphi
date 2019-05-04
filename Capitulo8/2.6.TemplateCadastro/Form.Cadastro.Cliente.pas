@@ -10,6 +10,7 @@ uses
 
 type
   TfrmCadCliente = class(TfrmCadBase)
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -22,5 +23,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmCadCliente.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dtsDados.DataSet := dmdCliente.qryDados;
+end;
 
 end.

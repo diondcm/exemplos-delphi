@@ -22,7 +22,7 @@ object frmCadBase: TfrmCadBase
     Top = 52
     Width = 685
     Height = 357
-    ActivePage = TabPesquisa
+    ActivePage = TabCadastro
     Align = alClient
     TabOrder = 0
     object TabPesquisa: TTabSheet
