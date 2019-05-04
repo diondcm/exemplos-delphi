@@ -13,7 +13,8 @@ uses
   Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule},
   Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadProduto},
   Data.Pedido in 'Data.Pedido.pas' {dmdPedido: TDataModule},
-  Form.Cadastro.Pedido in 'Form.Cadastro.Pedido.pas' {frmCadPedido};
+  Form.Cadastro.Pedido in 'Form.Cadastro.Pedido.pas' {frmCadPedido},
+  Form.Cadastro.Item in 'Form.Cadastro.Item.pas' {frmCadItem};
 
 {$R *.res}
 
@@ -29,5 +30,6 @@ begin
   Application.CreateForm(TfrmCadProduto, frmCadProduto);
   Application.CreateForm(TdmdPedido, dmdPedido);
   Application.CreateForm(TfrmCadPedido, frmCadPedido);
+  Application.CreateForm(TfrmCadItem, frmCadItem);
   Application.Run;
 end.

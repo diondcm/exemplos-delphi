@@ -145,6 +145,10 @@
             <Form>frmCadPedido</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Form.Cadastro.Item.pas">
+            <Form>frmCadItem</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
