@@ -29,6 +29,11 @@ object frmPrincipal: TfrmPrincipal
       Top = 0
       Action = ActionCadCliente
     end
+    object ToolButtonProdutos: TToolButton
+      Left = 92
+      Top = 0
+      Action = ActionCadProduto
+    end
   end
   object ActionList1: TActionList
     Left = 448
@@ -36,6 +41,10 @@ object frmPrincipal: TfrmPrincipal
     object ActionCadCliente: TAction
       Caption = 'Cadastro Clientes'
       OnExecute = ActionCadClienteExecute
+    end
+    object ActionCadProduto: TAction
+      Caption = 'Produtos'
+      OnExecute = ActionCadProdutoExecute
     end
   end
   object ImageList1: TImageList

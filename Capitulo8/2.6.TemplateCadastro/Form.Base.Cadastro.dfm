@@ -22,7 +22,7 @@ object frmCadBase: TfrmCadBase
     Top = 52
     Width = 685
     Height = 357
-    ActivePage = TabCadastro
+    ActivePage = TabPesquisa
     Align = alClient
     TabOrder = 0
     object TabPesquisa: TTabSheet
@@ -34,6 +34,7 @@ object frmCadBase: TfrmCadBase
         Height = 310
         Align = alClient
         DataSource = dtsDados
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -61,6 +62,10 @@ object frmCadBase: TfrmCadBase
     object TabCadastro: TTabSheet
       Caption = 'Cadastrar'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object PanelNavigator: TPanel

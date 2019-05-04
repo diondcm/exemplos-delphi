@@ -41,7 +41,7 @@ type
     procedure dtsDadosStateChange(Sender: TObject);
     procedure TimerOpenTimer(Sender: TObject);
   private
-    { Private declarations }
+    procedure AtualizaRecordCount;
   public
     { Public declarations }
   end;
@@ -56,12 +56,7 @@ implementation
 
 procedure TfrmCadBase.dtsDadosStateChange(Sender: TObject);
 begin
-  if dtsDados.DataSet.IsEmpty then
-  begin
-    StatusBar.Panels[0].Text := 'Sem registros';
-  end else begin
-    StatusBar.Panels[0].Text := 'Registros selecionados: ' + FormatFloat('0.,', dtsDados.DataSet.RecordCount);
-  end;
+  AtualizaRecordCount;
 
   case dtsDados.DataSet.State of
     dsInactive: PageControl.ActivePage := TabPesquisa;
@@ -90,11 +85,29 @@ procedure TfrmCadBase.TimerOpenTimer(Sender: TObject);
 begin
   TimerOpen.Enabled := False;
 
+  if not Assigned(dtsDados.DataSet) then
+  begin
+    raise Exception.Create('Não informado o dataset no cadastro de "' + Self.Caption + '"');
+  end;
+
   dtsDados.DataSet.Open;
 //  (dtsDados.DataSet as TFDQuery).FetchAll;
   if (dtsDados.DataSet is TFDQuery) then
   begin
     TFDQuery(dtsDados.DataSet).FetchAll;
+    AtualizaRecordCount;
+  end;
+end;
+
+procedure TfrmCadBase.AtualizaRecordCount;
+begin
+  if dtsDados.DataSet.IsEmpty then
+  begin
+    StatusBar.Panels[0].Text := 'Sem registros';
+  end
+  else
+  begin
+    StatusBar.Panels[0].Text := 'Registros selecionados: ' + FormatFloat('0.,', dtsDados.DataSet.RecordCount);
   end;
 end;
 

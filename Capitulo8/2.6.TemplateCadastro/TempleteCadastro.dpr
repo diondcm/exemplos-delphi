@@ -9,7 +9,9 @@ uses
   Data.Cliente in 'Data.Cliente.pas' {dmdCliente: TDataModule},
   Data.Imagens in 'Data.Imagens.pas' {dmdImanges: TDataModule},
   Data.Base in 'Data.Base.pas' {dmdBase: TDataModule},
-  Form.Base.Cadastro in 'Form.Base.Cadastro.pas' {frmCadBase};
+  Form.Base.Cadastro in 'Form.Base.Cadastro.pas' {frmCadBase},
+  Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule},
+  Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadProduto};
 
 {$R *.res}
 
@@ -21,5 +23,7 @@ begin
   Application.CreateForm(TdmdImanges, dmdImanges);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmCadCliente, frmCadCliente);
+  Application.CreateForm(TdmdProduto, dmdProduto);
+  Application.CreateForm(TfrmCadProduto, frmCadProduto);
   Application.Run;
 end.
