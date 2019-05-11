@@ -1,10 +1,9 @@
-program TesteRemoteDebug;
+program ProjectTeste;
 
 uses
   Vcl.Forms,
   Form.Principal in 'Form.Principal.pas' {frmPrincipal},
-  Classe.Remote.Debug in 'Classe.Remote.Debug.pas',
-  Classe.Helper.ZipFile in 'Classe.Helper.ZipFile.pas';
+  Classe.Download.Imagem in 'Classe.Download.Imagem.pas';
 
 {$R *.res}
 

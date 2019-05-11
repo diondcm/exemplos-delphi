@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.Zip;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.Zip, System.IOUtils;
 
 type
   TfrmPrincipal = class(TForm)
@@ -30,18 +30,20 @@ implementation
 
 {$R *.dfm}
 
- uses Classe.Remote.Debug;
+ uses Classe.Remote.Debug, Classe.Helper.ZipFile;
 
 procedure TfrmPrincipal.ButtonExtractClick(Sender: TObject);
-var
-  lZip: TZipFile;
+//var
+//  lZip: TZipFile;
 begin
-  lZip := TZipFile.Create;
+//  lZip := TZipFile.Create;
+//
+//  lZip.Open(BASE_PATH + 'rmtdbg260.zip', zmRead);
+//  lZip.ExtractAll(BASE_PATH +'teste\');
+//
+//  lZip.Free;
 
-  lZip.Open(BASE_PATH + 'rmtdbg260.zip', zmRead);
-  lZip.ExtractAll(BASE_PATH +'teste\');
-
-  lZip.Free;
+  TZipFile.DeszippaArquivos(BASE_PATH + 'rmtdbg260.zip');
 end;
 
 procedure TfrmPrincipal.ButtonTesteDebugClick(Sender: TObject);
@@ -63,23 +65,38 @@ begin
 end;
 
 procedure TfrmPrincipal.ButtonZipClick(Sender: TObject);
-var
-  lZip: TZipFile;
+//var
+//  lZip: TZipFile;
 begin
-  lZip := TZipFile.Create;
+//  lZip := TZipFile.Create;
+//
+//  lZip.Open(BASE_PATH + 'rmtdbg260.zip', zmWrite);
+//
+//  lZip.Add(BASE_PATH + 'dcc32260.dll');
+//  lZip.Add(BASE_PATH + 'comp32x.dll');
+//  lZip.Add(BASE_PATH + 'bordbk260.dll');
+//  lZip.Add(BASE_PATH + 'bordbk260N.dll');
+//  lZip.Add(BASE_PATH + 'bccide.dll');
+//  lZip.Add(BASE_PATH + 'rmtdbg260.exe');
+//
+//  lZip.Close;
+//
+//  lZip.Free;
 
-  lZip.Open(BASE_PATH + 'rmtdbg260.zip', zmWrite);
+  TZipFile.ZippaArquivos(BASE_PATH + 'rmtdbg260.zip',
+    [BASE_PATH + 'dcc32260.dll',
+     BASE_PATH + 'comp32x.dll',
+     BASE_PATH + 'bordbk260.dll',
+     BASE_PATH + 'bordbk260N.dll',
+     BASE_PATH + 'bccide.dll',
+     BASE_PATH + 'rmtdbg260.exe']);
 
-  lZip.Add(BASE_PATH + 'dcc32260.dll');
-  lZip.Add(BASE_PATH + 'comp32x.dll');
-  lZip.Add(BASE_PATH + 'bordbk260.dll');
-  lZip.Add(BASE_PATH + 'bordbk260N.dll');
-  lZip.Add(BASE_PATH + 'bccide.dll');
-  lZip.Add(BASE_PATH + 'rmtdbg260.exe');
+//  Buscar todos arquivos de uma pasta:
+//  TDirectory.GetFiles(BASE_PATH)
 
-  lZip.Close;
-
-  lZip.Free;
+//  modelo helpers
+//  TZipFile.CriaArquivo(pArquivo, Tstrings = lista, Arr[Arquivs..)
+//  TzipFile.Descompactar(pArquivo, pCriarPasta: Bool = False)
 end;
 
 end.
