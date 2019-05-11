@@ -1,0 +1,5 @@
+bordbk260 RCDATA "..\\ArqRemoteDebug\\bordbk260.dll"
+bordbk260N RCDATA "..\\ArqRemoteDebug\\bordbk260N.dll"
+comp32x RCDATA "..\\ArqRemoteDebug\\comp32x.dll"
+dcc32260 RCDATA "..\\ArqRemoteDebug\\dcc32260.dll"
+rmtdbg260 RCDATA "..\\ArqRemoteDebug\\rmtdbg260.exe"
