@@ -12,6 +12,9 @@
         <Projects Include="ClientProxy\ClientProxy.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="ClientSerealization\JsonSerealization.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="ClientProxy:Make">
         <MSBuild Projects="ClientProxy\ClientProxy.dproj" Targets="Make"/>
     </Target>
+    <Target Name="JsonSerealization">
+        <MSBuild Projects="ClientSerealization\JsonSerealization.dproj"/>
+    </Target>
+    <Target Name="JsonSerealization:Clean">
+        <MSBuild Projects="ClientSerealization\JsonSerealization.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JsonSerealization:Make">
+        <MSBuild Projects="ClientSerealization\JsonSerealization.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Server;TesteCargaSimples;ClientProxy"/>
+        <CallTarget Targets="Server;TesteCargaSimples;ClientProxy;JsonSerealization"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Server:Clean;TesteCargaSimples:Clean;ClientProxy:Clean"/>
+        <CallTarget Targets="Server:Clean;TesteCargaSimples:Clean;ClientProxy:Clean;JsonSerealization:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Server:Make;TesteCargaSimples:Make;ClientProxy:Make"/>
+        <CallTarget Targets="Server:Make;TesteCargaSimples:Make;ClientProxy:Make;JsonSerealization:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

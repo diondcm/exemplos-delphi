@@ -9,7 +9,9 @@ uses
   IdHTTPWebBrokerBridge,
   Form.Principal.Server in 'Form.Principal.Server.pas' {frmPrincipalServer},
   ServerMethodsGeral in 'ServerMethodsGeral.pas' {SMGeral: TDataModule},
-  WebModuleUnitPrincipal in 'WebModuleUnitPrincipal.pas' {WebModulePrincipal: TWebModule};
+  WebModuleUnitPrincipal in 'WebModuleUnitPrincipal.pas' {WebModulePrincipal: TWebModule},
+  Classe.Pessoa in '..\shared\Classe.Pessoa.pas',
+  Data.Connection in 'Data.Connection.pas' {dmdConnection: TDataModule};
 
 {$R *.res}
 
@@ -18,5 +20,6 @@ begin
     WebRequestHandler.WebModuleClass := WebModuleClass;
   Application.Initialize;
   Application.CreateForm(TfrmPrincipalServer, frmPrincipalServer);
+  Application.CreateForm(TdmdConnection, dmdConnection);
   Application.Run;
 end.

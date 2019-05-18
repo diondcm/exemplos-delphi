@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   Form.Proxy.Principal in 'Form.Proxy.Principal.pas' {frmProxyPrincipal},
   ClientClassesUnit1 in 'ClientClassesUnit1.pas',
-  ClientModuleUnit1 in 'ClientModuleUnit1.pas' {ClientModule1: TDataModule};
+  ClientModuleUnit1 in 'ClientModuleUnit1.pas' {ClientModule1: TDataModule},
+  Classe.Pessoa in '..\shared\Classe.Pessoa.pas';
 
 {$R *.res}
 

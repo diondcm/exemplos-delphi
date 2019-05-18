@@ -28,7 +28,7 @@ object frmTesteCargaPrincipal: TfrmTesteCargaPrincipal
       Width = 425
       Height = 21
       TabOrder = 0
-      Text = 'http://localhost:8080/datasnap/rest/TSMGeral/ReverseString/asd'
+      Text = 'http://localhost:8080/datasnap/rest/TSMGeral/GetDataServer'
     end
     object Button1: TButton
       AlignWithMargins = True
@@ -42,16 +42,41 @@ object frmTesteCargaPrincipal: TfrmTesteCargaPrincipal
       OnClick = Button1Click
       ExplicitTop = 8
     end
+    object Button2: TButton
+      Left = 488
+      Top = 18
+      Width = 75
+      Height = 25
+      Caption = 'Button2'
+      TabOrder = 2
+      OnClick = Button2Click
+    end
   end
   object MemoLog: TMemo
     AlignWithMargins = True
     Left = 3
     Top = 71
     Width = 656
-    Height = 373
+    Height = 247
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = -2
+    ExplicitLeft = 8
+    ExplicitHeight = 373
+  end
+  object DBGrid1: TDBGrid
+    AlignWithMargins = True
+    Left = 3
+    Top = 324
+    Width = 656
+    Height = 120
+    Align = alBottom
+    DataSource = dtsPessoa
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
   object IdHTTP1: TIdHTTP
     AllowCookies = True
@@ -69,5 +94,21 @@ object frmTesteCargaPrincipal: TfrmTesteCargaPrincipal
     HTTPOptions = [hoForceEncodeParams]
     Left = 480
     Top = 16
+  end
+  object dtsPessoa: TDataSource
+    DataSet = memPessoa
+    Left = 296
+    Top = 344
+  end
+  object memPessoa: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 384
+    Top = 344
   end
 end

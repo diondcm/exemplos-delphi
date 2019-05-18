@@ -77,6 +77,7 @@ end;
 
 procedure TfrmPrincipalServer.FormCreate(Sender: TObject);
 begin
+  ReportMemoryLeaksOnShutdown := True;
   FServer := TIdHTTPWebBrokerBridge.Create(Self);
 end;
 
