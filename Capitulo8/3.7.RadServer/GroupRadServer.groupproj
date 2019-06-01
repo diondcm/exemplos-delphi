@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B892100B-FE60-43A9-90F4-0D05A573CD20}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Server\ServerEMS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\ClientEMS.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ServerEMS">
+        <MSBuild Projects="Server\ServerEMS.dproj"/>
+    </Target>
+    <Target Name="ServerEMS:Clean">
+        <MSBuild Projects="Server\ServerEMS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ServerEMS:Make">
+        <MSBuild Projects="Server\ServerEMS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ClientEMS">
+        <MSBuild Projects="Client\ClientEMS.dproj"/>
+    </Target>
+    <Target Name="ClientEMS:Clean">
+        <MSBuild Projects="Client\ClientEMS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClientEMS:Make">
+        <MSBuild Projects="Client\ClientEMS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ServerEMS;ClientEMS"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ServerEMS:Clean;ClientEMS:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ServerEMS:Make;ClientEMS:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

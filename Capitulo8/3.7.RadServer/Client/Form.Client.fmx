@@ -1,0 +1,134 @@
+object frmClient: TfrmClient
+  Left = 0
+  Top = 0
+  Caption = 'Client'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object LayoutControles: TLayout
+    Align = MostTop
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Button1: TButton
+      Align = MostLeft
+      Size.Width = 80.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Get Dados'
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Align = MostRight
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Set Dados'
+      OnClick = Button2Click
+    end
+  end
+  object ListViewDados: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 390.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    SearchVisible = True
+  end
+  object NavigatorBindSourceDB1: TBindNavigator
+    Align = MostBottom
+    Position.Y = 440.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object FDSchemaAdapter1: TFDSchemaAdapter
+    Left = 552
+    Top = 128
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'FMX'
+    Left = 552
+    Top = 64
+  end
+  object FDTableAdapter: TFDTableAdapter
+    SchemaAdapter = FDSchemaAdapter1
+    DatSTableName = 'qryProduto'
+    Left = 552
+    Top = 184
+  end
+  object memProduto: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Adapter = FDTableAdapter
+    Left = 552
+    Top = 248
+    object memProdutoidproduto: TLargeintField
+      FieldName = 'idproduto'
+    end
+    object memProdutodescricao: TWideStringField
+      FieldName = 'descricao'
+      Size = 200
+    end
+    object memProdutogrupo: TWideStringField
+      FieldName = 'grupo'
+    end
+  end
+  object EMSProvider1: TEMSProvider
+    ApiVersion = '2'
+    URLHost = 'localhost'
+    URLPort = 8080
+    Left = 368
+    Top = 192
+  end
+  object EMSFireDACClient1: TEMSFireDACClient
+    Provider = EMSProvider1
+    SchemaAdapter = FDSchemaAdapter1
+    Resource = 'produto'
+    Left = 368
+    Top = 288
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = memProduto
+    ScopeMappings = <>
+    Left = 304
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 300
+    Top = 85
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'descricao'
+      Control = ListViewDados
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakFieldName = 'grupo'
+      FillHeaderFieldName = 'grupo'
+      FillBreakGroups = <>
+    end
+  end
+end
