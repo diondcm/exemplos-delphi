@@ -4,7 +4,7 @@ interface
 
 uses
   ToolsApi, Vcl.ExtCtrls, Vcl.Menus, Vcl.Forms, System.UITypes, System.Classes,
-  Vcl.ActnList, System.SysUtils;
+  Vcl.ActnList, System.SysUtils, Winapi.Windows;
 
 type
   TAutoSaveWizard = class(TInterfacedObject, IOTAWizard)
@@ -77,6 +77,7 @@ var
   lDivider: TMenuItem;
   i: Integer;
   lList: TActionList;
+  lMsg: TMenuItem;
 begin
   lList := nil;
   lNtas := (BorlandIDEServices As INTAServices);
@@ -93,6 +94,49 @@ begin
         end;
       end;
     end;
+
+    try
+      lMenuView := lNtas.MainMenu.Items.Find('View');
+      if Assigned(lMenuView) then
+      begin
+        lDivider := lMenuView.Find('Tool Windows');
+        if Assigned(lDivider) then
+        begin
+          for i := 0 to lDivider.Count -1 do
+          begin
+            if lDivider.Items[i].Caption = '&Messages' then
+            begin
+              lMsg := lDivider.Items[i];
+              if Assigned(lMsg) then
+              begin
+                if Assigned(lMsg.Action) then
+                begin
+                  (lMsg.Action as TAction).ShortCut := ShortCut(vkM, [ssCtrl, ssShift]);
+                end else begin
+                  lMsg.ShortCut := ShortCut(vkM, [ssCtrl, ssShift]);
+                end;
+              end;
+
+            end else begin
+              lMsg := lDivider.Items[i].Find('Messages');
+              if Assigned(lMsg) then
+              begin
+                MessageBox(0, 'Messages', 'menu', MB_OK);
+                if Assigned(lMsg.Action) then
+                begin
+                  (lMsg.Action as TAction).ShortCut := ShortCut(vkM, [ssCtrl, ssShift]);
+                end else begin
+                  lMsg.ShortCut := ShortCut(vkM, [ssCtrl, ssShift]);
+                end;
+              end;
+            end;
+          end;
+        end;
+      end;
+    except
+
+    end;
+
 
     lMenuView := lNtas.MainMenu.Items.Find('View');
     if Assigned(lMenuView) then
