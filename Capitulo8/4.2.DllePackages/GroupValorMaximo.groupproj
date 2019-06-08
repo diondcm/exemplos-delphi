@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F15AA337-A6D1-41DB-9DA8-A40E4BF372A3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Client\ClientDll.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLL\libValorMaximo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Package\pkgValorMin.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ClientDll">
+        <MSBuild Projects="Client\ClientDll.dproj"/>
+    </Target>
+    <Target Name="ClientDll:Clean">
+        <MSBuild Projects="Client\ClientDll.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClientDll:Make">
+        <MSBuild Projects="Client\ClientDll.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="libValorMaximo">
+        <MSBuild Projects="DLL\libValorMaximo.dproj"/>
+    </Target>
+    <Target Name="libValorMaximo:Clean">
+        <MSBuild Projects="DLL\libValorMaximo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="libValorMaximo:Make">
+        <MSBuild Projects="DLL\libValorMaximo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgValorMin">
+        <MSBuild Projects="Package\pkgValorMin.dproj"/>
+    </Target>
+    <Target Name="pkgValorMin:Clean">
+        <MSBuild Projects="Package\pkgValorMin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgValorMin:Make">
+        <MSBuild Projects="Package\pkgValorMin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ClientDll;libValorMaximo;pkgValorMin"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ClientDll:Clean;libValorMaximo:Clean;pkgValorMin:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ClientDll:Make;libValorMaximo:Make;pkgValorMin:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
