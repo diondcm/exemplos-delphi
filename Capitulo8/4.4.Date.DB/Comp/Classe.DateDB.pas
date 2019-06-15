@@ -111,7 +111,7 @@ end;
 
 procedure TDBDateTimePiker.DoDblClick(Sender: TObject);
 begin
-  ShowMessage('Teste');
+  ShowMessage('Teste');   // N OK
 end;
 
 procedure TDBDateTimePiker.DoUpdateData(Sender: TObject);

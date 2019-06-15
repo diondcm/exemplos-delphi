@@ -31,10 +31,13 @@ requires
   rtl,
   vcl,
   dbrtl,
-  vcldb;
+  vcldb,
+  designide;
 
 contains
   Classe.DateDB in 'Classe.DateDB.pas',
-  Classe.Register in 'Classe.Register.pas';
+  Classe.Register in 'Classe.Register.pas',
+  Classe.Editor.Propriedades in 'Classe.Editor.Propriedades.pas',
+  Form.Sobre in 'Form.Sobre.pas' {frmSobre};
 
 end.
