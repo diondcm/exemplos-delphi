@@ -100,7 +100,9 @@
         </DelphiCompile>
         <DCCReference Include="Form.Principal.pas">
             <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Form.Host.pas">
+            <Form>frmHost</Form>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
