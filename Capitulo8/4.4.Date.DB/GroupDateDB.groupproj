@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{998E9AD4-1509-4F7B-87D3-94327741EAAF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Comp\pkgDateDB.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Teste\TesteDateDB.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgDateDB">
+        <MSBuild Projects="Comp\pkgDateDB.dproj"/>
+    </Target>
+    <Target Name="pkgDateDB:Clean">
+        <MSBuild Projects="Comp\pkgDateDB.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgDateDB:Make">
+        <MSBuild Projects="Comp\pkgDateDB.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TesteDateDB">
+        <MSBuild Projects="Teste\TesteDateDB.dproj"/>
+    </Target>
+    <Target Name="TesteDateDB:Clean">
+        <MSBuild Projects="Teste\TesteDateDB.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TesteDateDB:Make">
+        <MSBuild Projects="Teste\TesteDateDB.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgDateDB;TesteDateDB"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgDateDB:Clean;TesteDateDB:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgDateDB:Make;TesteDateDB:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
