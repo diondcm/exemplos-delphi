@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3200F931-3AE4-4E8B-8CFD-37B94B9FECF3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pkgImageViewer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Testes\TestImageViewer.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgImageViewer">
+        <MSBuild Projects="pkgImageViewer.dproj"/>
+    </Target>
+    <Target Name="pkgImageViewer:Clean">
+        <MSBuild Projects="pkgImageViewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgImageViewer:Make">
+        <MSBuild Projects="pkgImageViewer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestImageViewer">
+        <MSBuild Projects="Testes\TestImageViewer.dproj"/>
+    </Target>
+    <Target Name="TestImageViewer:Clean">
+        <MSBuild Projects="Testes\TestImageViewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestImageViewer:Make">
+        <MSBuild Projects="Testes\TestImageViewer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgImageViewer;TestImageViewer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgImageViewer:Clean;TestImageViewer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgImageViewer:Make;TestImageViewer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
