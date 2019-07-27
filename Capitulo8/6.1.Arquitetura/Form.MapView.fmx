@@ -1,0 +1,52 @@
+object frmMapView: TfrmMapView
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ButtonVoltar: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = '<'
+      OnClick = ButtonVoltarClick
+    end
+    object ButtonGo: TButton
+      Align = Right
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      TabOrder = 1
+      Text = 'ButtonGo'
+      OnClick = ButtonGoClick
+    end
+  end
+  object Label1: TLabel
+    Align = Center
+    Size.Width = 217.000000000000000000
+    Size.Height = 105.000000000000000000
+    Size.PlatformDefault = False
+    Text = 
+      'http://docwiki.embarcadero.com/RADStudio/Rio/en/Configuring_Andr' +
+      'oid_Applications_to_Use_Google_Maps'
+    TabOrder = 3
+  end
+  object LocationSensor: TLocationSensor
+    Left = 496
+    Top = 72
+  end
+end

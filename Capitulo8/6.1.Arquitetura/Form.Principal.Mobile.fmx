@@ -1,0 +1,54 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Arquitetura'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Align = Center
+    StyledSettings = [Family, FontColor]
+    Size.Width = 244.000000000000000000
+    Size.Height = 61.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Center
+    Text = 'Teste Deploy'
+    TabOrder = 0
+    object ButtonTabs: TButton
+      Position.X = 67.000000000000000000
+      Position.Y = 60.000000000000000000
+      Size.Width = 121.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Tabs'
+      OnClick = ButtonTabsClick
+      object ButtonForms: TButton
+        Position.X = 2.000000000000000000
+        Position.Y = 58.000000000000000000
+        Size.Width = 121.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Forms'
+        OnClick = ButtonFormsClick
+        object ButtonMultiView: TButton
+          Position.X = 2.000000000000000000
+          Position.Y = 58.000000000000000000
+          Size.Width = 121.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'MultiView'
+          OnClick = ButtonMultiViewClick
+        end
+      end
+    end
+  end
+end
