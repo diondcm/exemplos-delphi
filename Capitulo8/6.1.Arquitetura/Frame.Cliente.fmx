@@ -1,0 +1,44 @@
+object fraCliente: TfraCliente
+  Size.Width = 373.000000000000000000
+  Size.Height = 167.000000000000000000
+  Size.PlatformDefault = False
+  object Layout: TLayout
+    Align = Center
+    Size.Width = 279.000000000000000000
+    Size.Height = 109.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Label1: TLabel
+      Align = Top
+      Margins.Left = 30.000000000000000000
+      Position.X = 30.000000000000000000
+      Size.Width = 249.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Cliente'
+      TabOrder = 0
+    end
+    object EditCliente: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 1
+      Position.X = 30.000000000000000000
+      Position.Y = 17.000000000000000000
+      Margins.Left = 30.000000000000000000
+      Margins.Right = 30.000000000000000000
+      Size.Width = 219.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object ButtonConsultaSaldo: TButton
+      Position.X = 32.000000000000000000
+      Position.Y = 80.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Consultar Saldo'
+      OnClick = ButtonConsultaSaldoClick
+    end
+  end
+end

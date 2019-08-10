@@ -7,12 +7,17 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts;
 
 type
+  TfrmBaseMultiView = class;
+
+  TOnCloseMultiView = reference to procedure (pForm: TfrmBaseMultiView);
+
   TfrmBaseMultiView = class(TForm)
     LayoutClient: TLayout;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    { Private declarations }
+    FOnCloseProc: TOnCloseMultiView;
   public
-    { Public declarations }
+    property OnCloseProc: TOnCloseMultiView read FOnCloseProc write FOnCloseProc;
   end;
 
 var
@@ -21,5 +26,14 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TfrmBaseMultiView.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  if Assigned(FOnCloseProc) then
+  begin
+    FOnCloseProc(Self);
+  end;
+end;
 
 end.

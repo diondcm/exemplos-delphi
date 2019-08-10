@@ -1,0 +1,70 @@
+object frmClientes: TfrmClientes
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ButtonClose: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      OnClick = ButtonCloseClick
+    end
+  end
+  object ListViewClientes: TListView
+    ItemAppearanceClassName = 'TListItemAppearance'
+    ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 431.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    SearchVisible = True
+  end
+  object TimerOpen: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = TimerOpenTimer
+    Left = 520
+    Top = 96
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = dmdCliente.qryClientes
+    ScopeMappings = <>
+    Left = 304
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'NOME'
+      Control = ListViewClientes
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakFieldName = 'ID_CIDADE'
+      FillHeaderFieldName = 'ID_CIDADE'
+      FillBreakGroups = <>
+    end
+  end
+end

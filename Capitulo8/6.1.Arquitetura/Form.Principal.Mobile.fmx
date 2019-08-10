@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   object Label1: TLabel
     Align = Center
     StyledSettings = [Family, FontColor]
+    Margins.Bottom = 60.000000000000000000
     Size.Width = 244.000000000000000000
     Size.Height = 61.000000000000000000
     Size.PlatformDefault = False
@@ -46,6 +47,16 @@ object frmPrincipal: TfrmPrincipal
           TabOrder = 0
           Text = 'MultiView'
           OnClick = ButtonMultiViewClick
+          object ButtonFrame: TButton
+            Position.X = 1.000000000000000000
+            Position.Y = 54.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Frame'
+            OnClick = ButtonFrameClick
+          end
         end
       end
     end

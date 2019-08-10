@@ -33,7 +33,7 @@ begin
     procedure (const AResult: TModalResult)
     begin
       case AResult of
-        mrYes: Close;
+        mrYes: Close; // Free;
       else
         TDialogService.ShowMessage('Ok, continue aqui então.');
       end;
