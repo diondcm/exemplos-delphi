@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Client DLL'
-  ClientHeight = 231
+  ClientHeight = 342
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,7 +22,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = -2
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4
@@ -32,8 +31,6 @@ object frmPrincipal: TfrmPrincipal
       Align = alLeft
       Caption = 'Valor 1'
       Layout = tlCenter
-      ExplicitLeft = 120
-      ExplicitTop = 0
       ExplicitHeight = 13
     end
     object Label2: TLabel
@@ -45,7 +42,6 @@ object frmPrincipal: TfrmPrincipal
       Align = alLeft
       Caption = 'Valor 2'
       Layout = tlCenter
-      ExplicitLeft = 170
       ExplicitHeight = 13
     end
     object EditValor1: TEdit
@@ -58,6 +54,7 @@ object frmPrincipal: TfrmPrincipal
       Margins.Bottom = 10
       Align = alLeft
       TabOrder = 0
+      ExplicitHeight = 21
     end
     object EditValor2: TEdit
       AlignWithMargins = True
@@ -69,6 +66,7 @@ object frmPrincipal: TfrmPrincipal
       Margins.Bottom = 10
       Align = alLeft
       TabOrder = 1
+      ExplicitHeight = 21
     end
     object Button1: TButton
       AlignWithMargins = True
@@ -80,9 +78,6 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Processar'
       TabOrder = 2
       OnClick = Button1Click
-      ExplicitLeft = 368
-      ExplicitTop = 24
-      ExplicitHeight = 25
     end
   end
   object Button2: TButton
@@ -111,5 +106,73 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Button4'
     TabOrder = 3
     OnClick = Button4Click
+  end
+  object Button5: TButton
+    Left = 224
+    Top = 120
+    Width = 75
+    Height = 25
+    Caption = 'Get - Class'
+    TabOrder = 4
+    OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 224
+    Top = 151
+    Width = 75
+    Height = 25
+    Caption = 'Set - Class'
+    TabOrder = 5
+    OnClick = Button6Click
+  end
+  object EditGet: TEdit
+    Left = 305
+    Top = 122
+    Width = 121
+    Height = 21
+    TabOrder = 6
+    Text = '0'
+  end
+  object EditSet: TEdit
+    Left = 305
+    Top = 149
+    Width = 121
+    Height = 21
+    TabOrder = 7
+    Text = '0'
+  end
+  object Button7: TButton
+    Left = 224
+    Top = 208
+    Width = 75
+    Height = 25
+    Caption = 'Get - Global'
+    TabOrder = 8
+    OnClick = Button7Click
+  end
+  object Button8: TButton
+    Left = 224
+    Top = 239
+    Width = 75
+    Height = 25
+    Caption = 'Set - Global'
+    TabOrder = 9
+    OnClick = Button8Click
+  end
+  object EditGlobalGet: TEdit
+    Left = 305
+    Top = 210
+    Width = 121
+    Height = 21
+    TabOrder = 10
+    Text = '0'
+  end
+  object EditGlobalSet: TEdit
+    Left = 305
+    Top = 237
+    Width = 121
+    Height = 21
+    TabOrder = 11
+    Text = '0'
   end
 end

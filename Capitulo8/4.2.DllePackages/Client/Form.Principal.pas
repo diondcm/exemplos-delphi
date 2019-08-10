@@ -17,10 +17,22 @@ type
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    EditGet: TEdit;
+    EditSet: TEdit;
+    Button7: TButton;
+    Button8: TButton;
+    EditGlobalGet: TEdit;
+    EditGlobalSet: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,6 +46,13 @@ var
   function ValorMax(pValA, pValB: Integer): Integer; stdcall; external 'libValorMaximo.dll' name 'ValorMaximo' delayed;
 
   function ExibeFormValMax: Boolean; stdcall; external 'libValorMaximo.dll' name 'ExibeFormValMax' delayed;
+
+  function getValorClasse: Integer; stdcall; external 'libValorMaximo.dll' name 'getValorClasse' delayed;
+  procedure setValorClasse(pValor: Integer); stdcall; external 'libValorMaximo.dll' name 'setValorClasse' delayed;
+
+  function getValorGlobal: Integer; stdcall; external 'libValorMaximo.dll' name 'getValorGlobal' delayed;
+  procedure setValorGlobal(pValor: Integer); stdcall; external 'libValorMaximo.dll' name 'setValorGlobal' delayed;
+
 
 implementation
 
@@ -94,6 +113,26 @@ begin
   finally
     UnloadPackage(lBpl);
   end;
+end;
+
+procedure TfrmPrincipal.Button5Click(Sender: TObject);
+begin
+  EditGet.Text := IntToStr(getValorClasse);
+end;
+
+procedure TfrmPrincipal.Button6Click(Sender: TObject);
+begin
+  setValorClasse(StrToInt(EditSet.Text));
+end;
+
+procedure TfrmPrincipal.Button7Click(Sender: TObject);
+begin
+  EditGlobalGet.Text := IntToStr(getValorGlobal);
+end;
+
+procedure TfrmPrincipal.Button8Click(Sender: TObject);
+begin
+  setValorGlobal(StrToInt(EditGlobalSet.Text));
 end;
 
 end.

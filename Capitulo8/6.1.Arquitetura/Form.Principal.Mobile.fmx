@@ -30,8 +30,7 @@ object frmPrincipal: TfrmPrincipal
       Text = 'Tabs'
       OnClick = ButtonTabsClick
       object ButtonForms: TButton
-        Position.X = 2.000000000000000000
-        Position.Y = 58.000000000000000000
+        Position.Y = 56.000000000000000000
         Size.Width = 121.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -39,8 +38,8 @@ object frmPrincipal: TfrmPrincipal
         Text = 'Forms'
         OnClick = ButtonFormsClick
         object ButtonMultiView: TButton
-          Position.X = 2.000000000000000000
-          Position.Y = 58.000000000000000000
+          Position.X = -1.000000000000000000
+          Position.Y = 55.000000000000000000
           Size.Width = 121.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False

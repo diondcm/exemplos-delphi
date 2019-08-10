@@ -10,7 +10,9 @@ uses
   Form.MapView in 'Form.MapView.pas' {frmMapView},
   Form.MultiView in 'Form.MultiView.pas' {frmMultiView},
   Form.MultiView.Camera in 'Form.MultiView.Camera.pas' {frmMultiViewCamera},
-  Form.MultiView.Base in 'Form.MultiView.Base.pas' {frmBaseMultiView};
+  Form.MultiView.Base in 'Form.MultiView.Base.pas' {frmBaseMultiView},
+  Form.MultiView.Audio in 'Form.MultiView.Audio.pas' {frmMultiViewAudio},
+  Form.MultiView.Mensagem in 'Form.MultiView.Mensagem.pas' {frmMultiViewMensagem};
 
 {$R *.res}
 
@@ -24,5 +26,7 @@ begin
   Application.CreateForm(TfrmMultiView, frmMultiView);
   Application.CreateForm(TfrmMultiViewCamera, frmMultiViewCamera);
   Application.CreateForm(TfrmBaseMultiView, frmBaseMultiView);
+  Application.CreateForm(TfrmMultiViewAudio, frmMultiViewAudio);
+  Application.CreateForm(TfrmMultiViewMensagem, frmMultiViewMensagem);
   Application.Run;
 end.

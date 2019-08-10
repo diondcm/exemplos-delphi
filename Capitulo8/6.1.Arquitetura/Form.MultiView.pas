@@ -22,6 +22,8 @@ type
     ListBoxItem2: TListBoxItem;
     ListBoxItem3: TListBoxItem;
     procedure ListBoxItem1Click(Sender: TObject);
+    procedure ListBoxItem2Click(Sender: TObject);
+    procedure ListBoxItem3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +39,7 @@ implementation
 
 {$R *.fmx}
 
-uses Form.MultiView.Camera;
+uses Form.MultiView.Camera, Form.MultiView.Audio, Form.MultiView.Mensagem;
 
 
 { TfrmMultiView }
@@ -67,6 +69,16 @@ end;
 procedure TfrmMultiView.ListBoxItem1Click(Sender: TObject);
 begin
   FormOpen(TfrmMultiViewCamera);
+end;
+
+procedure TfrmMultiView.ListBoxItem2Click(Sender: TObject);
+begin
+  FormOpen(TfrmMultiViewAudio);
+end;
+
+procedure TfrmMultiView.ListBoxItem3Click(Sender: TObject);
+begin
+  FormOpen(TfrmMultiViewMensagem);
 end;
 
 end.

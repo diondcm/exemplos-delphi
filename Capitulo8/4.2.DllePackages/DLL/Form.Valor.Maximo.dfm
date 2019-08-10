@@ -76,7 +76,11 @@ object frmValoMax: TfrmValoMax
       Align = alRight
       Caption = 'Processar'
       TabOrder = 2
-      ExplicitLeft = 420
     end
+  end
+  object FDConnection1: TFDConnection
+    OnError = FDConnection1Error
+    Left = 248
+    Top = 120
   end
 end
