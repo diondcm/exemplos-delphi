@@ -9,8 +9,8 @@ uses System.SysUtils, System.Classes, System.Json,
 
 
 const
-  IMAGEM = 'C:\Users\AquaAluno09\Desktop\6.2.Estrutura.Camadas\Assets\logo360.jpg';
-  DB = 'C:\Users\AquaAluno09\Desktop\6.2.Estrutura.Camadas\Assets\fast.zip';
+  IMAGEM = 'D:\Aqua\exemplos-delphi\Capitulo8\6.2.Estrutura.Camadas\Assets\logo360.jpg';
+  DB = 'D:\Aqua\exemplos-delphi\Capitulo8\6.2.Estrutura.Camadas\Assets\fast.zip';
 
 type
   TServerMethods1 = class(TDSServerModule)
@@ -82,11 +82,13 @@ end;
 
 function TServerMethods1.GetHashDB: string;
 begin
+  GetDB;
   Result := FCacheHashDB;
 end;
 
 function TServerMethods1.GetHashImagemLogo: string;
 begin
+  GetImagemLogo;
   Result := FCacheHashImagemLogo;
 end;
 

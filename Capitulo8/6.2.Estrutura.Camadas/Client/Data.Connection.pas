@@ -19,7 +19,7 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+    function GetDBName: string;
   end;
 
 var
@@ -38,10 +38,15 @@ end;
 
 procedure TdmdConnection.FDConnectionBeforeConnect(Sender: TObject);
 begin
+  FDConnection.Params.Values['Database'] := GetDBName;
+end;
+
+function TdmdConnection.GetDBName: string;
+begin
   {$IFDEF ANDROID | iOS}
-  FDConnection.Params.Values['Database'] :=  System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath, 'client.db');
+  Result :=  System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath, 'client.db');
   {$ELSE}
-  FDConnection.Params.Values['Database'] := 'fast.db';
+  Result := 'fast.db';
   {$ENDIF}
 end;
 
