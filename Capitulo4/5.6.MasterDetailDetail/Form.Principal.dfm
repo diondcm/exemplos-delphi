@@ -11,6 +11,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -211,9 +212,6 @@ object frmPrincipal: TfrmPrincipal
       0028007400790070006500200027003100320033003400270029002C00000001
       0000000100000024000000FFFFFFFF000000000000000000000000010755006E
       00690063006F0064006500}
-    ExplicitLeft = 8
-    ExplicitTop = -149
-    ExplicitHeight = 438
   end
   object panelDiretorio: TPanel
     AlignWithMargins = True
@@ -225,9 +223,6 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Selecione o diret'#243'rio'
     TabOrder = 3
     OnClick = panelDiretorioClick
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 811
   end
   object panelLoadDinamico: TPanel
     Left = 313
@@ -243,9 +238,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 88
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 488
     end
     object buttonPreview: TButton
       Left = 170

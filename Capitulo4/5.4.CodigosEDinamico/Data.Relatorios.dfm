@@ -4,15 +4,13 @@ object dmdRelatorios: TdmdRelatorios
   Width = 568
   object FDConnection: TFDConnection
     Params.Strings = (
-      'Database=C:\Users\Aluno\Desktop\exemplos-delphi\SQLite\fast.db'
+      'Database=D:\Aqua\exemplos-delphi\SQLite\fast.db'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 240
     Top = 40
   end
   object qryDept: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'select * from DEPARTMENT')
@@ -28,7 +26,7 @@ object dmdRelatorios: TdmdRelatorios
     Top = 144
   end
   object frxReportCodigos: TfrxReport
-    Version = '5.5.11'
+    Version = '6.4.5'
     DotMatrixReport = False
     EngineOptions.DoublePass = True
     IniFile = '\Software\Fast Reports'
@@ -99,23 +97,29 @@ object dmdRelatorios: TdmdRelatorios
         '0'
         '63,3333333333333'
         '126,666666666667')
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 37.795300000000000000
           Width = 366.614410000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo1OnBeforePrint'
+          Frame.Typ = []
           Memo.UTF8W = (
             'C'#243'digos de Departamento')
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 141.574830000000000000
         Top = 102.047310000000000000
         Width = 239.370233333333200000
@@ -123,6 +127,7 @@ object dmdRelatorios: TdmdRelatorios
         DataSetName = 'Department'
         RowCount = 0
         object Barcode2D1: TfrxBarcode2DView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 7.559060000000003000
           Width = 84.000000000000000000
@@ -137,21 +142,25 @@ object dmdRelatorios: TdmdRelatorios
           DataField = 'DEPARTMENT'
           DataSet = frxDBDept
           DataSetName = 'Department'
+          Frame.Typ = []
           Rotation = 0
           ShowText = True
-          Text = '12345678'
+          HexData = '31003200330034003500360037003800'
           Zoom = 1.000000000000000000
           FontScaled = True
           QuietZone = 0
         end
         object BarCode1: TfrxBarCodeView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 7.559060000000003000
           Width = 63.881880000000000000
           Height = 79.000000000000000000
           BarType = bcCode128
           Expression = '<Department."DEPARTMENT">'
+          Frame.Typ = []
           Rotation = 90
+          TestLine = False
           Text = '12345678'
           WideBarRatio = 2.000000000000000000
           Zoom = 1.000000000000000000
@@ -162,10 +171,12 @@ object dmdRelatorios: TdmdRelatorios
           Font.Style = []
         end
         object memTexto: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 120.944960000000000000
           Width = 234.330860000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'dfasdfasd')
         end
@@ -173,7 +184,7 @@ object dmdRelatorios: TdmdRelatorios
     end
   end
   object frxReportRunTime: TfrxReport
-    Version = '5.5.11'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -206,6 +217,8 @@ object dmdRelatorios: TdmdRelatorios
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
     end
   end
 end

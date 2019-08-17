@@ -33,6 +33,9 @@ type
     ActionList: TActionList;
     buttonUploadImg: TButton;
     TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction;
+    ToolBar1: TToolBar;
+    Button1: TButton;
+    ButtonUpload: TButton;
     procedure TimerGetTabelasTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ComboTabelasChange(Sender: TObject);
@@ -41,6 +44,8 @@ type
     procedure buttonDeletaCountryClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
+    procedure ButtonUploadClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   private
@@ -55,7 +60,14 @@ implementation
 
 {$R *.fmx}
 
+uses Form.Upload.Image;
+
 { TfrmGetClientes }
+
+procedure TfrmGetDados.Button1Click(Sender: TObject);
+begin
+  Close;
+end;
 
 procedure TfrmGetDados.buttonAlteraCountryClick(Sender: TObject);
 begin
@@ -70,6 +82,11 @@ end;
 procedure TfrmGetDados.buttonDeletaCountryClick(Sender: TObject);
 begin
   TdmdDados.GetInstance.DeletaCountry(editCountry.Text);
+end;
+
+procedure TfrmGetDados.ButtonUploadClick(Sender: TObject);
+begin
+  frmUploadImage.Show;
 end;
 
 procedure TfrmGetDados.ComboTabelasChange(Sender: TObject);

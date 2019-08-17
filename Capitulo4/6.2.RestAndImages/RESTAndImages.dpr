@@ -14,7 +14,8 @@ uses
   Form.Intents in 'Form.Intents.pas' {frmIntent},
   Classe.Intent.Email in 'Classe.Intent.Email.pas',
   Form.ListView.WS in 'Form.ListView.WS.pas' {frmListViewWS},
-  Classe.Custom.Adapter in 'Classe.Custom.Adapter.pas';
+  Classe.Custom.Adapter in 'Classe.Custom.Adapter.pas',
+  Form.Upload.Image in 'Form.Upload.Image.pas' {frmUploadImage};
 
 {$R *.res}
 
@@ -22,5 +23,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TClientModule, ClientModule);
+  Application.CreateForm(TfrmUploadImage, frmUploadImage);
   Application.Run;
 end.

@@ -16,6 +16,7 @@ type
     VertScrollBox1: TVertScrollBox;
     LayoutListView: TLayout;
     imgBackDrop: TImage;
+    ImageCarrinho: TImage;
     procedure buttonVoltarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -29,6 +30,7 @@ type
     FAdapter: TCustomAdapter;
     procedure PullRefresh(Sender: TObject);
     procedure ButtonClicked(Sender: TObject);
+    procedure ImgClicked(Sender: TObject);
     procedure AddItems(pQtd: Integer);
     class var
       FInstance: TfrmListViewWS;
@@ -94,7 +96,9 @@ begin
 
   FAdapter := TCustomAdapter.Create(FListView, FStrings);
   FAdapter.BackDropImage := imgBackDrop;
+  FAdapter.ImgCar := ImageCarrinho;
   FAdapter.OnButtonClicked := ButtonClicked;
+  FAdapter.OnImgClick := ImgClicked;
   FListView.Adapter := FAdapter;
 
   FListView.Parent := LayoutListView;
@@ -115,6 +119,8 @@ end;
 
 procedure TfrmListViewWS.FormShow(Sender: TObject);
 begin
+  ImageCarrinho.Visible := False;
+
   if not FImagesLoaded then
   begin
     FImagesLoaded := True;
@@ -130,6 +136,11 @@ begin
   end;
 
   Result := FInstance;
+end;
+
+procedure TfrmListViewWS.ImgClicked(Sender: TObject);
+begin
+  TDialogService.ShowMessage('Carriho Clicado');
 end;
 
 procedure TfrmListViewWS.PullRefresh(Sender: TObject);

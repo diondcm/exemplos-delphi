@@ -28,9 +28,6 @@ object frmPrincipal: TfrmPrincipal
       DataSource = dtsImagem
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = -39
-      ExplicitTop = 145
-      ExplicitWidth = 240
     end
     object ImageDB: TDBImage
       AlignWithMargins = True
@@ -42,10 +39,6 @@ object frmPrincipal: TfrmPrincipal
       DataField = 'Graphic'
       DataSource = dtsImagem
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 32
-      ExplicitWidth = 287
-      ExplicitHeight = 198
     end
   end
   object dtsImagem: TDataSource
@@ -56,8 +49,8 @@ object frmPrincipal: TfrmPrincipal
   object ADOConnection: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Aluno\Desk' +
-      'top\exemplos-delphi\SQLite\demo.mdb;Persist Security Info=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Aqua\exemplos-de' +
+      'lphi\SQLite\demo.mdb;Persist Security Info=False;'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
@@ -84,7 +77,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 168
   end
   object frxReport1: TfrxReport
-    Version = '5.5.11'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -119,14 +112,18 @@ object frmPrincipal: TfrmPrincipal
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 177.637910000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
-          Top = 56.692949999999990000
+          Top = 56.692950000000000000
           Width = 136.063080000000000000
           Height = 37.795300000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -134,6 +131,7 @@ object frmPrincipal: TfrmPrincipal
           Font.Height = -33
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Biolife')
           ParentFont = False
@@ -142,13 +140,15 @@ object frmPrincipal: TfrmPrincipal
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
         Fill.BackColor = cl3DLight
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 219.212740000000000000
         Width = 718.110700000000000000
         Child = frxReport1.Child1
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
-          Top = 7.559059999999988000
+          Top = 7.559059999999990000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -156,6 +156,7 @@ object frmPrincipal: TfrmPrincipal
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Biolife List')
           ParentFont = False
@@ -163,6 +164,7 @@ object frmPrincipal: TfrmPrincipal
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 128.504020000000000000
         Top = 400.630180000000000000
         Width = 718.110700000000000000
@@ -171,48 +173,57 @@ object frmPrincipal: TfrmPrincipal
         DataSetName = 'Biolife'
         RowCount = 0
         object BiolifeSpeciesNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'Species No'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Species No"]')
         end
         object BiolifeCategory: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.063080000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           DataField = 'Category'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Category"]')
         end
         object BiolifeCommon_Name: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
-          Top = 22.677180000000020000
+          Top = 22.677180000000000000
           Width = 249.448980000000000000
           Height = 18.897650000000000000
           DataField = 'Common_Name'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Common_Name"]')
         end
         object BiolifeSpeciesName: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
-          Top = 41.574830000000020000
+          Top = 41.574830000000000000
           Width = 321.260050000000000000
           Height = 18.897650000000000000
           DataField = 'Species Name'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Species Name"]')
         end
         object BiolifeLengthcm: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 75.590600000000000000
           Width = 79.370130000000000000
@@ -220,10 +231,12 @@ object frmPrincipal: TfrmPrincipal
           DataField = 'Length (cm)'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Length (cm)"]')
         end
         object BiolifeLength_In: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.063080000000000000
           Top = 75.590600000000000000
           Width = 79.370130000000000000
@@ -231,17 +244,20 @@ object frmPrincipal: TfrmPrincipal
           DataField = 'Length_In'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Length_In"]')
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 419.527830000000000000
-          Top = 3.220469999999978000
+          Top = 3.220469999999980000
           Width = 245.669450000000000000
           Height = 117.165430000000000000
           DataField = 'Graphic'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -249,12 +265,14 @@ object frmPrincipal: TfrmPrincipal
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 687.874460000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
-          Top = 6.779530000000023000
+          Top = 6.779530000000020000
           Width = 181.417440000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -262,12 +280,14 @@ object frmPrincipal: TfrmPrincipal
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[<Date>] [<Time>]')
           ParentFont = False
         end
         object Line2: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
@@ -275,17 +295,24 @@ object frmPrincipal: TfrmPrincipal
       end
       object Child1: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 272.126160000000000000
         Width = 718.110700000000000000
+        ToNRows = 0
+        ToNRowsMode = rmCount
       end
       object Child2: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Height = 11.338590000000000000
         Top = 616.063390000000000000
         Width = 718.110700000000000000
+        ToNRows = 0
+        ToNRowsMode = rmCount
         object Line1: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
@@ -293,19 +320,24 @@ object frmPrincipal: TfrmPrincipal
       end
       object childNotes: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Height = 41.574830000000000000
         Top = 551.811380000000000000
         Width = 718.110700000000000000
         Child = frxReport1.Child2
         Stretched = True
+        ToNRows = 0
+        ToNRowsMode = rmCount
         object BiolifeNotes: TfrxMemoView
           Align = baClient
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 41.574830000000000000
           StretchMode = smActualHeight
           DataField = 'Notes'
           DataSet = frxDBBiolife
           DataSetName = 'Biolife'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Notes"]')
         end
@@ -313,12 +345,14 @@ object frmPrincipal: TfrmPrincipal
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
         Fill.BackColor = cl3DDkShadow
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 355.275820000000000000
         Width = 718.110700000000000000
         Condition = 'Biolife."Category"'
         StartNewPage = True
         object BiolifeCategory1: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Width = 464.882190000000000000
           Height = 18.897650000000000000
@@ -330,6 +364,7 @@ object frmPrincipal: TfrmPrincipal
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Biolife."Category"]')
           ParentFont = False

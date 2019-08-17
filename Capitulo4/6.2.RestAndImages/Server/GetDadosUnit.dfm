@@ -4,7 +4,7 @@ object GetDados: TGetDados
   Width = 425
   object FDConnection: TFDConnection
     Params.Strings = (
-      'Database=C:\Users\Aluno\Desktop\exemplos-delphi\SQLite\fast.db'
+      'Database=D:\Aqua\exemplos-delphi\SQLite\fast.db'
       'DriverID=SQLite')
     Left = 192
     Top = 24

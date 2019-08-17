@@ -17,7 +17,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 80
     Top = 216
     Content = {
-      414442530F006F2670400000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F006A2470400000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000C0000
       0043007500730074004E006F0005000C00000043007500730074004E006F000C
@@ -558,7 +558,7 @@ object dmdDBDemos: TdmdDBDemos
       65007300}
   end
   object frxReportMasterDetail: TfrxReport
-    Version = '5.6.17'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -609,16 +609,21 @@ object dmdDBDemos: TdmdDBDemos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 151.181200000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 22.677180000000000000
           Top = 11.338590000000000000
           Width = 132.283550000000000000
           Height = 117.165430000000000000
+          Frame.Typ = []
           Picture.Data = {
             0A54504E474F626A65637489504E470D0A1A0A0000000D4948445200000AF000
             000AF00802000000F7E8790F000000017352474200AECE1CE90000000467414D
@@ -9295,6 +9300,7 @@ object dmdDBDemos: TdmdDBDemos
           TransparentColor = clWhite
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 260.787570000000000000
           Top = 52.913420000000000000
           Width = 226.771800000000000000
@@ -9304,15 +9310,18 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -33
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Master Detail')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 444.205010000000000000
           Top = 124.724490000000000000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Impresso em [Date] [Time]')
@@ -9324,6 +9333,7 @@ object dmdDBDemos: TdmdDBDemos
         end
         object Line1: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Top = 147.401670000000000000
           Width = 718.110700000000000000
           Color = clBlack
@@ -9333,10 +9343,12 @@ object dmdDBDemos: TdmdDBDemos
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 64.252010000000000000
         Top = 952.441560000000000000
         Width = 718.110700000000000000
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 18.897650000000000000
           Width = 631.181510000000000000
@@ -9346,6 +9358,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -24
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total Geral [SUM(<Orders."ItemsTotal">)]')
           ParentFont = False
@@ -9361,6 +9374,7 @@ object dmdDBDemos: TdmdDBDemos
         end
         object Line11: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Top = 3.779530000000022000
           Width = 718.110700000000000000
           Color = clBlack
@@ -9369,6 +9383,7 @@ object dmdDBDemos: TdmdDBDemos
         end
         object Line12: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Top = 8.338589999999954000
           Width = 718.110700000000000000
           Color = clBlack
@@ -9377,6 +9392,7 @@ object dmdDBDemos: TdmdDBDemos
         end
         object Line13: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Top = 60.472480000000010000
           Width = 718.110700000000000000
           Color = clBlack
@@ -9386,10 +9402,12 @@ object dmdDBDemos: TdmdDBDemos
       end
       object PageHeader: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 192.756030000000000000
         Width = 718.110700000000000000
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 3.779529999999994000
           Width = 302.362400000000000000
@@ -9399,6 +9417,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsItalic, fsUnderline]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pedidos por Pa'#237's/Cliente/Ordem Compra/Itens')
           ParentFont = False
@@ -9406,17 +9425,20 @@ object dmdDBDemos: TdmdDBDemos
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 1039.370750000000000000
         Width = 718.110700000000000000
         object Line5: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Top = 1.000000000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.338590000000000000
           Top = 2.559060000000045000
           Width = 162.519790000000000000
@@ -9426,6 +9448,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'P'#225'gina [Page] de [TotalPages#]')
           ParentFont = False
@@ -9438,6 +9461,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object GroupHeaderCountry: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 34.015770000000010000
         Top = 325.039580000000000000
         Width = 718.110700000000000000
@@ -9445,6 +9469,7 @@ object dmdDBDemos: TdmdDBDemos
         Condition = 'Customer."Country"'
         DrillDown = True
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 408.189240000000000000
           Height = 30.236240000000000000
@@ -9453,11 +9478,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -24
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pa'#237's: [Customer."Country"]')
           ParentFont = False
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 4.000000000000000000
           Top = 30.236240000000010000
           Width = 714.331170000000000000
@@ -9467,16 +9494,21 @@ object dmdDBDemos: TdmdDBDemos
       end
       object HeaderEspaco: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 283.464750000000000000
         Width = 718.110700000000000000
       end
       object childGroupHeaderCountry: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 381.732530000000000000
         Width = 718.110700000000000000
+        ToNRows = 0
+        ToNRowsMode = rmCount
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
@@ -9485,11 +9517,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'C'#243'digo')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
@@ -9498,11 +9532,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Width = 94.488250000000000000
           Height = 22.677180000000000000
@@ -9511,6 +9547,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cidade')
           ParentFont = False
@@ -9518,6 +9555,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object MasterDataCustomer: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 430.866420000000000000
         Width = 718.110700000000000000
@@ -9526,6 +9564,7 @@ object dmdDBDemos: TdmdDBDemos
         RowCount = 0
         StartNewPage = True
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 8.897650000000000000
           Top = 26.677180000000020000
           Width = 710.551640000000000000
@@ -9533,6 +9572,7 @@ object dmdDBDemos: TdmdDBDemos
           Frame.Typ = [ftTop]
         end
         object CustomerCompany: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Width = 238.110390000000000000
           Height = 22.677180000000000000
@@ -9543,6 +9583,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Highlight.ApplyFill = False
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clGreen
@@ -9551,11 +9592,13 @@ object dmdDBDemos: TdmdDBDemos
           Highlight.Font.Style = [fsBold, fsItalic]
           Highlight.Condition = '<Customer."Country"> = '#39'BahamasZ'#39
           Highlight.FillType = ftBrush
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[Customer."Company"]')
           ParentFont = False
         end
         object CustomerCity: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Width = 120.944960000000000000
           Height = 22.677180000000000000
@@ -9567,11 +9610,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CustomerMem."City"]')
           ParentFont = False
         end
         object CustomerCustNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Width = 105.826840000000000000
           Height = 22.677180000000000000
@@ -9583,6 +9628,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CustomerMem."CustNo"]')
           ParentFont = False
@@ -9590,23 +9636,27 @@ object dmdDBDemos: TdmdDBDemos
       end
       object GroupFooterCustomer: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 49.133890000000000000
         Top = 842.835190000000000000
         Width = 718.110700000000000000
         object Line2: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line3: TfrxLineView
           Align = baWidth
+          AllowVectorExport = True
           Top = 3.779530000000022000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 7.338589999999954000
           Width = 631.181510000000000000
@@ -9616,6 +9666,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Total parcial [SUM(<Orders."ItemsTotal">,MasterDataCustomer,2)] ' +
@@ -9634,6 +9685,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object DetailDataOrders: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 532.913730000000000000
         Width = 718.110700000000000000
@@ -9641,6 +9693,7 @@ object dmdDBDemos: TdmdDBDemos
         DataSetName = 'OrdersMem'
         RowCount = 0
         object OrdersOrderNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -9652,11 +9705,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[OrdersMem."OrderNo"]')
           ParentFont = False
         end
         object OrdersSaleDate: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
@@ -9668,11 +9723,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[OrdersMem."SaleDate"]')
           ParentFont = False
         end
         object OrdersShipDate: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
@@ -9684,11 +9741,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[OrdersMem."ShipDate"]')
           ParentFont = False
         end
         object OrdersItemsTotal: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
@@ -9701,12 +9760,14 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Orders."ItemsTotal"]')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 34.677180000000000000
           Top = 22.677180000000020000
           Width = 684.094930000000000000
@@ -9716,10 +9777,12 @@ object dmdDBDemos: TdmdDBDemos
       end
       object HeaderOrders: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 483.779840000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Top = 3.779527560000020000
           Width = 113.385900000000000000
@@ -9729,11 +9792,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#250'mero Pedido')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Top = 3.779527560000020000
           Width = 136.063080000000000000
@@ -9743,11 +9808,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Dada de Compra')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 3.779527560000020000
           Width = 113.385900000000000000
@@ -9757,11 +9824,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data de Envio')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 3.779527560000020000
           Width = 128.504020000000000000
@@ -9771,6 +9840,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total do Pedido')
           ParentFont = False
@@ -9778,6 +9848,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object SubdetailDataItems: TfrxSubdetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 52.913420000000000000
         Top = 582.047620000000000000
         Width = 718.110700000000000000
@@ -9785,6 +9856,7 @@ object dmdDBDemos: TdmdDBDemos
         DataSetName = 'ItemsMem'
         RowCount = 0
         object ItemsItemNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Top = 24.236239999999950000
           Width = 79.370130000000000000
@@ -9797,11 +9869,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ItemsMem."ItemNo"]')
           ParentFont = False
         end
         object ItemsQty: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Top = 24.236239999999950000
           Width = 79.370130000000000000
@@ -9814,11 +9888,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ItemsMem."Qty"]')
           ParentFont = False
         end
         object ItemsDiscount: TfrxMemoView
+          AllowVectorExport = True
           Left = 230.551330000000000000
           Top = 24.236239999999950000
           Width = 79.370130000000000000
@@ -9831,11 +9907,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ItemsMem."Discount"]')
           ParentFont = False
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Top = 47.133889999999950000
           Width = 665.197280000000000000
@@ -9843,6 +9921,7 @@ object dmdDBDemos: TdmdDBDemos
           Frame.Typ = [ftTop]
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Top = 0.779525120000016600
           Width = 94.488250000000000000
@@ -9852,11 +9931,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'C'#243'digo do Item')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 230.551330000000000000
           Top = 0.779525120000016600
           Width = 124.724490000000000000
@@ -9866,11 +9947,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Desconto Fornecido')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.559370000000000000
           Top = 0.779525120000016600
           Width = 124.724490000000000000
@@ -9880,6 +9963,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade de Itens')
           ParentFont = False
@@ -9887,6 +9971,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object DataBandParts: TfrxDataBand4
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 702.992580000000000000
         Width = 718.110700000000000000
@@ -9895,6 +9980,7 @@ object dmdDBDemos: TdmdDBDemos
         DataSetName = 'PartsMem'
         RowCount = 0
         object PartsCost: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -9902,11 +9988,13 @@ object dmdDBDemos: TdmdDBDemos
           DataSetName = 'PartsMem'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Parts."Cost"]')
         end
         object PartsListPrice: TfrxMemoView
+          AllowVectorExport = True
           Left = 370.393940000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -9914,21 +10002,25 @@ object dmdDBDemos: TdmdDBDemos
           DataSetName = 'PartsMem'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Parts."ListPrice"]')
         end
         object PartsDescription: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 238.110390000000000000
           Height = 18.897650000000000000
           DataField = 'Description'
           DataSet = frxDBParts
           DataSetName = 'PartsMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[PartsMem."Description"]')
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 20.677179999999910000
           Width = 642.520100000000000000
@@ -9938,33 +10030,41 @@ object dmdDBDemos: TdmdDBDemos
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 657.638220000000000000
         Width = 718.110700000000000000
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 370.393940000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pre'#231'o Base')
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Custo')
         end
       end
       object DataBandVendors: TfrxDataBand5
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 793.701300000000000000
         Width = 718.110700000000000000
@@ -9972,6 +10072,7 @@ object dmdDBDemos: TdmdDBDemos
         DataSetName = 'VendorsMem'
         RowCount = 0
         object VendorsVendorNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
@@ -9983,11 +10084,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[VendorsMem."VendorNo"]')
           ParentFont = False
         end
         object VendorsVendorName: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Width = 238.110390000000000000
           Height = 18.897650000000000000
@@ -9999,11 +10102,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[VendorsMem."VendorName"]')
           ParentFont = False
         end
         object VendorsCountry: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
@@ -10015,11 +10120,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[VendorsMem."Country"]')
           ParentFont = False
         end
         object VendorsCity: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
@@ -10031,11 +10138,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[VendorsMem."City"]')
           ParentFont = False
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 22.677180000000020000
           Width = 604.724800000000000000
@@ -10046,10 +10155,14 @@ object dmdDBDemos: TdmdDBDemos
       end
       object childParts: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 748.346940000000000000
         Width = 718.110700000000000000
+        ToNRows = 0
+        ToNRowsMode = rmCount
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 1.779530000000022000
           Width = 132.283550000000000000
@@ -10059,11 +10172,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fornecedor')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Top = 1.779530000000022000
           Width = 94.488250000000000000
@@ -10073,11 +10188,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pa'#237's')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Top = 1.779530000000022000
           Width = 94.488250000000000000
@@ -10087,6 +10204,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cidade')
           ParentFont = False
@@ -10119,7 +10237,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 168
     Top = 216
     Content = {
-      414442530F006F26F47C0000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F006A24F47C0000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000E0000
       004F0072006400650072004E006F0005000E0000004F0072006400650072004E
@@ -11177,7 +11295,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 248
     Top = 216
     Content = {
-      414442530F006F2638D80000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F006A2438D80000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000E0000
       004F0072006400650072004E006F0005000E0000004F0072006400650072004E
@@ -12953,7 +13071,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 328
     Top = 216
     Content = {
-      414442530F006F26B01E0000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F006A24B01E0000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B04000C0000
       0050006100720074004E006F0005000C00000050006100720074004E006F000C
@@ -13251,7 +13369,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 400
     Top = 216
     Content = {
-      414442530F006F26DE180000FF00010001FF02FF0304001A0000006D0065006D
+      414442530F006A24DE180000FF00010001FF02FF0304001A0000006D0065006D
       004500780070006F0072007400610064006F00720005000A0000005400610062
       006C006500060000000000070000080032000000090000FF0AFF0B0400100000
       00560065006E0064006F0072004E006F00050010000000560065006E0064006F
@@ -13488,7 +13606,7 @@ object dmdDBDemos: TdmdDBDemos
     Top = 160
   end
   object frxReportCrossTest: TfrxReport
-    Version = '5.6.17'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -13523,12 +13641,16 @@ object dmdDBDemos: TdmdDBDemos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 102.047310000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Top = 26.456710000000000000
           Width = 362.834880000000000000
@@ -13538,12 +13660,14 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -33
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cruzamento de Dados')
           ParentFont = False
         end
       end
       object DBCross1: TfrxDBCrossView
+        AllowVectorExport = True
         Top = 170.078850000000000000
         Width = 299.000000000000000000
         Height = 216.000000000000000000
@@ -13564,83 +13688,53 @@ object dmdDBDemos: TdmdDBDemos
         Memos = {
           3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
           662D3822207374616E64616C6F6E653D226E6F223F3E3C63726F73733E3C6365
-          6C6C6D656D6F733E3C546672784D656D6F56696577204C6566743D2231303122
-          20546F703D223235362C3037383835222057696474683D223533222048656967
-          68743D22323222205265737472696374696F6E733D2232342220416C6C6F7745
-          787072657373696F6E733D2246616C73652220446973706C6179466F726D6174
-          2E466F726D61745374723D2225322E326D2220446973706C6179466F726D6174
-          2E4B696E643D22666B4E756D6572696322204672616D652E5479703D22313522
-          2046696C6C2E4261636B436F6C6F723D2231363737363936302220476170583D
-          22332220476170593D2233222048416C69676E3D226861526967687422205641
-          6C69676E3D22766143656E7465722220546578743D22522420302C3030222F3E
-          3C546672784D656D6F56696577204C6566743D223135342220546F703D223235
-          362C3037383835222057696474683D22333622204865696768743D2232322220
-          5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
-          6E733D2246616C736522204672616D652E5479703D223135222046696C6C2E42
-          61636B436F6C6F723D2231363737363936302220476170583D22332220476170
-          593D2233222048416C69676E3D2268615269676874222056416C69676E3D2276
-          6143656E7465722220546578743D2230222F3E3C546672784D656D6F56696577
-          204C6566743D223139302220546F703D223235362C3037383835222057696474
-          683D22353322204865696768743D22323222205265737472696374696F6E733D
-          2232342220416C6C6F7745787072657373696F6E733D2246616C736522204469
-          73706C6179466F726D61742E466F726D61745374723D2225322E326D22204469
-          73706C6179466F726D61742E4B696E643D22666B4E756D657269632220467261
-          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
-          363936302220476170583D22332220476170593D2233222048416C69676E3D22
-          68615269676874222056416C69676E3D22766143656E7465722220546578743D
-          22522420302C3030222F3E3C546672784D656D6F56696577204C6566743D2231
-          30312220546F703D223237382C3037383835222057696474683D223533222048
-          65696768743D22323222205265737472696374696F6E733D2232342220416C6C
-          6F7745787072657373696F6E733D2246616C73652220446973706C6179466F72
-          6D61742E466F726D61745374723D2225322E326D2220446973706C6179466F72
-          6D61742E4B696E643D22666B4E756D6572696322204672616D652E5479703D22
-          3135222046696C6C2E4261636B436F6C6F723D22393836383837352220476170
-          583D22332220476170593D2233222048416C69676E3D22686152696768742220
-          56416C69676E3D22766143656E7465722220546578743D22522420302C303022
-          2F3E3C546672784D656D6F56696577204C6566743D223135342220546F703D22
-          3237382C3037383835222057696474683D22333622204865696768743D223232
-          22205265737472696374696F6E733D2232342220416C6C6F7745787072657373
-          696F6E733D2246616C73652220446973706C6179466F726D61742E466F726D61
-          745374723D2225322E326D2220446973706C6179466F726D61742E4B696E643D
-          22666B4E756D6572696322204672616D652E5479703D223135222046696C6C2E
-          4261636B436F6C6F723D22393836383837352220476170583D22332220476170
-          593D2233222048416C69676E3D2268615269676874222056416C69676E3D2276
-          6143656E7465722220546578743D2230222F3E3C546672784D656D6F56696577
-          204C6566743D223139302220546F703D223237382C3037383835222057696474
-          683D22353322204865696768743D22323222205265737472696374696F6E733D
-          2232342220416C6C6F7745787072657373696F6E733D2246616C736522204469
-          73706C6179466F726D61742E466F726D61745374723D2225322E326D22204469
-          73706C6179466F726D61742E4B696E643D22666B4E756D657269632220467261
-          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2239383638
-          3837352220476170583D22332220476170593D2233222048416C69676E3D2268
-          615269676874222056416C69676E3D22766143656E7465722220546578743D22
-          522420302C3030222F3E3C546672784D656D6F56696577204C6566743D223234
-          332220546F703D223235362C3037383835222057696474683D22353322204865
-          696768743D22323222205265737472696374696F6E733D2232342220416C6C6F
-          7745787072657373696F6E733D2246616C73652220446973706C6179466F726D
-          61742E466F726D61745374723D2225322E326D2220446973706C6179466F726D
-          61742E4B696E643D22666B4E756D6572696322204672616D652E5479703D2231
-          35222046696C6C2E4261636B436F6C6F723D2239383638383735222047617058
-          3D22332220476170593D2233222048416C69676E3D2268615269676874222056
-          416C69676E3D22766143656E7465722220546578743D22522420302C3030222F
-          3E3C546672784D656D6F56696577204C6566743D223239362220546F703D2232
-          35362C3037383835222057696474683D22333622204865696768743D22323222
+          6C6C6D656D6F733E3C546672784D656D6F5669657720416C6C6F77566563746F
+          724578706F72743D225472756522204C6566743D223130312220546F703D2232
+          35362C3037383835222057696474683D22353322204865696768743D22323222
           205265737472696374696F6E733D2232342220416C6C6F774578707265737369
           6F6E733D2246616C73652220446973706C6179466F726D61742E466F726D6174
           5374723D2225322E326D2220446973706C6179466F726D61742E4B696E643D22
           666B4E756D6572696322204672616D652E5479703D223135222046696C6C2E42
-          61636B436F6C6F723D22393836383837352220476170583D2233222047617059
-          3D2233222048416C69676E3D2268615269676874222056416C69676E3D227661
-          43656E7465722220546578743D2230222F3E3C546672784D656D6F5669657720
-          4C6566743D223333322220546F703D223235362C303738383522205769647468
-          3D22353322204865696768743D22323222205265737472696374696F6E733D22
-          32342220416C6C6F7745787072657373696F6E733D2246616C73652220446973
-          706C6179466F726D61742E466F726D61745374723D2225322E326E2220446973
-          706C6179466F726D61742E4B696E643D22666B4E756D6572696322204672616D
-          652E5479703D223135222046696C6C2E4261636B436F6C6F723D223938363838
-          37352220476170583D22332220476170593D2233222048416C69676E3D226861
-          5269676874222056416C69676E3D22766143656E7465722220546578743D2252
-          2420302C3030222F3E3C546672784D656D6F56696577204C6566743D22323433
+          61636B436F6C6F723D2231363737363936302220476170583D22332220476170
+          593D2233222048416C69676E3D2268615269676874222056416C69676E3D2276
+          6143656E7465722220546578743D22522420302C3030222F3E3C546672784D65
+          6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
+          4C6566743D223135342220546F703D223235362C303738383522205769647468
+          3D22333622204865696768743D22323222205265737472696374696F6E733D22
+          32342220416C6C6F7745787072657373696F6E733D2246616C73652220467261
+          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
+          363936302220476170583D22332220476170593D2233222048416C69676E3D22
+          68615269676874222056416C69676E3D22766143656E7465722220546578743D
+          2230222F3E3C546672784D656D6F5669657720416C6C6F77566563746F724578
+          706F72743D225472756522204C6566743D223139302220546F703D223235362C
+          3037383835222057696474683D22353322204865696768743D22323222205265
+          737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E73
+          3D2246616C73652220446973706C6179466F726D61742E466F726D6174537472
+          3D2225322E326D2220446973706C6179466F726D61742E4B696E643D22666B4E
+          756D6572696322204672616D652E5479703D223135222046696C6C2E4261636B
+          436F6C6F723D2231363737363936302220476170583D22332220476170593D22
+          33222048416C69676E3D2268615269676874222056416C69676E3D2276614365
+          6E7465722220546578743D22522420302C3030222F3E3C546672784D656D6F56
+          69657720416C6C6F77566563746F724578706F72743D225472756522204C6566
+          743D223130312220546F703D223237382C3037383835222057696474683D2235
+          3322204865696768743D22323222205265737472696374696F6E733D22323422
+          20416C6C6F7745787072657373696F6E733D2246616C73652220446973706C61
+          79466F726D61742E466F726D61745374723D2225322E326D2220446973706C61
+          79466F726D61742E4B696E643D22666B4E756D6572696322204672616D652E54
+          79703D223135222046696C6C2E4261636B436F6C6F723D223938363838373522
+          20476170583D22332220476170593D2233222048416C69676E3D226861526967
+          6874222056416C69676E3D22766143656E7465722220546578743D2252242030
+          2C3030222F3E3C546672784D656D6F5669657720416C6C6F77566563746F7245
+          78706F72743D225472756522204C6566743D223135342220546F703D22323738
+          2C3037383835222057696474683D22333622204865696768743D223232222052
+          65737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E
+          733D2246616C73652220446973706C6179466F726D61742E466F726D61745374
+          723D2225322E326D2220446973706C6179466F726D61742E4B696E643D22666B
+          4E756D6572696322204672616D652E5479703D223135222046696C6C2E426163
+          6B436F6C6F723D22393836383837352220476170583D22332220476170593D22
+          33222048416C69676E3D2268615269676874222056416C69676E3D2276614365
+          6E7465722220546578743D2230222F3E3C546672784D656D6F5669657720416C
+          6C6F77566563746F724578706F72743D225472756522204C6566743D22313930
           2220546F703D223237382C3037383835222057696474683D2235332220486569
           6768743D22323222205265737472696374696F6E733D2232342220416C6C6F77
           45787072657373696F6E733D2246616C73652220446973706C6179466F726D61
@@ -13649,130 +13743,180 @@ object dmdDBDemos: TdmdDBDemos
           222046696C6C2E4261636B436F6C6F723D22393836383837352220476170583D
           22332220476170593D2233222048416C69676E3D226861526967687422205641
           6C69676E3D22766143656E7465722220546578743D22522420302C3030222F3E
-          3C546672784D656D6F56696577204C6566743D223239362220546F703D223237
-          382C3037383835222057696474683D22333622204865696768743D2232322220
-          5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
-          6E733D2246616C73652220446973706C6179466F726D61742E466F726D617453
-          74723D2225322E326D2220446973706C6179466F726D61742E4B696E643D2266
-          6B4E756D6572696322204672616D652E5479703D223135222046696C6C2E4261
-          636B436F6C6F723D22393836383837352220476170583D22332220476170593D
-          2233222048416C69676E3D2268615269676874222056416C69676E3D22766143
-          656E7465722220546578743D2230222F3E3C546672784D656D6F56696577204C
-          6566743D223333322220546F703D223237382C3037383835222057696474683D
-          22353322204865696768743D22323222205265737472696374696F6E733D2232
-          342220416C6C6F7745787072657373696F6E733D2246616C7365222044697370
-          6C6179466F726D61742E466F726D61745374723D2225322E326D222044697370
-          6C6179466F726D61742E4B696E643D22666B4E756D6572696322204672616D65
-          2E5479703D223135222046696C6C2E4261636B436F6C6F723D22393836383837
-          352220476170583D22332220476170593D2233222048416C69676E3D22686152
-          69676874222056416C69676E3D22766143656E7465722220546578743D225224
-          20302C3030222F3E3C2F63656C6C6D656D6F733E3C63656C6C6865616465726D
-          656D6F733E3C546672784D656D6F56696577204C6566743D223130312220546F
-          703D223233342C3037383835222057696474683D22353322204865696768743D
-          22323222205265737472696374696F6E733D22382220416C6C6F774578707265
-          7373696F6E733D2246616C736522204672616D652E5479703D22313522204669
-          6C6C2E4261636B436F6C6F723D2233323736382220476170583D223322204761
-          70593D2233222056416C69676E3D22766143656E7465722220546578743D2253
-          616C617279222F3E3C546672784D656D6F56696577204C6566743D2231353422
-          20546F703D223233342C3037383835222057696474683D223336222048656967
-          68743D22323222205265737472696374696F6E733D22382220416C6C6F774578
-          7072657373696F6E733D2246616C736522204672616D652E5479703D22313522
-          2046696C6C2E4261636B436F6C6F723D2233323736382220476170583D223322
-          20476170593D2233222056416C69676E3D22766143656E746572222054657874
-          3D2244617973222F3E3C546672784D656D6F56696577204C6566743D22313930
-          2220546F703D223233342C3037383835222057696474683D2235332220486569
-          6768743D22323222205265737472696374696F6E733D22382220416C6C6F7745
-          787072657373696F6E733D2246616C736522204672616D652E5479703D223135
-          222046696C6C2E4261636B436F6C6F723D2233323736382220476170583D2233
-          2220476170593D2233222056416C69676E3D22766143656E7465722220546578
-          743D2253616C617279222F3E3C546672784D656D6F56696577204C6566743D22
-          3234332220546F703D223233342C3037383835222057696474683D2235332220
-          4865696768743D22323222205265737472696374696F6E733D22382220416C6C
-          6F7745787072657373696F6E733D2246616C736522204672616D652E5479703D
-          223135222046696C6C2E4261636B436F6C6F723D223332373638222047617058
-          3D22332220476170593D2233222056416C69676E3D22766143656E7465722220
-          546578743D2253616C617279222F3E3C546672784D656D6F56696577204C6566
-          743D223239362220546F703D223233342C3037383835222057696474683D2233
-          3622204865696768743D22323222205265737472696374696F6E733D22382220
-          416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E54
-          79703D223135222046696C6C2E4261636B436F6C6F723D223332373638222047
-          6170583D22332220476170593D2233222056416C69676E3D22766143656E7465
-          722220546578743D2244617973222F3E3C546672784D656D6F56696577204C65
-          66743D223333322220546F703D223233342C3037383835222057696474683D22
-          353322204865696768743D22323222205265737472696374696F6E733D223822
-          20416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E
-          5479703D223135222046696C6C2E4261636B436F6C6F723D2233323736382220
-          476170583D22332220476170593D2233222056416C69676E3D22766143656E74
-          65722220546578743D2253616C617279222F3E3C2F63656C6C6865616465726D
-          656D6F733E3C636F6C756D6E6D656D6F733E3C546672784D656D6F5669657720
-          4C6566743D223130312220546F703D223231322C303738383522205769647468
-          3D2231343222204865696768743D22323222205265737472696374696F6E733D
-          2232342220416C6C6F7745787072657373696F6E733D2246616C736522204672
-          616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D22343232
-          373037322220476170583D22332220476170593D2233222048416C69676E3D22
-          686143656E746572222056416C69676E3D22766143656E746572222054657874
-          3D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F74616C6D
-          656D6F733E3C546672784D656D6F56696577204C6566743D223234332220546F
-          703D223231322C3037383835222057696474683D223134322220486569676874
+          3C546672784D656D6F5669657720416C6C6F77566563746F724578706F72743D
+          225472756522204C6566743D223234332220546F703D223235362C3037383835
+          222057696474683D22353322204865696768743D223232222052657374726963
+          74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+          73652220446973706C6179466F726D61742E466F726D61745374723D2225322E
+          326D2220446973706C6179466F726D61742E4B696E643D22666B4E756D657269
+          6322204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F72
+          3D22393836383837352220476170583D22332220476170593D2233222048416C
+          69676E3D2268615269676874222056416C69676E3D22766143656E7465722220
+          546578743D22522420302C3030222F3E3C546672784D656D6F5669657720416C
+          6C6F77566563746F724578706F72743D225472756522204C6566743D22323936
+          2220546F703D223235362C3037383835222057696474683D2233362220486569
+          6768743D22323222205265737472696374696F6E733D2232342220416C6C6F77
+          45787072657373696F6E733D2246616C73652220446973706C6179466F726D61
+          742E466F726D61745374723D2225322E326D2220446973706C6179466F726D61
+          742E4B696E643D22666B4E756D6572696322204672616D652E5479703D223135
+          222046696C6C2E4261636B436F6C6F723D22393836383837352220476170583D
+          22332220476170593D2233222048416C69676E3D226861526967687422205641
+          6C69676E3D22766143656E7465722220546578743D2230222F3E3C546672784D
+          656D6F5669657720416C6C6F77566563746F724578706F72743D225472756522
+          204C6566743D223333322220546F703D223235362C3037383835222057696474
+          683D22353322204865696768743D22323222205265737472696374696F6E733D
+          2232342220416C6C6F7745787072657373696F6E733D2246616C736522204469
+          73706C6179466F726D61742E466F726D61745374723D2225322E326E22204469
+          73706C6179466F726D61742E4B696E643D22666B4E756D657269632220467261
+          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2239383638
+          3837352220476170583D22332220476170593D2233222048416C69676E3D2268
+          615269676874222056416C69676E3D22766143656E7465722220546578743D22
+          522420302C3030222F3E3C546672784D656D6F5669657720416C6C6F77566563
+          746F724578706F72743D225472756522204C6566743D223234332220546F703D
+          223237382C3037383835222057696474683D22353322204865696768743D2232
+          3222205265737472696374696F6E733D2232342220416C6C6F77457870726573
+          73696F6E733D2246616C73652220446973706C6179466F726D61742E466F726D
+          61745374723D2225322E326D2220446973706C6179466F726D61742E4B696E64
+          3D22666B4E756D6572696322204672616D652E5479703D223135222046696C6C
+          2E4261636B436F6C6F723D22393836383837352220476170583D223322204761
+          70593D2233222048416C69676E3D2268615269676874222056416C69676E3D22
+          766143656E7465722220546578743D22522420302C3030222F3E3C546672784D
+          656D6F5669657720416C6C6F77566563746F724578706F72743D225472756522
+          204C6566743D223239362220546F703D223237382C3037383835222057696474
+          683D22333622204865696768743D22323222205265737472696374696F6E733D
+          2232342220416C6C6F7745787072657373696F6E733D2246616C736522204469
+          73706C6179466F726D61742E466F726D61745374723D2225322E326D22204469
+          73706C6179466F726D61742E4B696E643D22666B4E756D657269632220467261
+          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2239383638
+          3837352220476170583D22332220476170593D2233222048416C69676E3D2268
+          615269676874222056416C69676E3D22766143656E7465722220546578743D22
+          30222F3E3C546672784D656D6F5669657720416C6C6F77566563746F72457870
+          6F72743D225472756522204C6566743D223333322220546F703D223237382C30
+          37383835222057696474683D22353322204865696768743D2232322220526573
+          7472696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D
+          2246616C73652220446973706C6179466F726D61742E466F726D61745374723D
+          2225322E326D2220446973706C6179466F726D61742E4B696E643D22666B4E75
+          6D6572696322204672616D652E5479703D223135222046696C6C2E4261636B43
+          6F6C6F723D22393836383837352220476170583D22332220476170593D223322
+          2048416C69676E3D2268615269676874222056416C69676E3D22766143656E74
+          65722220546578743D22522420302C3030222F3E3C2F63656C6C6D656D6F733E
+          3C63656C6C6865616465726D656D6F733E3C546672784D656D6F566965772041
+          6C6C6F77566563746F724578706F72743D225472756522204C6566743D223130
+          312220546F703D223233342C3037383835222057696474683D22353322204865
+          696768743D22323222205265737472696374696F6E733D22382220416C6C6F77
+          45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
+          35222046696C6C2E4261636B436F6C6F723D2233323736382220476170583D22
+          332220476170593D2233222056416C69676E3D22766143656E74657222205465
+          78743D2253616C617279222F3E3C546672784D656D6F5669657720416C6C6F77
+          566563746F724578706F72743D225472756522204C6566743D22313534222054
+          6F703D223233342C3037383835222057696474683D2233362220486569676874
           3D22323222205265737472696374696F6E733D22382220416C6C6F7745787072
-          657373696F6E733D2246616C73652220466F6E742E436861727365743D223122
-          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3133
-          2220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D22
-          3122204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F72
-          3D22333130343235362220476170583D22332220476170593D2233222048416C
-          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D224772616E6420
-          546F74616C222F3E3C2F636F6C756D6E746F74616C6D656D6F733E3C636F726E
-          65726D656D6F733E3C546672784D656D6F56696577204C6566743D2232302220
-          546F703D223139302C3037383835222057696474683D22383122204865696768
-          743D22323222205265737472696374696F6E733D22382220416C6C6F77457870
-          72657373696F6E733D2246616C736522204672616D652E5479703D2231352220
-          46696C6C2E4261636B436F6C6F723D2231323839353233322220476170583D22
-          332220476170593D2233222048416C69676E3D22686143656E74657222205641
-          6C69676E3D22766143656E7465722220546578743D2253616C617279222F3E3C
-          546672784D656D6F56696577204C6566743D223130312220546F703D22313930
-          2C3037383835222057696474683D2232383422204865696768743D2232322220
+          657373696F6E733D2246616C736522204672616D652E5479703D223135222046
+          696C6C2E4261636B436F6C6F723D2233323736382220476170583D2233222047
+          6170593D2233222056416C69676E3D22766143656E7465722220546578743D22
+          44617973222F3E3C546672784D656D6F5669657720416C6C6F77566563746F72
+          4578706F72743D225472756522204C6566743D223139302220546F703D223233
+          342C3037383835222057696474683D22353322204865696768743D2232322220
           5265737472696374696F6E733D22382220416C6C6F7745787072657373696F6E
           733D2246616C736522204672616D652E5479703D223135222046696C6C2E4261
-          636B436F6C6F723D2231323839353233322220476170583D2233222047617059
-          3D2233222048416C69676E3D22686143656E746572222056416C69676E3D2276
-          6143656E7465722220546578743D2259656172222F3E3C546672784D656D6F56
-          696577204C6566743D2238312220546F703D223232222057696474683D223434
-          22204865696768743D22323222205265737472696374696F6E733D2238222056
-          697369626C653D2246616C73652220416C6C6F7745787072657373696F6E733D
-          2246616C736522204672616D652E5479703D223135222046696C6C2E4261636B
-          436F6C6F723D2233323736382220476170583D22332220476170593D22332220
-          48416C69676E3D22686143656E746572222056416C69676E3D22766143656E74
-          65722220546578743D22222F3E3C546672784D656D6F56696577204C6566743D
-          2232302220546F703D223231322C3037383835222057696474683D2238312220
-          4865696768743D22343422205265737472696374696F6E733D22382220416C6C
-          6F7745787072657373696F6E733D2246616C736522204672616D652E5479703D
-          223135222046696C6C2E4261636B436F6C6F723D223132383935323332222047
+          636B436F6C6F723D2233323736382220476170583D22332220476170593D2233
+          222056416C69676E3D22766143656E7465722220546578743D2253616C617279
+          222F3E3C546672784D656D6F5669657720416C6C6F77566563746F724578706F
+          72743D225472756522204C6566743D223234332220546F703D223233342C3037
+          383835222057696474683D22353322204865696768743D223232222052657374
+          72696374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246
+          616C736522204672616D652E5479703D223135222046696C6C2E4261636B436F
+          6C6F723D2233323736382220476170583D22332220476170593D223322205641
+          6C69676E3D22766143656E7465722220546578743D2253616C617279222F3E3C
+          546672784D656D6F5669657720416C6C6F77566563746F724578706F72743D22
+          5472756522204C6566743D223239362220546F703D223233342C303738383522
+          2057696474683D22333622204865696768743D22323222205265737472696374
+          696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C7365
+          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
+          2233323736382220476170583D22332220476170593D2233222056416C69676E
+          3D22766143656E7465722220546578743D2244617973222F3E3C546672784D65
+          6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
+          4C6566743D223333322220546F703D223233342C303738383522205769647468
+          3D22353322204865696768743D22323222205265737472696374696F6E733D22
+          382220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
+          652E5479703D223135222046696C6C2E4261636B436F6C6F723D223332373638
+          2220476170583D22332220476170593D2233222056416C69676E3D2276614365
+          6E7465722220546578743D2253616C617279222F3E3C2F63656C6C6865616465
+          726D656D6F733E3C636F6C756D6E6D656D6F733E3C546672784D656D6F566965
+          7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
+          223130312220546F703D223231322C3037383835222057696474683D22313432
+          22204865696768743D22323222205265737472696374696F6E733D2232342220
+          416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E54
+          79703D223135222046696C6C2E4261636B436F6C6F723D223432323730373222
+          20476170583D22332220476170593D2233222048416C69676E3D22686143656E
+          746572222056416C69676E3D22766143656E7465722220546578743D22222F3E
+          3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F74616C6D656D6F733E
+          3C546672784D656D6F5669657720416C6C6F77566563746F724578706F72743D
+          225472756522204C6566743D223234332220546F703D223231322C3037383835
+          222057696474683D2231343222204865696768743D2232322220526573747269
+          6374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C
+          73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D
+          22302220466F6E742E4865696768743D222D31332220466F6E742E4E616D653D
+          22417269616C2220466F6E742E5374796C653D223122204672616D652E547970
+          3D223135222046696C6C2E4261636B436F6C6F723D2233313034323536222047
           6170583D22332220476170593D2233222048416C69676E3D22686143656E7465
-          72222056416C69676E3D22766143656E7465722220546578743D224E616D6522
-          2F3E3C2F636F726E65726D656D6F733E3C726F776D656D6F733E3C546672784D
-          656D6F56696577204C6566743D2232302220546F703D223235362C3037383835
-          222057696474683D22383122204865696768743D223232222052657374726963
-          74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
-          736522204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F
-          723D22343232373037322220476170583D22332220476170593D223322204841
-          6C69676E3D22686143656E746572222056416C69676E3D22766143656E746572
-          2220546578743D22222F3E3C2F726F776D656D6F733E3C726F77746F74616C6D
-          656D6F733E3C546672784D656D6F56696577204C6566743D2232302220546F70
-          3D223237382C3037383835222057696474683D22383122204865696768743D22
-          323222205265737472696374696F6E733D22382220416C6C6F77457870726573
-          73696F6E733D2246616C73652220466F6E742E436861727365743D2231222046
-          6F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D31332220
-          466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D223122
-          204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D22
-          333130343235362220476170583D22332220476170593D2233222048416C6967
-          6E3D22686143656E7465722220506172656E74466F6E743D2246616C73652220
-          56416C69676E3D22766143656E7465722220546578743D224772616E6420546F
-          74616C222F3E3C2F726F77746F74616C6D656D6F733E3C63656C6C66756E6374
-          696F6E733E3C6974656D20312F3E3C6974656D20312F3E3C6974656D20342F3E
-          3C2F63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E3C697465
-          6D20302F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C6974656D
-          20302F3E3C2F726F77736F72743E3C2F63726F73733E}
+          722220506172656E74466F6E743D2246616C7365222056416C69676E3D227661
+          43656E7465722220546578743D224772616E6420546F74616C222F3E3C2F636F
+          6C756D6E746F74616C6D656D6F733E3C636F726E65726D656D6F733E3C546672
+          784D656D6F5669657720416C6C6F77566563746F724578706F72743D22547275
+          6522204C6566743D2232302220546F703D223139302C30373838352220576964
+          74683D22383122204865696768743D22323222205265737472696374696F6E73
+          3D22382220416C6C6F7745787072657373696F6E733D2246616C736522204672
+          616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D22313238
+          39353233322220476170583D22332220476170593D2233222048416C69676E3D
+          22686143656E746572222056416C69676E3D22766143656E7465722220546578
+          743D2253616C617279222F3E3C546672784D656D6F5669657720416C6C6F7756
+          6563746F724578706F72743D225472756522204C6566743D223130312220546F
+          703D223139302C3037383835222057696474683D223238342220486569676874
+          3D22323222205265737472696374696F6E733D22382220416C6C6F7745787072
+          657373696F6E733D2246616C736522204672616D652E5479703D223135222046
+          696C6C2E4261636B436F6C6F723D2231323839353233322220476170583D2233
+          2220476170593D2233222048416C69676E3D22686143656E746572222056416C
+          69676E3D22766143656E7465722220546578743D2259656172222F3E3C546672
+          784D656D6F5669657720416C6C6F77566563746F724578706F72743D22547275
+          6522204C6566743D2238312220546F703D223232222057696474683D22343422
+          204865696768743D22323222205265737472696374696F6E733D223822205669
+          7369626C653D2246616C73652220416C6C6F7745787072657373696F6E733D22
+          46616C736522204672616D652E5479703D223135222046696C6C2E4261636B43
+          6F6C6F723D2233323736382220476170583D22332220476170593D2233222048
+          416C69676E3D22686143656E746572222056416C69676E3D22766143656E7465
+          722220546578743D22222F3E3C546672784D656D6F5669657720416C6C6F7756
+          6563746F724578706F72743D225472756522204C6566743D2232302220546F70
+          3D223231322C3037383835222057696474683D22383122204865696768743D22
+          343422205265737472696374696F6E733D22382220416C6C6F77457870726573
+          73696F6E733D2246616C736522204672616D652E5479703D223135222046696C
+          6C2E4261636B436F6C6F723D2231323839353233322220476170583D22332220
+          476170593D2233222048416C69676E3D22686143656E746572222056416C6967
+          6E3D22766143656E7465722220546578743D224E616D65222F3E3C2F636F726E
+          65726D656D6F733E3C726F776D656D6F733E3C546672784D656D6F5669657720
+          416C6C6F77566563746F724578706F72743D225472756522204C6566743D2232
+          302220546F703D223235362C3037383835222057696474683D22383122204865
+          696768743D22323222205265737472696374696F6E733D2232342220416C6C6F
+          7745787072657373696F6E733D2246616C736522204672616D652E5479703D22
+          3135222046696C6C2E4261636B436F6C6F723D22343232373037322220476170
+          583D22332220476170593D2233222048416C69676E3D22686143656E74657222
+          2056416C69676E3D22766143656E7465722220546578743D22222F3E3C2F726F
+          776D656D6F733E3C726F77746F74616C6D656D6F733E3C546672784D656D6F56
+          69657720416C6C6F77566563746F724578706F72743D225472756522204C6566
+          743D2232302220546F703D223237382C3037383835222057696474683D223831
+          22204865696768743D22323222205265737472696374696F6E733D2238222041
+          6C6C6F7745787072657373696F6E733D2246616C73652220466F6E742E436861
+          727365743D22312220466F6E742E436F6C6F723D22302220466F6E742E486569
+          6768743D222D31332220466F6E742E4E616D653D22417269616C2220466F6E74
+          2E5374796C653D223122204672616D652E5479703D223135222046696C6C2E42
+          61636B436F6C6F723D22333130343235362220476170583D2233222047617059
+          3D2233222048416C69676E3D22686143656E7465722220506172656E74466F6E
+          743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+          3D224772616E6420546F74616C222F3E3C2F726F77746F74616C6D656D6F733E
+          3C63656C6C66756E6374696F6E733E3C6974656D20312F3E3C6974656D20312F
+          3E3C6974656D20342F3E3C2F63656C6C66756E6374696F6E733E3C636F6C756D
+          6E736F72743E3C6974656D20302F3E3C2F636F6C756D6E736F72743E3C726F77
+          736F72743E3C6974656D20302F3E3C2F726F77736F72743E3C2F63726F73733E}
       end
     end
   end
@@ -13799,7 +13943,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 712
     Top = 216
     Content = {
-      414442530F00013482050000FF00010001FF02FF030400120000006D0065006D
+      414442530F006A2482050000FF00010001FF02FF030400120000006D0065006D
       00530061006C0061007200790005000A0000005400610062006C006500060000
       000000070000080032000000090000FF0AFF0B0400080000004E0061006D0065
       000500080000004E0061006D0065000C00010000000E000D000F001400000010
@@ -13871,7 +14015,7 @@ object dmdDBDemos: TdmdDBDemos
       74000E004300680061006E00670065007300}
   end
   object frxReportSubReportAndDialog: TfrxReport
-    Version = '5.6.17'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -13927,12 +14071,16 @@ object dmdDBDemos: TdmdDBDemos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 143.622140000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 207.874150000000000000
           Top = 49.133889999999990000
           Width = 257.008040000000000000
@@ -13942,11 +14090,13 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -33
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Sub - Report')
           ParentFont = False
         end
         object memoFIltro: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 124.724490000000000000
           Width = 336.378170000000000000
@@ -13956,6 +14106,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Filtro')
           ParentFont = False
@@ -13963,6 +14114,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object MasterDataCountry: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 41.574830000000000000
         Top = 222.992270000000000000
         Width = 718.110700000000000000
@@ -13970,6 +14122,7 @@ object dmdDBDemos: TdmdDBDemos
         DataSetName = 'CountryMem'
         RowCount = 0
         object CustomerCountry: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Width = 374.173470000000000000
           Height = 37.795300000000000000
@@ -13980,12 +14133,14 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -24
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pa'#237's: [Country."Country"]')
           ParentFont = False
         end
         object Subreport1: TfrxSubreport
           Align = baWidth
+          AllowVectorExport = True
           Top = 41.574829999999990000
           Width = 718.110700000000000000
           Height = 22.677180000000000000
@@ -14001,48 +14156,60 @@ object dmdDBDemos: TdmdDBDemos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle2: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 34.015770000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 7.559060000000000000
           Width = 283.464750000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#227'o pode ter t'#237'tulo no sub-report')
         end
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 75.590600000000000000
         Width = 718.110700000000000000
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Width = 283.464750000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#227'o pode ter page header no sub-report')
         end
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 158.740260000000000000
         Width = 718.110700000000000000
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 18.897650000000000000
           Width = 226.771800000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Header sub-report')
         end
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 204.094620000000000000
         Width = 718.110700000000000000
@@ -14051,42 +14218,50 @@ object dmdDBDemos: TdmdDBDemos
         Filter = '<Country."Country">=<Customer."Country">'
         RowCount = 0
         object CustomerCompany: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.826840000000000000
           Width = 238.110390000000000000
           Height = 18.897650000000000000
           DataField = 'Company'
           DataSet = frxDBCustomer
           DataSetName = 'CustomerMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Customer."Company"]')
         end
         object CustomerCustNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 18.897650000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'CustNo'
           DataSet = frxDBCustomer
           DataSetName = 'CustomerMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Customer."CustNo"]')
         end
         object CustomerCity: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           DataField = 'City'
           DataSet = frxDBCustomer
           DataSetName = 'CustomerMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Customer."City"]')
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 60.472480000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 18.897650000000000000
           Top = 7.559059999999990000
           Width = 464.882190000000000000
@@ -14096,6 +14271,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -24
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de Clientes: [COUNT(MasterData2)]')
           ParentFont = False
@@ -14110,11 +14286,13 @@ object dmdDBDemos: TdmdDBDemos
       Font.Style = []
       BorderStyle = bsDialog
       Caption = 'Filtro relat'#243'rio'
+      DoubleBuffered = False
       Height = 168.000000000000000000
       ClientHeight = 129.000000000000000000
       Left = 265.000000000000000000
       Top = 150.000000000000000000
       Width = 291.000000000000000000
+      Scaled = True
       ClientWidth = 275.000000000000000000
       object Label1: TfrxLabelControl
         Left = 16.000000000000000000
@@ -14232,7 +14410,7 @@ object dmdDBDemos: TdmdDBDemos
     Left = 80
     Top = 384
     Content = {
-      414442530F00013408030000FF00010001FF02FF030400100000004D0065006D
+      414442530F006A2408030000FF00010001FF02FF030400100000004D0065006D
       006C00690073007400610005000A0000005400610062006C0065000600000000
       00070000080032000000090000FF0AFF0B04001200000043006F0075006E0074
       00720079004E006F0005001200000043006F0075006E007400720079004E006F
@@ -14289,7 +14467,7 @@ object dmdDBDemos: TdmdDBDemos
     Top = 336
   end
   object frxReportDrillDrownCustomer: TfrxReport
-    Version = '5.6.17'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -14324,12 +14502,16 @@ object dmdDBDemos: TdmdDBDemos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 177.637910000000000000
           Top = 52.913420000000000000
           Width = 264.567100000000000000
@@ -14339,6 +14521,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -33
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Drill Drown')
           ParentFont = False
@@ -14346,12 +14529,14 @@ object dmdDBDemos: TdmdDBDemos
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 49.133890000000000000
         Top = 260.787570000000000000
         Width = 718.110700000000000000
         Condition = 'Customer."Country"'
         DrillDown = True
         object CustomerCountry: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 3.779530000000022000
           Width = 260.787570000000000000
@@ -14364,6 +14549,7 @@ object dmdDBDemos: TdmdDBDemos
           Font.Height = -24
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CustomerMem."Country"]')
           ParentFont = False
@@ -14371,6 +14557,7 @@ object dmdDBDemos: TdmdDBDemos
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
@@ -14378,46 +14565,55 @@ object dmdDBDemos: TdmdDBDemos
         DataSetName = 'CustomerMem'
         RowCount = 0
         object CustomerCustNo: TfrxMemoView
+          AllowVectorExport = True
           Left = 18.897650000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'CustNo'
           DataSet = frxDBCustomer
           DataSetName = 'CustomerMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CustomerMem."CustNo"]')
         end
         object CustomerCompany: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.063080000000000000
           Width = 238.110390000000000000
           Height = 18.897650000000000000
           DataField = 'Company'
           DataSet = frxDBCustomer
           DataSetName = 'CustomerMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CustomerMem."Company"]')
         end
         object CustomerCity: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.472790000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
           DataField = 'City'
           DataSet = frxDBCustomer
           DataSetName = 'CustomerMem'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CustomerMem."City"]')
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 377.953000000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 3.779530000000022000
           Width = 272.126160000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade no pa'#237's [COUNT(MasterData1)]')
         end
@@ -14425,7 +14621,7 @@ object dmdDBDemos: TdmdDBDemos
     end
   end
   object frxReportGeral: TfrxReport
-    Version = '5.6.17'
+    Version = '6.4.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -15111,8 +15307,8 @@ object dmdDBDemos: TdmdDBDemos
   end
   object ADOConnection1: TADOConnection
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Aluno\Desk' +
-      'top\exemplos-delphi\SQLite\demo.mdb;Persist Security Info=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Aqua\exemplos-de' +
+      'lphi\SQLite\demo.mdb;Persist Security Info=False;'
     LoginPrompt = False
     Mode = cmRead
     Provider = 'Microsoft.Jet.OLEDB.4.0'

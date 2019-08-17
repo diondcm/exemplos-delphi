@@ -7,7 +7,6 @@ uses
   System.Generics.Collections, FMX.Graphics, System.RegularExpressions, System.SyncObjs,
   System.SysUtils, System.UITypes, IdHTTP, FMX.Objects;
 
-
 type
   TCustomAdapter = class(TAbstractListViewAdapter,
     IListViewAdapter,
@@ -35,6 +34,8 @@ type
 
     FOnButtonClick: TNotifyEvent;
     FBackDropImage: TImage;
+    FImgCar: TImage;
+    FOnImgClick: TNotifyEvent;
 
     procedure CreateThreads;
     procedure DestroyThreads;
@@ -52,6 +53,7 @@ type
     function GetURI(Index: Integer): string;
 
     procedure ButtonClicked(Sender: TObject);
+    procedure DoImgClick(Sender: TObject);
     procedure SetOnButtonClick(const Value: TNotifyEvent);
   strict protected
     procedure DoCreateNewViews; override;
@@ -78,7 +80,9 @@ type
     destructor Destroy; override;
 
     property BackDropImage: TImage read FBackDropImage write FBackDropImage;
+    property ImgCar: TImage read FImgCar write FImgCar;
     property OnButtonClicked: TNotifyEvent read FOnButtonClick write SetOnButtonClick;
+    property OnImgClick: TNotifyEvent read FOnImgClick write FOnImgClick;
   end;
 
 
@@ -251,6 +255,14 @@ procedure TCustomAdapter.DoCreateNewViews;
 begin
   inherited;
 
+end;
+
+procedure TCustomAdapter.DoImgClick(Sender: TObject);
+begin
+  if Assigned(FOnImgClick) then
+  begin
+    FOnImgClick(Sender);
+  end;
 end;
 
 function TCustomAdapter.GetCount: Integer;
@@ -462,6 +474,21 @@ begin
     lText.WordWrap := True;
     lText.Height := 60;
     lText.PlaceOffset.X := 10;
+
+    if Assigned(FImgCar) then
+    begin
+      lBitmap := TListItemImage.Create(Item);
+      lBitmap.Name := 'Carrinho';
+      lBitmap.OwnsBitmap := False;
+      lBitmap.Bitmap := FImgCar.Bitmap;
+      lBitmap.VertAlign := TListItemAlign.Trailing;
+      lBitmap.Align := TListItemAlign.Trailing;
+      lBitmap.ScalingMode := TImageScalingMode.Stretch;
+//      lBitmap.Opacity := 0.25;
+      lBitmap.Height := 40;
+      lBitmap.Width := 40;
+      lBitmap.OnSelect := DoImgClick;
+    end;
 
     lBtn := TListItemTextButton.Create(Item);
     lBtn.Name := 'button';

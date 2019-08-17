@@ -101,7 +101,7 @@ object frmRESTGetImage: TfrmRESTGetImage
     Size.Width = 640.000000000000000000
     Size.Height = 372.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 5
     TabPosition = PlatformDefault
     Sizes = (
@@ -113,7 +113,7 @@ object frmRESTGetImage: TfrmRESTGetImage
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 64.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -136,7 +136,7 @@ object frmRESTGetImage: TfrmRESTGetImage
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 49.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -153,8 +153,8 @@ object frmRESTGetImage: TfrmRESTGetImage
         Size.Height = 346.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 6
-        Viewport.Width = 636.000000000000000000
-        Viewport.Height = 342.000000000000000000
+        Viewport.Width = 640.000000000000000000
+        Viewport.Height = 346.000000000000000000
       end
     end
   end
@@ -186,7 +186,6 @@ object frmRESTGetImage: TfrmRESTGetImage
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
     AcceptCharset = 'UTF-8, *;q=0.8'
     Params = <>
-    HandleRedirects = True
     RaiseExceptionOn500 = False
     Left = 376
     Top = 232
@@ -207,8 +206,8 @@ object frmRESTGetImage: TfrmRESTGetImage
     Asynchronous = False
     ConnectionTimeout = 60000
     ResponseTimeout = 60000
-    AllowCookies = True
     HandleRedirects = True
+    AllowCookies = True
     UserAgent = 'Embarcadero URI Client/1.0'
     Left = 416
     Top = 352

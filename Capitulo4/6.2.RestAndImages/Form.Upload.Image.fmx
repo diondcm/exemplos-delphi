@@ -1,0 +1,61 @@
+object frmUploadImage: TfrmUploadImage
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 640.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object buttonVoltar: TButton
+      Align = Left
+      Size.Width = 80.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'arrowlefttoolbutton'
+      TabOrder = 0
+      Text = 'buttonVoltar'
+      OnClick = buttonVoltarClick
+    end
+    object Button1: TButton
+      Action = TakePhotoFromLibraryAction1
+      Align = MostRight
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 560.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      TabOrder = 1
+    end
+  end
+  object ImagePreview: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Client
+    Margins.Left = 10.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 620.000000000000000000
+    Size.Height = 403.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object ActionList1: TActionList
+    Left = 456
+    Top = 136
+    object TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction
+      Category = 'Media Library'
+      OnDidFinishTaking = TakePhotoFromLibraryAction1DidFinishTaking
+    end
+  end
+end

@@ -30,14 +30,14 @@ var
 {$ENDIF}
 begin
 {$IFDEF ANDROID}
-  lIntent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_SEND);
-  lDest := TJavaObjectArray<JString>.Create(1);
-  lDest.Items[0] := StringToJString(pDestinatario);
-  lIntent.putExtra(TJIntent.JavaClass.EXTRA_EMAIL, lDest);
-  lIntent.putExtra(TJIntent.JavaClass.EXTRA_SUBJECT, StringToJString(pAssunto));
-  lIntent.putExtra(TJIntent.JavaClass.EXTRA_TEXT, StringToJString(pTexto));
-  lIntent.setType(StringToJString('plain/text'));
-  TAndroidHelper.Activity.startActivity(TJIntent.JavaClass.createChooser(lIntent, StrToJCharSequence('Escolha seu App de email:')));
+//  lIntent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_SEND);
+//  lDest := TJavaObjectArray<JString>.Create(1);
+//  lDest.Items[0] := StringToJString(pDestinatario);
+//  lIntent.putExtra(TJIntent.JavaClass.EXTRA_EMAIL, lDest);
+//  lIntent.putExtra(TJIntent.JavaClass.EXTRA_SUBJECT, StringToJString(pAssunto));
+//  lIntent.putExtra(TJIntent.JavaClass.EXTRA_TEXT, StringToJString(pTexto));
+//  lIntent.setType(StringToJString('plain/text'));
+//  TAndroidHelper.Activity.startActivity(TJIntent.JavaClass.createChooser(lIntent, StrToJCharSequence('Escolha seu App de email:')));
 {$ENDIF}
 end;
 
