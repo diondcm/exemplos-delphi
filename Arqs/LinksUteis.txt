@@ -27,3 +27,46 @@ http://docwiki.embarcadero.com/RADStudio/Tokyo/en/FireMonkey_Image_Effects
 # Horizontal View 
 https://github.com/rzaripov1990/ModernListView
 #
+
+
+
+############################################
+/// Instalar via GetIt, pesquisando por "App"
+///Path de instação dos exemplos da Embarcadero
+C:\Users\{{{{usuário}}}}\Documents\Embarcadero\Studio\20.0\CatalogRepository
+
+/// Exemplos gerais
+https://github.com/FMXExpress/Firemonkey
+
+/// OCR da tms
+https://www.tmssoftware.com/site/blog.asp?post=362
+
+/// API Off-line para Vision
+https://developers.google.com/vision/
+
+/// FireUI como configurar
+https://www.youtube.com/watch?v=XEVMgCgWRLw
+
+
+/// Toasts no iPhone; Android no exemplo de barcode
+https://github.com/ms301/FGX-FireMonkey/blob/master/Library/FGX.Toasts.iOS.pas
+
+/// FireBase for Delphi
+https://github.com/SchneiderInfosystems/FB4D
+
+/// Barcode
+https://github.com/flrizzato/Barcode
+https://github.com/Spelt/ZXing.Delphi
+
+/// Speech recognition
+https://github.com/jimmckeeth/FireMonkey-Android-Voice
+
+/// Impressora BlueTooth
+https://github.com/tdevrocks/impressora-bluetooth
+
+-----
+Conference
+https://github.com/flrizzato/EmbarcaderoConference
+
+Delphi Academy
+https://github.com/flrizzato/DelphiAcademy
