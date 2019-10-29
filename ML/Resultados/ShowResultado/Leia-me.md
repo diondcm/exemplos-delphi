@@ -1,0 +1,1 @@
+Lembre-se de instalar o Chromium, pois o componente WebBrowser não suporta as exibições de Angular
