@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Themes, Vcl.Styles;
 
 type
   TfrmPrincipal = class(TForm)
@@ -25,6 +25,9 @@ type
     Panel1: TPanel;
     ButtonRealParaDolar: TButton;
     ButtonDolarParaReal: TButton;
+    PanelStyle: TPanel;
+    LabelStyles: TLabel;
+    ComboBoxStyle: TComboBox;
     procedure buttonCotacaoClick(Sender: TObject);
     procedure TimerAtualizaCotacaoTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -32,6 +35,8 @@ type
     procedure ButtonHistoricoClick(Sender: TObject);
     procedure EditParametroCotacaoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ButtonDolarParaRealClick(Sender: TObject);
+    procedure ComboBoxStyleChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +55,11 @@ uses Form.Cotacao.Historico, Data.Cotacao, ITConversorMoeda1;
 procedure TfrmPrincipal.ButtonRealParaDolarClick(Sender: TObject);
 begin
   EditValorResultado.Text := dmdCotacao.ConverteRealParaDolar(EditValorMoeda.Text);
+end;
+
+procedure TfrmPrincipal.ComboBoxStyleChange(Sender: TObject);
+begin
+  TStyleManager.TrySetStyle(ComboBoxStyle.Text);
 end;
 
 procedure TfrmPrincipal.ButtonDolarParaRealClick(Sender: TObject);
@@ -75,9 +85,31 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+//var
+//  lStyle: string;
+begin
+  ComboBoxStyle.Items.BeginUpdate;
+  try
+    ComboBoxStyle.Items.Clear;
+    for var lStyle: string in TStyleManager.StyleNames do
+    begin
+      ComboBoxStyle.Items.Add(lStyle);
+    end;
+    ComboBoxStyle.Sorted := True;
+    ComboBoxStyle.ItemIndex := ComboBoxStyle.Items.IndexOf(TStyleManager.ActiveStyle.Name);
+  finally
+    ComboBoxStyle.Items.EndUpdate;
+  end;
+end;
+
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  TimerAtualizaCotacao.Enabled := True;
+  begin
+    var lEnabled: Boolean := True;
+    TimerAtualizaCotacao.Enabled := lEnabled;
+  end;
+  // lEnabled := False; não funciona
 end;
 
 procedure TfrmPrincipal.TimerAtualizaCotacaoTimer(Sender: TObject);

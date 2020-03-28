@@ -20,7 +20,7 @@ begin
     while not lSair do
     begin
       Writeln('============================================');
-      Writeln('Última contação: ' + GetITConversorMoeda.GetCotacaoAtual);
+      Writeln('Última cotação: ' + GetITConversorMoeda.GetCotacaoAtual);
 
       Writeln('1 - Para Real para Dólar');
       Writeln('2 - Para Dólar para Real');
