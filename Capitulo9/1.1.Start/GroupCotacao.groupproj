@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F88B8AA2-8C3E-4E86-8F8B-5F7649A6C487}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CotacaoVCL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CotacaoDOS.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CotacaoVCL">
+        <MSBuild Projects="CotacaoVCL.dproj"/>
+    </Target>
+    <Target Name="CotacaoVCL:Clean">
+        <MSBuild Projects="CotacaoVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CotacaoVCL:Make">
+        <MSBuild Projects="CotacaoVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CotacaoDOS">
+        <MSBuild Projects="CotacaoDOS.dproj"/>
+    </Target>
+    <Target Name="CotacaoDOS:Clean">
+        <MSBuild Projects="CotacaoDOS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CotacaoDOS:Make">
+        <MSBuild Projects="CotacaoDOS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CotacaoVCL;CotacaoDOS"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CotacaoVCL:Clean;CotacaoDOS:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CotacaoVCL:Make;CotacaoDOS:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
