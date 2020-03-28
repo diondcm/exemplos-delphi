@@ -9,6 +9,9 @@
         <Projects Include="CotacaoDOS.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="SOAPServer.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="CotacaoDOS:Make">
         <MSBuild Projects="CotacaoDOS.dproj" Targets="Make"/>
     </Target>
+    <Target Name="SOAPServer">
+        <MSBuild Projects="SOAPServer.dproj"/>
+    </Target>
+    <Target Name="SOAPServer:Clean">
+        <MSBuild Projects="SOAPServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SOAPServer:Make">
+        <MSBuild Projects="SOAPServer.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="CotacaoVCL;CotacaoDOS"/>
+        <CallTarget Targets="CotacaoVCL;CotacaoDOS;SOAPServer"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CotacaoVCL:Clean;CotacaoDOS:Clean"/>
+        <CallTarget Targets="CotacaoVCL:Clean;CotacaoDOS:Clean;SOAPServer:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CotacaoVCL:Make;CotacaoDOS:Make"/>
+        <CallTarget Targets="CotacaoVCL:Make;CotacaoDOS:Make;SOAPServer:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

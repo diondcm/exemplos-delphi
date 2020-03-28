@@ -110,7 +110,7 @@ object frmPrincipal: TfrmPrincipal
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 348
+        Width = 497
         Height = 23
         Align = alClient
         TabOrder = 0
@@ -120,17 +120,44 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 121
         ExplicitHeight = 21
       end
-      object ButtonCalcula: TButton
+    end
+    object Panel1: TPanel
+      Left = 1
+      Top = 30
+      Width = 503
+      Height = 41
+      Align = alTop
+      TabOrder = 2
+      ExplicitLeft = 176
+      ExplicitTop = 72
+      ExplicitWidth = 185
+      object ButtonRealParaDolar: TButton
         AlignWithMargins = True
-        Left = 357
-        Top = 3
+        Left = 207
+        Top = 4
         Width = 143
-        Height = 23
+        Height = 33
         Align = alRight
-        Caption = 'Converter'
-        TabOrder = 1
-        OnClick = ButtonCalculaClick
+        Caption = 'Real para D'#243'lar'
+        TabOrder = 0
+        OnClick = ButtonRealParaDolarClick
         ExplicitLeft = 360
+        ExplicitTop = 3
+        ExplicitHeight = 23
+      end
+      object ButtonDolarParaReal: TButton
+        AlignWithMargins = True
+        Left = 356
+        Top = 4
+        Width = 143
+        Height = 33
+        Align = alRight
+        Caption = 'D'#243'lar para Real'
+        TabOrder = 1
+        OnClick = ButtonDolarParaRealClick
+        ExplicitLeft = 360
+        ExplicitTop = 3
+        ExplicitHeight = 23
       end
     end
   end

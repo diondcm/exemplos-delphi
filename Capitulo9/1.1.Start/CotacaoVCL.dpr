@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   Form.Principal in 'Form.Principal.pas' {frmPrincipal},
   Form.Cotacao.Historico in 'Form.Cotacao.Historico.pas' {frmCotacaoHistorico},
-  Data.Cotacao in 'Data.Cotacao.pas' {dmdCotacao: TDataModule};
+  Data.Cotacao in 'Data.Cotacao.pas' {dmdCotacao: TDataModule},
+  ITConversorMoeda1 in 'ITConversorMoeda1.pas';
 
 {$R *.res}
 

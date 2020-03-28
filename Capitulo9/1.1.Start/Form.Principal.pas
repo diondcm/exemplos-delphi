@@ -19,16 +19,19 @@ type
     labelCotacao: TStaticText;
     PanelValorEntrada: TPanel;
     EditValorMoeda: TEdit;
-    ButtonCalcula: TButton;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
     ButtonHistorico: TButton;
+    Panel1: TPanel;
+    ButtonRealParaDolar: TButton;
+    ButtonDolarParaReal: TButton;
     procedure buttonCotacaoClick(Sender: TObject);
     procedure TimerAtualizaCotacaoTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure ButtonCalculaClick(Sender: TObject);
+    procedure ButtonRealParaDolarClick(Sender: TObject);
     procedure ButtonHistoricoClick(Sender: TObject);
     procedure EditParametroCotacaoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ButtonDolarParaRealClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,11 +45,16 @@ implementation
 
 {$R *.dfm}
 
-uses Form.Cotacao.Historico, Data.Cotacao;
+uses Form.Cotacao.Historico, Data.Cotacao, ITConversorMoeda1;
 
-procedure TfrmPrincipal.ButtonCalculaClick(Sender: TObject);
+procedure TfrmPrincipal.ButtonRealParaDolarClick(Sender: TObject);
 begin
-  EditValorResultado.Text := FloatToStr(StrtoFloat(EditValorMoeda.Text) * StrToFloat(dmdCotacao.FCotacaoAtual));
+  EditValorResultado.Text := dmdCotacao.ConverteRealParaDolar(EditValorMoeda.Text);
+end;
+
+procedure TfrmPrincipal.ButtonDolarParaRealClick(Sender: TObject);
+begin
+  EditValorResultado.Text := dmdCotacao.ConverteDolarParaReal(EditValorMoeda.Text);
 end;
 
 procedure TfrmPrincipal.buttonCotacaoClick(Sender: TObject);
@@ -63,7 +71,7 @@ procedure TfrmPrincipal.EditParametroCotacaoKeyDown(Sender: TObject; var Key: Wo
 begin
   if Key = VK_RETURN then
   begin
-    dmdCotacao.FCotacaoAtual := EditParametroCotacao.Text;
+//    dmdCotacao.FCotacaoAtual := EditParametroCotacao.Text;
   end;
 end;
 
@@ -73,9 +81,12 @@ begin
 end;
 
 procedure TfrmPrincipal.TimerAtualizaCotacaoTimer(Sender: TObject);
+var
+  lConv: ITConversorMoeda;
 begin
-  labelCotacao.Caption := 'Cotação atual: ' + dmdCotacao.FCotacaoAtual;
-  EditParametroCotacao.Text := dmdCotacao.FCotacaoAtual;
+  lConv := GetITConversorMoeda;
+  labelCotacao.Caption := 'Cotação atual: ' + lConv.GetCotacaoAtual;
+  EditParametroCotacao.Text := lConv.GetCotacaoAtual;
 end;
 
 end.

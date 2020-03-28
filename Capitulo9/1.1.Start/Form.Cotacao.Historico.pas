@@ -28,7 +28,7 @@ implementation
 
 {$R *.dfm}
 
-uses Data.Cotacao;
+uses Data.Cotacao, ITConversorMoeda1;
 
 procedure TfrmCotacaoHistorico.buttonOkClick(Sender: TObject);
 begin
@@ -36,9 +36,12 @@ begin
 end;
 
 procedure TfrmCotacaoHistorico.FormActivate(Sender: TObject);
+var
+  lConv: ITConversorMoeda;
 begin
-  LabelCotacaoAtual.Caption := 'Cotação atual: ' + dmdCotacao.FCotacaoAtual;
-  MemoHistorico.Text := dmdCotacao.FHistorico;
+  lConv := GetITConversorMoeda;
+  LabelCotacaoAtual.Caption := 'Cotação atual: ' + lConv.GetCotacaoAtual;
+  MemoHistorico.Text := lConv.GetHistorico;
 end;
 
 end.
