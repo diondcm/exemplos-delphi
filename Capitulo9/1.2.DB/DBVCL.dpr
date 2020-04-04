@@ -7,7 +7,8 @@ uses
   Data.Cliente in 'Data.Cliente.pas' {dmdCliente: TDataModule},
   Form.Cadastro.Produto.VCL in 'Form.Cadastro.Produto.VCL.pas' {frmCadProduto},
   Data.Produto in 'Data.Produto.pas' {dmdProduto: TDataModule},
-  Data.Connection in 'Data.Connection.pas' {dmdConnection: TDataModule};
+  Data.Connection in 'Data.Connection.pas' {dmdConnection: TDataModule},
+  Classe.QrCode in 'Classe.QrCode.pas';
 
 {$R *.res}
 

@@ -43,6 +43,7 @@ object frmPrincipal: TfrmPrincipal
       Size.PlatformDefault = False
       TabOrder = 1
       Text = 'Cadastro Produtos'
+      OnClick = ButtonCadastroProdutosClick
     end
   end
 end

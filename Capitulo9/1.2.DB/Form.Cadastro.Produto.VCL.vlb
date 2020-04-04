@@ -5,7 +5,7 @@ Coordinates=209,10,47,51
 Coordinates=770,230,58,51
 
 [dmdProduto.qryProduto]
-Coordinates=390,0,133,141
+Coordinates=1391,70,133,33
 Visible=True
 
 [Panel1]
@@ -39,8 +39,9 @@ Coordinates=152,1,69,33
 Coordinates=10,222,55,33
 
 [DatePicker1]
-Coordinates=430,170,73,51
+Coordinates=760,320,73,51
 ExplicitSubNodes=Date
+Visible=True
 
 [Label1]
 Coordinates=10,161,46,51
@@ -49,8 +50,30 @@ Coordinates=10,161,46,51
 Coordinates=66,161,46,51
 
 [BindSourceDB1]
-Coordinates=550,20,115,159
+Coordinates=1248,60,115,177
 
 [BindingsList1]
 Coordinates=0,0,82,33
+
+[DBNavigator1]
+Coordinates=0,0,82,51
+
+[ImageQrCode]
+Coordinates=197,180,81,51
+
+[Button1]
+Coordinates=286,80,53,51
+
+[ButtonCarregaProdutos]
+Coordinates=11,70,131,51
+
+[ListBoxProdutos]
+Coordinates=286,231,97,105
+
+[Panel4]
+Coordinates=101,1,47,51
+
+[DateTimePicker1]
+Coordinates=620,280,97,51
+Visible=True
 
