@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A941666B-48A8-4FDD-AA55-3125115CAB65}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DBFiremonkey.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DBVCL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DBFiremonkey">
+        <MSBuild Projects="DBFiremonkey.dproj"/>
+    </Target>
+    <Target Name="DBFiremonkey:Clean">
+        <MSBuild Projects="DBFiremonkey.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DBFiremonkey:Make">
+        <MSBuild Projects="DBFiremonkey.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DBVCL">
+        <MSBuild Projects="DBVCL.dproj"/>
+    </Target>
+    <Target Name="DBVCL:Clean">
+        <MSBuild Projects="DBVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DBVCL:Make">
+        <MSBuild Projects="DBVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DBFiremonkey;DBVCL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DBFiremonkey:Clean;DBVCL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DBFiremonkey:Make;DBVCL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
