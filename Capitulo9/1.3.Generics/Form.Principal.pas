@@ -23,24 +23,17 @@ type
     ButtonAdd: TButton;
     ColorBoxCor: TColorBox;
     PanelCor: TPanel;
-    IdHTTP1: TIdHTTP;
-    Memo1: TMemo;
-    Timer1: TTimer;
-    Button1: TButton;
-    IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
+    TimerRandomColor: TTimer;
     WebBrowser1: TWebBrowser;
-    Button2: TButton;
-    Button3: TButton;
     procedure ButtonAddClick(Sender: TObject);
     procedure EditCorKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ListBoxCoresClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    procedure TimerRandomColorTimer(Sender: TObject);
   private
     FListaCores: TDictionary<string, TColor>;
+    procedure AdicionaCor(pNome: string; pCor: TColor);
   public
     { Public declarations }
   end;
@@ -52,105 +45,22 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
-//var
-//  lSrtStm: TStringStream;
+procedure TfrmPrincipal.AdicionaCor(pNome: string; pCor: TColor);
 begin
-//  lSrtStm := TStringStream.Create;
-//  IdHTTP1.Get('https://www.gigacalculator.com/randomizers/random-color-generator.php');
-//  Memo1.Text := IdHTTP1.ResponseText;
-//  WebBrowser1.Navigate('http://www.randomcolour.com/');
-
-
-//  IdHTTP1.Get('http://www.randomcolour.com/', lSrtStm);
-//  Memo1.Text := lSrtStm.DataString;
-//  lSrtStm.Free;
-end;
-
-
-function GetWebBrowserHTML(const WebBrowser: TWebBrowser): String;
-//var
-//  LStream: TStringStream;
-//  Stream : IStream;
-//  LPersistStreamInit : IPersistStreamInit;
-begin
-//  if not Assigned(WebBrowser.Document) then exit;
-//  LStream := TStringStream.Create('');
-//  try
-//    LPersistStreamInit := WebBrowser.Document as IPersistStreamInit;
-//    Stream := TStreamAdapter.Create(LStream,soReference);
-//    LPersistStreamInit.Save(Stream,true);
-//    result := LStream.DataString;
-//  finally
-//    LStream.Free();
-//  end;
-end;
-
-procedure TfrmPrincipal.Button2Click(Sender: TObject);
-//var
-//  Doc : IHtmlDocument2;
-begin
-//  Memo1.Text := GetWebBrowserHTML(WebBrowser1);
-//   Doc := WebBrowser1.Document as IHtmlDocument2;
-//   Memo1.Lines.Text := Doc.body.innerHTML;
-end;
-
-
-//function GetElementById(const Doc: IDispatch; const Id: string): IDispatch;
-//var
-//  Document: IHTMLDocument2;     // IHTMLDocument2 interface of Doc
-//  Body: IHTMLElement2;          // document body element
-//  Tags: IHTMLElementCollection; // all tags in document body
-//  Tag: IHTMLElement;            // a tag in document body
-//  I: Integer;                   // loops thru tags in document body
-//begin
-//  Result := nil;
-//  // Check for valid document: require IHTMLDocument2 interface to it
-//  if not Supports(Doc, IHTMLDocument2, Document) then
-//    raise Exception.Create('Invalid HTML document');
-//  // Check for valid body element: require IHTMLElement2 interface to it
-//  if not Supports(Document.body, IHTMLElement2, Body) then
-//    raise Exception.Create('Can''t find <body> element');
-//  // Get all tags in body element ('*' => any tag name)
-//  Tags := Body.getElementsByTagName('*');
-//  // Scan through all tags in body
-//  for I := 0 to Pred(Tags.length) do
-//  begin
-//    // Get reference to a tag
-//    Tag := Tags.item(I, EmptyParam) as IHTMLElement;
-//    // Check tag's id and return it if id matches
-//    if AnsiSameText(Tag.id, Id) then
-//    begin
-//      Result := Tag;
-//      Break;
-//    end;
-//  end;
-//end;
-procedure TfrmPrincipal.Button3Click(Sender: TObject);
-//var
-//  Elem: IHTMLElement;
-begin
-// Elem := GetElementById(WebBrowser1.Document, 'bgcolor') as IHTMLElement;
-//  if Assigned(Elem) then
-//    ShowMessage(
-//      'Tag name = <' + Elem.tagName + '>'#10 +
-//      'Tag id = ' + Elem.id + #10 +
-//      'Tag innerHTML = "' + Elem.innerHTML + '"'
-//    );
+  if FListaCores.ContainsKey(pNome) then
+  begin
+    FListaCores[pNome] := pCor;
+  end else begin
+    ListBoxCores.Items.Add(pNome);
+    FListaCores.Add(pNome, pCor);
+  end;
 end;
 
 procedure TfrmPrincipal.ButtonAddClick(Sender: TObject);
 begin
 //  ListBoxCores.Items.AddObject(EditCor.Text, TItemCor.Create(ColorBoxCor.Selected));
 
-  if FListaCores.ContainsKey(EditCor.Text) then
-  begin
-    FListaCores[EditCor.Text] := ColorBoxCor.Selected;
-  end else begin
-    ListBoxCores.Items.Add(EditCor.Text);
-    FListaCores.Add(EditCor.Text, ColorBoxCor.Selected);
-  end;
-
+  AdicionaCor(EditCor.Text, ColorBoxCor.Selected);
   EditCor.Text := '';
   ColorBoxCor.Selected := clBlack;
 end;
@@ -167,6 +77,9 @@ procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   ReportMemoryLeaksOnShutdown := True;
   FListaCores := TDictionary<string, TColor>.Create;
+
+  WebBrowser1.Top := Self.Height + 10;
+  WebBrowser1.Left := Self.Width + 10;
 end;
 
 procedure TfrmPrincipal.FormDestroy(Sender: TObject);
@@ -188,6 +101,71 @@ begin
 //    PanelCor.Caption := 'Cor Selecionada: ' + ListBoxCores.Items[ListBoxCores.ItemIndex];
 //    PanelCor.Color := TItemCor(ListBoxCores.Items.Objects[ListBoxCores.ItemIndex]).Cor;
   end;
+end;
+
+procedure TfrmPrincipal.TimerRandomColorTimer(Sender: TObject);
+
+  procedure buscaCores(const Doc: IDispatch);
+  var
+    Document: IHTMLDocument2;
+    Body: IHTMLElement2;
+    Tags: IHTMLElementCollection;
+    Tag: IHTMLElement;
+    I: Integer;
+    lCores: string;
+    lPosRGB: Integer;
+    lPosE: Integer;
+  begin
+    if not Supports(Doc, IHTMLDocument2, Document) then
+      raise Exception.Create('Invalid HTML document');
+    if not Supports(Document.body, IHTMLElement2, Body) then
+      raise Exception.Create('Can''t find <body> element');
+    Tags := Body.getElementsByTagName('*');
+    for I := 0 to Pred(Tags.length) do
+    begin
+      Tag := Tags.item(I, EmptyParam) as IHTMLElement;
+      if pos('reslut', string(Tag.innerHTML)) > 0 then
+      begin
+        lPosRGB := pos('rgb(', string(Tag.innerHTML));
+        lPosE := pos(')&nbsp', string(Tag.innerHTML));
+        if lPosRGB > 0 then
+        begin
+          lCores := Copy(Tag.innerHTML, lPosRGB + 4, lPosE - (lPosRGB + 4));
+          var lStl: TStringList := TStringList.Create;
+          lStl.Delimiter := ',';
+          lStl.DelimitedText := lCores;
+          var lRed: Byte := StrToInt(lStl[0]);
+          var lGreen: Byte := StrToInt(lStl[1]);
+          var lBlue: Byte := StrToInt(lStl[2]);
+          var lCor: TColor := RGB(lRed, lGreen, lBlue);
+
+          AdicionaCor('RGB(' + lCores + ')', lCor);
+          lStl.Free;
+        end;
+      end;
+    end;
+  end;
+
+  procedure Pause(const ADelay: LongWord);
+  var
+    StartTC: DWORD;
+    CurrentTC: Int64;
+  begin
+    StartTC := GetTickCount;
+    repeat
+      Application.ProcessMessages;
+      CurrentTC := GetTickCount;
+      if CurrentTC < StartTC then
+        CurrentTC := CurrentTC + High(DWORD);
+    until CurrentTC - StartTC >= ADelay;
+  end;
+begin
+  WebBrowser1.Silent := True;
+  WebBrowser1.Navigate('https://random-color.net/');
+  while WebBrowser1.ReadyState <> READYSTATE_COMPLETE do
+    Pause(5);
+
+  buscaCores(WebBrowser1.Document);
 end;
 
 { TItemCor }

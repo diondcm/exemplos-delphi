@@ -26,8 +26,6 @@ object frmPrincipal: TfrmPrincipal
     ItemHeight = 13
     TabOrder = 0
     OnClick = ListBoxCoresClick
-    ExplicitTop = 3
-    ExplicitHeight = 389
   end
   object PanelAddCor: TPanel
     Left = 0
@@ -39,67 +37,42 @@ object frmPrincipal: TfrmPrincipal
     object EditCor: TEdit
       AlignWithMargins = True
       Left = 155
-      Top = 16
+      Top = 18
       Width = 121
-      Height = 25
-      Margins.Top = 15
-      Margins.Bottom = 15
+      Height = 21
+      Margins.Top = 17
+      Margins.Bottom = 17
       Align = alLeft
       TabOrder = 0
       OnKeyDown = EditCorKeyDown
-      ExplicitLeft = 180
+      ExplicitTop = 16
     end
     object ButtonAdd: TButton
       AlignWithMargins = True
       Left = 282
-      Top = 4
+      Top = 17
       Width = 75
-      Height = 49
+      Height = 23
+      Margins.Top = 16
+      Margins.Bottom = 16
       Align = alLeft
       Caption = 'Add'
       TabOrder = 1
       OnClick = ButtonAddClick
-      ExplicitLeft = 411
-      ExplicitTop = 5
+      ExplicitTop = 4
+      ExplicitHeight = 49
     end
     object ColorBoxCor: TColorBox
       AlignWithMargins = True
       Left = 4
-      Top = 16
+      Top = 18
       Width = 145
       Height = 22
-      Margins.Top = 15
-      Margins.Bottom = 15
+      Margins.Top = 17
+      Margins.Bottom = 17
       Align = alLeft
       TabOrder = 2
-      ExplicitLeft = 248
-    end
-    object Button1: TButton
-      Left = 376
-      Top = 14
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 3
-      OnClick = Button1Click
-    end
-    object Button2: TButton
-      Left = 457
-      Top = 14
-      Width = 75
-      Height = 25
-      Caption = 'Button2'
-      TabOrder = 4
-      OnClick = Button2Click
-    end
-    object Button3: TButton
-      Left = 566
-      Top = 14
-      Width = 75
-      Height = 25
-      Caption = 'Button3'
-      TabOrder = 5
-      OnClick = Button3Click
+      ExplicitTop = 16
     end
   end
   object PanelCor: TPanel
@@ -113,27 +86,10 @@ object frmPrincipal: TfrmPrincipal
     Color = clGradientActiveCaption
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 128
-    ExplicitTop = 232
-    ExplicitWidth = 185
-    ExplicitHeight = 41
-    object Memo1: TMemo
-      Left = 1
-      Top = 1
-      Width = 185
-      Height = 330
-      Align = alLeft
-      Lines.Strings = (
-        'Memo1')
-      TabOrder = 0
-      ExplicitLeft = 144
-      ExplicitTop = 120
-      ExplicitHeight = 89
-    end
   end
   object WebBrowser1: TWebBrowser
-    Left = 264
-    Top = 160
+    Left = 448
+    Top = 398
     Width = 300
     Height = 150
     TabOrder = 3
@@ -144,35 +100,10 @@ object frmPrincipal: TfrmPrincipal
       8000000000000000000000000000000000000000000000000000000000000000
       00000000000000000100000000000000000000000000000000000000}
   end
-  object IdHTTP1: TIdHTTP
-    IOHandler = IdSSLIOHandlerSocketOpenSSL1
-    AllowCookies = True
-    ProxyParams.BasicAuthentication = False
-    ProxyParams.ProxyPort = 0
-    Request.ContentLength = -1
-    Request.ContentRangeEnd = -1
-    Request.ContentRangeStart = -1
-    Request.ContentRangeInstanceLength = -1
-    Request.Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-    Request.BasicAuthentication = False
-    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
-    Request.Ranges.Units = 'bytes'
-    Request.Ranges = <>
-    HTTPOptions = [hoForceEncodeParams]
-    Left = 520
-  end
-  object Timer1: TTimer
+  object TimerRandomColor: TTimer
+    Interval = 10000
+    OnTimer = TimerRandomColorTimer
     Left = 552
-    Top = 104
-  end
-  object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
-    MaxLineAction = maException
-    Port = 0
-    DefaultPort = 0
-    SSLOptions.Mode = sslmUnassigned
-    SSLOptions.VerifyMode = []
-    SSLOptions.VerifyDepth = 0
-    Left = 520
-    Top = 48
+    Top = 144
   end
 end
