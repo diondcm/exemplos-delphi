@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F3CD7801-2FD7-4BC9-9CAF-456A7542229B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="OO.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ParametrosOO.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ReferenciasOO.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="OO">
+        <MSBuild Projects="OO.dproj"/>
+    </Target>
+    <Target Name="OO:Clean">
+        <MSBuild Projects="OO.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OO:Make">
+        <MSBuild Projects="OO.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ParametrosOO">
+        <MSBuild Projects="ParametrosOO.dproj"/>
+    </Target>
+    <Target Name="ParametrosOO:Clean">
+        <MSBuild Projects="ParametrosOO.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ParametrosOO:Make">
+        <MSBuild Projects="ParametrosOO.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ReferenciasOO">
+        <MSBuild Projects="ReferenciasOO.dproj"/>
+    </Target>
+    <Target Name="ReferenciasOO:Clean">
+        <MSBuild Projects="ReferenciasOO.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ReferenciasOO:Make">
+        <MSBuild Projects="ReferenciasOO.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="OO;ParametrosOO;ReferenciasOO"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="OO:Clean;ParametrosOO:Clean;ReferenciasOO:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="OO:Make;ParametrosOO:Make;ReferenciasOO:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -6,25 +6,48 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, System.DateUtils, Data.DB, Vcl.Grids, Vcl.DBGrids, Classe.Pessoa, Form.Visualiza.Pessoa, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, Data.Pessoa, Vcl.DBCtrls, Vcl.ComCtrls;
 
 type
   TfrmPrincipal = class(TForm)
     Panel1: TPanel;
     MemoLog: TMemo;
     Splitter1: TSplitter;
-    ButtonCriaPessoa: TButton;
-    ButtonVisualiza: TButton;
-    DBGrid1: TDBGrid;
-    ButtonLibera: TButton;
     GroupBoxLista: TGroupBox;
     ButtonPopula: TButton;
+    DBGrid1: TDBGrid;
+    dtsPessoa: TDataSource;
+    DBNavigator1: TDBNavigator;
+    ButtonPersisteLista: TButton;
+    StatusBarResumo: TStatusBar;
+    GroupBoxObj: TGroupBox;
+    ButtonCriaPessoa: TButton;
+    ButtonVisualiza: TButton;
+    ButtonLibera: TButton;
+    ButtonCarregaDeDisco: TButton;
+    ButtonSalvaEmDisco: TButton;
+    Splitter2: TSplitter;
+    GroupBox1: TGroupBox;
+    ButtonLimpa: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    SaveDialog: TSaveDialog;
     procedure ButtonCriaPessoaClick(Sender: TObject);
     procedure ButtonVisualizaClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure ButtonLiberaClick(Sender: TObject);
     procedure ButtonPopulaClick(Sender: TObject);
+    procedure ButtonPersisteListaClick(Sender: TObject);
+    procedure ButtonSalvaEmDiscoClick(Sender: TObject);
+    procedure ButtonCarregaDeDiscoClick(Sender: TObject);
+    procedure dtsPessoaDataChange(Sender: TObject; Field: TField);
+    procedure ButtonLimpaClick(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    const
+      ARQ_PESSOAS = 'pessoas.json';
   private
     FPessoa: TPessoa;
     FLista: TListaPessoa;
@@ -44,12 +67,52 @@ var
   lQtd: Integer;
   i: Integer;
 begin
-   lQtd := StrToIntDef(InputBox('Popular lista', 'Informe a quantidade:', '10'), 10);
+   lQtd := StrToIntDef(InputBox('Popular lista', 'Informe a quantidade:', '100'), 100);
+   FLista.Clear;
 
    for i := 0 to lQtd -1 do
    begin
      FLista.Add(TPessoa.Create(True));
    end;
+
+   dmdPessoa.memPessoa.Close;
+   dmdPessoa.memPessoa.Open;
+
+   FLista.PersisteNoDataSet(dmdPessoa.memPessoa);
+//   FLista.PersisteNoDataSet(dmdPessoa.ClientDataSet);
+//   FLista.PersisteNoDataSet(dmdPessoa.FDQuery);
+end;
+
+procedure TfrmPrincipal.ButtonSalvaEmDiscoClick(Sender: TObject);
+begin
+  if not dmdPessoa.memPessoa.IsEmpty then
+  begin
+    dmdPessoa.memPessoa.SaveToFile(ARQ_PESSOAS, sfJSON);
+  end;
+end;
+
+procedure TfrmPrincipal.ButtonPersisteListaClick(Sender: TObject);
+begin
+  FLista.Clear;
+  FLista.CarregaDeDataSet(dmdPessoa.memPessoa);
+end;
+
+procedure TfrmPrincipal.Button2Click(Sender: TObject);
+begin
+  if SaveDialog.Execute then
+  begin
+    FLista.ExportaCSV(SaveDialog.FileName);
+    ShowMessage('Arquivo gerado com sucesso em:' + sLineBreak + SaveDialog.FileName);
+  end;
+end;
+
+procedure TfrmPrincipal.ButtonCarregaDeDiscoClick(Sender: TObject);
+begin
+  if FileExists(ARQ_PESSOAS) then
+  begin
+    dmdPessoa.memPessoa.LoadFromFile(ARQ_PESSOAS);
+    FLista.CarregaDeDataSet(dmdPessoa.memPessoa);
+  end;
 end;
 
 procedure TfrmPrincipal.ButtonCriaPessoaClick(Sender: TObject);
@@ -102,6 +165,12 @@ begin
   FreeAndNil(FPessoa);
 end;
 
+procedure TfrmPrincipal.ButtonLimpaClick(Sender: TObject);
+begin
+  FLista.Clear;
+  dmdPessoa.memPessoa.EmptyDataSet;
+end;
+
 procedure TfrmPrincipal.ButtonVisualizaClick(Sender: TObject);
 begin
   if FPessoa <> nil then
@@ -115,6 +184,12 @@ begin
 //  frmVisualizaPessoa.ValueListEditor.Strings.Add('Nome='+ FPessoa.Nome);
 //  frmVisualizaPessoa.ValueListEditor.Strings.Add('Nome='+ FPessoa.Nome);
 //  frmVisualizaPessoa.ShowModal;
+end;
+
+procedure TfrmPrincipal.dtsPessoaDataChange(Sender: TObject; Field: TField);
+begin
+  // apenas códigos rápidos
+  StatusBarResumo.Panels[1].Text := 'Total de ' + FormatFloat('0.,', dmdPessoa.memPessoa.RecordCount) + ' registros'; // dtsPessoa.DataSet
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
