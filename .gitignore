@@ -49,3 +49,7 @@ autoCommit.exe
 /Capitulo7/2.13.Debug/RemoteDebug.dres
 /Capitulo8/1.1.Start
 /Capitulo8/2.1.OO/Win32/Release
+/Capitulo9/2.4.RemoteDebug/RemoteDebugRio.dres
+/Capitulo9/1.1.Start/Win32/Release/CotacaoDOS.exe
+/Capitulo9/1.1.Start/Win32/Release/CotacaoVCL.exe
+/Capitulo9/1.1.Start/Win64/Release/CotacaoVCL.exe

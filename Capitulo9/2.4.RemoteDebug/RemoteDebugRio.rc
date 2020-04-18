@@ -1,0 +1,6 @@
+bccide RCDATA "Win32\\Debug\\baseRio\\bccide.dll"
+bordbk260 RCDATA "Win32\\Debug\\baseRio\\bordbk260.dll"
+bordbk260N RCDATA "Win32\\Debug\\baseRio\\bordbk260N.dll"
+comp32x RCDATA "Win32\\Debug\\baseRio\\comp32x.dll"
+dcc32260 RCDATA "Win32\\Debug\\baseRio\\dcc32260.dll"
+rmtdbg260 RCDATA "Win32\\Debug\\baseRio\\rmtdbg260.exe"
