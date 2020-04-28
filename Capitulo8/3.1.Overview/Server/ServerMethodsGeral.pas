@@ -3,10 +3,10 @@ unit ServerMethodsGeral;
 interface
 
 uses Winapi.Windows, System.DateUtils, System.Generics.Collections,
-    System.SysUtils, System.Classes, System.Json,
+    System.SysUtils, System.Classes, System.Json, System.SyncObjs,
     Datasnap.DSServer, Datasnap.DSAuth, Classe.Pessoa, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageBin, FireDAC.UI.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.VCLUI.Wait;
+  FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.VCLUI.Wait, Classe.Log.Server;
 
 type
   TListaPessoa = TObjectList<TPessoa>; // TObjectList<TPessoa> -> OwnsObjects := True
@@ -28,6 +28,7 @@ type
     FTotalInstancias: Integer;
     FInstanciasAbertas: Integer;
     FPessoa: TPessoa;
+
   public
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
@@ -83,6 +84,7 @@ end;
 
 function TSMGeral.EchoString(Value: string): string;
 begin
+  TLogServer.GravaLog('EchoString chamado');
   Result := Value;
 end;
 

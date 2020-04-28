@@ -118,6 +118,8 @@ procedure TWebModule1.WebModuleBeforeDispatch(Sender: TObject;
 begin
   if FServerFunctionInvokerAction <> nil then
     FServerFunctionInvokerAction.Enabled := AllowServerFunctionInvoker;
+
+  Response.SetCustomHeader('teste') := 'valor';
 end;
 
 function TWebModule1.AllowServerFunctionInvoker: Boolean;

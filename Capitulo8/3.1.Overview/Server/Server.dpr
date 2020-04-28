@@ -11,7 +11,8 @@ uses
   ServerMethodsGeral in 'ServerMethodsGeral.pas' {SMGeral: TDataModule},
   WebModuleUnitPrincipal in 'WebModuleUnitPrincipal.pas' {WebModulePrincipal: TWebModule},
   Classe.Pessoa in '..\shared\Classe.Pessoa.pas',
-  Data.Connection in 'Data.Connection.pas' {dmdConnection: TDataModule};
+  Data.Connection in 'Data.Connection.pas' {dmdConnection: TDataModule},
+  Classe.Log.Server in 'Classe.Log.Server.pas';
 
 {$R *.res}
 

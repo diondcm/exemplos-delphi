@@ -1,5 +1,8 @@
 #Git
 https://www.youtube.com/watch?v=SWYqp7iY_Tc
+https://www.udemy.com/course/git-para-iniciantes/
+https://www.youtube.com/playlist?list=PLInBAd9OZCzzHBJjLFZzRl6DgUmOeG3H0
+https://www.udemy.com/course/git-e-github-para-iniciantes/
 #TortoiseGit
 
 http://gitextensions.github.io/

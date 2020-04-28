@@ -35,7 +35,6 @@ object SMGeral: TSMGeral
       'Password=postgres'
       'Port=5433'
       'DriverID=PG')
-    Connected = True
     LoginPrompt = False
     Left = 136
     Top = 40
