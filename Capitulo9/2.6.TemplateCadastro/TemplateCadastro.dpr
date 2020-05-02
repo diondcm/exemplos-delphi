@@ -14,7 +14,8 @@ uses
   Form.Cadastro.Produto in 'Form.Cadastro.Produto.pas' {frmCadProduto},
   Data.Pedido in 'Data.Pedido.pas' {dmdPedido: TDataModule},
   Form.Cadastro.Pedido in 'Form.Cadastro.Pedido.pas' {frmCadPedido},
-  Form.Pesquisa in 'Form.Pesquisa.pas' {frmPesquisa};
+  Form.Pesquisa in 'Form.Pesquisa.pas' {frmPesquisa},
+  Form.Cadastro.Item in 'Form.Cadastro.Item.pas' {frmCadItem};
 
 {$R *.res}
 

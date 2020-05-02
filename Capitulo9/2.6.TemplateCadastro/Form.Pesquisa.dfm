@@ -14,6 +14,8 @@ object frmPesquisa: TfrmPesquisa
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PanelFiltros: TPanel
@@ -53,7 +55,7 @@ object frmPesquisa: TfrmPesquisa
     Left = 3
     Top = 50
     Width = 563
-    Height = 280
+    Height = 272
     Align = alClient
     TabOrder = 1
     ExplicitLeft = 168
@@ -64,7 +66,7 @@ object frmPesquisa: TfrmPesquisa
       Left = 1
       Top = 1
       Width = 561
-      Height = 259
+      Height = 251
       Align = alClient
       DataSource = dtsPesquisa
       TabOrder = 0
@@ -73,10 +75,11 @@ object frmPesquisa: TfrmPesquisa
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDblClick = DBGrid1DblClick
     end
     object StatusBarQtd: TStatusBar
       Left = 1
-      Top = 260
+      Top = 252
       Width = 561
       Height = 19
       Panels = <
@@ -97,20 +100,17 @@ object frmPesquisa: TfrmPesquisa
   object PanelControles: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 336
+    Top = 328
     Width = 563
-    Height = 41
+    Height = 49
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = 256
-    ExplicitTop = 312
-    ExplicitWidth = 185
     object ButtonCancelar: TBitBtn
       AlignWithMargins = True
-      Left = 484
+      Left = 472
       Top = 4
-      Width = 75
-      Height = 33
+      Width = 87
+      Height = 41
       Align = alRight
       Cancel = True
       Caption = 'Cancel'
@@ -134,18 +134,15 @@ object frmPesquisa: TfrmPesquisa
       ModalResult = 2
       NumGlyphs = 2
       TabOrder = 0
-      ExplicitLeft = 248
-      ExplicitTop = 8
-      ExplicitHeight = 25
     end
     object buttonSelecionar: TBitBtn
       AlignWithMargins = True
-      Left = 403
+      Left = 380
       Top = 4
-      Width = 75
-      Height = 33
+      Width = 86
+      Height = 41
       Align = alRight
-      Caption = '&Yes'
+      Caption = '&Selecionar'
       Default = True
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
@@ -166,9 +163,8 @@ object frmPesquisa: TfrmPesquisa
         0000}
       NumGlyphs = 2
       TabOrder = 1
-      ExplicitLeft = 248
-      ExplicitTop = 8
-      ExplicitHeight = 25
+      OnClick = buttonSelecionarClick
+      ExplicitLeft = 392
     end
   end
   object dtsPesquisa: TDataSource

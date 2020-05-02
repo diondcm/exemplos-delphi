@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Form.Base.Cadastro, Data.DB, Vcl.ExtCtrls, Vcl.DBActns, System.Actions, Vcl.ActnList, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
   Vcl.Buttons, Data.Pedido, Vcl.Mask, Vcl.DBCtrls, Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Vcl.WinXPickers, Form.Pesquisa, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Classe.Mensagem, Form.Cadastro.Item;
 
 type
   TfrmCadPedido = class(TfrmBaseCadastro)
@@ -26,10 +26,28 @@ type
     DateTimePicker1: TDateTimePicker;
     LinkControlToField1: TLinkControlToField;
     buttonPesquisa: TBitBtn;
+    LabelPedidos: TLabel;
+    PanelItens: TPanel;
+    Label2: TLabel;
+    Splitter1: TSplitter;
+    DBGrid1: TDBGrid;
+    dtsItens: TDataSource;
+    PanelCadItens: TPanel;
+    Label7: TLabel;
+    DBGrid2: TDBGrid;
+    PanelCadItemControle: TPanel;
+    ButtonAddItem: TBitBtn;
+    ButtonEditItem: TBitBtn;
+    ButtonDelete: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure buttonPesquisaClick(Sender: TObject);
+    procedure dtsDadosStateChange(Sender: TObject);
+    procedure ButtonAddItemClick(Sender: TObject);
+    procedure ButtonEditItemClick(Sender: TObject);
+    procedure ButtonDeleteClick(Sender: TObject);
+    procedure dtsItensDataChange(Sender: TObject; Field: TField);
   private
-    { Private declarations }
+    FdmdPedidos: TdmdPedido;
   public
     { Public declarations }
   end;
@@ -41,28 +59,75 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmCadPedido.ButtonAddItemClick(Sender: TObject);
+begin
+  TfrmCadItem.AdicionaItem(FdmdPedidos);
+end;
+
+procedure TfrmCadPedido.ButtonDeleteClick(Sender: TObject);
+begin
+  TfrmCadItem.DeletaItem(FdmdPedidos);
+end;
+
+procedure TfrmCadPedido.ButtonEditItemClick(Sender: TObject);
+begin
+  TfrmCadItem.EditaItem(FdmdPedidos);
+end;
+
 procedure TfrmCadPedido.buttonPesquisaClick(Sender: TObject);
-var
-  lFrm: TfrmPesquisa;
-  lQry: TFdQuery;
+begin
+  if not (DmdDados.qryDados.State in dsEditModes) then
+  begin
+    TMensagem.Aviso('Cadastro deve estar em edição para alterar o cliente');
+  end else begin
+
+    TfrmPesquisa.Executa(FdmdPedidos.qryPesquisaCliente,
+      function (pFormPesquisa: TfrmPesquisa): Boolean
+      begin
+        Result := False;
+        if pFormPesquisa.DataSetPesquisa.FieldByName('SALDO').AsCurrency > 5000{param do DB} then
+        begin
+          TMensagem.Aviso('Cliente selecionado não pode ter mais de R$ ' + FormatFloat('0.,00', 5000) + ' de saldo em aberto.');
+          Result := False;
+        end else begin
+          if not pFormPesquisa.DataSetPesquisa.IsEmpty then
+          begin
+            DmdDados.qryDados.FieldByName('IDCLIENTE').AsInteger := pFormPesquisa.DataSetPesquisa.FieldByName('ID').AsInteger;
+            DmdDados.qryDados.FieldByName('CLIENTE').ReadOnly := False;
+            DmdDados.qryDados.FieldByName('CLIENTE').AsString := pFormPesquisa.DataSetPesquisa.FieldByName('NOME').AsString;
+            DmdDados.qryDados.FieldByName('CLIENTE').ReadOnly := True;
+            Result := True;
+          end else begin
+            TMensagem.Aviso('Selecione um cliente ou cancele para sair');
+          end;
+        end;
+      end);
+  end;
+end;
+
+procedure TfrmCadPedido.dtsDadosStateChange(Sender: TObject);
 begin
   inherited;
-//  TfrmPesquisa.Create(Self).ShowModal;
-  lFrm := TfrmPesquisa.Create(Self);
-  lQry := TFDQuery.Create(lFrm);
-  lQry.Connection := DmdDados.qryDados.Connection;
-  lQry.Open('Select ID ' + QuotedStr('Cód') +', NOME ' + QuotedStr('Nome') + ' from cliente');
-  lFrm.DataSetPesquisa := lQry;
-  if lFrm.ShowModal = mrYes then
+  buttonPesquisa.Enabled := dtsDados.DataSet.State in dsEditModes;
+end;
+
+procedure TfrmCadPedido.dtsItensDataChange(Sender: TObject; Field: TField);
+begin
+  inherited;
+  if FdmdPedidos.qryItens.IsEmpty then // vazio e closed
   begin
-    // registro selecionado
+    StatusBarCadastro.Panels[1].Text := 'Sem itens para exibir';
+  end else begin
+    StatusBarCadastro.Panels[1].Text := IntToStr(FdmdPedidos.qryItens.RecordCount) + ' Itens no pedido selecionado';
   end;
 end;
 
 procedure TfrmCadPedido.FormCreate(Sender: TObject);
 begin
   inherited;
-  DmdDados := TdmdPedido.Create(Self);
+  FdmdPedidos := TdmdPedido.Create(Self);
+  DmdDados := FdmdPedidos;
+  dtsItens.DataSet := FdmdPedidos.qryItens;
 end;
 
 end.
