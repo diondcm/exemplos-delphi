@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.DBActns, System.Actions, Vcl.ActnList, Data.Base;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.DBActns, System.Actions, Vcl.ActnList, Data.Base,
+  Data.Imagens, Classe.Mensagem;
 
 type
   TfrmBaseCadastro = class(TForm)
@@ -18,7 +19,7 @@ type
     ButtonCancelar: TBitBtn;
     ButtonEditar: TBitBtn;
     ButtonInsert: TBitBtn;
-    PageControl1: TPageControl;
+    PageControlCadastro: TPageControl;
     TabPesquisa: TTabSheet;
     TabCadastro: TTabSheet;
     DBGridDados: TDBGrid;
@@ -35,14 +36,19 @@ type
     DatasetPost1: TDataSetPost;
     DatasetCancel1: TDataSetCancel;
     DatasetRefresh1: TDataSetRefresh;
-    TimerOpne: TTimer;
-    procedure TimerOpneTimer(Sender: TObject);
+    TimerOpen: TTimer;
+    procedure TimerOpenTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure dtsDadosDataChange(Sender: TObject; Field: TField);
+    procedure DatasetDelete1Execute(Sender: TObject);
+    procedure dtsDadosStateChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     FDmdDados: TdmdBase;
+    procedure AtualizaQtdRegs;
+    procedure SetDmdDados(const Value: TdmdBase);
   public
-    property DmdDados: TdmdBase read FDmdDados write FDmdDados;
+    property DmdDados: TdmdBase read FDmdDados write SetDmdDados;
   end;
 
 //var
@@ -52,23 +58,74 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmBaseCadastro.dtsDadosDataChange(Sender: TObject; Field: TField);
+procedure TfrmBaseCadastro.DatasetDelete1Execute(Sender: TObject);
 begin
-  StatusBarCadastro.Panels[0].Text :=   IntToStr(DmdDados.qryDados.RecordCount) + ' Registros selecionados';
+  if TMensagem.Confirmacao('Confirma exclusão do registro?') then
+  begin
+    dtsDados.DataSet.Delete;
+  end;
+end;
+
+procedure TfrmBaseCadastro.dtsDadosStateChange(Sender: TObject);
+begin
+  AtualizaQtdRegs;
+
+  case dtsDados.DataSet.State of
+    dsBrowse: PageControlCadastro.ActivePage := TabPesquisa;
+    dsEdit: PageControlCadastro.ActivePage := TabCadastro;
+    dsInsert: PageControlCadastro.ActivePage := TabCadastro;
+  end;
+end;
+
+procedure TfrmBaseCadastro.AtualizaQtdRegs;
+begin
+  if DmdDados.qryDados.IsEmpty then // vazio e closed
+  begin
+    StatusBarCadastro.Panels[0].Text := 'Sem registros para exibir';
+  end else begin
+    StatusBarCadastro.Panels[0].Text := IntToStr(DmdDados.qryDados.RecordCount) + ' Registros selecionados';
+  end;
+end;
+
+procedure TfrmBaseCadastro.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TfrmBaseCadastro.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  CanClose := True;
+  if dtsDados.DataSet.State in dsEditModes then
+  begin
+    CanClose := TMensagem.Confirmacao('Cadastro em edição. Sair cancelará as alterações.' + sLineBreak + 'Sair mesmo assim?');
+    if CanClose then
+      dtsDados.DataSet.Cancel;
+  end;
 end;
 
 procedure TfrmBaseCadastro.FormCreate(Sender: TObject);
 begin
 // FDmdDados := Implementado nos filhos
 
-  TimerOpne.Enabled := True;;
+  PageControlCadastro.ActivePage := TabPesquisa;
+  TimerOpen.Enabled := True;;
 end;
 
-procedure TfrmBaseCadastro.TimerOpneTimer(Sender: TObject);
+procedure TfrmBaseCadastro.SetDmdDados(const Value: TdmdBase);
 begin
-  TimerOpne.Enabled := False;
+  FDmdDados := Value;
+  dtsDados.DataSet := FDmdDados.qryDados;
+end;
+
+procedure TfrmBaseCadastro.TimerOpenTimer(Sender: TObject);
+begin
+  TimerOpen.Enabled := False;
 
   FDmdDados.qryDados.Open;
+  FDmdDados.qryDados.FetchAll;
+  AtualizaQtdRegs;
+
+  //Sleep(10000);
 end;
 
 end.

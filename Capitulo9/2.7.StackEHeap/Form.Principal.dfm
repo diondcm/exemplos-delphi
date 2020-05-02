@@ -22,9 +22,6 @@ object frmPrincipal: TfrmPrincipal
     Align = alRight
     Color = clSilver
     TabOrder = 0
-    ExplicitLeft = 352
-    ExplicitTop = 88
-    ExplicitHeight = 89
   end
   object FlowPanel1: TFlowPanel
     AlignWithMargins = True
@@ -34,10 +31,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 418
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 256
-    ExplicitTop = 30
-    ExplicitWidth = 209
-    ExplicitHeight = 371
     object ButtonStack: TButton
       Left = 1
       Top = 1

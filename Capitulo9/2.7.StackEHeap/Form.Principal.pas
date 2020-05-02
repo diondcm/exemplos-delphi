@@ -110,7 +110,7 @@ begin
     lProc;
   end;
 
-
+  // lCount := 1;
 
   lProc;
   lProc;

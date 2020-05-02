@@ -8,6 +8,9 @@ uses
 
 type
   TdmdCliente = class(TdmdBase)
+    qryDadosID: TFDAutoIncField;
+    qryDadosNOME: TWideStringField;
+    qryDadosSALDO: TBCDField;
   private
     { Private declarations }
   public
