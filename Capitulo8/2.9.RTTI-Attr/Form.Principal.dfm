@@ -65,6 +65,5 @@ object frmPincipal: TfrmPincipal
     Lines.Strings = (
       'MemoLog')
     TabOrder = 4
-    ExplicitTop = -2
   end
 end

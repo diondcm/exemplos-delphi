@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Form.Cadastro.Cliente, System.Actions, Vcl.ActnList, Vcl.ComCtrls, Vcl.ToolWin, Vcl.Menus, System.ImageList, Vcl.ImgList, Data.Imagens,
-  Form.Cadastro.Produto, Form.Cadastro.Pedido;
+  Form.Cadastro.Produto, Form.Cadastro.Pedido, Vcl.StdCtrls, System.IOUtils, Classe.Strings.Helper;
 
 type
   TfrmPrincipal = class(TForm)
@@ -20,6 +20,7 @@ type
     ActionProdutos: TAction;
     ButtonPedido: TToolButton;
     ActionPedido: TAction;
+    Memo1: TMemo;
     procedure ActionClientesExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ActionProdutosExecute(Sender: TObject);
@@ -54,10 +55,34 @@ begin
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
+//const
+//  ARQ = 'Arq.txt';
+//var
+//  lStl: TStringList;
 begin
   {$IFDEF DEBUG}
   ReportMemoryLeaksOnShutdown := True;
   {$ENDIF}
-end;
 
+  Memo1.Text := 'Arq.txt'.GetFileContents;
+
+//  'Arquivo carregado com sucesso.'.Avisa;
+
+  // ForEach() - Js
+  // qry.ForEach(procedure)
+
+//  if TFile.Exists(ARQ) then
+//  begin
+//    lStl := TStringList.Create(ARQ);
+    //lStl.LoadFromFile(ARQ);
+
+//    Tag.ToString
+
+
+//    Memo1.Text := lStl.Text;
+    // Memo1.Lines.LoadFromFile(ARQ);
+
+//    lStl.Free;
+//  end;
+end;
 end.

@@ -17,7 +17,6 @@ type
     property Descricao: string read FDescricao;
   end;
 
-
   TAtribtoTabela = class(TCustomAttribute)
   private
     FNomeTabela: string;
@@ -31,9 +30,11 @@ type
   TAtributoCampo = class(TCustomAttribute)
   private
     FNomeCampo: string;
+    FDescricao: string;
   public
-    constructor Create(pNomeCampo: string);
+    constructor Create(pNomeCampo, pDescricao: string);
     property NomeCampo: string read FNomeCampo;
+    property Descricao: string read FDescricao write FDescricao;
   end;
   {$endregion}
 
@@ -45,9 +46,9 @@ type
     FNome: string;
     FID: Integer;
   public
-    [TAtributoCampo('NOME_PESSOA')]
+    [TAtributoCampo('NOME_PESSOA', 'Nome')]
     property Nome: string read FNome write FNome;
-    [TAtributoCampo('IDPESSOA')]
+    [TAtributoCampo('IDPESSOA', 'Cód. Pessoa')]
     property ID: Integer read FID write FID;
   end;
 
@@ -57,9 +58,9 @@ type
     FNomeCidade: string;
     FCodCidade: Integer;
   public
-    [TAtributoCampo('Nome_Cidade')]
+    [TAtributoCampo('Nome_Cidade', 'Cidade')]
     property NomeCidade: string read FNomeCidade write FNomeCidade;
-    [TAtributoCampo('cod_Cidade')]
+    [TAtributoCampo('cod_Cidade', 'Cód. Cidade')]
     property CodCidade: Integer read FCodCidade write FCodCidade;
   end;
 
@@ -103,9 +104,10 @@ end;
 
 { TAtributoCampo }
 
-constructor TAtributoCampo.Create(pNomeCampo: string);
+constructor TAtributoCampo.Create(pNomeCampo, pDescricao: string);
 begin
   FNomeCampo := pNomeCampo;
+  FDescricao := pDescricao;
 end;
 
 procedure TfrmPincipal.Button1Click(Sender: TObject);
@@ -251,7 +253,7 @@ begin
     begin
       if lAttr is TAtributoCampo then
       begin
-        lCampo := lCampo + ', ' + TAtributoCampo(lAttr).NomeCampo;
+        lCampo := lCampo + ', ' + TAtributoCampo(lAttr).NomeCampo + ' AS "' + TAtributoCampo(lAttr).Descricao + '"';
       end;
     end;
   end;

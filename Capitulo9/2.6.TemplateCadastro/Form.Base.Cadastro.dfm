@@ -11,6 +11,7 @@ object frmBaseCadastro: TfrmBaseCadastro
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  PopupMenu = PopupMenuNavegacao
   Position = poScreenCenter
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
@@ -132,9 +133,14 @@ object frmBaseCadastro: TfrmBaseCadastro
     Height = 290
     ActivePage = TabPesquisa
     Align = alClient
+    PopupMenu = PopupMenuNavegacao
     TabOrder = 1
     object TabPesquisa: TTabSheet
       Caption = 'Pesquisa'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGridDados: TDBGrid
         Left = 0
         Top = 0
@@ -143,17 +149,24 @@ object frmBaseCadastro: TfrmBaseCadastro
         Align = alClient
         DataSource = dtsDados
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        PopupMenu = PopupMenuNavegacao
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnTitleClick = DBGridDadosTitleClick
       end
     end
     object TabCadastro: TTabSheet
       Caption = 'Cadastro'
       ImageIndex = 1
+      PopupMenu = PopupMenuNavegacao
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object StatusBarCadastro: TStatusBar
@@ -185,6 +198,7 @@ object frmBaseCadastro: TfrmBaseCadastro
       Caption = '&Primeiro'
       Hint = 'First'
       ImageIndex = 0
+      ShortCut = 16465
       DataSource = dtsDados
     end
     object DatasetPrior1: TDataSetPrior
@@ -206,6 +220,7 @@ object frmBaseCadastro: TfrmBaseCadastro
       Caption = '&'#218'ltimo'
       Hint = 'Last'
       ImageIndex = 3
+      ShortCut = 16471
       DataSource = dtsDados
     end
     object DatasetInsert1: TDataSetInsert
@@ -228,6 +243,7 @@ object frmBaseCadastro: TfrmBaseCadastro
       Caption = '&Editar'
       Hint = 'Edit'
       ImageIndex = 6
+      ShortCut = 16453
       DataSource = dtsDados
     end
     object DatasetPost1: TDataSetPost
@@ -257,5 +273,33 @@ object frmBaseCadastro: TfrmBaseCadastro
     OnTimer = TimerOpenTimer
     Left = 608
     Top = 176
+  end
+  object PopupMenuNavegacao: TPopupMenu
+    Left = 464
+    Top = 112
+    object Inserir1: TMenuItem
+      Caption = '&Inserir'
+      Hint = 'Insert'
+      ImageIndex = 4
+      OnClick = Inserir1Click
+    end
+    object Editar1: TMenuItem
+      Action = DatasetEdit1
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Primeiro1: TMenuItem
+      Action = DatasetFirst1
+    end
+    object ltimo1: TMenuItem
+      Action = DatasetLast1
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Deletar1: TMenuItem
+      Action = DatasetDelete1
+    end
   end
 end

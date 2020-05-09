@@ -7,7 +7,9 @@ inherited frmCadPedido: TfrmCadPedido
   inherited PageControlCadastro: TPageControl
     Height = 448
     ActivePage = TabCadastro
+    ExplicitHeight = 448
     inherited TabPesquisa: TTabSheet
+      ExplicitHeight = 420
       object LabelPedidos: TLabel [0]
         Left = 0
         Top = 0
@@ -46,9 +48,6 @@ inherited frmCadPedido: TfrmCadPedido
         Height = 121
         Align = alBottom
         TabOrder = 1
-        ExplicitLeft = 56
-        ExplicitTop = 64
-        ExplicitWidth = 369
         object Label2: TLabel
           Left = 1
           Top = 1
@@ -79,14 +78,12 @@ inherited frmCadPedido: TfrmCadPedido
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnTitleClick = DBGrid1TitleClick
         end
       end
     end
     inherited TabCadastro: TTabSheet
-      ExplicitLeft = -148
-      ExplicitTop = 32
-      ExplicitWidth = 733
-      ExplicitHeight = 262
+      ExplicitHeight = 420
       object Label1: TLabel
         Left = 3
         Top = 8
@@ -229,6 +226,7 @@ inherited frmCadPedido: TfrmCadPedido
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnTitleClick = DBGrid2TitleClick
         end
         object PanelCadItemControle: TPanel
           Left = 670
@@ -247,9 +245,6 @@ inherited frmCadPedido: TfrmCadPedido
             Caption = 'Add'
             TabOrder = 0
             OnClick = ButtonAddItemClick
-            ExplicitLeft = -8
-            ExplicitTop = 40
-            ExplicitWidth = 75
           end
           object ButtonEditItem: TBitBtn
             AlignWithMargins = True
@@ -261,9 +256,6 @@ inherited frmCadPedido: TfrmCadPedido
             Caption = 'Edit'
             TabOrder = 1
             OnClick = ButtonEditItemClick
-            ExplicitLeft = -8
-            ExplicitTop = 65
-            ExplicitWidth = 75
           end
           object ButtonDelete: TBitBtn
             AlignWithMargins = True
@@ -275,9 +267,6 @@ inherited frmCadPedido: TfrmCadPedido
             Caption = 'Del'
             TabOrder = 2
             OnClick = ButtonDeleteClick
-            ExplicitLeft = 8
-            ExplicitTop = 96
-            ExplicitWidth = 75
           end
         end
       end
@@ -285,6 +274,7 @@ inherited frmCadPedido: TfrmCadPedido
   end
   inherited StatusBarCadastro: TStatusBar
     Top = 495
+    ExplicitTop = 495
   end
   inherited dtsDados: TDataSource
     Left = 408
@@ -298,13 +288,13 @@ inherited frmCadPedido: TfrmCadPedido
     Left = 552
     Top = 96
   end
-  object BindSourceDB1: TBindSourceDB
+  object BindSourceDB1: TBindSourceDB [6]
     DataSet = dmdPedido.qryDados
     ScopeMappings = <>
     Left = 104
     Top = 24
   end
-  object BindingsList1: TBindingsList
+  object BindingsList1: TBindingsList [7]
     Methods = <>
     OutputConverters = <>
     Left = 20
@@ -317,9 +307,13 @@ inherited frmCadPedido: TfrmCadPedido
       Track = True
     end
   end
-  object dtsItens: TDataSource
+  object dtsItens: TDataSource [8]
     OnDataChange = dtsItensDataChange
     Left = 408
     Top = 144
+  end
+  inherited PopupMenuNavegacao: TPopupMenu
+    Left = 488
+    Top = 168
   end
 end

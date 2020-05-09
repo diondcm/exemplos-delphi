@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Form.Base.Cadastro, Data.DB, Vcl.ExtCtrls, Vcl.DBActns, System.Actions, Vcl.ActnList, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
   Vcl.Buttons, Data.Pedido, Vcl.Mask, Vcl.DBCtrls, Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Vcl.WinXPickers, Form.Pesquisa, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Classe.Mensagem, Form.Cadastro.Item;
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Classe.Mensagem, Form.Cadastro.Item, Vcl.Menus, Classe.Grid.Helper;
 
 type
   TfrmCadPedido = class(TfrmBaseCadastro)
@@ -46,8 +46,12 @@ type
     procedure ButtonEditItemClick(Sender: TObject);
     procedure ButtonDeleteClick(Sender: TObject);
     procedure dtsItensDataChange(Sender: TObject; Field: TField);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure DBGrid2TitleClick(Column: TColumn);
   private
+//    FQtdExecucao: Integer;
     FdmdPedidos: TdmdPedido;
+    procedure OnAfterScrollOldLocal(pQtd: Integer);
   public
     { Public declarations }
   end;
@@ -58,6 +62,9 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Data.Cliente;
+//uses Form.Cadastro.Cliente;
 
 procedure TfrmCadPedido.ButtonAddItemClick(Sender: TObject);
 begin
@@ -85,6 +92,12 @@ begin
       function (pFormPesquisa: TfrmPesquisa): Boolean
       begin
         Result := False;
+        var ldmdCliente: TdmdCliente := TdmdCliente.Create(Self);
+        ldmdCliente.ValidaValoresDeSaldo(pFormPesquisa.DataSetPesquisa.FieldByName('SALDO').AsCurrency);
+
+//        frmCadastroCliente.Editar1;
+//        frmCadastroCliente.ButtonSalvarClick(Sender);
+
         if pFormPesquisa.DataSetPesquisa.FieldByName('SALDO').AsCurrency > 5000{param do DB} then
         begin
           TMensagem.Aviso('Cliente selecionado não pode ter mais de R$ ' + FormatFloat('0.,00', 5000) + ' de saldo em aberto.');
@@ -103,6 +116,16 @@ begin
         end;
       end);
   end;
+end;
+
+procedure TfrmCadPedido.DBGrid1TitleClick(Column: TColumn);
+begin
+  DBGrid1.IdexaPorField(Column);
+end;
+
+procedure TfrmCadPedido.DBGrid2TitleClick(Column: TColumn);
+begin
+  DBGrid2.IdexaPorField(Column);
 end;
 
 procedure TfrmCadPedido.dtsDadosStateChange(Sender: TObject);
@@ -128,6 +151,19 @@ begin
   FdmdPedidos := TdmdPedido.Create(Self);
   DmdDados := FdmdPedidos;
   dtsItens.DataSet := FdmdPedidos.qryItens;
+
+//  FdmdPedidos.OnAfterScroll :=
+//    procedure (pQtd: Integer)
+//    begin
+//      Caption := IntToStr(pQtd);
+//    end;
+
+  FdmdPedidos.OnAfterScrollOld := OnAfterScrollOldLocal;
+end;
+
+procedure TfrmCadPedido.OnAfterScrollOldLocal(pQtd: Integer);
+begin
+  Caption := IntToStr(pQtd);
 end;
 
 end.

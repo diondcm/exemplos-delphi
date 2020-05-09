@@ -2,6 +2,7 @@ inherited dmdPedido: TdmdPedido
   OldCreateOrder = True
   inherited qryDados: TFDQuery
     AfterOpen = qryDadosAfterOpen
+    AfterScroll = qryDadosAfterScroll
     OnNewRecord = qryDadosNewRecord
     SQL.Strings = (
       'select p.IDPEDIDO, p.IDCLIENTE, p.ENDERECO, '
@@ -68,6 +69,7 @@ inherited dmdPedido: TdmdPedido
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qryPesquisaClienteNOME: TWideStringField
       DisplayLabel = 'Cliente'
@@ -118,6 +120,7 @@ inherited dmdPedido: TdmdPedido
       FieldName = 'IDITEM_PEDIDO'
       Origin = 'IDITEM_PEDIDO'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
       Visible = False
     end
     object qryItensIDPRODUTO: TIntegerField

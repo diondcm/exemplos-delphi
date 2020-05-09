@@ -68,4 +68,10 @@ inherited frmCadastroCliente: TfrmCadastroCliente
       end
     end
   end
+  inherited PopupMenuNavegacao: TPopupMenu
+    object GeraClientes1: TMenuItem
+      Caption = 'Gera Clientes'
+      OnClick = GeraClientes1Click
+    end
+  end
 end

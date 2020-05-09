@@ -7,6 +7,8 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
+  TNotifyEventInt = procedure(pQtd: Integer) of object;
+
   TdmdPedido = class(TdmdBase)
     qryDadosIDPEDIDO: TFDAutoIncField;
     qryDadosIDCLIENTE: TIntegerField;
@@ -33,10 +35,15 @@ type
     procedure qryItensCalcFields(DataSet: TDataSet);
     procedure qryItensBeforeOpen(DataSet: TDataSet);
     procedure qryPesquisaProdutoAfterOpen(DataSet: TDataSet);
+    procedure qryDadosAfterScroll(DataSet: TDataSet);
   private
-    { Private declarations }
+    FQtdExecucao: Integer;
+    FOnAfterScroll: TProc<Integer>;
+    FOnAfterScrollOld: TNotifyEventInt;
   public
-    { Public declarations }
+    property QtdExecucao: Integer read FQtdExecucao write FQtdExecucao;
+    property OnAfterScroll: TProc<Integer> read FOnAfterScroll write FOnAfterScroll;
+    property OnAfterScrollOld: TNotifyEventInt read FOnAfterScrollOld write FOnAfterScrollOld;
   end;
 
 //var
@@ -52,6 +59,21 @@ procedure TdmdPedido.qryDadosAfterOpen(DataSet: TDataSet);
 begin
   inherited;
   qryItens.Open;
+end;
+
+procedure TdmdPedido.qryDadosAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  Inc(FQtdExecucao);
+  if Assigned(FOnAfterScroll) then
+  begin
+    FOnAfterScroll(FQtdExecucao);
+  end;
+
+  if Assigned(FOnAfterScrollOld) then
+  begin
+    FOnAfterScrollOld(FQtdExecucao);
+  end;
 end;
 
 procedure TdmdPedido.qryDadosNewRecord(DataSet: TDataSet);

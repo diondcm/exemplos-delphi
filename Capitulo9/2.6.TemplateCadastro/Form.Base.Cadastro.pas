@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.DBActns, System.Actions, Vcl.ActnList, Data.Base,
-  Data.Imagens, Classe.Mensagem;
+  Data.Imagens, Classe.Mensagem, Vcl.Menus, Classe.Grid.Helper;
 
 type
   TfrmBaseCadastro = class(TForm)
@@ -37,12 +37,22 @@ type
     DatasetCancel1: TDataSetCancel;
     DatasetRefresh1: TDataSetRefresh;
     TimerOpen: TTimer;
+    PopupMenuNavegacao: TPopupMenu;
+    Deletar1: TMenuItem;
+    Primeiro1: TMenuItem;
+    ltimo1: TMenuItem;
+    Inserir1: TMenuItem;
+    Editar1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
     procedure TimerOpenTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DatasetDelete1Execute(Sender: TObject);
     procedure dtsDadosStateChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Inserir1Click(Sender: TObject);
+    procedure DBGridDadosTitleClick(Column: TColumn);
   private
     FDmdDados: TdmdBase;
     procedure AtualizaQtdRegs;
@@ -66,6 +76,11 @@ begin
   end;
 end;
 
+procedure TfrmBaseCadastro.DBGridDadosTitleClick(Column: TColumn);
+begin
+  DBGridDados.IdexaPorField(Column);
+end;
+
 procedure TfrmBaseCadastro.dtsDadosStateChange(Sender: TObject);
 begin
   AtualizaQtdRegs;
@@ -83,7 +98,7 @@ begin
   begin
     StatusBarCadastro.Panels[0].Text := 'Sem registros para exibir';
   end else begin
-    StatusBarCadastro.Panels[0].Text := IntToStr(DmdDados.qryDados.RecordCount) + ' Registros selecionados';
+    StatusBarCadastro.Panels[0].Text := FormatFloat('0.,', DmdDados.qryDados.RecordCount) + ' Registros selecionados';
   end;
 end;
 
@@ -109,6 +124,11 @@ begin
 
   PageControlCadastro.ActivePage := TabPesquisa;
   TimerOpen.Enabled := True;;
+end;
+
+procedure TfrmBaseCadastro.Inserir1Click(Sender: TObject);
+begin
+  ButtonInsert.Click;
 end;
 
 procedure TfrmBaseCadastro.SetDmdDados(const Value: TdmdBase);

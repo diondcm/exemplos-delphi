@@ -43,6 +43,15 @@ object frmPrincipal: TfrmPrincipal
       Action = ActionPedido
     end
   end
+  object Memo1: TMemo
+    Left = 339
+    Top = 96
+    Width = 185
+    Height = 89
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 1
+  end
   object MainMenu1: TMainMenu
     Left = 264
     Top = 216

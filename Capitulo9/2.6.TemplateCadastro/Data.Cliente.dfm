@@ -9,6 +9,7 @@ inherited dmdCliente: TdmdCliente
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qryDadosNOME: TWideStringField
       DisplayLabel = 'Nome'
@@ -23,6 +24,31 @@ inherited dmdCliente: TdmdCliente
       DisplayWidth = 11
       FieldName = 'SALDO'
       Origin = 'SALDO'
+      DisplayFormat = 'R$ 0.,00'
+      EditFormat = '0.00'
+      Precision = 10
+      Size = 3
+    end
+    object qryDadosCPF: TWideStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      Size = 11
+    end
+    object qryDadosCODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      DisplayWidth = 5
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+    end
+    object qryDadosDATA_NASCIMENTO: TDateField
+      DisplayLabel = 'Data Nascimento'
+      FieldName = 'DATA_NASCIMENTO'
+      Origin = 'DATA_NASCIMENTO'
+    end
+    object qryDadosRENDA: TBCDField
+      DisplayLabel = 'Renda'
+      FieldName = 'RENDA'
+      Origin = 'RENDA'
       DisplayFormat = 'R$ 0.,00'
       EditFormat = '0.00'
       Precision = 10

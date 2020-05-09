@@ -15,7 +15,10 @@ uses
   Data.Pedido in 'Data.Pedido.pas' {dmdPedido: TDataModule},
   Form.Cadastro.Pedido in 'Form.Cadastro.Pedido.pas' {frmCadPedido},
   Form.Pesquisa in 'Form.Pesquisa.pas' {frmPesquisa},
-  Form.Cadastro.Item in 'Form.Cadastro.Item.pas' {frmCadItem};
+  Form.Cadastro.Item in 'Form.Cadastro.Item.pas' {frmCadItem},
+  Classe.Grid.Helper in 'Classe.Grid.Helper.pas',
+  Classe.Strings.Helper in 'Classe.Strings.Helper.pas',
+  Classe.Pessoa in '..\2.1.OO\Classe.Pessoa.pas';
 
 {$R *.res}
 
