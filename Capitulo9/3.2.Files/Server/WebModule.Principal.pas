@@ -1,4 +1,4 @@
-unit WebModuleUnit1;
+unit WebModule.Principal;
 
 interface
 
@@ -7,21 +7,26 @@ uses
   Datasnap.DSHTTPWebBroker, Datasnap.DSServer,
   Web.WebFileDispatcher, Web.HTTPProd,
   DataSnap.DSAuth,
-  Datasnap.DSProxyDispatcher, Datasnap.DSProxyJavaAndroid,
-  Datasnap.DSProxyJavaBlackBerry, Datasnap.DSProxyObjectiveCiOS,
-  Datasnap.DSProxyCsharpSilverlight,
-  Datasnap.DSProxyFreePascal_iOS,
   Datasnap.DSProxyJavaScript, IPPeerServer, Datasnap.DSMetadata, Datasnap.DSServerMetadata, Datasnap.DSClientMetadata, Datasnap.DSCommonServer, Datasnap.DSHTTP;
 
 type
-  TWebModule1 = class(TWebModule)
+  TWebModulePrincipal = class(TWebModule)
     DSHTTPWebDispatcher1: TDSHTTPWebDispatcher;
+    DSServer1: TDSServer;
+   DSAuthenticationManager1: TDSAuthenticationManager;
+    DSServerClass1: TDSServerClass;
     ServerFunctionInvoker: TPageProducer;
     ReverseString: TPageProducer;
     WebFileDispatcher1: TWebFileDispatcher;
     DSProxyGenerator1: TDSProxyGenerator;
     DSServerMetaDataProvider1: TDSServerMetaDataProvider;
-    DSProxyDispatcher1: TDSProxyDispatcher;
+    procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
+    procedure DSAuthenticationManager1UserAuthorize(Sender: TObject;
+      EventObject: TDSAuthorizeEventObject; var valid: Boolean);
+    procedure DSAuthenticationManager1UserAuthenticate(Sender: TObject;
+      const Protocol, Context, User, Password: string; var valid: Boolean;
+      UserRoles: TStrings);
     procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
       const TagString: string; TagParams: TStrings; var ReplaceText: string);
     procedure WebModuleDefaultAction(Sender: TObject;
@@ -41,16 +46,42 @@ type
   end;
 
 var
-  WebModuleClass: TComponentClass = TWebModule1;
+  WebModuleClass: TComponentClass = TWebModulePrincipal;
 
 implementation
 
 
 {$R *.dfm}
 
-uses ServerMethodsUnit1, ServerContainerUnit1, Web.WebReq;
+uses Web.WebReq, Server.Methods.Files;
 
-procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
+procedure TWebModulePrincipal.DSServerClass1GetClass(
+  DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := Server.Methods.Files.TSMFiles;
+end;
+
+procedure TWebModulePrincipal.DSAuthenticationManager1UserAuthenticate(
+  Sender: TObject; const Protocol, Context, User, Password: string;
+  var valid: Boolean; UserRoles: TStrings);
+begin
+  valid := ((User = 'admin') and (Password = 'delphi')) or
+    ((User = 'user') and (Password = 'delphi'));
+
+  if User = 'admin' then
+  begin
+    UserRoles.Add('admin');
+  end;
+end;
+
+procedure TWebModulePrincipal.DSAuthenticationManager1UserAuthorize(
+  Sender: TObject; EventObject: TDSAuthorizeEventObject; 
+  var valid: Boolean);
+begin
+  valid := True;
+end;
+
+procedure TWebModulePrincipal.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
   const TagString: string; TagParams: TStrings; var ReplaceText: string);
 begin
   if SameText(TagString, 'urlpath') then
@@ -60,7 +91,7 @@ begin
   else if SameText(TagString, 'host') then
     ReplaceText := string(Request.Host)
   else if SameText(TagString, 'classname') then
-    ReplaceText := ServerMethodsUnit1.TServerMethods1.ClassName
+    ReplaceText := Server.Methods.Files.TSMFiles.ClassName
   else if SameText(TagString, 'loginrequired') then
     if DSHTTPWebDispatcher1.AuthenticationManager <> nil then
       ReplaceText := 'true'
@@ -79,7 +110,7 @@ begin
       ReplaceText := '';
 end;
 
-procedure TWebModule1.WebModuleDefaultAction(Sender: TObject;
+procedure TWebModulePrincipal.WebModuleDefaultAction(Sender: TObject;
   Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
 begin
   if (Request.InternalPathInfo = '') or (Request.InternalPathInfo = '/')then
@@ -88,28 +119,20 @@ begin
     Response.SendRedirect(Request.InternalScriptName + '/');
 end;
 
-procedure TWebModule1.WebModuleBeforeDispatch(Sender: TObject;
+procedure TWebModulePrincipal.WebModuleBeforeDispatch(Sender: TObject;
   Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
 begin
-//  Response.SetCustomHeader('Access-Control-Allow-Origin','*');
-//
-//  if Trim(Request.GetFieldByName('Access-Control-Request-Headers')) <> '' then
-//  begin
-//    Response.SetCustomHeader('Access-Control-Allow-Headers', Request.GetFieldByName('Access-Control-Request-Headers'));
-//    Handled := True;
-//  end;
-
   if FServerFunctionInvokerAction <> nil then
     FServerFunctionInvokerAction.Enabled := AllowServerFunctionInvoker;
 end;
 
-function TWebModule1.AllowServerFunctionInvoker: Boolean;
+function TWebModulePrincipal.AllowServerFunctionInvoker: Boolean;
 begin
   Result := (Request.RemoteAddr = '127.0.0.1') or
     (Request.RemoteAddr = '0:0:0:0:0:0:0:1') or (Request.RemoteAddr = '::1');
 end;
 
-procedure TWebModule1.WebFileDispatcher1BeforeDispatch(Sender: TObject;
+procedure TWebModulePrincipal.WebFileDispatcher1BeforeDispatch(Sender: TObject;
   const AFileName: string; Request: TWebRequest; Response: TWebResponse;
   var Handled: Boolean);
 var
@@ -125,16 +148,9 @@ begin
     end;
 end;
 
-procedure TWebModule1.WebModuleCreate(Sender: TObject);
+procedure TWebModulePrincipal.WebModuleCreate(Sender: TObject);
 begin
   FServerFunctionInvokerAction := ActionByName('ServerFunctionInvokerAction');
-  DSServerMetaDataProvider1.Server := DSServer;
-  DSHTTPWebDispatcher1.Server := DSServer;
-  if DSServer.Started then
-  begin
-    DSHTTPWebDispatcher1.DbxContext := DSServer.DbxContext;
-    DSHTTPWebDispatcher1.Start;
-  end;
 end;
 
 initialization

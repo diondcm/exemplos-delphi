@@ -24,7 +24,6 @@ object ServerMethods1: TServerMethods1
         'Database=C:\Desenv\Aqua\exemplos-delphi\Capitulo9\2.6.TemplateCa' +
         'dastro\Dados\Cadastro.db'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 80
     Top = 8

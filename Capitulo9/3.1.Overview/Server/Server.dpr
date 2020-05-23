@@ -12,7 +12,9 @@ uses
   ServerContainerUnit1 in 'ServerContainerUnit1.pas' {ServerContainer1: TDataModule},
   WebModuleUnit1 in 'WebModuleUnit1.pas' {WebModule1: TWebModule},
   Classes.Transporte.Pessoa in '..\shared\Classes.Transporte.Pessoa.pas',
-  Classe.Transporte in '..\shared\Classe.Transporte.pas';
+  Classe.Transporte in '..\shared\Classe.Transporte.pas',
+  Server.Methods.Geral in 'Server.Methods.Geral.pas' {SMGeral: TDSServerModule},
+  Server.Methods.Cliente in 'Server.Methods.Cliente.pas' {SMCliente: TDSServerModule};
 
 {$R *.res}
 

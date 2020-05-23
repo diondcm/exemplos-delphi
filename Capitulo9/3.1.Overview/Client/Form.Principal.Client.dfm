@@ -20,7 +20,7 @@ object frmPrincipalClient: TfrmPrincipalClient
     Top = 0
     Width = 619
     Height = 464
-    ActivePage = TabDB
+    ActivePage = TabDataSnap
     Align = alClient
     TabOrder = 0
     object TabJSON: TTabSheet
@@ -144,7 +144,7 @@ object frmPrincipalClient: TfrmPrincipalClient
           Align = alRight
           TabOrder = 2
           TextHint = 'Qtd Requests'
-          ExplicitTop = 8
+          ExplicitHeight = 21
         end
         object Button5: TButton
           AlignWithMargins = True
@@ -189,7 +189,6 @@ object frmPrincipalClient: TfrmPrincipalClient
         Height = 41
         Align = alTop
         TabOrder = 0
-        ExplicitTop = -6
         object ButtonGetDados: TButton
           AlignWithMargins = True
           Left = 4
@@ -200,9 +199,6 @@ object frmPrincipalClient: TfrmPrincipalClient
           Caption = 'Get Dados'
           TabOrder = 0
           OnClick = ButtonGetDadosClick
-          ExplicitLeft = 72
-          ExplicitTop = 8
-          ExplicitHeight = 25
         end
         object EditQtdRegistro: TEdit
           AlignWithMargins = True
@@ -214,8 +210,7 @@ object frmPrincipalClient: TfrmPrincipalClient
           NumbersOnly = True
           TabOrder = 1
           TextHint = 'Qtd Registros'
-          ExplicitLeft = 416
-          ExplicitTop = 8
+          ExplicitHeight = 21
         end
       end
       object DBGridDados: TDBGrid

@@ -8,14 +8,18 @@ uses System.SysUtils, System.Classes,
   Datasnap.DSProxyJavaAndroid, Datasnap.DSProxyJavaBlackBerry,
   Datasnap.DSProxyObjectiveCiOS, Datasnap.DSProxyCsharpSilverlight,
   Datasnap.DSProxyFreePascal_iOS,
-  IPPeerServer, IPPeerAPI, Datasnap.DSAuth;
+  IPPeerServer, IPPeerAPI, Datasnap.DSAuth, Server.Methods.Geral, Server.Methods.Cliente;
 
 type
   TServerContainer1 = class(TDataModule)
     DSServer1: TDSServer;
     DSServerClass1: TDSServerClass;
+    DSServerClass2: TDSServerClass;
+    DSServerClass3: TDSServerClass;
     procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
+    procedure DSServerClass2GetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+    procedure DSServerClass3GetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
   private
     { Private declarations }
   public
@@ -58,6 +62,16 @@ procedure TServerContainer1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := ServerMethodsUnit1.TServerMethods1;
+end;
+
+procedure TServerContainer1.DSServerClass2GetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := Server.Methods.Geral.TSMGeral;
+end;
+
+procedure TServerContainer1.DSServerClass3GetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := Server.Methods.Cliente.TSMCliente;
 end;
 
 initialization
