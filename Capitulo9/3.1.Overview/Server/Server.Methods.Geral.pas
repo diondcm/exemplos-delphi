@@ -3,17 +3,27 @@ unit Server.Methods.Geral;
 interface
 
 uses
-  WinAPI.Windows, System.SysUtils, System.Classes, Datasnap.DSServer, System.DateUtils,
-  Datasnap.DSAuth, Datasnap.DSProviderDataModuleAdapter, System.SyncObjs, System.Hash;
+  WinAPI.Windows, System.SysUtils, System.Classes, Datasnap.DSServer, System.DateUtils, System.Json, Rest.JSON,
+  Datasnap.DSAuth, Datasnap.DSProviderDataModuleAdapter, System.SyncObjs, System.Hash, REST.Types, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope;
 
 type
   TSMGeral = class(TDSServerModule)
+    RESTClient1: TRESTClient;
+    RESTRequest1: TRESTRequest;
+    RESTResponse1: TRESTResponse;
+    RESTClient2: TRESTClient;
+    RESTRequest2: TRESTRequest;
+    RESTResponse2: TRESTResponse;
   private
     { Private declarations }
     class var
       FServerVersion: string;
       FCriticalSec: TCriticalSection;
   public
+    function GetTransaction: string;
+    function GetProdutos: string;
+
+
     function GetDataAtual: Int64;
     function Login(pUser, pSenha: string): string;
     function GerServerVersion: string;
@@ -25,6 +35,8 @@ type
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses Classe.Produtos.Statistica, Classe.Transaction.Blockchain;
 
 {$R *.dfm}
 
@@ -100,6 +112,23 @@ end;
 function TSMGeral.GetDataAtual: Int64;
 begin
   Result := DateTimeToUnix(Now);
+end;
+
+function TSMGeral.GetProdutos: string;
+begin
+  RESTRequest2.Execute;
+  Result := RESTResponse2.Content;
+end;
+
+function TSMGeral.GetTransaction: string;
+var
+  lRoot: TRootDTO;
+begin
+  RESTRequest1.Execute;
+
+  lRoot :=  TJson.JsonToObject<TRootDTO>(RESTResponse1.Content);
+
+  Result := TJSONObject.Create(TJSONPair.Create('hash', lRoot.Block_Hash)).ToJSON;
 end;
 
 function TSMGeral.Login(pUser, pSenha: string): string;

@@ -13,4 +13,31 @@ object Form2: TForm2
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object DSProviderConnection1: TDSProviderConnection
+    ServerClassName = 'TServerMethods1'
+    Connected = True
+    SQLConnection = SQLConnection1
+    Left = 296
+    Top = 200
+  end
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'DataSnapCONNECTION'
+    DriverName = 'DataSnap'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverName=DataSnap'
+      'HostName=localhost'
+      'port=211')
+    Connected = True
+    Left = 296
+    Top = 160
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider1'
+    RemoteServer = DSProviderConnection1
+    Left = 296
+    Top = 264
+  end
 end

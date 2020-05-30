@@ -400,7 +400,6 @@ object frmPrincipalClinet: TfrmPrincipalClinet
     Height = 204
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 216
     object MemoHash: TMemo
       AlignWithMargins = True
       Left = 113
@@ -409,7 +408,6 @@ object frmPrincipalClinet: TfrmPrincipalClinet
       Height = 196
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 208
     end
     object Panel4: TPanel
       Left = 1
@@ -418,7 +416,6 @@ object frmPrincipalClinet: TfrmPrincipalClinet
       Height = 202
       Align = alLeft
       TabOrder = 1
-      ExplicitHeight = 214
       object ButtonGerHash: TButton
         AlignWithMargins = True
         Left = 4
@@ -451,9 +448,6 @@ object frmPrincipalClinet: TfrmPrincipalClinet
         Caption = 'Get Transactions'
         TabOrder = 2
         OnClick = ButtonGetTransClick
-        ExplicitLeft = 16
-        ExplicitTop = 80
-        ExplicitWidth = 75
       end
       object ButtonAdd: TButton
         AlignWithMargins = True
@@ -465,9 +459,6 @@ object frmPrincipalClinet: TfrmPrincipalClinet
         Caption = 'Add'
         TabOrder = 3
         OnClick = ButtonAddClick
-        ExplicitLeft = 30
-        ExplicitTop = 96
-        ExplicitWidth = 75
       end
       object EditTrans: TEdit
         AlignWithMargins = True
@@ -477,9 +468,6 @@ object frmPrincipalClinet: TfrmPrincipalClinet
         Height = 21
         Align = alBottom
         TabOrder = 4
-        ExplicitLeft = 16
-        ExplicitTop = 80
-        ExplicitWidth = 121
       end
     end
   end

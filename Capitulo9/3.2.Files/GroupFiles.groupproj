@@ -3,6 +3,9 @@
         <ProjectGuid>{4AB4D599-59EF-4EC5-A93A-89C2EB4D6D3A}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="apache\mod_webbroker.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="Server\Server.dproj">
             <Dependencies/>
         </Projects>
@@ -17,6 +20,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="mod_webbroker">
+        <MSBuild Projects="apache\mod_webbroker.dproj"/>
+    </Target>
+    <Target Name="mod_webbroker:Clean">
+        <MSBuild Projects="apache\mod_webbroker.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mod_webbroker:Make">
+        <MSBuild Projects="apache\mod_webbroker.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Server">
         <MSBuild Projects="Server\Server.dproj"/>
     </Target>
@@ -36,13 +48,13 @@
         <MSBuild Projects="Client\ClientFiles.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Server;ClientFiles"/>
+        <CallTarget Targets="mod_webbroker;Server;ClientFiles"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Server:Clean;ClientFiles:Clean"/>
+        <CallTarget Targets="mod_webbroker:Clean;Server:Clean;ClientFiles:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Server:Make;ClientFiles:Make"/>
+        <CallTarget Targets="mod_webbroker:Make;Server:Make;ClientFiles:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

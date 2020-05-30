@@ -14,7 +14,9 @@ uses
   Classes.Transporte.Pessoa in '..\shared\Classes.Transporte.Pessoa.pas',
   Classe.Transporte in '..\shared\Classe.Transporte.pas',
   Server.Methods.Geral in 'Server.Methods.Geral.pas' {SMGeral: TDSServerModule},
-  Server.Methods.Cliente in 'Server.Methods.Cliente.pas' {SMCliente: TDSServerModule};
+  Server.Methods.Cliente in 'Server.Methods.Cliente.pas' {SMCliente: TDSServerModule},
+  Classe.Produtos.Statistica in 'Classe.Produtos.Statistica.pas',
+  Classe.Transaction.Blockchain in 'Classe.Transaction.Blockchain.pas';
 
 {$R *.res}
 

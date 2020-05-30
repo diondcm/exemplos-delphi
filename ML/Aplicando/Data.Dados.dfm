@@ -5,8 +5,8 @@ object dmdDados: TdmdDados
   object FDConnection: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Desenv\Aqua\projs\ML\Delphi\gsl-delphi\Win32\Debug\d' +
-        'ados\dadosExemplo.db'
+        'Database=C:\Desenv\Aqua\exemplos-delphi\ML\Aplicando\Win32\Debug' +
+        '\dados\dadosExemplo.db'
       'DriverID=SQLite')
     LoginPrompt = False
     Left = 95
