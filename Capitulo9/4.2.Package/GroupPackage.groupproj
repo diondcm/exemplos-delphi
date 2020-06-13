@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B9034634-4A97-409D-9A8A-069AA37F9E6D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Client\ClientPackage.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dll\HashGen.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pkg\pkgGeraHash.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ClientPackage">
+        <MSBuild Projects="Client\ClientPackage.dproj"/>
+    </Target>
+    <Target Name="ClientPackage:Clean">
+        <MSBuild Projects="Client\ClientPackage.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClientPackage:Make">
+        <MSBuild Projects="Client\ClientPackage.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HashGen">
+        <MSBuild Projects="dll\HashGen.dproj"/>
+    </Target>
+    <Target Name="HashGen:Clean">
+        <MSBuild Projects="dll\HashGen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HashGen:Make">
+        <MSBuild Projects="dll\HashGen.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgGeraHash">
+        <MSBuild Projects="pkg\pkgGeraHash.dproj"/>
+    </Target>
+    <Target Name="pkgGeraHash:Clean">
+        <MSBuild Projects="pkg\pkgGeraHash.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgGeraHash:Make">
+        <MSBuild Projects="pkg\pkgGeraHash.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ClientPackage;HashGen;pkgGeraHash"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ClientPackage:Clean;HashGen:Clean;pkgGeraHash:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ClientPackage:Make;HashGen:Make;pkgGeraHash:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DA1DA43C-4B05-404A-8A67-0B29DCE5194F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PanelObrigatorio\PanelObrigatorio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DBDateTimePicker\pkgDBDateTimePicker.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AppTestes\testePanelObrigatorio.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PanelObrigatorio">
+        <MSBuild Projects="PanelObrigatorio\PanelObrigatorio.dproj"/>
+    </Target>
+    <Target Name="PanelObrigatorio:Clean">
+        <MSBuild Projects="PanelObrigatorio\PanelObrigatorio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PanelObrigatorio:Make">
+        <MSBuild Projects="PanelObrigatorio\PanelObrigatorio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgDBDateTimePicker">
+        <MSBuild Projects="DBDateTimePicker\pkgDBDateTimePicker.dproj"/>
+    </Target>
+    <Target Name="pkgDBDateTimePicker:Clean">
+        <MSBuild Projects="DBDateTimePicker\pkgDBDateTimePicker.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgDBDateTimePicker:Make">
+        <MSBuild Projects="DBDateTimePicker\pkgDBDateTimePicker.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="testePanelObrigatorio">
+        <MSBuild Projects="AppTestes\testePanelObrigatorio.dproj"/>
+    </Target>
+    <Target Name="testePanelObrigatorio:Clean">
+        <MSBuild Projects="AppTestes\testePanelObrigatorio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="testePanelObrigatorio:Make">
+        <MSBuild Projects="AppTestes\testePanelObrigatorio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PanelObrigatorio;pkgDBDateTimePicker;testePanelObrigatorio"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PanelObrigatorio:Clean;pkgDBDateTimePicker:Clean;testePanelObrigatorio:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PanelObrigatorio:Make;pkgDBDateTimePicker:Make;testePanelObrigatorio:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
