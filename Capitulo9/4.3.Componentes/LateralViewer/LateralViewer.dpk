@@ -1,4 +1,4 @@
-package PanelObrigatorio;
+package LateralViewer;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -25,19 +25,18 @@ package PanelObrigatorio;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'Alunos2020 - Panel que valida compos obrigatórios'}
 {$IMPLICITBUILD ON}
 
 requires
   rtl,
+  vclimg,
   vcl,
-  vclwinx,
-  dbrtl,
-  vcldb,
-  designide;
+  dbrtl;
 
 contains
-  Classes.Panel.Obrigatorio in '..\Source\Classes.Panel.Obrigatorio.pas',
-  Registra.Panel.Obrigatorio in '..\Source\Registra.Panel.Obrigatorio.pas';
+  Classe.LateralViewer in '..\..\..\Capitulo8\4.6.ImageViewer\Classe.LateralViewer.pas',
+  Form.Card.Visualiza.Imagem in '..\CardViewer\Form.Card.Visualiza.Imagem.pas' {frmVisualizaCard},
+  Classe.ClassificaImage in '..\..\..\Capitulo8\4.6.ImageViewer\Classe.ClassificaImage.pas',
+  Registra.Lateral.Viewer in 'Registra.Lateral.Viewer.pas';
 
 end.

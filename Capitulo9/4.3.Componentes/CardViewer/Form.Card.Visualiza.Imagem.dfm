@@ -1,4 +1,4 @@
-object frmVisualiza: TfrmVisualiza
+object frmVisualizaCard: TfrmVisualizaCard
   Left = 0
   Top = 0
   ClientHeight = 231

@@ -9,57 +9,69 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids,
   Classes.Panel.Obrigatorio, Vcl.StdCtrls, Vcl.Mask, Vcl.ComCtrls,
-  Classe.DBDateTimePicker;
+  Classe.DBDateTimePicker, Classe.Card.Viewer, Vcl.Imaging.jpeg,
+  Classe.LateralViewer;
 
 type
   TfrmPrincipal = class(TForm)
-    Panel1: TPanel;
-    DBGrid1: TDBGrid;
-    DBNavigator1: TDBNavigator;
     memCadastro: TFDMemTable;
     memCadastroid: TIntegerField;
     memCadastroNome: TStringField;
     memCadastroDataCadastro: TDateTimeField;
     dtsCadastro: TDataSource;
-    PanelObrigatorio1: TPanelObrigatorio;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     memCadastroSaldo: TCurrencyField;
     memCadastroDataNascimento: TDateField;
     memCadastroRG: TStringField;
     memCadastroCPF: TStringField;
     memCadastroCNPJ: TStringField;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    ImageViewer1: TImageViewer;
+    PanelObrigatorio1: TPanelObrigatorio;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
     Label4: TLabel;
-    DBEdit4: TDBEdit;
     Label5: TLabel;
     Label6: TLabel;
-    DBEdit6: TDBEdit;
     Label7: TLabel;
-    DBEdit7: TDBEdit;
     Label8: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
     DBEdit8: TDBEdit;
+    DBDateTimePiker1: TDBDateTimePiker;
+    Panel1: TPanel;
     Label9: TLabel;
     Label10: TLabel;
     Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
     DBEdit9: TDBEdit;
     DBEdit10: TDBEdit;
     DBEdit11: TDBEdit;
-    Label12: TLabel;
     DBEdit12: TDBEdit;
-    Label13: TLabel;
     DBEdit13: TDBEdit;
-    Label14: TLabel;
     DBEdit14: TDBEdit;
-    Label15: TLabel;
     DBEdit15: TDBEdit;
-    Label16: TLabel;
     DBEdit16: TDBEdit;
-    DBDateTimePiker1: TDBDateTimePiker;
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    Timer1: TTimer;
+    TabSheet3: TTabSheet;
+    LateralViewer1: TLateralViewer;
+    Panel2: TPanel;
+    Splitter1: TSplitter;
+    ImageViewerComLateral: TImageViewer;
     procedure FormCreate(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,8 +87,23 @@ implementation
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-
   memCadastro.Open;
+end;
+
+procedure TfrmPrincipal.Timer1Timer(Sender: TObject);
+begin
+  Timer1.Enabled := False;
+  ImageViewer1.Align := alClient;
+//  ImageViewer1.NomePasta := 'C:\Users\AquaAluno09\Pictures\';
+//  ImageViewer1.Apresentar;
+
+  ImageViewerComLateral.NomePasta := 'C:\Users\AquaAluno09\Pictures';
+  LateralViewer1.Preview := True;
+  LateralViewer1.Diretorio := 'C:\Users\AquaAluno09\Pictures';
+
+//  ImageViewer1.ImagemPrincipal.Picture.LoadFromFile('C:\Users\AquaAluno09\Pictures\background1.jpg');
+//  ImageViewer1.ImagemEsquerda.Picture.LoadFromFile('C:\Users\AquaAluno09\Pictures\background3.jpg');
+//  ImageViewer1.ImagemDireita.Picture.LoadFromFile('C:\Users\AquaAluno09\Pictures\background4.jpg');
 end;
 
 end.

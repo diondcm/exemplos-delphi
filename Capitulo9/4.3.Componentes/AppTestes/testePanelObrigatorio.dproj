@@ -83,7 +83,7 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <DCC_UnitSearchPath>C:\Desenv\Aqua\exemplos-delphi\Capitulo9\4.3.Componentes\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>C:\Desenv\Aqua\exemplos-delphi\Capitulo9\4.3.Componentes\Source;C:\Desenv\Aqua\exemplos-delphi\Capitulo8\4.6.ImageViewer;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
@@ -103,6 +103,11 @@
         </DelphiCompile>
         <DCCReference Include="Form.Principal.pas">
             <Form>frmPrincipal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\CardViewer\Classe.Card.Viewer.pas"/>
+        <DCCReference Include="..\CardViewer\Form.Card.Visualiza.Imagem.pas">
+            <Form>frmVisualizaCard</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

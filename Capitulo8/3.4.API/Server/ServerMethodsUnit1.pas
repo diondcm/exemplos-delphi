@@ -67,44 +67,50 @@ begin
 end;
 
 procedure TServerMethods1.CarregaInfosBlockChain;
-var
-  lRetorno: string;
-  lObjBlockChain: TRootClass;
-  lStrStm: TStringStream;
+//var
+//  lRetorno: string;
+//  lObjBlockChain: TRootClass;
+//  lStrStm: TStringStream;
 begin
   // RESTClient.BaseURL => URL de acesso da API
-//  Edit1.Text := FormatFloat('0.,00', lObjBlockChain.balance);
-  RESTRequest.Execute;
-  lRetorno := RESTResponse1.Content;
-  lObjBlockChain := TRootClass.FromJsonString(lRetorno);
 
-  memBalance.Close;
-  memBalance.Open;
+//  TThread.CreateAnonymousThread(
+//    procedure
+//    begin
 
-  memBalance.Append;
-  memBalancelegacyAddress.AsString := lObjBlockChain.legacyAddress;
-  memBalancecashAddress.AsString := lObjBlockChain.cashAddress;
-  memBalanceslpAddress.AsString := lObjBlockChain.slpAddress;
-  memBalancecurrentPage.AsFloat := lObjBlockChain.currentPage;
-  memBalancepagesTotal.AsFloat:= lObjBlockChain.pagesTotal;
-  memBalancebalance.AsFloat := lObjBlockChain.balance;
-  memBalancebalanceSat.AsFloat := lObjBlockChain.balanceSat;
-  memBalancetotalReceived.AsFloat := lObjBlockChain.totalReceived;
-  memBalancetotalReceivedSat.AsFloat := lObjBlockChain.totalReceivedSat;
-  memBalancetotalSent.AsFloat := lObjBlockChain.totalSent;
-//  memBalancetotalSentSat.AsFloat := lObjBlockChain.totalSentSat;
-  memBalanceunconfirmedBalance.AsFloat := lObjBlockChain.unconfirmedBalance;
-  memBalanceunconfirmedBalanceSat.AsFloat := lObjBlockChain.unconfirmedBalanceSat;
-  memBalanceunconfirmedTxApperances.AsFloat := lObjBlockChain.unconfirmedTxApperances;
-  memBalancetxApperances.AsFloat := lObjBlockChain.txApperances;
-  memBalance.Post;
+      RESTRequest.Execute;
+      var lRetorno: string := RESTResponse1.Content;
+      var lObjBlockChain: TRootClass := TRootClass.FromJsonString(lRetorno);
 
-  lStrStm := TStringStream.Create;
-  memBalance.SaveToStream(lStrStm, TFDStorageFormat.sfJSON);
+      memBalance.Close;
+      memBalance.Open;
 
-  AtualizaCache(lStrStm.DataString);
+      memBalance.Append;
+      memBalancelegacyAddress.AsString := lObjBlockChain.legacyAddress;
+      memBalancecashAddress.AsString := lObjBlockChain.cashAddress;
+      memBalanceslpAddress.AsString := lObjBlockChain.slpAddress;
+      memBalancecurrentPage.AsFloat := lObjBlockChain.currentPage;
+      memBalancepagesTotal.AsFloat:= lObjBlockChain.pagesTotal;
+      memBalancebalance.AsFloat := lObjBlockChain.balance;
+      memBalancebalanceSat.AsFloat := lObjBlockChain.balanceSat;
+      memBalancetotalReceived.AsFloat := lObjBlockChain.totalReceived;
+      memBalancetotalReceivedSat.AsFloat := lObjBlockChain.totalReceivedSat;
+      memBalancetotalSent.AsFloat := lObjBlockChain.totalSent;
+    //  memBalancetotalSentSat.AsFloat := lObjBlockChain.totalSentSat;
+      memBalanceunconfirmedBalance.AsFloat := lObjBlockChain.unconfirmedBalance;
+      memBalanceunconfirmedBalanceSat.AsFloat := lObjBlockChain.unconfirmedBalanceSat;
+      memBalanceunconfirmedTxApperances.AsFloat := lObjBlockChain.unconfirmedTxApperances;
+      memBalancetxApperances.AsFloat := lObjBlockChain.txApperances;
+      memBalance.Post;
 
-  lStrStm.Free;
+      var lStrStm: TStringStream := TStringStream.Create;
+      memBalance.SaveToStream(lStrStm, TFDStorageFormat.sfJSON);
+
+      AtualizaCache(lStrStm.DataString);
+
+      lStrStm.Free;
+
+//    end).Start;
 end;
 
 class constructor TServerMethods1.Create;

@@ -91,8 +91,9 @@
         <DCCReference Include="vclwinx.dcp"/>
         <DCCReference Include="dbrtl.dcp"/>
         <DCCReference Include="vcldb.dcp"/>
+        <DCCReference Include="designide.dcp"/>
         <DCCReference Include="..\Source\Classes.Panel.Obrigatorio.pas"/>
-        <DCCReference Include="..\Source\Registra.Classe.DBTimePicker.pas"/>
+        <DCCReference Include="..\Source\Registra.Panel.Obrigatorio.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

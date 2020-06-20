@@ -6,12 +6,14 @@ uses
   DesignEditors, DesignIntf, Vcl.Dialogs;
 
 type
+  // object inspector
   TShowAbout = class(TStringProperty)
   public
     function GetAttributes: TPropertyAttributes; override;
     procedure Edit; override;
   end;
 
+  // no popup menu da IDE
   TEditorMenu = class(TComponentEditor)
   public
     procedure ExecuteVerb(Index: Integer); override;

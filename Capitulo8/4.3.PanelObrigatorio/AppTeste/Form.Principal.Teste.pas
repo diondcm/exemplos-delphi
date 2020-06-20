@@ -16,10 +16,7 @@ type
     FDMemTable1id: TIntegerField;
     FDMemTable1Nome: TStringField;
     FDMemTable1DataCadastro: TDateTimeField;
-    PanelObrigatorio1: TPanelObrigatorio;
     Timer1: TTimer;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private

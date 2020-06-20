@@ -37,33 +37,6 @@ object frmPanelTest: TfrmPanelTest
     Align = alBottom
     TabOrder = 1
   end
-  object PanelObrigatorio1: TPanelObrigatorio
-    AlignWithMargins = True
-    Left = 3
-    Top = 3
-    Width = 734
-    Height = 218
-    Align = alClient
-    DataSource = DataSource1
-    object DBEdit1: TDBEdit
-      Left = 224
-      Top = 48
-      Width = 121
-      Height = 21
-      DataField = 'Nome'
-      DataSource = DataSource1
-      TabOrder = 0
-    end
-    object DBEdit2: TDBEdit
-      Left = 224
-      Top = 88
-      Width = 121
-      Height = 21
-      DataField = 'id'
-      DataSource = DataSource1
-      TabOrder = 1
-    end
-  end
   object FDMemTable1: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll

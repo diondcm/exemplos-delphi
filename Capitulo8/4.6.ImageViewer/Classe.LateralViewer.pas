@@ -12,7 +12,7 @@ const
   MAX_SIZE = 220;
 
 type
-  TLateralViewer = class(TPanel)
+  TLateralViewer = class(TCustomPanel)
   private
     FFlow: TFlowPanel;
     FLabelTitulo: TLabel;
@@ -28,6 +28,7 @@ type
   protected
     procedure CreateParams(var Params: TCreateParams); override;
     procedure OnImageClick(Sender:  TObject);
+    procedure Resize; override;
   public
     constructor Create(AOwner: TComponent); override;
 
@@ -73,13 +74,12 @@ begin
       lImagem.AlignWithMargins := True;
       lImagem.Parent := FFlow;
       lImagem.Stretch := True;
-      lImagem.OnClick := OnImageClick;
+//      lImagem.OnClick := OnImageClick;
+      lImagem.OnDblClick := OnImageClick;
 
       if FDataSet.FieldByName('Graphic') is TGraphicField then
       begin
-
         lImagem.Picture.Assign(TGraphicField(FDataSet.FieldByName('Graphic')));
-
       end else if FDataSet.FieldByName('Graphic') is TBlobField then
       begin
         lStm := TStringStream.Create;
@@ -107,6 +107,7 @@ begin
   FScrollBox.Parent := Self;
   FScrollBox.Align := alClient;
   FScrollBox.OnDblClick := LabelTituloDblClick;
+  FScrollBox.OnClick := OnImageClick;
 
   FFlow := TFlowPanel.Create(Self);
   FFlow.Parent := FScrollBox;
@@ -170,6 +171,18 @@ begin
   end;
 end;
 
+procedure TLateralViewer.Resize;
+begin
+  inherited;
+  if Self.Width > (FFlow.Width + 8) then
+  begin
+    FFlow.Width := Self.Width - 8;
+  end else if FFlow.Width > (Self.Width +(Self.Width div 3)) then
+  begin
+    FFlow.Width := Self.Width;
+  end;
+end;
+
 procedure TLateralViewer.SetDiretorio(const Value: string);
 var
   i: Integer;
@@ -201,18 +214,9 @@ begin
       lImagem.Parent := FFlow;
       lImagem.Stretch := True;
       lImagem.Picture.Assign(lInstancia);
-      lInstancia.Free;;
+      lImagem.OnClick := OnImageClick;
+      lInstancia.Free;
 
-
-//      if ExtractFileExt(lFile) = '.jpg' then
-//      begin
-//        lImagem := TImage.Create(Self);
-//        lImagem.AlignWithMargins := True;
-//        lImagem.Parent := FFlow;
-//        lImagem.Stretch := True;
-//        lImagem.Picture.LoadFromFile(lFile);
-//        lImagem.OnClick := OnImageClick;
-//      end;
        FFlow.Height := FFlow.Height + lImagem.Height + (lImagem.Margins.Top + lImagem.Margins.Bottom);
     end;
   end;

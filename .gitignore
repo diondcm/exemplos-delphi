@@ -53,3 +53,8 @@ autoCommit.exe
 /Capitulo9/1.1.Start/Win32/Release/CotacaoDOS.exe
 /Capitulo9/1.1.Start/Win32/Release/CotacaoVCL.exe
 /Capitulo9/1.1.Start/Win64/Release/CotacaoVCL.exe
+/News/10.4/MultiStyles.res
+/News/10.4/Form.Multi.Styles.dfm
+/News/10.4/Form.Multi.Styles.pas
+/News/10.4/MultiStyles.dpr
+/News/10.4/MultiStyles.dproj

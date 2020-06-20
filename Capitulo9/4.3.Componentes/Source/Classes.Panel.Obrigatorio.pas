@@ -64,12 +64,12 @@ type
   TPanelObrigatorio = class(TCustomPanelObrigatorio)
   published
     property Align;
-    property Ativo;
+    property Ativo default True;
     property DataSource;
     property Mensagem;
     property DesenhaObrigatorios;
     property ConfigEditObrigatorio;
-    property ConfiguraTabOrder;
+    property ConfiguraTabOrder stored FAtivo;
     property OnNotifica;
   end;
 

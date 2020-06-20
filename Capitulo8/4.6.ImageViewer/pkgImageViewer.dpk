@@ -30,7 +30,8 @@ package pkgImageViewer;
 requires
   rtl,
   vcl,
-  dbrtl;
+  dbrtl,
+  vclimg;
 
 contains
   Classe.ImageViewer in 'Classe.ImageViewer.pas',

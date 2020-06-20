@@ -3010,6 +3010,12 @@ object frmSobre: TfrmSobre
     Width = 380
     Height = 41
     Align = alBottom
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
     Visible = False
     object BitBtn1: TBitBtn

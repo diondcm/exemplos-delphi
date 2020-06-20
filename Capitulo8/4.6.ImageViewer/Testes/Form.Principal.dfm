@@ -42,15 +42,6 @@ object frmPrincipal: TfrmPrincipal
       OnClick = Button1Click
     end
   end
-  object ImageViewer1: TImageViewer
-    Left = 160
-    Top = 40
-    Width = 185
-    Height = 41
-    Caption = 'ImageViewer1'
-    TabOrder = 1
-    Stretch = False
-  end
   object LateralViewer1: TLateralViewer
     Left = 440
     Top = 0
@@ -59,7 +50,7 @@ object frmPrincipal: TfrmPrincipal
     Align = alRight
     Caption = 'LateralViewer1'
     ShowCaption = False
-    TabOrder = 2
+    TabOrder = 1
   end
   object ClientDataSet1: TClientDataSet
     PersistDataPacket.Data = {

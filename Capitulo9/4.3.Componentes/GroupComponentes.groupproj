@@ -9,6 +9,12 @@
         <Projects Include="DBDateTimePicker\pkgDBDateTimePicker.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="CardViewer\CardViewer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LateralViewer\LateralViewer.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="AppTestes\testePanelObrigatorio.dproj">
             <Dependencies/>
         </Projects>
@@ -38,6 +44,24 @@
     <Target Name="pkgDBDateTimePicker:Make">
         <MSBuild Projects="DBDateTimePicker\pkgDBDateTimePicker.dproj" Targets="Make"/>
     </Target>
+    <Target Name="CardViewer">
+        <MSBuild Projects="CardViewer\CardViewer.dproj"/>
+    </Target>
+    <Target Name="CardViewer:Clean">
+        <MSBuild Projects="CardViewer\CardViewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CardViewer:Make">
+        <MSBuild Projects="CardViewer\CardViewer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LateralViewer">
+        <MSBuild Projects="LateralViewer\LateralViewer.dproj"/>
+    </Target>
+    <Target Name="LateralViewer:Clean">
+        <MSBuild Projects="LateralViewer\LateralViewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LateralViewer:Make">
+        <MSBuild Projects="LateralViewer\LateralViewer.dproj" Targets="Make"/>
+    </Target>
     <Target Name="testePanelObrigatorio">
         <MSBuild Projects="AppTestes\testePanelObrigatorio.dproj"/>
     </Target>
@@ -48,13 +72,13 @@
         <MSBuild Projects="AppTestes\testePanelObrigatorio.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="PanelObrigatorio;pkgDBDateTimePicker;testePanelObrigatorio"/>
+        <CallTarget Targets="PanelObrigatorio;pkgDBDateTimePicker;CardViewer;LateralViewer;testePanelObrigatorio"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PanelObrigatorio:Clean;pkgDBDateTimePicker:Clean;testePanelObrigatorio:Clean"/>
+        <CallTarget Targets="PanelObrigatorio:Clean;pkgDBDateTimePicker:Clean;CardViewer:Clean;LateralViewer:Clean;testePanelObrigatorio:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PanelObrigatorio:Make;pkgDBDateTimePicker:Make;testePanelObrigatorio:Make"/>
+        <CallTarget Targets="PanelObrigatorio:Make;pkgDBDateTimePicker:Make;CardViewer:Make;LateralViewer:Make;testePanelObrigatorio:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

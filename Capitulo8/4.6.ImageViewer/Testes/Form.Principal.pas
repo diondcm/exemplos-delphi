@@ -10,7 +10,6 @@ type
   TfrmPrincipal = class(TForm)
     Panel1: TPanel;
     CheckBox1: TCheckBox;
-    ImageViewer1: TImageViewer;
     LateralViewer1: TLateralViewer;
     Button1: TButton;
     ClientDataSet1: TClientDataSet;
@@ -48,18 +47,18 @@ end;
 
 procedure TfrmPrincipal.CheckBox1Click(Sender: TObject);
 begin
-  ImageViewer1.Stretch := CheckBox1.Checked;
-  ImageViewer1.Proportional := not CheckBox1.Checked;
+//  ImageViewer1.Stretch := CheckBox1.Checked;
+//  ImageViewer1.Proportional := not CheckBox1.Checked;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  ImageViewer1.Align := alClient;
+//  ImageViewer1.Align := alClient;
 //  ImageViewer1.ImagemPrincipal.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\Gray.jpg');
 
-  ImageViewer1.ImagemEsquerda.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\Aqua.jpg');
-  ImageViewer1.ImagemDireita.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\Gray.jpg');
-  ImageViewer1.ImagemPrincipal.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\delphi2.jpg');
+//  ImageViewer1.ImagemEsquerda.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\Aqua.jpg');
+//  ImageViewer1.ImagemDireita.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\Gray.jpg');
+//  ImageViewer1.ImagemPrincipal.Picture.LoadFromFile('C:\Users\Instrutor01\Downloads\Imagens\delphi2.jpg');
   LateralViewer1.Preview := True;
 end;
 
