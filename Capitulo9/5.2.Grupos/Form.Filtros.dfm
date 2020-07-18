@@ -22,9 +22,6 @@ object frmFiltros: TfrmFiltros
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 416
-    ExplicitTop = 264
-    ExplicitWidth = 185
     object ButtonFiltro: TButton
       AlignWithMargins = True
       Left = 436
@@ -44,9 +41,6 @@ object frmFiltros: TfrmFiltros
       ParentFont = False
       TabOrder = 0
       OnClick = ButtonFiltroClick
-      ExplicitLeft = 400
-      ExplicitTop = 20
-      ExplicitHeight = 33
     end
     object ButtonCancelar: TButton
       AlignWithMargins = True
@@ -67,9 +61,6 @@ object frmFiltros: TfrmFiltros
       ParentFont = False
       TabOrder = 1
       OnClick = ButtonCancelarClick
-      ExplicitLeft = 544
-      ExplicitTop = 4
-      ExplicitHeight = 33
     end
   end
   object PanelFIltro1: TPanel
@@ -83,9 +74,9 @@ object frmFiltros: TfrmFiltros
     object Label1: TLabel
       Left = 48
       Top = 16
-      Width = 101
+      Width = 83
       Height = 13
-      Caption = 'Data de faturamento'
+      Caption = 'Data de cadastro'
     end
     object Label2: TLabel
       Left = 224
@@ -133,14 +124,12 @@ object frmFiltros: TfrmFiltros
     Height = 46
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 6
-    ExplicitTop = 11
     object Label5: TLabel
       Left = 48
       Top = 16
-      Width = 63
+      Width = 68
       Height = 13
-      Caption = 'Nome Cliente'
+      Caption = 'Nome Produto'
     end
     object CheckBoxNome: TCheckBox
       Left = 16
@@ -151,10 +140,9 @@ object frmFiltros: TfrmFiltros
     end
     object EditNomeCliente: TEdit
       Left = 160
-      Top = 13
-      Width = 121
+      Top = 11
+      Width = 310
       Height = 21
-      NumbersOnly = True
       TabOrder = 1
     end
   end
@@ -166,13 +154,12 @@ object frmFiltros: TfrmFiltros
     Height = 74
     Align = alTop
     TabOrder = 3
-    ExplicitLeft = 8
     object Label4: TLabel
       Left = 48
       Top = 16
-      Width = 69
+      Width = 74
       Height = 13
-      Caption = 'C'#243'digo Cliente'
+      Caption = 'C'#243'digo Produto'
     end
     object CheckBoxCodigo: TCheckBox
       Left = 16
@@ -183,8 +170,8 @@ object frmFiltros: TfrmFiltros
     end
     object EditCodCliente: TEdit
       Left = 160
-      Top = 13
-      Width = 121
+      Top = 16
+      Width = 145
       Height = 21
       NumbersOnly = True
       TabOrder = 1

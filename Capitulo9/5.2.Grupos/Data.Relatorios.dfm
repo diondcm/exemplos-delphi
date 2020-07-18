@@ -3,38 +3,29 @@ object dmdRelatorios: TdmdRelatorios
   OnCreate = DataModuleCreate
   Height = 401
   Width = 569
-  object Connection: TFDConnection
-    Params.Strings = (
-      'Database=C:\Desenv\Aqua\exemplos-delphi\SQLite\fast.db'
-      'DriverID=SQLite')
-    Connected = True
-    LoginPrompt = False
-    Left = 48
-    Top = 56
-  end
   object qryCategoria: TFDQuery
     AfterOpen = qryCategoriaAfterOpen
-    Connection = Connection
+    Connection = dmdConnection.Connection
     SQL.Strings = (
       'select cat.* '
       'from categoria cat'
       '/*WHERE*/'
       'order by cat.id_categoria')
-    Left = 48
-    Top = 208
+    Left = 40
+    Top = 96
   end
   object qryProdutos: TFDQuery
-    Active = True
     MasterSource = dtsCategoria
     MasterFields = 'ID_CATEGORIA'
-    Connection = Connection
+    DetailFields = 'ID_CATEGORIA'
+    Connection = dmdConnection.Connection
     FetchOptions.AssignedValues = [evCache]
     FetchOptions.Cache = [fiBlobs, fiMeta]
     SQL.Strings = (
       'select * from produto '
       'where id_categoria = :id_categoria')
-    Left = 120
-    Top = 280
+    Left = 112
+    Top = 152
     ParamData = <
       item
         Name = 'ID_CATEGORIA'
@@ -59,8 +50,8 @@ object dmdRelatorios: TdmdRelatorios
       ''
       'end.')
     OnBeforePrint = frxReportProdutosBeforePrint
-    Left = 136
-    Top = 136
+    Left = 112
+    Top = 24
     Datasets = <
       item
         DataSet = frxDBDataset1
@@ -1770,8 +1761,8 @@ object dmdRelatorios: TdmdRelatorios
       'begin'
       ''
       'end.')
-    Left = 360
-    Top = 96
+    Left = 256
+    Top = 32
     Datasets = <
       item
         DataSet = frxDBDataset3
@@ -1802,7 +1793,7 @@ object dmdRelatorios: TdmdRelatorios
         object Gradient1: TfrxGradientView
           Align = baCenter
           AllowVectorExport = True
-          Top = 15.118120000000000000
+          Top = -37.795300000000000000
           Width = 718.110700000000000000
           Height = 120.944960000000000000
           EndColor = 16777115
@@ -3432,8 +3423,8 @@ object dmdRelatorios: TdmdRelatorios
     CloseDataSource = False
     DataSet = qryCategoria
     BCDToCurrency = False
-    Left = 48
-    Top = 160
+    Left = 40
+    Top = 48
   end
   object frxDBDataset2: TfrxDBDataset
     UserName = 'Produtos'
@@ -3446,18 +3437,17 @@ object dmdRelatorios: TdmdRelatorios
       'ID_CATEGORIA=ID_CATEGORIA')
     DataSet = qryProdutos
     BCDToCurrency = False
-    Left = 120
-    Top = 232
+    Left = 112
+    Top = 104
   end
   object dtsCategoria: TDataSource
     DataSet = qryCategoria
-    Left = 48
-    Top = 280
+    Left = 40
+    Top = 152
   end
   object qryProdutosSQL: TFDQuery
-    Active = True
     AfterOpen = qryCategoriaAfterOpen
-    Connection = Connection
+    Connection = dmdConnection.Connection
     SQL.Strings = (
       
         'select p.NOME produto, p.CODIGO cod_produto, p.VALOR, c.CODIGO c' +
@@ -3466,15 +3456,79 @@ object dmdRelatorios: TdmdRelatorios
       'join categoria c'
       'on p.id_categoria = c.ID_CATEGORIA'
       'order by c.NOME')
-    Left = 360
-    Top = 224
+    Left = 256
+    Top = 160
+    object qryProdutosSQLproduto: TWideStringField
+      FieldName = 'produto'
+      Origin = 'NOME'
+      Size = 200
+    end
+    object qryProdutosSQLcod_produto: TIntegerField
+      FieldName = 'cod_produto'
+      Origin = 'CODIGO'
+    end
+    object qryProdutosSQLVALOR: TFloatField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+    end
+    object qryProdutosSQLcod_categoria: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'cod_categoria'
+      Origin = 'CODIGO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryProdutosSQLcategoria: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'categoria'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
   end
   object frxDBDataset3: TfrxDBDataset
     UserName = 'ProdutosECategoria'
     CloseDataSource = False
     DataSet = qryProdutosSQL
     BCDToCurrency = False
-    Left = 360
-    Top = 168
+    Left = 256
+    Top = 104
+  end
+  object frxReportExterno: TfrxReport
+    Version = '6.7.9'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44030.613753391200000000
+    ReportOptions.LastChange = 44030.613753391200000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 424
+    Top = 32
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+    end
   end
 end

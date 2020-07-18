@@ -17,7 +17,7 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
   object SplitView: TSplitView
     Left = 0
     Top = 0
-    Width = 209
+    Width = 200
     Height = 449
     CloseStyle = svcCompact
     FullRepaint = False
@@ -28,14 +28,13 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
     object pnlToolbar: TPanel
       Left = 0
       Top = 0
-      Width = 209
+      Width = 200
       Height = 50
       Align = alTop
       BevelOuter = bvNone
       FullRepaint = False
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 200
       object lblTitle: TLabel
         Left = 50
         Top = 12
@@ -65,7 +64,7 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
       AlignWithMargins = True
       Left = 5
       Top = 53
-      Width = 201
+      Width = 192
       Height = 393
       Margins.Left = 5
       Align = alClient
@@ -73,8 +72,6 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
       FullRepaint = False
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 192
-      ExplicitHeight = 552
       object Image5: TImage
         Left = -56
         Top = 272
@@ -784,7 +781,7 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
       object ButtonProdutos: TButton
         Left = 0
         Top = 0
-        Width = 201
+        Width = 192
         Height = 38
         Align = alTop
         Caption = 'Produtos - DataSet'
@@ -799,18 +796,16 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         ParentFont = False
         TabOrder = 0
         OnClick = ButtonProdutosClick
-        ExplicitTop = -14
-        ExplicitWidth = 192
       end
       object AcctsButton: TButton
         Tag = 1
         Left = 0
         Top = 114
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Accounts'
         Align = alTop
-        Caption = 'Accounts'
+        Caption = 'Externo(fr3)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -821,15 +816,13 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         Images = VirtualImageList1
         ParentFont = False
         TabOrder = 1
-        Visible = False
-        ExplicitTop = 38
-        ExplicitWidth = 192
+        OnClick = AcctsButtonClick
       end
       object LeadsButton: TButton
         Tag = 2
         Left = 0
         Top = 152
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Leads'
         Align = alTop
@@ -845,14 +838,12 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         ParentFont = False
         TabOrder = 2
         Visible = False
-        ExplicitTop = 76
-        ExplicitWidth = 192
       end
       object ButtonPedidos: TButton
         Tag = 3
         Left = 0
         Top = 76
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Sales'
         Align = alTop
@@ -867,15 +858,13 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         Images = VirtualImageList1
         ParentFont = False
         TabOrder = 3
-        ExplicitLeft = 5
-        ExplicitTop = 20
-        ExplicitWidth = 192
+        OnClick = ButtonPedidosClick
       end
       object MarketingButton: TButton
         Tag = 4
         Left = 0
         Top = 190
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Marketing'
         Align = alTop
@@ -891,14 +880,12 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         ParentFont = False
         TabOrder = 4
         Visible = False
-        ExplicitTop = 152
-        ExplicitWidth = 192
       end
       object CalendarButton: TButton
         Tag = 5
         Left = 0
         Top = 228
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Calendar'
         Align = alTop
@@ -914,14 +901,12 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         ParentFont = False
         TabOrder = 5
         Visible = False
-        ExplicitTop = 190
-        ExplicitWidth = 192
       end
       object UsersButton: TButton
         Tag = 6
         Left = 0
         Top = 266
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Users'
         Align = alTop
@@ -937,13 +922,11 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         ParentFont = False
         TabOrder = 6
         Visible = False
-        ExplicitTop = 228
-        ExplicitWidth = 192
       end
       object ButtonProdutosSQL: TButton
         Left = 0
         Top = 38
-        Width = 201
+        Width = 192
         Height = 38
         Hint = 'Dashboard'
         Align = alTop
@@ -959,31 +942,24 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
         ParentFont = False
         TabOrder = 7
         OnClick = ButtonProdutosSQLClick
-        ExplicitLeft = -3
-        ExplicitTop = 64
-        ExplicitWidth = 192
       end
     end
   end
   object PanelImagem: TPanel
-    Left = 209
+    Left = 200
     Top = 0
-    Width = 561
+    Width = 570
     Height = 449
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 240
-    ExplicitTop = 72
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     DesignSize = (
-      561
+      570
       449)
     object ImagePreview: TImage
       Left = 0
       Top = 21
-      Width = 561
+      Width = 570
       Height = 428
       Align = alClient
       Proportional = True
@@ -995,7 +971,7 @@ object frmSelcaoRelatorio: TfrmSelcaoRelatorio
     object Label1: TLabel
       Left = 0
       Top = 0
-      Width = 561
+      Width = 570
       Height = 21
       Align = alTop
       Alignment = taCenter

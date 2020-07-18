@@ -11,6 +11,7 @@ object frmVisualizaDados: TfrmVisualizaDados
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -40,9 +41,6 @@ object frmVisualizaDados: TfrmVisualizaDados
         item
           Width = 300
         end>
-      ExplicitLeft = 96
-      ExplicitTop = 8
-      ExplicitWidth = 0
     end
     object DBGrid1: TDBGrid
       AlignWithMargins = True
@@ -70,9 +68,6 @@ object frmVisualizaDados: TfrmVisualizaDados
       DataSource = dtsMaster
       Align = alTop
       TabOrder = 2
-      ExplicitLeft = 88
-      ExplicitTop = 85
-      ExplicitWidth = 240
     end
   end
   object PanelDetail: TPanel
@@ -82,10 +77,6 @@ object frmVisualizaDados: TfrmVisualizaDados
     Height = 223
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 32
-    ExplicitTop = 166
-    ExplicitWidth = 321
-    ExplicitHeight = 209
     object StatusBarDetail: TStatusBar
       AlignWithMargins = True
       Left = 4
@@ -96,9 +87,6 @@ object frmVisualizaDados: TfrmVisualizaDados
         item
           Width = 300
         end>
-      ExplicitLeft = 96
-      ExplicitTop = 8
-      ExplicitWidth = 0
     end
     object DBNavigator2: TDBNavigator
       AlignWithMargins = True
@@ -109,9 +97,6 @@ object frmVisualizaDados: TfrmVisualizaDados
       DataSource = dtsDetail
       Align = alTop
       TabOrder = 1
-      ExplicitLeft = 57
-      ExplicitTop = 112
-      ExplicitWidth = 240
     end
     object DBGrid2: TDBGrid
       AlignWithMargins = True
